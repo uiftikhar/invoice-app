@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./dist/styles.css">  
+  <title>Frontend Mentor | Invoice app</title>
+</head>
+<body class="theme-light">
+  <header class="header container container__px--right">
+    <figure class="header__logo-wrapper">
+      <img src="./assets/logo.svg" class="header__logo-wrapper__logo" alt="logo of the company">
+    </figure>
+    <button id="toggle-theme" class="toggle-button ml-auto header__toggle-theme">
+      <figure>
+        <img src="./assets/icon-moon.svg" alt="toggle website theme" />
+      </figure>
+    </button>
+    <figure class="header__logo-wrapper__avatar-wrapper">
+      <img src="./assets/image-avatar.jpg" class="header__logo-wrapper__avatar-wrapper__avatar" alt="user profile picture" />
+    </figure>
+  </header>
+  <main class="container container__p-all">
+    <article class="flex">
+      <hgroup class="flex flex__col">
+        <h2>Invoices</h2>
+        <h4>7 invoices</h4>
+      </hgroup>
+      <!-- <button class="icon-button icon-vutton__mini ml-auto">
+        <h4>Filter</h4>
+        <figure>
+          <img src="./assets/icon-arrow-down.svg" alt="filters" />
+        </figure>
+      </button> -->
+      <button class="icon-button ml-auto">
+        <figure>
+          <img src="./assets/icon-plus.svg" alt="add new invoice" />
+        </figure>
+        <h4>New</h4>
+      </button>
+    </article>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

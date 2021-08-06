@@ -1,0 +1,43 @@
+// https://codepen.io/DITDOT/pen/abNmLWX
+
+$dark-theme: "dark-theme";
+$light-theme: "light-theme";
+$primary-color: "primary-color";
+$primary-color-light: "primary-color-light";
+$accent-color: "accent-color";
+$general-background: "general-background";
+$general-background-light: "general-background-light";
+$font-btn-success: "font-btn-success";
+$font-btn-warning: "font-btn-warning";
+$icon-btn-base: "icon-btn-base";
+$icon-btn-base-light: "icon-btn-base-light";
+$header-background: "header-background";
+$font-btn-base: "font-btn-base";
+
+$themes: (
+    $light-theme: (
+      $primary-color: #0C0E16,
+      $primary-color-light: #DFE3FA,
+      $accent-color: #7E88C3,
+      $general-background: #F8F8FB,
+      $general-background-light: #FFFFFF,
+      $font-btn-success: #33D69F,
+      $font-btn-warning: #FF8F00,
+      $font-btn-base: $primary-color,
+      $icon-btn-base: #7C5DFA,
+      $icon-btn-base-light: #7C5DFA,
+      $header-background: #373B53,
+    ),
+    $dark-theme: (
+      $primary-color: #FFFFFF,
+      $primary-color-light: #858BB2,
+      $accent-color: #7E88C3,
+      $general-background: #141625,
+      $general-background-light: #1E2139,
+      $icon-btn-base: #7C5DFA,
+      $font-btn-success: #33D69F,
+      $font-btn-warning: #FF8F00,
+      $font-btn-base: #DFE3FA,
+      $header-background: #1E2139,
+    )
+);

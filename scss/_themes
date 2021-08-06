@@ -1,0 +1,28 @@
+$themes: (
+  generalBackground: #0101df,
+  light: (
+    primaryColor: #0C0E16,
+    primaryColorLight: #DFE3FA,
+    accentColor: #7E88C3,
+    generalBackground: #F8F8FB,
+    generalBackgroundLight: #FFFFFF,
+    fontBtnSuccess: #33D69F,
+    fontBtnWarning: #FF8F00,
+    fontBtnBase: #0C0E16,
+    iconBtnBase: #7C5DFA,
+    iconBtnBaseLight: #7C5DFA,
+    headerBackground: #373B53,
+  ),
+  dark: (
+    primaryColor: #FFFFFF,
+    primaryColorLight: #858BB2,
+    accentColor: #7E88C3,
+    generalBackground: #141625,
+    generalBackgroundLight: #1E2139,
+    iconBtnBase: #7C5DFA,
+    fontBtnSuccess: #33D69F,
+    fontBtnWarning: #FF8F00,
+    fontBtnBase: #DFE3FA,
+    headerBackground: #1E2139,
+  )
+);

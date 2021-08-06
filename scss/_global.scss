@@ -1,0 +1,118 @@
+html {
+  height: 100%;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 36px;
+  letter-spacing: -1px;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 22px;
+  letter-spacing: -0.625px;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.8px;
+  &.light {
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.25px;
+  }
+}
+
+h4 {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: $font-accent;
+}
+
+body {
+  margin: 0;
+  font-family: 'Spartan', sans-serif;
+  font-weight: 500;
+  font-size: 0.75rem;
+  line-height: 0.9375rem;
+  letter-spacing: 0.015625rem;
+}
+
+figure {
+  margin: 0;
+}
+
+input {
+  border: none;
+  padding: 0;
+}
+
+.container {
+  background-color: $general-background;
+  &__px {
+    padding-right: 24px;
+    padding-left: 24px;
+    &--right {
+      padding-right: 24px;
+      padding-left: 0px;
+    }
+    &--left {
+      padding-left: 24px;
+      padding-right: 0px;
+    }
+  }
+  &__py {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    &--top {
+      padding-top: 32px;
+      padding-bottom: 0px;
+    }
+    &--bottom {
+      padding-bottom: 32px;
+      padding-top: 0px;
+    }
+  }
+  &__p-all {
+    padding: 32px 24px;
+  }
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.flex {
+  display: flex;
+  &__col {
+    flex-direction: column;
+  }
+  &__ai-c {
+    align-items: center;
+  }
+  &__jc-sb {
+    justify-content: space-between;
+  }
+}

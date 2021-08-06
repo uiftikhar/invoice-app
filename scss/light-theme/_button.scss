@@ -1,0 +1,41 @@
+
+
+button {
+  padding: 17px 24px;
+  border: none;
+  border-radius: 24px;
+  background-color: $purple-dark;
+  &.toggle-button {
+    // todo: change this -- never good padding 0
+    padding: 0;
+    background-color: transparent;
+  }
+  
+  &:hover {
+    background-color: $purple-light;
+  }
+  &.icon-button {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+
+    &__mini { 
+      background-color: transparent;
+    }
+
+    > figure {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: $white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    > h4 {
+      padding-left: 8px;
+      padding-right: 6px;
+      color: $white;
+    }
+  }
+}
