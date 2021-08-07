@@ -52,21 +52,3 @@
     }
   }
 }
-
-// &__draft {
-//   padding: 13px 27px;
-//   @include themed() {
-//     color: theme($primary-color);
-//     background-color: rgba($color: theme($chip-base), $alpha: 0.06);
-//   }
-  
-//   &::before {
-//     content: '';
-//     background-color: $chip-base;
-//     height: 8px;
-//     width: 8px;
-//     border-radius: 50%;
-//     margin-top: 4.5px;
-//     margin-right: 8px;
-//   }
-// }
