@@ -62,7 +62,7 @@ h3.light {
 h4 {
   font-weight: 500;
   font-size: 12px;
-  line-height: 15px;
+  line-height: 20px;
   letter-spacing: -0.25px;
   color: #888EB0;
 }
@@ -87,6 +87,10 @@ figure {
 input {
   border: none;
   padding: 0;
+}
+
+.hide {
+  display: none;
 }
 
 .theme--light .container {
@@ -437,8 +441,6 @@ button.icon-button__mini > figure {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  line-height: 20px;
-  font-weight: bold;
 }
 
 .chip__success {

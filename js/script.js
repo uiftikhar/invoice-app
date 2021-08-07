@@ -1,6 +1,18 @@
 const toggleThemeButton = document.querySelector('#toggle-theme');
 const newInvoice = document.querySelector('#new-invoice');
+const homeWrapper = document.querySelector('#home')
+const editWrapper = document.querySelector('#edit')
 const body = document.querySelector('body');
+
+window.addEventListener('hashchange', function() {
+  if(location.hash === '#edit') {
+    homeWrapper.classList.add('hide')
+    editWrapper.classList.remove('hide')
+  } else if(location.hash === '#home') {
+    homeWrapper.classList.remove('hide')
+    editWrapper.classList.add('hide')
+  }
+});
 
 /*
     Copyright (c) 2020 - present, DITDOT Ltd.

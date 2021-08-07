@@ -1,8 +1,6 @@
 .chip {
   border-radius: 6px;
   display: flex;
-  line-height: 20px;
-  font-weight: bold;
   &__success {
     padding: 13px 30px;
     background-color: rgba($color: $chip-success, $alpha: 0.06);
