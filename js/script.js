@@ -4,31 +4,17 @@ const homeWrapper = document.querySelector('#home')
 const editWrapper = document.querySelector('#edit')
 const body = document.querySelector('body');
 
-window.addEventListener('hashchange', function() {
-  if(location.hash === '#edit') {
-    homeWrapper.classList.add('hide')
-    editWrapper.classList.remove('hide')
-  } else if(location.hash === '#home') {
-    homeWrapper.classList.remove('hide')
-    editWrapper.classList.add('hide')
-  }
-});
 
-window.addEventListener('load', (event) => {
-  if(location.hash === '#edit') {
-    homeWrapper.classList.add('hide')
-    editWrapper.classList.remove('hide')
-  } else if(location.hash === '#home') {
-    homeWrapper.classList.remove('hide')
-    editWrapper.classList.add('hide')
+(function () {
+  function init() {
+      new Router([
+          new Route('home', 'home.html', true),            
+          new Route('view-invoice', 'view-invoice.html')
+      ]);
   }
-});
+  init();
+}());
 
-/*
-    Copyright (c) 2020 - present, DITDOT Ltd.
-    https://www.ditdot.hr/en
-*/
-// MediaQueryList object
 toggleThemeButton.addEventListener('click', () => {
   // This code assumes a Light Mode default
   // if (
@@ -53,5 +39,3 @@ toggleThemeButton.addEventListener('click', () => {
     img.setAttribute('src','./assets/icon-moon.svg')
   }
 })
-
-newInvoice.addEventListener('click', () => window.location.href = '/invoice.html' )
