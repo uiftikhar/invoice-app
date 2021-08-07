@@ -1,0 +1,8 @@
+.status-wrapper {
+  padding: 24px;
+  border-radius: 8px;
+
+  @include themed() {
+    background-color: theme($general-background-light);
+  }
+}

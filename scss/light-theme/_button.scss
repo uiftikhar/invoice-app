@@ -50,6 +50,14 @@ button {
         }
       }
     }
+    
+    &__back {
+      > a > h4 {
+        @include themed() {
+          color: theme($card-total);
+        }
+      }
+    }
 
     
   }

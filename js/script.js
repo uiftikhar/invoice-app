@@ -14,6 +14,16 @@ window.addEventListener('hashchange', function() {
   }
 });
 
+window.addEventListener('load', (event) => {
+  if(location.hash === '#edit') {
+    homeWrapper.classList.add('hide')
+    editWrapper.classList.remove('hide')
+  } else if(location.hash === '#home') {
+    homeWrapper.classList.remove('hide')
+    editWrapper.classList.add('hide')
+  }
+});
+
 /*
     Copyright (c) 2020 - present, DITDOT Ltd.
     https://www.ditdot.hr/en
