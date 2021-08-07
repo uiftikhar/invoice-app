@@ -9,6 +9,9 @@ button {
     // todo: change this -- never good padding 0
     padding: 0;
     background-color: transparent;
+    &:hover {
+      background-color: transparent;
+    }
   }
   
   &:hover {
@@ -18,11 +21,6 @@ button {
     padding: 8px;
     display: flex;
     align-items: center;
-
-    &__mini { 
-      background-color: transparent;
-    }
-
     > figure {
       width: 32px;
       height: 32px;
@@ -32,10 +30,27 @@ button {
       justify-content: center;
       align-items: center;
     }
+
     > h4 {
       padding-left: 8px;
       padding-right: 6px;
+      margin-right: 12px;
       color: $white;
     }
+    &__mini { 
+      background-color: transparent;
+      > figure {
+        background-color: transparent;
+        width: 8px;
+        height: 5px;
+      }
+      > h4 {
+        @include themed() {
+          color: theme($primary-color);
+        }
+      }
+    }
+
+    
   }
 }

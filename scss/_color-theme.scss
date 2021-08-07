@@ -1,7 +1,6 @@
-// https://codepen.io/DITDOT/pen/abNmLWX
 
-$dark-theme: "dark-theme";
-$light-theme: "light-theme";
+$dark: "dark";
+$light: "light";
 $primary-color: "primary-color";
 $primary-color-light: "primary-color-light";
 $accent-color: "accent-color";
@@ -13,9 +12,12 @@ $icon-btn-base: "icon-btn-base";
 $icon-btn-base-light: "icon-btn-base-light";
 $header-background: "header-background";
 $font-btn-base: "font-btn-base";
+$card-client-name: "card-client-name";
+$card-total: "card-total";
+$chip-base: "chip-base";
 
 $themes: (
-    $light-theme: (
+    $light: (
       $primary-color: #0C0E16,
       $primary-color-light: #DFE3FA,
       $accent-color: #7E88C3,
@@ -27,8 +29,11 @@ $themes: (
       $icon-btn-base: #7C5DFA,
       $icon-btn-base-light: #7C5DFA,
       $header-background: #373B53,
+      $card-client-name: #858BB2,
+      $card-total: #0C0E16,
+      $chip-base: #373B53,
     ),
-    $dark-theme: (
+    $dark: (
       $primary-color: #FFFFFF,
       $primary-color-light: #858BB2,
       $accent-color: #7E88C3,
@@ -39,5 +44,28 @@ $themes: (
       $font-btn-warning: #FF8F00,
       $font-btn-base: #DFE3FA,
       $header-background: #1E2139,
+      $card-client-name: #FFFFFF,
+      $card-total: #FFFFFF,
+      $chip-base: #DFE3FA,
     )
 );
+
+
+@mixin themed() {
+  @each $theme, $map in $themes {
+    .theme--#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+      @content;
+      $theme-map: null !global;
+      transition: background-color 500ms ease-in-out;
+    }
+  }
+}
+
+@function theme($key) {
+  @return map-get($theme-map, $key);
+}

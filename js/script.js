@@ -1,4 +1,6 @@
 const toggleThemeButton = document.querySelector('#toggle-theme');
+const newInvoice = document.querySelector('#new-invoice');
+const body = document.querySelector('body');
 
 /*
     Copyright (c) 2020 - present, DITDOT Ltd.
@@ -16,6 +18,18 @@ toggleThemeButton.addEventListener('click', () => {
   //   // if true, set the site to Dark Mode
   //   document.documentElement.setAttribute('color-mode', 'dark')
   // }
-  document.documentElement.setAttribute("color-mode", "light");
-  console.log('LOL');
+
+  const isLightTheme = body.classList.contains('theme--light');
+  const img = toggleThemeButton.querySelector('figure > img');
+  if(isLightTheme) {
+    body.classList.remove('theme--light');
+    body.classList.add('theme--dark');
+    img.setAttribute('src','./assets/icon-sun.svg')
+  } else {
+    body.classList.add('theme--light');
+    body.classList.remove('theme--dark');
+    img.setAttribute('src','./assets/icon-moon.svg')
+  }
 })
+
+newInvoice.addEventListener('click', () => window.location.href = '/invoice.html' )

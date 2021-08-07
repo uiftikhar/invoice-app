@@ -3,8 +3,10 @@
 .header {
   display: flex;
   align-items: center;
-  // @include theme('background-color', $header-background);
-  background-color: $header-background;
+  // background-color: $header-background;
+  @include themed() {
+    background-color: theme($header-background);
+  }
   &__toggle-theme {
     position: relative;
      &::after {

@@ -29,6 +29,9 @@ h2 {
   font-size: 20px;
   line-height: 22px;
   letter-spacing: -0.625px;
+  @include themed() {
+    color: theme($primary-color);
+  }
 }
 
 h3 {
@@ -49,6 +52,9 @@ h4 {
   line-height: 15px;
   letter-spacing: -0.25px;
   color: $font-accent;
+  &.bold {
+    font-weight: 700;
+  }
 }
 
 body {
@@ -70,7 +76,9 @@ input {
 }
 
 .container {
-  background-color: $general-background;
+  @include themed() {
+    background-color: theme($general-background);
+  }
   &__px {
     padding-right: 24px;
     padding-left: 24px;
@@ -102,6 +110,18 @@ input {
 
 .ml-auto {
   margin-left: auto;
+}
+
+.mr-1 {
+  margin-right: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
 }
 
 .flex {

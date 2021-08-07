@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="./dist/styles.css">  
   <title>Frontend Mentor | Invoice app</title>
 </head>
-<body class="theme-light">
+<body class="theme--light">
   <header class="header container container__px--right">
     <figure class="header__logo-wrapper">
       <img src="./assets/logo.svg" class="header__logo-wrapper__logo" alt="logo of the company">
@@ -25,27 +25,75 @@
       <img src="./assets/image-avatar.jpg" class="header__logo-wrapper__avatar-wrapper__avatar" alt="user profile picture" />
     </figure>
   </header>
-  <main class="container container__p-all">
-    <article class="flex">
-      <hgroup class="flex flex__col">
-        <h2>Invoices</h2>
-        <h4>7 invoices</h4>
-      </hgroup>
-      <!-- <button class="icon-button icon-vutton__mini ml-auto">
-        <h4>Filter</h4>
-        <figure>
-          <img src="./assets/icon-arrow-down.svg" alt="filters" />
-        </figure>
-      </button> -->
-      <button class="icon-button ml-auto">
-        <figure>
-          <img src="./assets/icon-plus.svg" alt="add new invoice" />
-        </figure>
-        <h4>New</h4>
-      </button>
-    </article>
+  <main class="container container__p-all"> 
+    <section id="home">
+      <article class="flex mb-2">
+        <hgroup class="flex flex__col">
+          <h2>Invoices</h2>
+          <h4>7 invoices</h4>
+        </hgroup>
+        <button class="icon-button icon-button__mini ml-auto mr-1">
+          <h4>Filter</h4>
+          <figure>
+            <img src="./assets/icon-arrow-down.svg" alt="filters" />
+          </figure>
+        </button>
+        <button id="new-invoice" class="icon-button">
+          <figure>
+            <img src="./assets/icon-plus.svg" alt="add new invoice" />
+          </figure>
+          <h4>New</h4>
+        </button>
+      </article>
+      <article class="cards">
+        <article class="card">
+          <section class="card__invoice">
+            <hgroup>
+              <h4 class="card__invoice--id bold">RT3080</h4>
+              <h4 class="card__invoice--name">Jensen Huang</h4>
+            </hgroup>
+            <article>
+              <hgroup>
+                <h4 class="card__invoice--due-date">19 Aug 2021</h4>
+                <h3 class="card__invoice--total">1,800.90</h3>
+              </hgroup>
+              <h4 class="chip chip__success">Paid</h4>
+            </article>
+          </section>
+        </article>
+        <article class="card">
+          <section class="card__invoice">
+            <hgroup>
+              <h4 class="card__invoice--id bold">Y9141</h4>
+              <h4 class="card__invoice--name">Thomas Wayne</h4>
+            </hgroup>
+            <article>
+              <hgroup>
+                <h4 class="card__invoice--due-date">31 Oct 2021</h4>
+                <h3 class="card__invoice--total">6,155.91</h3>
+              </hgroup>
+              <h4 class="chip chip__warn">Pending</h4>
+            </article>
+          </section>
+        </article>
+        <article class="card">
+          <section class="card__invoice">
+            <hgroup>
+              <h4 class="card__invoice--id bold">FV2353</h4>
+              <h4 class="card__invoice--name">Anita Wainwright</h4>
+            </hgroup>
+            <article>
+              <hgroup>
+                <h4 class="card__invoice--due-date">12 Nov 2021</h4>
+                <h3 class="card__invoice--total">3,102.04</h3>
+              </hgroup>
+              <h4 class="chip chip__draft">Draft</h4>
+            </article>
+          </section>
+        </article>
+      </article>
+    </section>
   </main>
-
   <script src="js/script.js"></script>
 </body>
 </html>
