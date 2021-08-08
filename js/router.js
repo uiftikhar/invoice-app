@@ -17,7 +17,7 @@ Router.prototype = {
     rootElem: undefined,
     constructor: function (routes) {
         this.routes = routes;
-        this.rootElem = document.querySelector('#app');
+        this.rootElem = document.querySelector('#app-root');
     },
     init: function () {
         let r = this.routes;

@@ -15,12 +15,15 @@ $font-btn-base: "font-btn-base";
 $card-client-name: "card-client-name";
 $card-total: "card-total";
 $chip-base: "chip-base";
+$card-invoice-details: "card-invoice-details";
+$card-grand-total: "card-invoice-details";
+$card-grand-total: "card-grand-total";
 
 // TODO use scss variables for these colors
 $themes: (
     $light: (
       $primary-color: #0C0E16,
-      $primary-color-light: #DFE3FA,
+      $primary-color-light: #7E88C3,
       $accent-color: #7E88C3,
       $general-background: #F8F8FB,
       $general-background-light: #FFFFFF,
@@ -33,10 +36,12 @@ $themes: (
       $card-client-name: #858BB2,
       $card-total: #0C0E16,
       $chip-base: #373B53,
+      $card-invoice-details: #F9FAFE,
+      $card-grand-total: #373B53,
     ),
     $dark: (
       $primary-color: #FFFFFF,
-      $primary-color-light: #858BB2,
+      $primary-color-light: #DFE3FA,
       $accent-color: #7E88C3,
       $general-background: #141625,
       $general-background-light: #1E2139,
@@ -48,6 +53,8 @@ $themes: (
       $card-client-name: #FFFFFF,
       $card-total: #FFFFFF,
       $chip-base: #DFE3FA,
+      $card-invoice-details: #252945,
+      $card-grand-total: #0C0E16,
     )
 );
 

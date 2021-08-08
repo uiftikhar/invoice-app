@@ -369,6 +369,48 @@ button.icon-button__mini > figure {
   transition: background-color 500ms ease-in-out;
 }
 
+.card--invoice-details {
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.theme--light .card--invoice-details {
+  background-color: #F9FAFE;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+}
+
+.theme--dark .card--invoice-details {
+  background-color: #252945;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+}
+
+.card--invoice-details > section:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+.card--grand-total {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+.theme--light .card--grand-total {
+  background-color: #373B53;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+}
+
+.theme--dark .card--grand-total {
+  background-color: #0C0E16;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+}
+
+.card--grand-total > h4, .card--grand-total h2 {
+  color: #FFFFFF;
+}
+
 .theme--light .card__invoice--id {
   color: #0C0E16;
   -webkit-transition: background-color 500ms ease-in-out;
@@ -531,18 +573,124 @@ button.icon-button__mini > figure {
   transition: background-color 500ms ease-in-out;
 }
 
-.status-wrapper {
+.view-invoice > section {
+  padding-bottom: 56px;
+}
+
+.view-invoice__themed-heading {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.theme--light .view-invoice__themed-heading {
+  color: #0C0E16;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+}
+
+.theme--dark .view-invoice__themed-heading {
+  color: #FFFFFF;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+}
+
+.view-invoice__status-wrapper {
   padding: 24px;
   border-radius: 8px;
 }
 
-.theme--light .status-wrapper {
+.theme--light .view-invoice__status-wrapper {
   background-color: #FFFFFF;
   -webkit-transition: background-color 500ms ease-in-out;
   transition: background-color 500ms ease-in-out;
 }
 
-.theme--dark .status-wrapper {
+.theme--dark .view-invoice__status-wrapper {
+  background-color: #1E2139;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+}
+
+.theme--light .view-invoice__details-wrapper > .card > h4:not(:first-child) {
+  color: #7E88C3;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+}
+
+.theme--dark .view-invoice__details-wrapper > .card > h4:not(:first-child) {
+  color: #DFE3FA;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+}
+
+.view-invoice__details-wrapper--date-details > h4 {
+  margin-bottom: 8px;
+  line-height: 15px;
+}
+
+.view-invoice__details-wrapper--date-details > h3:first-of-type {
+  margin-bottom: 26px;
+}
+
+.theme--light .view-invoice__details-wrapper--date-details > h3 {
+  color: #0C0E16;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+}
+
+.theme--dark .view-invoice__details-wrapper--date-details > h3 {
+  color: #FFFFFF;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+}
+
+.view-invoice__details-wrapper--address-details > h4 {
+  line-height: 15px;
+}
+
+.view-invoice__details-wrapper--address-details > h4:first-of-type {
+  margin-bottom: 8px;
+}
+
+.view-invoice__details-wrapper--address-details > h3:first-of-type {
+  margin-bottom: 8px;
+}
+
+.theme--light .view-invoice__details-wrapper--address-details > h3 {
+  color: #0C0E16;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+}
+
+.theme--dark .view-invoice__details-wrapper--address-details > h3 {
+  color: #FFFFFF;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+}
+
+.theme--light .view-invoice__details-wrapper--sent-to-details > h3 {
+  color: #0C0E16;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+}
+
+.theme--dark .view-invoice__details-wrapper--sent-to-details > h3 {
+  color: #FFFFFF;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+}
+
+.view-invoice > footer {
+  padding: 21px 24px;
+}
+
+.theme--light .view-invoice > footer {
+  background-color: #373B53;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+}
+
+.theme--dark .view-invoice > footer {
   background-color: #1E2139;
   -webkit-transition: background-color 500ms ease-in-out;
   transition: background-color 500ms ease-in-out;

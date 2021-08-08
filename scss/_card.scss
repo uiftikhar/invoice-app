@@ -12,6 +12,30 @@
     background-color:  theme($general-background-light);
   }
   border-radius: 8px;
+  
+  &--invoice-details {
+    @include themed() {
+      background-color:  theme($card-invoice-details);
+    }
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    > section {
+      &:not(:last-child) {
+        margin-bottom: 24px;
+      }
+    }
+  }
+  
+  &--grand-total {
+    @include themed() {
+      background-color:  theme($card-grand-total);
+    }
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+      > h4, h2 {
+        color: $white;
+      }
+  }
   &__invoice {
     &--id {
       @include themed() {
