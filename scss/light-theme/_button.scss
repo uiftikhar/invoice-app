@@ -1,5 +1,3 @@
-
-
 button {
   padding: 17px 24px;
   border: none;
@@ -60,5 +58,21 @@ button {
     }
 
     
+  }
+
+  &.base {
+    @include themed() {
+      background-color:  theme($card-invoice-details);
+      color:  theme($primary-color-light);
+    }
+  }
+  
+  &.warn {
+    background-color: $warning;
+    color: $white;
+  }
+  
+  &.success {
+    color: $white;
   }
 }

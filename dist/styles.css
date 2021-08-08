@@ -271,6 +271,29 @@ button.icon-button__mini > figure {
   transition: background-color 500ms ease-in-out;
 }
 
+.theme--light button.base {
+  background-color: #F9FAFE;
+  color: #7E88C3;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+}
+
+.theme--dark button.base {
+  background-color: #252945;
+  color: #DFE3FA;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+}
+
+button.warn {
+  background-color: #EC5757;
+  color: #FFFFFF;
+}
+
+button.success {
+  color: #FFFFFF;
+}
+
 .header {
   display: -webkit-box;
   display: -ms-flexbox;
