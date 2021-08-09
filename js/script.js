@@ -1,13 +1,9 @@
-
-
 const toggleThemeButton = document.querySelector('#toggle-theme');
 const newInvoice = document.querySelector('#new-invoice');
 const homeWrapper = document.querySelector('#home')
 const editWrapper = document.querySelector('#edit')
 const body = document.querySelector('body');
 const appRoot = document.querySelector('#app-root');
-
-
 
 
 (function () {
@@ -21,7 +17,9 @@ const appRoot = document.querySelector('#app-root');
 }());
 
 appRoot.addEventListener('page-loaded', () => {
+  // Persist in local storage.
   const data = window.jsonData;
+  console.log( data);
   const InvoiceWrapper = appRoot.querySelector('#home');
   const viewInvoiceWrapper = appRoot.querySelector('#view-invoice');
   if(InvoiceWrapper) updateHome(InvoiceWrapper, data);
@@ -53,7 +51,17 @@ const updateViewInvoice = (viewInvoiceWrapper, data) => {
   const statusWrapper = viewInvoiceWrapper.querySelector('.view-invoice__status-wrapper > hgroup');
   const detailsWrapper = viewInvoiceWrapper.querySelector('.view-invoice__details-wrapper');
   statusWrapper.innerHTML = chip;
-  console.log(statusWrapper, data, detailsWrapper);
+  
+  const detailsHeaders = detailsWrapper.querySelectorAll('section > h4, hgroup > h4');
+  const detailsPaymentHeaders = detailsWrapper.querySelectorAll('hgroup > h3');
+  console.log(detailsPaymentHeaders, detailsHeaders);
+  detailsHeaders[0].innerHTML = data.id;
+  detailsHeaders[1].innerHTML = data.description;
+  detailsHeaders[2].innerHTML = data.senderAddress.street;
+  detailsHeaders[3].innerHTML = data.senderAddress.city;
+  detailsHeaders[4].innerHTML = data.senderAddress.postCode;
+  detailsHeaders[5].innerHTML = data.senderAddress.country;
+
 }
 
 
