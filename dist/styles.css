@@ -10,12 +10,12 @@ html {
           box-sizing: border-box;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6,
 p {
   margin: 0;
 }
@@ -24,46 +24,46 @@ a {
   text-decoration: none;
 }
 
-h1 {
+h1, .h1 {
   font-weight: bold;
   font-size: 32px;
   line-height: 36px;
   letter-spacing: -1px;
 }
 
-h2 {
+h2, .h2 {
   font-weight: bold;
   font-size: 20px;
   line-height: 22px;
   letter-spacing: -0.625px;
 }
 
-.theme--light h2 {
+.theme--light h2, .theme--light .h2 {
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
-.theme--dark h2 {
+.theme--dark h2, .theme--dark .h2 {
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
-h3 {
+h3, .h3 {
   font-weight: bold;
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.8px;
 }
 
-h3.light {
+h3.light, .h3.light {
   font-size: 12px;
   line-height: 15px;
   letter-spacing: -0.25px;
 }
 
-h4 {
+h4, .h4, label {
   font-weight: 500;
   font-size: 12px;
   line-height: 20px;
@@ -71,8 +71,12 @@ h4 {
   color: #888EB0;
 }
 
-h4.bold {
+h4.bold, .h4.bold, label.bold {
   font-weight: 700;
+}
+
+label {
+  margin-bottom: 10px;
 }
 
 body {
@@ -89,8 +93,34 @@ figure {
 }
 
 input {
-  border: none;
-  padding: 0;
+  padding: 17px 20px;
+  border-radius: 4px;
+  font-family: Spartan;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+}
+
+.theme--light input {
+  background-color: #FFFFFF;
+  border: 1px solid #DFE3FA;
+  color: #0C0E16;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark input {
+  background-color: #1E2139;
+  border: 1px solid #252945;
+  color: #FFFFFF;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.mini {
+  max-width: 47%;
 }
 
 .hide {
@@ -99,14 +129,14 @@ input {
 
 .theme--light .container {
   background-color: #F8F8FB;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark .container {
   background-color: #141625;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .container__px {
@@ -143,8 +173,16 @@ input {
   padding: 32px 24px;
 }
 
+.pb-1 {
+  padding-bottom: 24px;
+}
+
 .ml-auto {
   margin-left: auto;
+}
+
+.mt-auto {
+  margin-top: auto;
 }
 
 .mr-1 {
@@ -178,10 +216,26 @@ input {
           align-items: center;
 }
 
+.flex__jc-end {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
 .flex__jc-sb {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.flex__jc-center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.w-100 {
+  width: 100%;
 }
 
 button {
@@ -249,40 +303,40 @@ button.icon-button__mini > figure {
 
 .theme--light button.icon-button__mini > h4 {
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark button.icon-button__mini > h4 {
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--light button.icon-button__back > a > h4 {
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark button.icon-button__back > a > h4 {
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--light button.base {
   background-color: #F9FAFE;
   color: #7E88C3;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark button.base {
   background-color: #252945;
   color: #DFE3FA;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 button.warn {
@@ -305,14 +359,14 @@ button.success {
 
 .theme--light .header {
   background-color: #373B53;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark .header {
   background-color: #1E2139;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .header__toggle-theme {
@@ -382,14 +436,14 @@ button.success {
 
 .theme--light .card {
   background-color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark .card {
   background-color: #1E2139;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .card--invoice-details {
@@ -399,14 +453,14 @@ button.success {
 
 .theme--light .card--invoice-details {
   background-color: #F9FAFE;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark .card--invoice-details {
   background-color: #252945;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .card--invoice-details > section:not(:last-child) {
@@ -420,14 +474,14 @@ button.success {
 
 .theme--light .card--grand-total {
   background-color: #373B53;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark .card--grand-total {
   background-color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .card--grand-total > h4, .card--grand-total h2 {
@@ -436,14 +490,14 @@ button.success {
 
 .theme--light .card__invoice--id {
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark .card__invoice--id {
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .card__invoice--id::before {
@@ -452,14 +506,14 @@ button.success {
 
 .theme--light .card__invoice--id::before {
   color: #7E88C3;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark .card__invoice--id::before {
   color: #7E88C3;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .card__invoice--due-date {
@@ -476,26 +530,26 @@ button.success {
 
 .theme--light .card__invoice--total {
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark .card__invoice--total {
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--light .card__invoice--name {
   color: #858BB2;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark .card__invoice--name {
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .card__invoice > hgroup {
@@ -564,15 +618,15 @@ button.success {
 .theme--light .chip__draft {
   color: #0C0E16;
   background-color: rgba(55, 59, 83, 0.06);
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark .chip__draft {
   color: #FFFFFF;
   background-color: rgba(223, 227, 250, 0.06);
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .chip__draft::before {
@@ -586,14 +640,14 @@ button.success {
 
 .theme--light .chip__draft::before {
   background-color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark .chip__draft::before {
   background-color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .view-invoice > section {
@@ -607,14 +661,14 @@ button.success {
 
 .theme--light .view-invoice__themed-heading {
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark .view-invoice__themed-heading {
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .view-invoice__status-wrapper {
@@ -624,26 +678,26 @@ button.success {
 
 .theme--light .view-invoice__status-wrapper {
   background-color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark .view-invoice__status-wrapper {
   background-color: #1E2139;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--light .view-invoice__details-wrapper > .card > h4:not(:first-child) {
   color: #7E88C3;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark .view-invoice__details-wrapper > .card > h4:not(:first-child) {
   color: #DFE3FA;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .view-invoice__details-wrapper--date-details > h4 {
@@ -657,14 +711,14 @@ button.success {
 
 .theme--light .view-invoice__details-wrapper--date-details > h3 {
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark .view-invoice__details-wrapper--date-details > h3 {
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .view-invoice__details-wrapper--address-details > h4 {
@@ -681,26 +735,26 @@ button.success {
 
 .theme--light .view-invoice__details-wrapper--address-details > h3 {
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark .view-invoice__details-wrapper--address-details > h3 {
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--light .view-invoice__details-wrapper--sent-to-details > h3 {
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark .view-invoice__details-wrapper--sent-to-details > h3 {
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .view-invoice > footer {
@@ -709,12 +763,88 @@ button.success {
 
 .theme--light .view-invoice > footer {
   background-color: #373B53;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .theme--dark .view-invoice > footer {
   background-color: #1E2139;
-  -webkit-transition: background-color 500ms ease-in-out;
-  transition: background-color 500ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.edit-invoice > section.container__px {
+  padding-bottom: 68px;
+}
+
+.theme--light .edit-invoice {
+  background-color: #FFFFFF;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark .edit-invoice {
+  background-color: #141625;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.edit-invoice > footer {
+  padding: 21px 24px;
+  position: relative;
+}
+
+.edit-invoice > footer > button:first-of-type {
+  margin-left: auto;
+  margin-right: 8px;
+}
+
+.edit-invoice > footer::before {
+  content: '';
+  position: absolute;
+  width: 375px;
+  height: 64px;
+  left: 0px;
+  top: -61px;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.0001)), to(rgba(0, 0, 0, 0.1)));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+.bill-from-form {
+  margin-bottom: 40px;
+}
+
+.bill-to-form {
+  margin-bottom: 66px;
+}
+
+.item-list-form > h2:first-of-type {
+  font-size: 18px;
+  line-height: 32px;
+  letter-spacing: -0.375px;
+  margin-bottom: 24px;
+}
+
+.item-list-form__items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 48px;
+}
+
+.item-list-form__items--quantity {
+  min-width: 64px;
+  max-width: 19.6%;
+  margin-right: 16px;
+}
+
+.item-list-form__items--price {
+  min-width: 100px;
+  max-width: 30.6%;
+  margin-right: 16px;
+}
+
+.item-list-form__items--total {
+  min-width: 100px;
+  max-width: 30.6%;
 }

@@ -16,8 +16,10 @@ $card-client-name: "card-client-name";
 $card-total: "card-total";
 $chip-base: "chip-base";
 $card-invoice-details: "card-invoice-details";
-$card-grand-total: "card-invoice-details";
 $card-grand-total: "card-grand-total";
+$input-border: "input-border";
+$input-font-color: "input-font-color";
+$view-invoice-background: "view-invoice-background";
 
 // TODO use scss variables for these colors
 $themes: (
@@ -38,6 +40,9 @@ $themes: (
       $chip-base: #373B53,
       $card-invoice-details: #F9FAFE,
       $card-grand-total: #373B53,
+      $view-invoice-background: #FFFFFF,
+      $input-font-color: #0C0E16,
+      $input-border: 1px solid #DFE3FA
     ),
     $dark: (
       $primary-color: #FFFFFF,
@@ -55,6 +60,9 @@ $themes: (
       $chip-base: #DFE3FA,
       $card-invoice-details: #252945,
       $card-grand-total: #0C0E16,
+      $view-invoice-background: #141625,
+      $input-font-color: #FFFFFF,
+      $input-border: 1px solid #252945
     )
 );
 
@@ -69,7 +77,7 @@ $themes: (
       }
       @content;
       $theme-map: null !global;
-      transition: background-color 500ms ease-in-out;
+      transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
     }
   }
 }

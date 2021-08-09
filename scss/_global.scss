@@ -7,12 +7,12 @@ html {
   box-sizing: border-box;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6,
 p {
   margin: 0;
 }
@@ -20,14 +20,14 @@ p {
 a {
   text-decoration:none;
 }
-h1 {
+h1, .h1 {
   font-weight: bold;
   font-size: 32px;
   line-height: 36px;
   letter-spacing: -1px;
 }
 
-h2 {
+h2, .h2 {
   font-weight: bold;
   font-size: 20px;
   line-height: 22px;
@@ -37,7 +37,7 @@ h2 {
   }
 }
 
-h3 {
+h3, .h3 {
   font-weight: bold;
   font-size: 16px;
   line-height: 24px;
@@ -49,7 +49,7 @@ h3 {
   }
 }
 
-h4 {
+h4, .h4, label {
   font-weight: 500;
   font-size: 12px;
   line-height: 20px;
@@ -58,6 +58,10 @@ h4 {
   &.bold {
     font-weight: 700;
   }
+}
+
+label {
+  margin-bottom: 10px;
 }
 
 body {
@@ -74,8 +78,24 @@ figure {
 }
 
 input {
-  border: none;
-  padding: 0;
+  padding: 17px 20px;
+  border-radius: 4px;
+  @include themed() {
+    background-color: theme($general-background-light);
+    border: theme($input-border);
+    color: theme($input-font-color);
+  }
+
+    font-family: Spartan;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.25px;
+}
+
+.mini {
+  max-width: 47%;
 }
 
 .hide {
@@ -115,8 +135,16 @@ input {
   }
 }
 
+.pb-1 {
+  padding-bottom: 24px;
+}
+
 .ml-auto {
   margin-left: auto;
+}
+
+.mt-auto {
+  margin-top: auto;
 }
 
 .mr-1 {
@@ -139,7 +167,17 @@ input {
   &__ai-c {
     align-items: center;
   }
+  &__jc-end {
+    justify-content: flex-end;
+  }
   &__jc-sb {
     justify-content: space-between;
   }
+  &__jc-center {
+    justify-content: center;
+  }
+}
+
+.w-100 {
+  width: 100%;
 }

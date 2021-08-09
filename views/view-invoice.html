@@ -42,7 +42,7 @@
           <h4>Sent to</h4>
           <h3>alexgrim@mail.com</h3>
         </hgroup>
-        <article class="card card--invoice-details">
+        <article id="invoice-items" class="card card--invoice-details">
           <section class="flex flex__jc-sb flex__ai-c">
             <hgroup>
               <h4 class="view-invoice__themed-heading">Banner Design</h4>
@@ -66,7 +66,9 @@
     </article>
   </section>
   <footer class="flex flex__jc-sb">
-    <button class="base">Edit</button>
+    <a href="" id="redirect-to-edit-invoice" >
+      <button class="base">Edit</button>
+    </a>
     <button class="warn">Delete</button>
     <button class="success">Mark as Paid</button>
   </footer>
