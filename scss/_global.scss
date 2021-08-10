@@ -77,7 +77,7 @@ figure {
   margin: 0;
 }
 
-input {
+input, .date-picker {
   padding: 17px 20px;
   border-radius: 4px;
   @include themed() {

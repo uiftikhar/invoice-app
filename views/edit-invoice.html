@@ -61,10 +61,61 @@
             <label>Country</label>
             <input type="text" name="bill-to--country">
           </div>
-          <!-- change padding tp 40px -->
+          <!-- change padding tp 40px // date picker-->
           <div class="flex flex__col pb-1">
             <label>Invoice Date</label>
-            <input type="text" name="bill-to--invoice-date">
+            <!-- <input id="calendar" type="text" name="bill-to--invoice-date"> -->
+            <div class="date-picker">
+              <div class="selected-date">21 Aug 2021</div>
+              <figure class="ml-auto">
+                <img src="/assets/icon-calendar.svg" height="16" width="16" />
+              </figure>
+              <div class="dates">
+                <div class="month">
+                  <figure>
+                    <img src="/assets/icon-arrow-left.svg" />
+                  </figure>
+                  <div class="mth">Aug 2021</div>
+                  <figure>
+                    <img src="/assets/icon-arrow-right.svg" />
+                  </figure>
+                </div>
+                <div class="days">
+                  <div class="day">1</div>
+                  <div class="day">2</div>
+                  <div class="day">3</div>
+                  <div class="day">4</div>
+                  <div class="day">5</div>
+                  <div class="day">6</div>
+                  <div class="day">7</div>
+                  <div class="day">8</div>
+                  <div class="day">9</div>
+                  <div class="day selected">10</div>
+                  <div class="day">11</div>
+                  <div class="day">12</div>
+                  <div class="day">13</div>
+                  <div class="day">14</div>
+                  <div class="day">15</div>
+                  <div class="day">16</div>
+                  <div class="day">17</div>
+                  <div class="day">18</div>
+                  <div class="day">19</div>
+                  <div class="day">20</div>
+                  <div class="day">21</div>
+                  <div class="day">22</div>
+                  <div class="day">23</div>
+                  <div class="day">24</div>
+                  <div class="day">25</div>
+                  <div class="day">26</div>
+                  <div class="day">27</div>
+                  <div class="day">28</div>
+                  <div class="day">29</div>
+                  <div class="day">30</div>
+                  <div class="day">31</div>
+                </div>              
+              </div>
+            </div>
+          
           </div>
           <div class="flex flex__col pb-1">
             <label>Payment Terms</label>
@@ -76,7 +127,7 @@
           </div>
         </section>
         <section class="item-list-form" id="edit-invoice-form--item-list" >
-          <h2>Item List</h2>
+        <h2>Item List</h2>
           <div class="flex flex__col pb-1">
             <label>Item Name</label>
             <input type="text" name="item-list--name">

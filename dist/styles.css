@@ -92,7 +92,7 @@ figure {
   margin: 0;
 }
 
-input {
+input, .date-picker {
   padding: 17px 20px;
   border-radius: 4px;
   font-family: Spartan;
@@ -103,7 +103,7 @@ input {
   letter-spacing: -0.25px;
 }
 
-.theme--light input {
+.theme--light input, .theme--light .date-picker {
   background-color: #FFFFFF;
   border: 1px solid #DFE3FA;
   color: #0C0E16;
@@ -111,7 +111,7 @@ input {
   transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
-.theme--dark input {
+.theme--dark input, .theme--dark .date-picker {
   background-color: #1E2139;
   border: 1px solid #252945;
   color: #FFFFFF;
@@ -236,6 +236,100 @@ input {
 
 .w-100 {
   width: 100%;
+}
+
+.date-picker {
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.date-picker .dates {
+  display: none;
+  position: absolute;
+  top: 75px;
+  left: 0;
+  right: 0;
+  padding: 25px 19px;
+  background-color: #252945;
+  -webkit-box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+}
+
+.date-picker .dates.active {
+  display: block;
+}
+
+.date-picker .dates .days {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[7];
+      grid-template-columns: repeat(7, 1fr);
+  height: 140px;
+}
+
+.date-picker .dates .days .day {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.date-picker .dates .days .day.selected {
+  color: #7C5DFA;
+}
+
+.date-picker .dates .month {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 32px;
+}
+
+.date-picker .dates .month .arrows {
+  width: 35px;
+  height: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #313131;
+  font-size: 20px;
+}
+
+.date-picker .dates .month .arrows:hover {
+  background-color: #F3F3F3;
+}
+
+.date-picker .dates .month .arrows:active {
+  background-color: #00CA85;
 }
 
 button {
