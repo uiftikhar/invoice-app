@@ -1,0 +1,80 @@
+.cards {
+  > .card {
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.card {
+  padding: 24px;
+  @include themed() {
+    background-color:  theme($general-background-light);
+  }
+  border-radius: 8px;
+  
+  &--invoice-details {
+    @include themed() {
+      background-color:  theme($card-invoice-details);
+    }
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    > section {
+      &:not(:last-child) {
+        margin-bottom: 24px;
+      }
+    }
+  }
+  
+  &--grand-total {
+    @include themed() {
+      background-color:  theme($card-grand-total);
+    }
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+      > h4, h2 {
+        color: $white;
+      }
+  }
+  &__invoice {
+    &--id {
+      @include themed() {
+        color: theme($primary-color);
+      }
+      &::before {
+        content: '#';
+        @include themed() {
+          color: theme($accent-color);
+        }
+      }
+    }
+    &--due-date {
+      margin-bottom: 8px;
+      &::before {
+        content: 'Due '
+      }
+    }
+    &--total {
+      &::before {
+        content: '£ ';
+      }
+      @include themed() {
+        color: theme($card-total);
+      }
+    }
+    &--name {
+      @include themed() {
+        color: theme($card-client-name);
+      }
+    }
+    > hgroup {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    > article {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

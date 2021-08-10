@@ -1,0 +1,28 @@
+.select {
+  position: relative;
+  width: 100%;
+  display: flex;
+  &__elements {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: #252945;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    z-index: 1;
+    &.active {
+      display: block;
+    }
+    > p {
+      padding: 16px 24px;
+      &:not(:last-child) {
+        border-bottom: 1px solid #1E2139;
+      }
+    }
+    &--selected {
+      color: #7C5DFA;
+    }
+  }
+}

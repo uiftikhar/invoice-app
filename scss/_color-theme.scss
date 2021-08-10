@@ -1,0 +1,87 @@
+
+$dark: "dark";
+$light: "light";
+$primary-color: "primary-color";
+$primary-color-light: "primary-color-light";
+$accent-color: "accent-color";
+$general-background: "general-background";
+$general-background-light: "general-background-light";
+$font-btn-success: "font-btn-success";
+$font-btn-warning: "font-btn-warning";
+$icon-btn-base: "icon-btn-base";
+$icon-btn-base-light: "icon-btn-base-light";
+$header-background: "header-background";
+$font-btn-base: "font-btn-base";
+$card-client-name: "card-client-name";
+$card-total: "card-total";
+$chip-base: "chip-base";
+$card-invoice-details: "card-invoice-details";
+$card-grand-total: "card-grand-total";
+$input-border: "input-border";
+$input-font-color: "input-font-color";
+$view-invoice-background: "view-invoice-background";
+
+// TODO use scss variables for these colors
+$themes: (
+    $light: (
+      $primary-color: #0C0E16,
+      $primary-color-light: #7E88C3,
+      $accent-color: #7E88C3,
+      $general-background: #F8F8FB,
+      $general-background-light: #FFFFFF,
+      $font-btn-success: #33D69F,
+      $font-btn-warning: #FF8F00,
+      $font-btn-base: $primary-color,
+      $icon-btn-base: #7C5DFA,
+      $icon-btn-base-light: #7C5DFA,
+      $header-background: #373B53,
+      $card-client-name: #858BB2,
+      $card-total: #0C0E16,
+      $chip-base: #373B53,
+      $card-invoice-details: #F9FAFE,
+      $card-grand-total: #373B53,
+      $view-invoice-background: #FFFFFF,
+      $input-font-color: #0C0E16,
+      $input-border: 1px solid #DFE3FA
+    ),
+    $dark: (
+      $primary-color: #FFFFFF,
+      $primary-color-light: #DFE3FA,
+      $accent-color: #7E88C3,
+      $general-background: #141625,
+      $general-background-light: #1E2139,
+      $icon-btn-base: #7C5DFA,
+      $font-btn-success: #33D69F,
+      $font-btn-warning: #FF8F00,
+      $font-btn-base: #DFE3FA,
+      $header-background: #1E2139,
+      $card-client-name: #FFFFFF,
+      $card-total: #FFFFFF,
+      $chip-base: #DFE3FA,
+      $card-invoice-details: #252945,
+      $card-grand-total: #0C0E16,
+      $view-invoice-background: #141625,
+      $input-font-color: #FFFFFF,
+      $input-border: 1px solid #252945
+    )
+);
+
+
+@mixin themed() {
+  @each $theme, $map in $themes {
+    .theme--#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+      @content;
+      $theme-map: null !global;
+      transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+    }
+  }
+}
+
+@function theme($key) {
+  @return map-get($theme-map, $key);
+}

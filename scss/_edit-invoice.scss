@@ -1,0 +1,63 @@
+.edit-invoice {
+  > section.container__px {
+    padding-bottom: 68px;
+  }
+  @include themed() {
+    background-color: theme($view-invoice-background);
+  }
+
+  > footer {
+    padding: 21px 24px;
+    position: relative;
+    > button:first-of-type {
+      margin-left: auto;
+      margin-right: 8px;
+    }
+    &::before {
+      content: '';   
+      position: absolute;
+      width: 375px;
+      height: 64px;
+      left: 0px;
+      top: -61px;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.1) 100%);
+    
+    }
+  }
+}
+
+.bill-from-form {
+  margin-bottom: 40px;
+}
+.bill-to-form {
+  margin-bottom: 66px;
+}
+
+.item-list-form {
+  & > h2:first-of-type {
+    font-size: 18px;
+    line-height: 32px;
+    letter-spacing: -0.375px;
+    margin-bottom: 24px;
+}
+
+  &__items {
+    display: flex;
+    margin-bottom: 48px;
+    &--quantity {
+      min-width: 64px;
+      max-width: 19.6%;
+      margin-right: 16px;
+    }
+    &--price {
+      min-width: 100px;
+      max-width: 30.6%;
+      margin-right: 16px;
+    }
+    &--total {
+      min-width: 100px;
+      max-width: 30.6%;
+    }
+  }
+}
+

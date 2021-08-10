@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="./dist/styles.css">  
   <title>Frontend Mentor | Invoice app</title>
 </head>
-<body class="theme-light">
+<body class="theme--dark">
   <header class="header container container__px--right">
     <figure class="header__logo-wrapper">
       <img src="./assets/logo.svg" class="header__logo-wrapper__logo" alt="logo of the company">
@@ -25,27 +25,13 @@
       <img src="./assets/image-avatar.jpg" class="header__logo-wrapper__avatar-wrapper__avatar" alt="user profile picture" />
     </figure>
   </header>
-  <main class="container container__p-all">
-    <article class="flex">
-      <hgroup class="flex flex__col">
-        <h2>Invoices</h2>
-        <h4>7 invoices</h4>
-      </hgroup>
-      <!-- <button class="icon-button icon-vutton__mini ml-auto">
-        <h4>Filter</h4>
-        <figure>
-          <img src="./assets/icon-arrow-down.svg" alt="filters" />
-        </figure>
-      </button> -->
-      <button class="icon-button ml-auto">
-        <figure>
-          <img src="./assets/icon-plus.svg" alt="add new invoice" />
-        </figure>
-        <h4>New</h4>
-      </button>
-    </article>
+  <main id="app-root">
   </main>
-
-  <script src="js/script.js"></script>
+  <script src="js/loadData.js"></script>
+  <script src="js/route.js"></script>
+  <script src="js/router.js"></script>
+  <script type="module" src="js/helpers/update-invoice.js"></script>
+  <script type="module" src="js/helpers.js"></script>
+  <script type="module" src="js/script.js"></script>
 </body>
 </html>
