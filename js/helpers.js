@@ -1,25 +1,31 @@
+import { populateUpdateInvoiceFormOnInit, formatCurrency } from './helpers/update-invoice.js'
+
 const checkEventPathForClass = (path, selector) => {
 	for (let i = 0; i < path.length; i++) {
 		if (path[i].classList && path[i].classList.contains(selector)) {
 			return true;
 		}
 	}
-	
 	return false;
 }
 
-const formatCurrency = (value) => new Intl.NumberFormat('en-IN', { minimumFractionDigits: 2 }).format(value); 
+
+const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
 
 const updateEditInvoice = (editInvoiceWrapper, data) => {
-  
   const datePickerElement = editInvoiceWrapper.querySelector('.date-picker');
   const selectedDateElement = editInvoiceWrapper.querySelector('.date-picker > .selected-date');
-  const datesElement = editInvoiceWrapper.querySelector('.date-picker .dates');
+  const datesElement = editInvoiceWrapper.querySelector('.date-picker > .dates');
   const monthElement = editInvoiceWrapper.querySelector('.date-picker > .dates > .month > .mth');
   const nextMonthElement = editInvoiceWrapper.querySelector('.date-picker > .dates > .month > .next-month');
   const prevMonthElement = editInvoiceWrapper.querySelector('.date-picker > .dates > .month > .prev-month');
   const daysElement = editInvoiceWrapper.querySelector('.date-picker .dates .days');
-  const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
+  const userSelectElement = editInvoiceWrapper.querySelector('.select');
+  const selectElements = editInvoiceWrapper.querySelector('.select > .select__elements');
+  const selectedElement = editInvoiceWrapper.querySelector('.select > .select__selected-item');
+  
+
+
   
   populateUpdateInvoiceFormOnInit(editInvoiceWrapper, data);
 
@@ -27,38 +33,77 @@ const updateEditInvoice = (editInvoiceWrapper, data) => {
 
 
 	selectedDateElement.innerHTML = `${date.getDate()} ${formatter.format(date)} ${date.getFullYear()}`;
+  if(data.paymentTerms === 1) {
+    selectedElement.innerHTML = 'Net 1 Day';
+  }
+  if(data.paymentTerms === 7) {
+    selectedElement.innerHTML = 'Net 7 Days';
+  }
+  if(data.paymentTerms === 14) {
+    selectedElement.innerHTML = 'Net 14 Days';
+  }
+  if(data.paymentTerms === 30) {
+    selectedElement.innerHTML = 'Net 30 Days';
+  }
   editInvoiceWrapper.querySelector('#submit-form-button').addEventListener('click', (e) => {
     e.preventDefault();
     const element = document.querySelector('#edit-invoice-form')
     const data = new FormData(element)
     const form = Array.from(data.entries());
+    console.log(form);
+
     updateItemsInLocalStorage(form);
   });
 
   datePickerElement.addEventListener('click', (e) => {
     if (!checkEventPathForClass(e.path, 'dates')) {
-      populateDates(daysElement,selectedDateElement , monthElement,data, data.paymentDue);
+      populateDates(datesElement, daysElement,selectedDateElement , monthElement,data, data.paymentDue);
       datesElement.classList.toggle('active');
     }
   })
+  
+  userSelectElement.addEventListener('click', (e) => {
+    if (!checkEventPathForClass(e.path, 'select-elements')) {
+      selectElements.classList.toggle('active');
+      updateSelectedItem(selectElements, selectedElement);
+    }
+  })
+
 
   prevMonthElement.addEventListener('click',  (e) => {
     const newDate = new Date(date.setMonth(date.getMonth()-1));
     monthElement.innerHTML = `${formatter.format(newDate)} ${newDate.getFullYear()}`;
-    populateDates(daysElement,selectedDateElement , monthElement,data, newDate);
+    populateDates(datesElement, daysElement,selectedDateElement , monthElement,data, newDate, false);
 
   })
   nextMonthElement.addEventListener('click',  (e) => {
     const newDate = new Date(date.setMonth(date.getMonth()+1));
     monthElement.innerHTML = `${formatter.format(newDate)} ${newDate.getFullYear()}`;
-    populateDates(daysElement,selectedDateElement , monthElement,data, newDate);
+    populateDates(datesElement, daysElement,selectedDateElement , monthElement,data, newDate, false);
   })
 }
 
-const  populateDates = (daysElement, selectedDateElement, monthElement, data, userDate) => {
+const updateSelectedItem = (selectElements, selectedElement) => {
+  Array.from(selectElements.children).forEach(child => {
+    if(selectedElement.innerHTML === child.innerHTML) {
+      child.classList.add('select__elements--selected');
+    }
+  })
+  selectElements.addEventListener('click', (e) => {
+    Array.from(selectElements.children).forEach(child => {
+      if(e.target.innerHTML === child.innerHTML) {
+        child.classList.add('select__elements--selected');
+        selectedElement.innerHTML = e.target.innerHTML;
+      } else {
+        child.className = ''
+      }
+    })
+  })
+}
+
+const  populateDates = (datesElement, daysElement, selectedDateElement, monthElement, data, userDate, addSelectedClass = true) => {
   daysElement.innerHTML = '';
   
-  const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
   let date = new Date(userDate);
   let day = date.getDate();
   let month = date.getMonth();
@@ -86,9 +131,11 @@ const  populateDates = (daysElement, selectedDateElement, monthElement, data, us
 		dayElement.classList.add('day');
 		dayElement.textContent = i + 1;
 
-		if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month) {
-			dayElement.classList.add('selected');
-		}
+    if(addSelectedClass) {
+      if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month) {
+        dayElement.classList.add('selected');
+      }
+    }
 
 		dayElement.addEventListener('click', function () {
 			selectedDate = new Date(year + '-' + (month + 1) + '-' + (i + 1));
@@ -100,7 +147,9 @@ const  populateDates = (daysElement, selectedDateElement, monthElement, data, us
 			selectedDateElement.innerHTML = `${selectedDay} ${formatter.format(selectedDate)} ${selectedYear}`;
 			selectedDateElement.dataset.value = selectedDate;
 
-			populateDates(daysElement, selectedDateElement, monthElement ,data, selectedDate);
+      // TODO potentially figure out a wya to get rid of this
+			populateDates(datesElement, daysElement, selectedDateElement, monthElement ,data, selectedDate);
+      // datesElement.classList.toggle('active');
 		});
 
 		daysElement.appendChild(dayElement);
@@ -142,82 +191,6 @@ const updateItemsInLocalStorage = (entries) => {
   })
 };
 
-const populateUpdateInvoiceFormOnInit = (editInvoiceWrapper, data) => {
-  const formElements = editInvoiceWrapper.querySelectorAll('#edit-invoice-form input')
-  // console.log(dateFns.getDaysInMonth(new Date(data.createdAt)));
-  formElements.forEach(item => {
-    switch (item.name) {
-      case 'bill-from--street_address':
-        item.value = data.senderAddress.street;
-        break;
-      case 'bill-from--city':
-        item.value = data.senderAddress.city;
-        break;
-      case 'bill-from--post_code':
-        item.value = data.senderAddress.postCode;
-        break;
-      case 'bill-from--country':
-        item.value = data.senderAddress.country;
-        break;
-      case 'bill-to--client-name':
-        item.value = data.clientName;
-        break;
-      case 'bill-to--client-email':
-        item.value = data.clientEmail;
-        break;
-      case 'bill-to--street_address':
-        item.value = data.clientAddress.street;
-        break;
-      case 'bill-to--city':
-        item.value = data.clientAddress.city;
-        break;
-      case 'bill-to--post_code':
-        item.value = data.clientAddress.postCode;
-        break;
-      case 'bill-to--country':
-        item.value = data.clientAddress.country;
-        break;
-      default:
-        break;
-    }
-  })
-  const itemListWrapper = editInvoiceWrapper.querySelector('#edit-invoice-form--item-list')
-  let items = `
-    <h2>Item List</h2>
-  `;
-  data.items.forEach(item => {
-    items += `
-    <div class="flex flex__col pb-1">
-      <label>Item Name</label>
-      <input type="text" name="item-list--name" value="${item.name}">
-    </div>
-    <div class="item-list-form__items">
-      <div class="flex flex__col item-list-form__items--quantity">
-        <label>Qty</label>
-        <input type="text" name="item-list--quantity" value="${item.quantity}">
-      </div>
-      <div class="flex flex__col item-list-form__items--price">
-        <label>Price</label>
-        <input type="text" name="item-list--price" value="${formatCurrency(item.price)}">
-      </div>
-      <div class="flex flex__col item-list-form__items--total">
-        <label>Total</label>
-        <input type="text" name="item-list--total" value="${formatCurrency(item.total)}">
-      </div>
-      <div class="flex flex__col flex__jc-end ml-auto">
-        <button class="icon-button icon-button__mini" >
-          <a href="#" class="flex flex__ai-c">
-            <figure>
-              <img src="./assets/icon-delete.svg" alt="filters" />
-            </figure>
-          </a>
-        </button>
-      </div>
-    </div>
-    `
-  });
-  itemListWrapper.innerHTML = items;
-}
 
 
 const updateViewInvoice = (viewInvoiceWrapper, data) => {

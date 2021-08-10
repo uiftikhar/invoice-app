@@ -4,7 +4,7 @@
 import {
   updateHome,
   updateViewInvoice,
-  updateEditInvoice
+  updateEditInvoice,
 } from './helpers.js'
 const toggleThemeButton = document.querySelector('#toggle-theme');
 const body = document.querySelector('body');
@@ -39,6 +39,8 @@ appRoot.addEventListener('page-loaded', () => {
     updateEditInvoice(editInvoiceWrapper, currentItem)
   }
 })
+
+
 
 
 toggleThemeButton.addEventListener('click', () => {

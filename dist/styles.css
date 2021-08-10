@@ -92,7 +92,7 @@ figure {
   margin: 0;
 }
 
-input, .date-picker {
+input, .date-picker, .select {
   padding: 17px 20px;
   border-radius: 4px;
   font-family: Spartan;
@@ -103,7 +103,7 @@ input, .date-picker {
   letter-spacing: -0.25px;
 }
 
-.theme--light input, .theme--light .date-picker {
+.theme--light input, .theme--light .date-picker, .theme--light .select {
   background-color: #FFFFFF;
   border: 1px solid #DFE3FA;
   color: #0C0E16;
@@ -111,7 +111,7 @@ input, .date-picker {
   transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
-.theme--dark input, .theme--dark .date-picker {
+.theme--dark input, .theme--dark .date-picker, .theme--dark .select {
   background-color: #1E2139;
   border: 1px solid #252945;
   color: #FFFFFF;
@@ -261,6 +261,7 @@ input, .date-picker {
   left: 0;
   right: 0;
   padding: 25px 19px;
+  z-index: 1;
   background-color: #252945;
   -webkit-box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
@@ -330,6 +331,43 @@ input, .date-picker {
 
 .date-picker .dates .month .arrows:active {
   background-color: #00CA85;
+}
+
+.select {
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.select__elements {
+  display: none;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  background-color: #252945;
+  -webkit-box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.select__elements.active {
+  display: block;
+}
+
+.select__elements > p {
+  padding: 16px 24px;
+}
+
+.select__elements > p:not(:last-child) {
+  border-bottom: 1px solid #1E2139;
+}
+
+.select__elements--selected {
+  color: #7C5DFA;
 }
 
 button {
