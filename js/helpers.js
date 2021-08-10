@@ -229,7 +229,7 @@ const updateViewInvoice = (viewInvoiceWrapper, data) => {
   const detailsPaymentHeaders = detailsWrapper.querySelectorAll('hgroup > h3');
   
   redirectToEdit.addEventListener('click', () => {
-    redirectToEdit.setAttribute('href',`/#edit-invoice?${data.id}`)
+    redirectToEdit.setAttribute('href',`/invoice-app/#edit-invoice?${data.id}`)
   })
 
   statusWrapper.innerHTML = chip;
