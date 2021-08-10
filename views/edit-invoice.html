@@ -66,19 +66,23 @@
             <label>Invoice Date</label>
             <!-- <input id="calendar" type="text" name="bill-to--invoice-date"> -->
             <div class="date-picker">
-              <div class="selected-date">21 Aug 2021</div>
+              <div class="selected-date"></div>
               <figure class="ml-auto">
                 <img src="/assets/icon-calendar.svg" height="16" width="16" />
               </figure>
               <div class="dates">
                 <div class="month">
-                  <figure>
-                    <img src="/assets/icon-arrow-left.svg" />
-                  </figure>
-                  <div class="mth">Aug 2021</div>
-                  <figure>
-                    <img src="/assets/icon-arrow-right.svg" />
-                  </figure>
+                  <button class="icon-button icon-button__mini prev-month" >
+                    <figure>
+                      <img src="/assets/icon-arrow-left.svg" />
+                    </figure>
+                  </button>
+                  <div class="mth"></div>
+                  <button class="icon-button icon-button__mini next-month" >
+                    <figure>
+                      <img src="/assets/icon-arrow-right.svg" />
+                    </figure>
+                  </button>
                 </div>
                 <div class="days"></div>              
               </div>

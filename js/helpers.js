@@ -11,23 +11,22 @@ const checkEventPathForClass = (path, selector) => {
 const formatCurrency = (value) => new Intl.NumberFormat('en-IN', { minimumFractionDigits: 2 }).format(value); 
 
 const updateEditInvoice = (editInvoiceWrapper, data) => {
-
-  const datePickerElement = document.querySelector('.date-picker');
-  const selectedDateElement = document.querySelector('.date-picker .selected-date');
-  const datesElement = document.querySelector('.date-picker .dates');
-  const mthElement = document.querySelector('.date-picker .dates .month .mth');
-  const nextMthElement = document.querySelector('.date-picker .dates .month .next-mth');
-  const prevMthElement = document.querySelector('.date-picker .dates .month .prev-mth');
-  const daysElement = document.querySelector('.date-picker .dates .days');
   
-  datePickerElement.addEventListener('click', (e) => {
-    populateDates(daysElement,selectedDateElement , data);
-    if (!checkEventPathForClass(e.path, 'dates')) {
-      datesElement.classList.toggle('active');
-    }
-  })
-
+  const datePickerElement = editInvoiceWrapper.querySelector('.date-picker');
+  const selectedDateElement = editInvoiceWrapper.querySelector('.date-picker > .selected-date');
+  const datesElement = editInvoiceWrapper.querySelector('.date-picker .dates');
+  const monthElement = editInvoiceWrapper.querySelector('.date-picker > .dates > .month > .mth');
+  const nextMonthElement = editInvoiceWrapper.querySelector('.date-picker > .dates > .month > .next-month');
+  const prevMonthElement = editInvoiceWrapper.querySelector('.date-picker > .dates > .month > .prev-month');
+  const daysElement = editInvoiceWrapper.querySelector('.date-picker .dates .days');
+  const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
+  
   populateUpdateInvoiceFormOnInit(editInvoiceWrapper, data);
+
+  let date = new Date(data.paymentDue);
+
+
+	selectedDateElement.innerHTML = `${date.getDate()} ${formatter.format(date)} ${date.getFullYear()}`;
   editInvoiceWrapper.querySelector('#submit-form-button').addEventListener('click', (e) => {
     e.preventDefault();
     const element = document.querySelector('#edit-invoice-form')
@@ -35,10 +34,32 @@ const updateEditInvoice = (editInvoiceWrapper, data) => {
     const form = Array.from(data.entries());
     updateItemsInLocalStorage(form);
   });
+
+  datePickerElement.addEventListener('click', (e) => {
+    if (!checkEventPathForClass(e.path, 'dates')) {
+      populateDates(daysElement,selectedDateElement , monthElement,data, data.paymentDue);
+      datesElement.classList.toggle('active');
+    }
+  })
+
+  prevMonthElement.addEventListener('click',  (e) => {
+    const newDate = new Date(date.setMonth(date.getMonth()-1));
+    monthElement.innerHTML = `${formatter.format(newDate)} ${newDate.getFullYear()}`;
+    populateDates(daysElement,selectedDateElement , monthElement,data, newDate);
+
+  })
+  nextMonthElement.addEventListener('click',  (e) => {
+    const newDate = new Date(date.setMonth(date.getMonth()+1));
+    monthElement.innerHTML = `${formatter.format(newDate)} ${newDate.getFullYear()}`;
+    populateDates(daysElement,selectedDateElement , monthElement,data, newDate);
+  })
 }
 
-const  populateDates = (daysElement, selectedDateElement, data) => {
-  let date = new Date(data.createdAt);
+const  populateDates = (daysElement, selectedDateElement, monthElement, data, userDate) => {
+  daysElement.innerHTML = '';
+  
+  const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
+  let date = new Date(userDate);
   let day = date.getDate();
   let month = date.getMonth();
   let year = date.getFullYear();
@@ -47,7 +68,6 @@ const  populateDates = (daysElement, selectedDateElement, data) => {
   let selectedDay = day;
   let selectedMonth = month;
   let selectedYear = year;
-	daysElement.innerHTML = '';
 	let amountDays = 31;
 
   if(month % 2 !== 0) {
@@ -60,6 +80,7 @@ const  populateDates = (daysElement, selectedDateElement, data) => {
     }
   }
 
+  monthElement.innerHTML = `${formatter.format(selectedDate)} ${selectedYear}`;
 	for (let i = 0; i < amountDays; i++) {
 		const dayElement = document.createElement('div');
 		dayElement.classList.add('day');
@@ -75,10 +96,11 @@ const  populateDates = (daysElement, selectedDateElement, data) => {
 			selectedMonth = month;
 			selectedYear = year;
 
-			selectedDateElement.textContent = formatDate(selectedDate);
+  
+			selectedDateElement.innerHTML = `${selectedDay} ${formatter.format(selectedDate)} ${selectedYear}`;
 			selectedDateElement.dataset.value = selectedDate;
 
-			populateDates(daysElement, selectedDateElement, data);
+			populateDates(daysElement, selectedDateElement, monthElement ,data, selectedDate);
 		});
 
 		daysElement.appendChild(dayElement);
