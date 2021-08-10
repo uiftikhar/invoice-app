@@ -11,8 +11,10 @@ const checkEventPathForClass = (path, selector) => {
 
 
 const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
+let date;
 
 const updateEditInvoice = (editInvoiceWrapper, data) => {
+  date = new Date(data.paymentDue);
   const datePickerElement = editInvoiceWrapper.querySelector('.date-picker');
   const selectedDateElement = editInvoiceWrapper.querySelector('.date-picker > .selected-date');
   const datesElement = editInvoiceWrapper.querySelector('.date-picker > .dates');
@@ -29,7 +31,6 @@ const updateEditInvoice = (editInvoiceWrapper, data) => {
   
   populateUpdateInvoiceFormOnInit(editInvoiceWrapper, data);
 
-  let date = new Date(data.paymentDue);
 
 
 	selectedDateElement.innerHTML = `${date.getDate()} ${formatter.format(date)} ${date.getFullYear()}`;
@@ -50,14 +51,13 @@ const updateEditInvoice = (editInvoiceWrapper, data) => {
     const element = document.querySelector('#edit-invoice-form')
     const data = new FormData(element)
     const form = Array.from(data.entries());
-    console.log(form);
-
+    console.log(form, selectedElement.dataset.value, selectedDateElement.dataset.value);
     updateItemsInLocalStorage(form);
   });
 
   datePickerElement.addEventListener('click', (e) => {
     if (!checkEventPathForClass(e.path, 'dates')) {
-      populateDates(datesElement, daysElement,selectedDateElement , monthElement,data, data.paymentDue);
+      populateDates(datesElement, daysElement,selectedDateElement , monthElement);
       datesElement.classList.toggle('active');
     }
   })
@@ -71,15 +71,14 @@ const updateEditInvoice = (editInvoiceWrapper, data) => {
 
 
   prevMonthElement.addEventListener('click',  (e) => {
-    const newDate = new Date(date.setMonth(date.getMonth()-1));
-    monthElement.innerHTML = `${formatter.format(newDate)} ${newDate.getFullYear()}`;
-    populateDates(datesElement, daysElement,selectedDateElement , monthElement,data, newDate, false);
-
+    date = new Date(date.setMonth(date.getMonth()-1));
+    monthElement.innerHTML = `${formatter.format(date)} ${date.getFullYear()}`;
+    populateDates(datesElement, daysElement,selectedDateElement , monthElement, false);
   })
   nextMonthElement.addEventListener('click',  (e) => {
-    const newDate = new Date(date.setMonth(date.getMonth()+1));
-    monthElement.innerHTML = `${formatter.format(newDate)} ${newDate.getFullYear()}`;
-    populateDates(datesElement, daysElement,selectedDateElement , monthElement,data, newDate, false);
+    date = new Date(date.setMonth(date.getMonth()+1));
+    monthElement.innerHTML = `${formatter.format(date)} ${date.getFullYear()}`;
+    populateDates(datesElement, daysElement,selectedDateElement , monthElement, false);
   })
 }
 
@@ -94,6 +93,18 @@ const updateSelectedItem = (selectElements, selectedElement) => {
       if(e.target.innerHTML === child.innerHTML) {
         child.classList.add('select__elements--selected');
         selectedElement.innerHTML = e.target.innerHTML;
+        if(e.target.innerHTML === 'Net 1 Day') {
+          selectedElement.dataset.value = 1;
+        }
+        if(e.target.innerHTML === 'Net 7 Days') {
+          selectedElement.dataset.value = 7;
+        }
+        if(e.target.innerHTML === 'Net 14 Days') {
+          selectedElement.dataset.value = 14;
+        }
+        if(e.target.innerHTML === 'Net 30 Days') {
+          selectedElement.dataset.value = 30;
+        }
       } else {
         child.className = ''
       }
@@ -101,10 +112,9 @@ const updateSelectedItem = (selectElements, selectedElement) => {
   })
 }
 
-const  populateDates = (datesElement, daysElement, selectedDateElement, monthElement, data, userDate, addSelectedClass = true) => {
+const  populateDates = (datesElement, daysElement, selectedDateElement, monthElement, addSelectedClass = true) => {
   daysElement.innerHTML = '';
   
-  let date = new Date(userDate);
   let day = date.getDate();
   let month = date.getMonth();
   let year = date.getFullYear();
@@ -134,22 +144,21 @@ const  populateDates = (datesElement, daysElement, selectedDateElement, monthEle
     if(addSelectedClass) {
       if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month) {
         dayElement.classList.add('selected');
-      }
+      } 
     }
 
 		dayElement.addEventListener('click', function () {
-			selectedDate = new Date(year + '-' + (month + 1) + '-' + (i + 1));
+			date = new Date(year + '-' + (month + 1) + '-' + (i + 1));
+			// selectedDate = new Date(year + '-' + (month + 1) + '-' + (i + 1));
 			selectedDay = (i + 1);
 			selectedMonth = month;
 			selectedYear = year;
 
   
-			selectedDateElement.innerHTML = `${selectedDay} ${formatter.format(selectedDate)} ${selectedYear}`;
-			selectedDateElement.dataset.value = selectedDate;
-
-      // TODO potentially figure out a wya to get rid of this
-			populateDates(datesElement, daysElement, selectedDateElement, monthElement ,data, selectedDate);
-      // datesElement.classList.toggle('active');
+			selectedDateElement.innerHTML = `${selectedDay} ${formatter.format(date)} ${selectedYear}`;
+			selectedDateElement.dataset.value = date;
+      console.log(selectedDateElement.dataset);
+      datesElement.classList.toggle('active');
 		});
 
 		daysElement.appendChild(dayElement);
