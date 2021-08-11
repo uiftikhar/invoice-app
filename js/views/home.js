@@ -1,5 +1,4 @@
 export const updateHome = (InvoiceWrapper, jsonData) => {
-console.log(1231312);
   const formatDate = (value) => {
     const date = new Date(value);
     const day = date.toLocaleString('default', { day: '2-digit' });

@@ -2,12 +2,14 @@
 // https://dev.to/phoinixi/one-way-data-binding-in-vanilla-js-poc-4dj7
 
 import {
-  updateViewInvoice,
   updateEditInvoice,
 } from './helpers.js'
 import {
   updateHome
 } from './views/home.js';
+import {
+  updateViewInvoice,
+} from './views/view-invoice.js';
 const toggleThemeButton = document.querySelector('#toggle-theme');
 const body = document.querySelector('body');
 const appRoot = document.querySelector('#app-root');
@@ -29,7 +31,9 @@ appRoot.addEventListener('page-loaded', () => {
   const InvoiceWrapper = appRoot.querySelector('#home');
   const viewInvoiceWrapper = appRoot.querySelector('#view-invoice');
   const editInvoiceWrapper = appRoot.querySelector('#edit-invoice');
-  if(InvoiceWrapper) updateHome(InvoiceWrapper, jsonData);
+  if(InvoiceWrapper) {
+    updateHome(InvoiceWrapper, jsonData)
+  };
   if(viewInvoiceWrapper) {
     const queryString = window.location.hash.split('?')[1];
     const currentItem = jsonData.find(item => item.id === queryString);
