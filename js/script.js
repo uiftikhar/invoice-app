@@ -3,7 +3,7 @@
 
 import {
   updateEditInvoice,
-} from './helpers.js'
+} from './views/edit-invoice.js'
 import {
   updateHome
 } from './views/home.js';

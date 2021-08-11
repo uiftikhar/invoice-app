@@ -1,4 +1,6 @@
 export const populateUpdateInvoiceFormOnInit = (editInvoiceWrapper, data) => {
+  const formatCurrency = (value) => new Intl.NumberFormat('en-IN', { minimumFractionDigits: 2 }).format(value); 
+
   const formElements = editInvoiceWrapper.querySelectorAll('#edit-invoice-form input')
   formElements.forEach(item => {
     switch (item.name) {
