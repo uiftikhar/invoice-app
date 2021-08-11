@@ -8,7 +8,6 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
   const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
 
   const checkEventPathForClass = (path, selector) => {
-    console.log('path: ', path, selector );
     for (let i = 0; i < path.length; i++) {
       if (path[i].classList && path[i].classList.contains(selector)) {
         return true;
@@ -57,6 +56,9 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
 
   datePickerElement.addEventListener('click', (event) => {
     const path = event.path || (event.composedPath && event.composedPath());
+    if(selectElements.classList.contains('active')) {
+      selectElements.classList.remove('active')
+    }
     if (!checkEventPathForClass(path, 'dates')) {
       populateDates(datesElement, daysElement,selectedDateElement , monthElement, date);
       datesElement.classList.toggle('active');
@@ -64,6 +66,9 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
   })
   
   userSelectElement.addEventListener('click', (event) => {
+    if(datesElement.classList.contains('active')) {
+      datesElement.classList.remove('active')
+    }
     const path = event.path || (event.composedPath && event.composedPath());
     if (!checkEventPathForClass(path, 'select-elements')) {
       selectElements.classList.toggle('active');
