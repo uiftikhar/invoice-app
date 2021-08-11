@@ -8,6 +8,7 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
   const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
 
   const checkEventPathForClass = (path, selector) => {
+    console.log('path: ', path, selector );
     for (let i = 0; i < path.length; i++) {
       if (path[i].classList && path[i].classList.contains(selector)) {
         return true;
@@ -54,15 +55,17 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
     // updateItemsInLocalStorage(form);
   });
 
-  datePickerElement.addEventListener('click', (e) => {
-    if (!checkEventPathForClass(e.path, 'dates')) {
+  datePickerElement.addEventListener('click', (event) => {
+    const path = event.path || (event.composedPath && event.composedPath());
+    if (!checkEventPathForClass(path, 'dates')) {
+      populateDates(datesElement, daysElement,selectedDateElement , monthElement, date);
+      datesElement.classList.toggle('active');
     }
-    populateDates(datesElement, daysElement,selectedDateElement , monthElement, date);
-    datesElement.classList.toggle('active');
   })
   
-  userSelectElement.addEventListener('click', (e) => {
-    if (!checkEventPathForClass(e.path, 'select-elements')) {
+  userSelectElement.addEventListener('click', (event) => {
+    const path = event.path || (event.composedPath && event.composedPath());
+    if (!checkEventPathForClass(path, 'select-elements')) {
       selectElements.classList.toggle('active');
       updateSelectedItem(selectElements, selectedElement);
     }
