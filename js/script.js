@@ -2,10 +2,12 @@
 // https://dev.to/phoinixi/one-way-data-binding-in-vanilla-js-poc-4dj7
 
 import {
-  updateHome,
   updateViewInvoice,
   updateEditInvoice,
 } from './helpers.js'
+import {
+  updateHome
+} from './views/home.js';
 const toggleThemeButton = document.querySelector('#toggle-theme');
 const body = document.querySelector('body');
 const appRoot = document.querySelector('#app-root');
