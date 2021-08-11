@@ -1,8 +1,7 @@
 <article id="edit-invoice" class="edit-invoice">
   <section class="container__px container__py--top ">
     <button class="icon-button icon-button__mini icon-button__back mb-2" >
-      <!-- TODO change this to go back to edit -->
-      <a href="../" class="flex flex__ai-c">
+      <a href="javascript:history.go(-1)" class="flex flex__ai-c">
         <figure class="mr-1">
           <img src="./assets/icon-arrow-left.svg" alt="filters" />
         </figure>  
@@ -112,7 +111,7 @@
           </div>
         </section>
         <section class="item-list-form" id="edit-invoice-form--item-list" >
-        <h2>Item List</h2>
+          <h2>Item List</h2>
           <div class="flex flex__col pb-1">
             <label>Item Name</label>
             <input type="text" name="item-list--name">
@@ -132,11 +131,9 @@
             </div>
             <div class="flex flex__col flex__jc-end ml-auto">
               <button class="icon-button icon-button__mini" >
-                <a href="#" class="flex flex__ai-c">
-                  <figure>
-                    <img src="./assets/icon-delete.svg" alt="filters" />
-                  </figure>
-                </a>
+                <figure>
+                  <img src="./assets/icon-delete.svg" alt="filters" />
+                </figure>
               </button>
             </div>
           </div>

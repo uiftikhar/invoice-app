@@ -20,6 +20,7 @@ $card-grand-total: "card-grand-total";
 $input-border: "input-border";
 $input-font-color: "input-font-color";
 $view-invoice-background: "view-invoice-background";
+$select-calendar-background: "select-calendar-background";
 
 // TODO use scss variables for these colors
 $themes: (
@@ -42,7 +43,8 @@ $themes: (
       $card-grand-total: #373B53,
       $view-invoice-background: #FFFFFF,
       $input-font-color: #0C0E16,
-      $input-border: 1px solid #DFE3FA
+      $input-border: 1px solid #DFE3FA,
+      $select-calendar-background: #FFFFFF
     ),
     $dark: (
       $primary-color: #FFFFFF,
@@ -62,7 +64,8 @@ $themes: (
       $card-grand-total: #0C0E16,
       $view-invoice-background: #141625,
       $input-font-color: #FFFFFF,
-      $input-border: 1px solid #252945
+      $input-border: 1px solid #252945,
+      $select-calendar-background: #252945
     )
 );
 

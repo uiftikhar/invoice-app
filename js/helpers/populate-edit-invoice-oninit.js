@@ -1,5 +1,4 @@
 export const populateUpdateInvoiceFormOnInit = (editInvoiceWrapper, data) => {
-  const formatCurrency = (value) => new Intl.NumberFormat('en-IN', { minimumFractionDigits: 2 }).format(value); 
 
   const formElements = editInvoiceWrapper.querySelectorAll('#edit-invoice-form input')
   formElements.forEach(item => {
@@ -38,7 +37,15 @@ export const populateUpdateInvoiceFormOnInit = (editInvoiceWrapper, data) => {
         break;
     }
   })
+
+  updateListItems(editInvoiceWrapper, data);
+}
+
+export const updateListItems = (editInvoiceWrapper, data) => {
+  const formatCurrency = (value) => new Intl.NumberFormat('en-IN', { minimumFractionDigits: 2 }).format(value); 
+
   const itemListWrapper = editInvoiceWrapper.querySelector('#edit-invoice-form--item-list')
+
   let items = `
     <h2>Item List</h2>
   `;
@@ -62,12 +69,10 @@ export const populateUpdateInvoiceFormOnInit = (editInvoiceWrapper, data) => {
         <input type="text" name="item-list--total" value="${formatCurrency(item.total)}">
       </div>
       <div class="flex flex__col flex__jc-end ml-auto">
-        <button class="icon-button icon-button__mini" >
-          <a href="#" class="flex flex__ai-c">
-            <figure>
-              <img src="./assets/icon-delete.svg" alt="filters" />
-            </figure>
-          </a>
+        <button  class="icon-button icon-button__mini delete-button" >
+          <figure>
+            <img value="${item.name}" src="./assets/icon-delete.svg" alt="delete item" />
+          </figure>
         </button>
       </div>
     </div>

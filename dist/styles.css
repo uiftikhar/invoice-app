@@ -240,7 +240,7 @@ input, .date-picker, .select {
 
 .date-picker {
   position: relative;
-  width: 100%;
+  width: 101%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -262,10 +262,21 @@ input, .date-picker, .select {
   right: 0;
   padding: 25px 19px;
   z-index: 1;
-  background-color: #252945;
   -webkit-box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
+}
+
+.theme--light .date-picker .dates {
+  background-color: #FFFFFF;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark .date-picker .dates {
+  background-color: #252945;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .date-picker .dates.active {
@@ -309,30 +320,6 @@ input, .date-picker, .select {
   padding-bottom: 32px;
 }
 
-.date-picker .dates .month .arrows {
-  width: 35px;
-  height: 35px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: #313131;
-  font-size: 20px;
-}
-
-.date-picker .dates .month .arrows:hover {
-  background-color: #F3F3F3;
-}
-
-.date-picker .dates .month .arrows:active {
-  background-color: #00CA85;
-}
-
 .select {
   position: relative;
   width: 100%;
@@ -347,11 +334,22 @@ input, .date-picker, .select {
   top: 70px;
   left: 0;
   right: 0;
-  background-color: #252945;
   -webkit-box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   z-index: 1;
+}
+
+.theme--light .select__elements {
+  background-color: #FFFFFF;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark .select__elements {
+  background-color: #252945;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .select__elements.active {

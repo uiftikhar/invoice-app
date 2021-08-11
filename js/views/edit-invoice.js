@@ -1,5 +1,5 @@
 
-import { populateUpdateInvoiceFormOnInit } from '../helpers/populate-edit-invoice-oninit.js';
+import { populateUpdateInvoiceFormOnInit, updateListItems } from '../helpers/populate-edit-invoice-oninit.js';
 import { updateSelectedItem } from '../helpers/select.js';
 import { populateDates } from '../helpers/calendar.js';
 export const updateEditInvoice = (editInvoiceWrapper, data) => {
@@ -9,6 +9,7 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
 
   const checkEventPathForClass = (path, selector) => {
     for (let i = 0; i < path.length; i++) {
+      // console.log(path[i].classList, selector, path[i].classList?.contains(selector));
       if (path[i].classList && path[i].classList.contains(selector)) {
         return true;
       }
@@ -27,7 +28,19 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
   const selectElements = editInvoiceWrapper.querySelector('#select > .select__elements');
   const selectedElement = editInvoiceWrapper.querySelector('#select > .select__selected-item');
   const formElement = editInvoiceWrapper.querySelector('#edit-invoice-form');
+  const invoiceItemsWrapper = editInvoiceWrapper.querySelector('#edit-invoice-form--item-list');
+  invoiceItemsWrapper.addEventListener('click', (event) => {
+    const path = event.path || (event.composedPath && event.composedPath());
+    if (checkEventPathForClass(path, 'delete-button')) {
+        console.log(event.srcElement.getAttribute('value'));
+        const value = event.srcElement.getAttribute('value').toLowerCase();
+        const _data = data;
 
+        _data.items = _data.items.filter(item => item.name.toLowerCase() !== value);
+        updateListItems(editInvoiceWrapper, _data);
+    }
+  })
+  
   formElement.addEventListener('submit', e => e.preventDefault());
   
   populateUpdateInvoiceFormOnInit(editInvoiceWrapper, data);
@@ -86,6 +99,7 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
     date = new Date(date.setMonth(date.getMonth()+1));
     monthElement.innerHTML = `${formatter.format(date)} ${date.getFullYear()}`;
     populateDates(datesElement, daysElement,selectedDateElement , monthElement, date, false);
-  })
+  });
+
 }
 
