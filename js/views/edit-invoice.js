@@ -16,16 +16,16 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
     return false;
   }
 
-  const datePickerElement = editInvoiceWrapper.querySelector('.date-picker');
-  const selectedDateElement = editInvoiceWrapper.querySelector('.date-picker > .selected-date');
-  const datesElement = editInvoiceWrapper.querySelector('.date-picker > .dates');
-  const monthElement = editInvoiceWrapper.querySelector('.date-picker > .dates > .month > .mth');
-  const nextMonthElement = editInvoiceWrapper.querySelector('.date-picker > .dates > .month > .next-month');
-  const prevMonthElement = editInvoiceWrapper.querySelector('.date-picker > .dates > .month > .prev-month');
-  const daysElement = editInvoiceWrapper.querySelector('.date-picker .dates .days');
-  const userSelectElement = editInvoiceWrapper.querySelector('.select');
-  const selectElements = editInvoiceWrapper.querySelector('.select > .select__elements');
-  const selectedElement = editInvoiceWrapper.querySelector('.select > .select__selected-item');
+  const datePickerElement = editInvoiceWrapper.querySelector('#date-picker');
+  const selectedDateElement = editInvoiceWrapper.querySelector('#date-picker > .selected-date');
+  const datesElement = editInvoiceWrapper.querySelector('#date-picker > .dates');
+  const monthElement = editInvoiceWrapper.querySelector('#date-picker > .dates > .month > .mth');
+  const nextMonthElement = editInvoiceWrapper.querySelector('#date-picker > .dates > .month > .next-month');
+  const prevMonthElement = editInvoiceWrapper.querySelector('#date-picker > .dates > .month > .prev-month');
+  const daysElement = editInvoiceWrapper.querySelector('#date-picker .dates .days');
+  const userSelectElement = editInvoiceWrapper.querySelector('#select');
+  const selectElements = editInvoiceWrapper.querySelector('#select > .select__elements');
+  const selectedElement = editInvoiceWrapper.querySelector('#select > .select__selected-item');
   const formElement = editInvoiceWrapper.querySelector('#edit-invoice-form');
 
   formElement.addEventListener('submit', e => e.preventDefault());
@@ -56,9 +56,9 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
 
   datePickerElement.addEventListener('click', (e) => {
     if (!checkEventPathForClass(e.path, 'dates')) {
-      populateDates(datesElement, daysElement,selectedDateElement , monthElement, date);
-      datesElement.classList.toggle('active');
     }
+    populateDates(datesElement, daysElement,selectedDateElement , monthElement, date);
+    datesElement.classList.toggle('active');
   })
   
   userSelectElement.addEventListener('click', (e) => {

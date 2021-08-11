@@ -28,7 +28,6 @@ const jsonData = JSON.parse(localStorage.getItem('data'));
 
 
 appRoot.addEventListener('page-loaded', () => {
-  console.log(12);
   const InvoiceWrapper = appRoot.querySelector('#home');
   const viewInvoiceWrapper = appRoot.querySelector('#view-invoice');
   const editInvoiceWrapper = appRoot.querySelector('#edit-invoice');
