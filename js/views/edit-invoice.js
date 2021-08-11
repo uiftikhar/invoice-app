@@ -1,6 +1,7 @@
 
 import { populateUpdateInvoiceFormOnInit } from '../helpers/populate-edit-invoice-oninit.js';
 import { updateSelectedItem } from '../helpers/select.js';
+import { populateDates } from '../helpers/calendar.js';
 export const updateEditInvoice = (editInvoiceWrapper, data) => {
   
   let date = new Date(data.paymentDue);

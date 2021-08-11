@@ -65,7 +65,7 @@ export const populateUpdateInvoiceFormOnInit = (editInvoiceWrapper, data) => {
         <button class="icon-button icon-button__mini" >
           <a href="#" class="flex flex__ai-c">
             <figure>
-              <img src="./../../assets/icon-delete.svg" alt="filters" />
+              <img src="./assets/icon-delete.svg" alt="filters" />
             </figure>
           </a>
         </button>
