@@ -63,9 +63,9 @@
           <!-- change padding tp 40px // date picker-->
           <div class="flex flex__col pb-1">
             <label>Invoice Date</label>
-            <!-- <input id="calendar" type="text" name="bill-to--invoice-date"> -->
+            <!-- <input id="calendar" type="text" > -->
             <div id="date-picker" class="date-picker">
-              <input disabled name="payment-date" class="selected-date" >
+              <input readonly name="payment-date" class="selected-date" >
               <figure class="ml-auto">
                 <img src="./assets/icon-calendar.svg" height="16" width="16" />
               </figure>
@@ -77,7 +77,7 @@
                     </figure>
                   </button>
                   <!-- <div class="month-input">Aug 2021</div> -->
-                  <div disabled class="month-input"></div>
+                  <div class="month-input"></div>
                   <button class="icon-button icon-button__mini next-month" >
                     <figure>
                       <img src="./assets/icon-arrow-right.svg" />
@@ -92,7 +92,7 @@
           <div class="flex flex__col pb-1">
             <label>Payment Terms</label>
             <div id="select" class="select">
-              <input disabled name="payment-terms" class="select__selected-item" >
+              <input readonly name="payment-terms" class="select__selected-item" >
               <figure class="ml-auto">
                 <img src="./assets/icon-arrow-down.svg" />
               </figure>

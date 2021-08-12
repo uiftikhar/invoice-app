@@ -92,17 +92,18 @@ input, .date-picker, .select {
     font-size: 12px;
     line-height: 15px;
     letter-spacing: -0.25px;
-    &:disabled {
+    &.disabled {
       border: none;
-      display: flex;
-      padding: 0;
-      text-align: center;
+      color: $input-read-only-font-color;
+      background-color: transparent;
+      pointer-events: none;
     }
 }
 input:read-only {
   border: none;
   color: $input-read-only-font-color;
   background-color: transparent;
+  padding: 0;
 }
 ul,
 ul li,

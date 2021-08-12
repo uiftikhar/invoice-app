@@ -119,25 +119,25 @@ input, .date-picker, .select {
   transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
-input:disabled, .date-picker:disabled, .select:disabled {
+input.disabled, .date-picker.disabled, .select.disabled {
   border: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 0;
-  text-align: center;
+  color: #888EB0;
+  background-color: transparent;
+  pointer-events: none;
 }
 
 input:-moz-read-only {
   border: none;
   color: #888EB0;
   background-color: transparent;
+  padding: 0;
 }
 
 input:read-only {
   border: none;
   color: #888EB0;
   background-color: transparent;
+  padding: 0;
 }
 
 ul,
@@ -426,8 +426,16 @@ ul ul li {
   padding: 16px 24px;
 }
 
-.select__elements > p:not(:last-child) {
+.theme--light .select__elements > p:not(:last-child) {
+  border-bottom: 1px solid #DFE3FA;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark .select__elements > p:not(:last-child) {
   border-bottom: 1px solid #1E2139;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .select__elements--selected {

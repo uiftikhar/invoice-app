@@ -1,5 +1,5 @@
 
-import { populateUpdateInvoiceFormOnInit, updateItemsInLocalStorage } from '../helpers/populate-edit-invoice-oninit.js';
+import { populateUpdateInvoiceFormOnInit, updateItemsInLocalStorage, renderItems } from '../helpers/populate-edit-invoice-oninit.js';
 import { addToLocalStorage } from '../helpers.js';
 import { updateSelectedItem } from '../helpers/select.js';
 import { populateDates } from '../helpers/calendar.js';
@@ -30,6 +30,8 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
   const formElement = editInvoiceWrapper.querySelector('#edit-invoice-form');
   const invoiceItemsWrapper = editInvoiceWrapper.querySelector('#edit-invoice-form--item-list');
   const addNewItemButton = editInvoiceWrapper.querySelector('#add-new-item');
+  populateUpdateInvoiceFormOnInit(editInvoiceWrapper, data, date);
+  formElement.addEventListener('submit', e => e.preventDefault());
   
   invoiceItemsWrapper.addEventListener('click', (event) => {
     const path = event.path || (event.composedPath && event.composedPath());
@@ -43,15 +45,14 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
   
   
   addNewItemButton.addEventListener('click', (e) => {
-    let runningTotal = 0;
+    // let runningTotal = 0;
     const allItems = invoiceItemsWrapper.querySelectorAll('ul > li')
     let newItems = [];
-    allItems.forEach(item => {
-      const name = item.querySelector('[name="item-list--name"]').value;
-      const quantity = Number(item.querySelector('[name="item-list--quantity"]').value.replace(/[^0-9.-]+/g,""));
-      const price = Number(item.querySelector('[name="item-list--price"]').value.replace(/[^0-9.-]+/g,""))
-      const total = (quantity * price )||Number(item.querySelector('[name="item-list--total"]').value.replace(/[^0-9.-]+/g,""));
-      runningTotal += total;
+    allItems.forEach((item, index) => {
+      const name = item.querySelector(`[name="${index}-item-list--name"]`).value;
+      const quantity = Number(item.querySelector(`[name="${index}-item-list--quantity"]`).value.replace(/[^0-9.-]+/g,""));
+      const price = Number(item.querySelector(`[name="${index}-item-list--price"]`).value.replace(/[^0-9.-]+/g,""))
+      const total = (quantity * price )||Number(item.querySelector(`[name="${index}-item-list--total"]`).value.replace(/[^0-9.-]+/g,""));
       newItems.push({
         name,
         quantity,
@@ -65,22 +66,20 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
       price: 0,
       total: 0,
     });
-    const currentData = JSON.parse(localStorage.getItem('data'));
-    currentData.find(item => item.id === data.id).items = newItems;
-    currentData.find(item => item.id === data.id).total = runningTotal;
-    addToLocalStorage(currentData, data.id);
+    renderItems(newItems)
+    // const currentData = JSON.parse(localStorage.getItem('data'));
+    // currentData.find(item => item.id === data.id).items = newItems;
+    // currentData.find(item => item.id === data.id).total = runningTotal;
+    // addToLocalStorage(currentData, data.id);
   })
   
-  formElement.addEventListener('submit', e => e.preventDefault());
   
-  populateUpdateInvoiceFormOnInit(editInvoiceWrapper, data, date);
   editInvoiceWrapper.querySelector('#submit-form-button').addEventListener('click', (e) => {
     e.preventDefault();
     const element = document.querySelector('#edit-invoice-form')
     const formData = new FormData(element)
     const form = Array.from(formData.entries());
-    // console.log(form, selectedElement.dataset.value, selectedDateElement.dataset.value, data.items);
-    updateItemsInLocalStorage(form, data.id, selectedElement.getAttribute('value'), selectedDateElement.getAttribute('value') );
+    updateItemsInLocalStorage(form);
   });
 
   datePickerElement.addEventListener('click', (event) => {

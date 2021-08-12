@@ -18,6 +18,7 @@ $chip-base: "chip-base";
 $card-invoice-details: "card-invoice-details";
 $card-grand-total: "card-grand-total";
 $input-border: "input-border";
+$select-item-border: "select-item-border";
 $input-font-color: "input-font-color";
 $view-invoice-background: "view-invoice-background";
 $select-calendar-background: "select-calendar-background";
@@ -45,6 +46,7 @@ $themes: (
       $view-invoice-background: #FFFFFF,
       $input-font-color: #0C0E16,
       $input-border: 1px solid #DFE3FA,
+      $select-item-border: 1px solid #DFE3FA,
       $select-calendar-background: #FFFFFF
     ),
     $dark: (
@@ -66,6 +68,7 @@ $themes: (
       $view-invoice-background: #141625,
       $input-font-color: #FFFFFF,
       $input-border: 1px solid #252945,
+      $select-item-border: 1px solid #1E2139,
       $select-calendar-background: #252945
     )
 );

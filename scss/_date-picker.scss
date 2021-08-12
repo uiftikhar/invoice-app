@@ -3,6 +3,7 @@
 	width: 101%;
   display: flex;
   align-items: center;
+  
 	cursor: pointer;
 	user-select: none;
   > input {
@@ -11,6 +12,7 @@
       text-align: left;
       background-color: theme($general-background-light);
       color: theme($input-font-color);
+
     }
   }
   .dates {

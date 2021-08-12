@@ -99,19 +99,19 @@ export const renderItems = (items) => {
     li.innerHTML = `
     <div class="flex flex__col pb-1 w-100">
       <label>Item Name</label>
-      <input type="text" name="item-list--name" value="${item.name}">
+      <input type="text" name="${index}-item-list--name" value="${item.name}">
     </div>
     <div class="item-list-form__items--quantity">
       <label>Qty</label>
-      <input type="text" name="item-list--quantity" value="${item.quantity}">
+      <input type="text" name="${index}-item-list--quantity" value="${item.quantity}">
     </div>
     <div class="item-list-form__items--price">
       <label>Price</label>
-      <input type="text" name="item-list--price" value="${formatCurrency(item.price)}">
+      <input type="text" name="${index}-item-list--price" value="${formatCurrency(item.price)}">
     </div>
     <div class="item-list-form__items--total">
       <label>Total</label>
-      <input readonly type="text" name="item-list--total" value="${formatCurrency(item.total)}">
+      <input class="disabled" type="text" name="${index}-item-list--total" value="${formatCurrency(item.total)}">
     </div>
     <div class="flex flex__col flex__jc-end ml-auto">
       <button data-key=${index} class="icon-button icon-button__mini delete-button" >
@@ -125,40 +125,74 @@ export const renderItems = (items) => {
   });
 }
 
-export const updateItemsInLocalStorage = (entries, id, terms, date) => {
-  const currentInvoice = JSON.parse(localStorage.getItem('data')).find(item => item.id === id);
+export const updateItemsInLocalStorage = (entries) => {
 
-  console.log(entries,currentInvoice.items , terms, date);
+  let invoiceItems = [];
   entries.forEach(item => {
+    console.log(item);
+    if(item[0].includes('item-list--')) {
+      let key = item[0].split('--')[1];
+      let index = item[0][0];
+      let value = key === 'name' ? item[1] : Number(item[1].replace(/[^0-9.-]+/g,""));
+      let currentObj = invoiceItems[index];
+      if(key === 'total') {
+        value = invoiceItems[index]["quantity"] * invoiceItems[index]["price"] 
+      }
+      const obj = {
+        [key]: value,
+        ...currentObj
+      }
+      invoiceItems[index] = obj;
+    }
     switch (item[0]) {
       case 'bill-from--street_address':
+        console.log(item[0], item[1]);
         break;
       case 'bill-from--city':
+        console.log(item[0], item[1]);
         break;
       case 'bill-from--post_code':
+        console.log(item[0], item[1]);
         break;
       case 'bill-from--country':
+        console.log(item[0], item[1]);
         break;
       case 'bill-to--client-name':
+        console.log(item[0], item[1]);
         break;
       case 'bill-to--client-email':
+        console.log(item[0], item[1]);
         break;
       case 'bill-to--street_address':
+        console.log(item[0], item[1]);
         break;
       case 'bill-to--city':
+        console.log(item[0], item[1]);
         break;
       case 'bill-to--post_code':
+        console.log(item[0], item[1]);
         break;
       case 'bill-to--country':
+        console.log(item[0], item[1]);
         break;
       case 'bill-to--invoice-date':
+        console.log(item[0], item[1]);
         break;
       case 'bill-to--terms':
+        console.log(item[0], item[1]);
         break;
       case 'bill-to--project':
+        console.log(item[0], item[1]);
+        break;
+      case 'payment-terms':
+        console.log(item[0], item[1]);
+        break;
+      case 'payment-date':
+        console.log(item[0], item[1]);
         break;
       default:
         break;
     }
   })
+  console.log(invoiceItems);
 };

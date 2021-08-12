@@ -28,7 +28,10 @@
     > p {
       padding: 16px 24px;
       &:not(:last-child) {
-        border-bottom: 1px solid #1E2139;
+        @include themed() {
+          border-bottom: theme($select-item-border);
+
+        }
       }
     }
     &--selected {
