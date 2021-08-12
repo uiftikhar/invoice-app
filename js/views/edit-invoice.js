@@ -1,5 +1,6 @@
 
-import { populateUpdateInvoiceFormOnInit, updateListItems } from '../helpers/populate-edit-invoice-oninit.js';
+import { populateUpdateInvoiceFormOnInit, renderItems } from '../helpers/populate-edit-invoice-oninit.js';
+import { addToLocalStorage } from '../helpers.js';
 import { updateSelectedItem } from '../helpers/select.js';
 import { populateDates } from '../helpers/calendar.js';
 export const updateEditInvoice = (editInvoiceWrapper, data) => {
@@ -9,7 +10,6 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
 
   const checkEventPathForClass = (path, selector) => {
     for (let i = 0; i < path.length; i++) {
-      // console.log(path[i].classList, selector, path[i].classList?.contains(selector));
       if (path[i].classList && path[i].classList.contains(selector)) {
         return true;
       }
@@ -29,41 +29,59 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
   const selectedElement = editInvoiceWrapper.querySelector('#select > .select__selected-item');
   const formElement = editInvoiceWrapper.querySelector('#edit-invoice-form');
   const invoiceItemsWrapper = editInvoiceWrapper.querySelector('#edit-invoice-form--item-list');
+  const addNewItemButton = editInvoiceWrapper.querySelector('#add-new-item');
+  
   invoiceItemsWrapper.addEventListener('click', (event) => {
     const path = event.path || (event.composedPath && event.composedPath());
     if (checkEventPathForClass(path, 'delete-button')) {
-        console.log(event.srcElement.getAttribute('value'));
-        const value = event.srcElement.getAttribute('value').toLowerCase();
-        const _data = data;
-
-        _data.items = _data.items.filter(item => item.name.toLowerCase() !== value);
-        updateListItems(editInvoiceWrapper, _data);
+      const indexToDelete = event.target.getAttribute('data-key');
+      const currentData = JSON.parse(localStorage.getItem('data'));
+      currentData.find(item => item.id === data.id).items.splice(indexToDelete, 1);
+      addToLocalStorage(currentData,data.id);
     }
+  })
+  
+  
+  addNewItemButton.addEventListener('click', (e) => {
+    let runningTotal = 0;
+    const allItems = invoiceItemsWrapper.querySelectorAll('ul > li')
+    let newItems = [];
+    allItems.forEach(item => {
+      console.log()
+      const name = item.querySelector('[name="item-list--name"]').value;
+      const quantity = Number(item.querySelector('[name="item-list--quantity"]').value.replace(/[^0-9.-]+/g,""));
+      const price = Number(item.querySelector('[name="item-list--price"]').value.replace(/[^0-9.-]+/g,""))
+
+      const total = (quantity * price )||Number(item.querySelector('[name="item-list--total"]').value.replace(/[^0-9.-]+/g,""));
+      runningTotal += total;
+      newItems.push({
+        name,
+        quantity,
+        price,
+        total,
+      });
+    })
+    newItems.push({
+      name: '',
+      quantity: "",
+      price: 0,
+      total: 0,
+    });
+    const currentData = JSON.parse(localStorage.getItem('data'));
+    currentData.find(item => item.id === data.id).items = newItems;
+    currentData.find(item => item.id === data.id).total = runningTotal;
+    addToLocalStorage(currentData, data.id);
   })
   
   formElement.addEventListener('submit', e => e.preventDefault());
   
-  populateUpdateInvoiceFormOnInit(editInvoiceWrapper, data);
-
-	selectedDateElement.innerHTML = `${date.getDate()} ${formatter.format(date)} ${date.getFullYear()}`;
-  if(data.paymentTerms === 1) {
-    selectedElement.innerHTML = 'Net 1 Day';
-  }
-  if(data.paymentTerms === 7) {
-    selectedElement.innerHTML = 'Net 7 Days';
-  }
-  if(data.paymentTerms === 14) {
-    selectedElement.innerHTML = 'Net 14 Days';
-  }
-  if(data.paymentTerms === 30) {
-    selectedElement.innerHTML = 'Net 30 Days';
-  }
+  populateUpdateInvoiceFormOnInit(editInvoiceWrapper, data, date);
   editInvoiceWrapper.querySelector('#submit-form-button').addEventListener('click', (e) => {
     e.preventDefault();
     const element = document.querySelector('#edit-invoice-form')
-    const data = new FormData(element)
-    const form = Array.from(data.entries());
-    console.log(form, selectedElement.dataset.value, selectedDateElement.dataset.value);
+    const formData = new FormData(element)
+    const form = Array.from(formData.entries());
+    // console.log(form, selectedElement.dataset.value, selectedDateElement.dataset.value, data.items);
     // updateItemsInLocalStorage(form);
   });
 
@@ -89,17 +107,16 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
     }
   })
 
-
   prevMonthElement.addEventListener('click',  (e) => {
     date = new Date(date.setMonth(date.getMonth()-1));
     monthElement.innerHTML = `${formatter.format(date)} ${date.getFullYear()}`;
     populateDates(datesElement, daysElement,selectedDateElement , monthElement, date, false);
   })
+
   nextMonthElement.addEventListener('click',  (e) => {
     date = new Date(date.setMonth(date.getMonth()+1));
     monthElement.innerHTML = `${formatter.format(date)} ${date.getFullYear()}`;
     populateDates(datesElement, daysElement,selectedDateElement , monthElement, date, false);
   });
-
 }
 

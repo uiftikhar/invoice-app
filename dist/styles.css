@@ -119,6 +119,20 @@ input, .date-picker, .select {
   transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
+input:read-only {
+  border: none;
+  color: #888EB0;
+}
+
+ul,
+ul li,
+ul ul li {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
 .mini {
   max-width: 47%;
 }
@@ -412,6 +426,7 @@ button.icon-button > figure {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  pointer-events: none;
 }
 
 button.icon-button > h4 {
@@ -924,7 +939,7 @@ button.success {
   position: relative;
 }
 
-.edit-invoice > footer > button:first-of-type {
+.edit-invoice > footer > a:first-of-type {
   margin-left: auto;
   margin-right: 8px;
 }
@@ -955,26 +970,42 @@ button.success {
   margin-bottom: 24px;
 }
 
-.item-list-form__items {
+.item-list-form__items > li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin-bottom: 48px;
+  width: 100%;
 }
 
 .item-list-form__items--quantity {
-  min-width: 64px;
-  max-width: 19.6%;
   margin-right: 16px;
+  max-width: 20%;
+}
+
+.item-list-form__items--quantity > input {
+  width: 100%;
+  margin-top: 10px;
 }
 
 .item-list-form__items--price {
-  min-width: 100px;
-  max-width: 30.6%;
   margin-right: 16px;
+  max-width: 30%;
+}
+
+.item-list-form__items--price > input {
+  width: 100%;
+  margin-top: 10px;
 }
 
 .item-list-form__items--total {
   min-width: 100px;
-  max-width: 30.6%;
+  max-width: 30%;
+}
+
+.item-list-form__items--total > input {
+  width: 100%;
+  margin-top: 10px;
 }

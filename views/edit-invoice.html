@@ -112,45 +112,22 @@
         </section>
         <section class="item-list-form" id="edit-invoice-form--item-list" >
           <h2>Item List</h2>
-          <div class="flex flex__col pb-1">
-            <label>Item Name</label>
-            <input type="text" name="item-list--name">
-          </div>
-          <div class="item-list-form__items">
-            <div class="flex flex__col item-list-form__items--quantity">
-              <label>Qty</label>
-              <input type="text" name="item-list--quantity" value="12">
-            </div>
-            <div class="flex flex__col item-list-form__items--price">
-              <label>Price</label>
-              <input type="text" name="item-list--price">
-            </div>
-            <div class="flex flex__col item-list-form__items--total">
-              <label>Total</label>
-              <input type="text" name="item-list--total">
-            </div>
-            <div class="flex flex__col flex__jc-end ml-auto">
-              <button class="icon-button icon-button__mini" >
-                <figure>
-                  <img src="./assets/icon-delete.svg" alt="filters" />
-                </figure>
-              </button>
-            </div>
-          </div>
+          <ul class="item-list-form__items">
+          </ul>
         </section>
       </form>
-      <a href="#" >
-        <button class="base flex flex__ai-c flex__jc-center w-100 mt-auto">
-          <figure>
-            <img src="./assets/icon-plus.svg" alt="filters" />
-          </figure>
-          <h4>Add new item</h4>
-        </button>
-      </a>
+      <button id="add-new-item" class="base flex flex__ai-c flex__jc-center w-100 mt-auto">
+        <figure>
+          <img src="./assets/icon-plus.svg" alt="filters" />
+        </figure>
+        <h4>Add new item</h4>
+      </button>
     </section>
   </section>
   <footer class="flex flex__jc-sb">
-    <button class="base">Cancel</button>
+    <a href="javascript:history.go(-1)">
+      <button class="base">Cancel</button>
+    </a>
     <button id="submit-form-button" class="success">Save</button>
   </footer>
 </article>

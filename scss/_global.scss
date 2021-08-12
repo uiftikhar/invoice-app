@@ -93,6 +93,18 @@ input, .date-picker, .select {
     line-height: 15px;
     letter-spacing: -0.25px;
 }
+input[read-only] {
+  border: none;
+  color: $input-read-only-font-color;
+}
+ul,
+ul li,
+ul ul li {
+   margin:0;
+   padding: 0;
+   text-indent: 0;
+   list-style-type: none;
+}
 
 .mini {
   max-width: 47%;

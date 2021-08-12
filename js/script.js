@@ -14,7 +14,6 @@ const toggleThemeButton = document.querySelector('#toggle-theme');
 const body = document.querySelector('body');
 const appRoot = document.querySelector('#app-root');
 
-const jsonData = JSON.parse(localStorage.getItem('data'));
 (function () {
   function init() {
       new Router([
@@ -28,18 +27,20 @@ const jsonData = JSON.parse(localStorage.getItem('data'));
 
 
 appRoot.addEventListener('page-loaded', () => {
+  const jsonData = JSON.parse(localStorage.getItem('data'));
+
   const InvoiceWrapper = appRoot.querySelector('#home');
   const viewInvoiceWrapper = appRoot.querySelector('#view-invoice');
   const editInvoiceWrapper = appRoot.querySelector('#edit-invoice');
-  if(InvoiceWrapper) {
+  if(jsonData && InvoiceWrapper) {
     updateHome(InvoiceWrapper, jsonData)
   };
-  if(viewInvoiceWrapper) {
+  if(jsonData && viewInvoiceWrapper) {
     const queryString = window.location.hash.split('?')[1];
     const currentItem = jsonData.find(item => item.id === queryString);
     updateViewInvoice(viewInvoiceWrapper, currentItem);
   }
-  if(editInvoiceWrapper) {
+  if(jsonData && editInvoiceWrapper) {
     const queryString = window.location.hash.split('?')[1];
     const currentItem = jsonData.find(item => item.id === queryString);
     updateEditInvoice(editInvoiceWrapper, currentItem)

@@ -45,7 +45,6 @@ const  populateDates = (datesElement, daysElement, selectedDateElement, monthEle
   
 			selectedDateElement.innerHTML = `${selectedDay} ${formatter.format(date)} ${selectedYear}`;
 			selectedDateElement.dataset.value = date;
-      console.log(selectedDateElement.dataset);
       datesElement.classList.toggle('active');
 		});
 
