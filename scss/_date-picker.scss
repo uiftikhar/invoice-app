@@ -5,6 +5,14 @@
   align-items: center;
 	cursor: pointer;
 	user-select: none;
+  > input {
+    @include themed() {
+      border: none;
+      text-align: left;
+      background-color: theme($general-background-light);
+      color: theme($input-font-color);
+    }
+  }
   .dates {
     display: none;
     position: absolute;

@@ -9,7 +9,8 @@ export const updateSelectedItem = (selectElements, selectedElement) => {
     Array.from(selectElements.children).forEach(child => {
       if(e.target.innerHTML === child.innerHTML) {
         child.classList.add('select__elements--selected');
-        selectedElement.innerHTML = e.target.innerHTML;
+        selectedElement.setAttribute('value',e.target.innerHTML);
+        selectedElement.value = e.target.innerHTML;
         if(e.target.innerHTML === 'Net 1 Day') {
           selectedElement.dataset.value = 1;
         }

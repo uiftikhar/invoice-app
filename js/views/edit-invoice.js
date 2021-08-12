@@ -1,5 +1,5 @@
 
-import { populateUpdateInvoiceFormOnInit, renderItems } from '../helpers/populate-edit-invoice-oninit.js';
+import { populateUpdateInvoiceFormOnInit, updateItemsInLocalStorage } from '../helpers/populate-edit-invoice-oninit.js';
 import { addToLocalStorage } from '../helpers.js';
 import { updateSelectedItem } from '../helpers/select.js';
 import { populateDates } from '../helpers/calendar.js';
@@ -20,7 +20,7 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
   const datePickerElement = editInvoiceWrapper.querySelector('#date-picker');
   const selectedDateElement = editInvoiceWrapper.querySelector('#date-picker > .selected-date');
   const datesElement = editInvoiceWrapper.querySelector('#date-picker > .dates');
-  const monthElement = editInvoiceWrapper.querySelector('#date-picker > .dates > .month > .mth');
+  const monthElement = editInvoiceWrapper.querySelector('#date-picker > .dates > .month > .month-input');
   const nextMonthElement = editInvoiceWrapper.querySelector('#date-picker > .dates > .month > .next-month');
   const prevMonthElement = editInvoiceWrapper.querySelector('#date-picker > .dates > .month > .prev-month');
   const daysElement = editInvoiceWrapper.querySelector('#date-picker .dates .days');
@@ -47,11 +47,9 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
     const allItems = invoiceItemsWrapper.querySelectorAll('ul > li')
     let newItems = [];
     allItems.forEach(item => {
-      console.log()
       const name = item.querySelector('[name="item-list--name"]').value;
       const quantity = Number(item.querySelector('[name="item-list--quantity"]').value.replace(/[^0-9.-]+/g,""));
       const price = Number(item.querySelector('[name="item-list--price"]').value.replace(/[^0-9.-]+/g,""))
-
       const total = (quantity * price )||Number(item.querySelector('[name="item-list--total"]').value.replace(/[^0-9.-]+/g,""));
       runningTotal += total;
       newItems.push({
@@ -82,7 +80,7 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
     const formData = new FormData(element)
     const form = Array.from(formData.entries());
     // console.log(form, selectedElement.dataset.value, selectedDateElement.dataset.value, data.items);
-    // updateItemsInLocalStorage(form);
+    updateItemsInLocalStorage(form, data.id, selectedElement.getAttribute('value'), selectedDateElement.getAttribute('value') );
   });
 
   datePickerElement.addEventListener('click', (event) => {
@@ -91,7 +89,7 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
       selectElements.classList.remove('active')
     }
     if (!checkEventPathForClass(path, 'dates')) {
-      populateDates(datesElement, daysElement,selectedDateElement , monthElement, date);
+      populateDates(datesElement, daysElement, selectedDateElement , monthElement, date);
       datesElement.classList.toggle('active');
     }
   })
@@ -109,13 +107,13 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
 
   prevMonthElement.addEventListener('click',  (e) => {
     date = new Date(date.setMonth(date.getMonth()-1));
-    monthElement.innerHTML = `${formatter.format(date)} ${date.getFullYear()}`;
+    monthElement.setAttribute('value', `${formatter.format(date)} ${date.getFullYear()}`)
     populateDates(datesElement, daysElement,selectedDateElement , monthElement, date, false);
   })
 
   nextMonthElement.addEventListener('click',  (e) => {
     date = new Date(date.setMonth(date.getMonth()+1));
-    monthElement.innerHTML = `${formatter.format(date)} ${date.getFullYear()}`;
+    monthElement.setAttribute('value', `${formatter.format(date)} ${date.getFullYear()}`)
     populateDates(datesElement, daysElement,selectedDateElement , monthElement, date, false);
   });
 }

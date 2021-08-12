@@ -1,22 +1,45 @@
 export const populateUpdateInvoiceFormOnInit = (editInvoiceWrapper, data, date) => {
   const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
-  const selectedDateElement = editInvoiceWrapper.querySelector('#date-picker > .selected-date');
-
-	selectedDateElement.innerHTML = `${date.getDate()} ${formatter.format(date)} ${date.getFullYear()}`;
-  const selectedElement = editInvoiceWrapper.querySelector('#select > .select__selected-item');
-
-  if(data.paymentTerms === 1) {
-    selectedElement.innerHTML = 'Net 1 Day';
+  const formatDate = (value) => {
+    const date = new Date(value);
+    const day = date.toLocaleString('default', { day: '2-digit' });
+    const month = date.toLocaleString('default', { month: 'short' });
+    const year = date.toLocaleString('default', { year: 'numeric' });
+    return `${day} ${month} ${year}`;
   }
-  if(data.paymentTerms === 7) {
-    selectedElement.innerHTML = 'Net 7 Days';
+  const getPaymentTermsInnerHTM = (terms) => {
+    let response = '';
+    if(terms === 1) {
+        response = 'Net 1 Day';
+      }
+      if(terms === 7) {
+        response = 'Net 7 Days';
+      }
+      if(terms === 14) {
+        response = 'Net 14 Days';
+      }
+      if(terms === 30) {
+        response = 'Net 30 Days';
+      }
+      return response;
   }
-  if(data.paymentTerms === 14) {
-    selectedElement.innerHTML = 'Net 14 Days';
-  }
-  if(data.paymentTerms === 30) {
-    selectedElement.innerHTML = 'Net 30 Days';
-  }
+  // const selectedDateElement = editInvoiceWrapper.querySelector('#date-picker > .selected-date');
+  // selectedDateElement.dataset.value = new Date(data.paymentDue);
+  // const selectedElement = editInvoiceWrapper.querySelector('#select > .select__selected-item');
+  // selectedElement.dataset.value = data.paymentTerms;
+	// selectedDateElement.innerHTML = `${date.getDate()} ${formatter.format(date)} ${date.getFullYear()}`;
+  // if(data.paymentTerms === 1) {
+  //   selectedElement.innerHTML = 'Net 1 Day';
+  // }
+  // if(data.paymentTerms === 7) {
+  //   selectedElement.innerHTML = 'Net 7 Days';
+  // }
+  // if(data.paymentTerms === 14) {
+  //   selectedElement.innerHTML = 'Net 14 Days';
+  // }
+  // if(data.paymentTerms === 30) {
+  //   selectedElement.innerHTML = 'Net 30 Days';
+  // }
   const formElements = editInvoiceWrapper.querySelectorAll('#edit-invoice-form input')
   formElements.forEach(item => {
     switch (item.name) {
@@ -49,6 +72,14 @@ export const populateUpdateInvoiceFormOnInit = (editInvoiceWrapper, data, date) 
         break;
       case 'bill-to--country':
         item.value = data.clientAddress.country;
+        break;
+      case 'payment-date':
+        item.value = formatDate(data.paymentDue)
+        item.setAttribute('value', data.paymentDue);
+        break;
+      case 'payment-terms':
+        item.value = getPaymentTermsInnerHTM(data.paymentTerms)
+        item.setAttribute('value', data.paymentTerms);
         break;
       default:
         break;
@@ -94,3 +125,40 @@ export const renderItems = (items) => {
   });
 }
 
+export const updateItemsInLocalStorage = (entries, id, terms, date) => {
+  const currentInvoice = JSON.parse(localStorage.getItem('data')).find(item => item.id === id);
+
+  console.log(entries,currentInvoice.items , terms, date);
+  entries.forEach(item => {
+    switch (item[0]) {
+      case 'bill-from--street_address':
+        break;
+      case 'bill-from--city':
+        break;
+      case 'bill-from--post_code':
+        break;
+      case 'bill-from--country':
+        break;
+      case 'bill-to--client-name':
+        break;
+      case 'bill-to--client-email':
+        break;
+      case 'bill-to--street_address':
+        break;
+      case 'bill-to--city':
+        break;
+      case 'bill-to--post_code':
+        break;
+      case 'bill-to--country':
+        break;
+      case 'bill-to--invoice-date':
+        break;
+      case 'bill-to--terms':
+        break;
+      case 'bill-to--project':
+        break;
+      default:
+        break;
+    }
+  })
+};

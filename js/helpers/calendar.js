@@ -23,6 +23,7 @@ const  populateDates = (datesElement, daysElement, selectedDateElement, monthEle
     }
   }
 
+  // monthElement.setAttribute('value', `${formatter.format(selectedDate)} ${selectedYear}`)
   monthElement.innerHTML = `${formatter.format(selectedDate)} ${selectedYear}`;
 	for (let i = 0; i < amountDays; i++) {
 		const dayElement = document.createElement('div');
@@ -37,14 +38,13 @@ const  populateDates = (datesElement, daysElement, selectedDateElement, monthEle
 
 		dayElement.addEventListener('click', function () {
 			date = new Date(year + '-' + (month + 1) + '-' + (i + 1));
-			// selectedDate = new Date(year + '-' + (month + 1) + '-' + (i + 1));
 			selectedDay = (i + 1);
 			selectedMonth = month;
 			selectedYear = year;
 
   
-			selectedDateElement.innerHTML = `${selectedDay} ${formatter.format(date)} ${selectedYear}`;
-			selectedDateElement.dataset.value = date;
+      selectedDateElement.setAttribute('value', `${selectedDay} ${formatter.format(date)} ${selectedYear}`)
+      selectedDateElement.value =  `${selectedDay} ${formatter.format(date)} ${selectedYear}`;
       datesElement.classList.toggle('active');
 		});
 

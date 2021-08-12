@@ -92,10 +92,17 @@ input, .date-picker, .select {
     font-size: 12px;
     line-height: 15px;
     letter-spacing: -0.25px;
+    &:disabled {
+      border: none;
+      display: flex;
+      padding: 0;
+      text-align: center;
+    }
 }
-input[read-only] {
+input:read-only {
   border: none;
   color: $input-read-only-font-color;
+  background-color: transparent;
 }
 ul,
 ul li,
