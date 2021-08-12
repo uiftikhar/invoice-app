@@ -3,20 +3,20 @@ import { populateUpdateInvoiceFormOnInit, updateItemsInLocalStorage, renderItems
 import { addToLocalStorage } from '../helpers.js';
 import { updateSelectedItem } from '../helpers/select.js';
 import { populateDates } from '../helpers/calendar.js';
+
+const checkEventPathForClass = (path, selector) => {
+  for (let i = 0; i < path.length; i++) {
+    if (path[i].classList && path[i].classList.contains(selector)) {
+      return true;
+    }
+  }
+  return false;
+}
+const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
+
+
 export const updateEditInvoice = (editInvoiceWrapper, data) => {
   
-  let date = new Date(data.paymentDue);
-  const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
-
-  const checkEventPathForClass = (path, selector) => {
-    for (let i = 0; i < path.length; i++) {
-      if (path[i].classList && path[i].classList.contains(selector)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   const datePickerElement = editInvoiceWrapper.querySelector('#date-picker');
   const selectedDateElement = editInvoiceWrapper.querySelector('#date-picker > .selected-date');
   const datesElement = editInvoiceWrapper.querySelector('#date-picker > .dates');
@@ -30,6 +30,8 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
   const formElement = editInvoiceWrapper.querySelector('#edit-invoice-form');
   const invoiceItemsWrapper = editInvoiceWrapper.querySelector('#edit-invoice-form--item-list');
   const addNewItemButton = editInvoiceWrapper.querySelector('#add-new-item');
+  
+  let date = new Date(data.paymentDue);
   populateUpdateInvoiceFormOnInit(editInvoiceWrapper, data, date);
   formElement.addEventListener('submit', e => e.preventDefault());
   
@@ -39,13 +41,12 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
       const indexToDelete = event.target.getAttribute('data-key');
       const currentData = JSON.parse(localStorage.getItem('data'));
       currentData.find(item => item.id === data.id).items.splice(indexToDelete, 1);
-      addToLocalStorage(currentData,data.id);
+      renderItems(currentData.find(item => item.id === data.id).items);
     }
   })
   
   
   addNewItemButton.addEventListener('click', (e) => {
-    // let runningTotal = 0;
     const allItems = invoiceItemsWrapper.querySelectorAll('ul > li')
     let newItems = [];
     allItems.forEach((item, index) => {
@@ -67,10 +68,6 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
       total: 0,
     });
     renderItems(newItems)
-    // const currentData = JSON.parse(localStorage.getItem('data'));
-    // currentData.find(item => item.id === data.id).items = newItems;
-    // currentData.find(item => item.id === data.id).total = runningTotal;
-    // addToLocalStorage(currentData, data.id);
   })
   
   

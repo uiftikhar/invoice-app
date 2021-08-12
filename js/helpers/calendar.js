@@ -1,6 +1,6 @@
 
+const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
 const  populateDates = (datesElement, daysElement, selectedDateElement, monthElement, date, addSelectedClass = true) => {
-  const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
   daysElement.innerHTML = '';
   
   let day = date.getDate();

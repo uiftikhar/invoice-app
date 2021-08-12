@@ -1,45 +1,30 @@
+const formatDate = (value) => {
+  const date = new Date(value);
+  const day = date.toLocaleString('default', { day: '2-digit' });
+  const month = date.toLocaleString('default', { month: 'short' });
+  const year = date.toLocaleString('default', { year: 'numeric' });
+  return `${day} ${month} ${year}`;
+}
+const getPaymentTermsInnerHTM = (terms) => {
+  let response = '';
+  if(terms === 1) {
+      response = 'Net 1 Day';
+    }
+    if(terms === 7) {
+      response = 'Net 7 Days';
+    }
+    if(terms === 14) {
+      response = 'Net 14 Days';
+    }
+    if(terms === 30) {
+      response = 'Net 30 Days';
+    }
+    return response;
+}
+const formatCurrency = (value) => new Intl.NumberFormat('en-IN', { minimumFractionDigits: 2 }).format(value); 
+
+
 export const populateUpdateInvoiceFormOnInit = (editInvoiceWrapper, data, date) => {
-  const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
-  const formatDate = (value) => {
-    const date = new Date(value);
-    const day = date.toLocaleString('default', { day: '2-digit' });
-    const month = date.toLocaleString('default', { month: 'short' });
-    const year = date.toLocaleString('default', { year: 'numeric' });
-    return `${day} ${month} ${year}`;
-  }
-  const getPaymentTermsInnerHTM = (terms) => {
-    let response = '';
-    if(terms === 1) {
-        response = 'Net 1 Day';
-      }
-      if(terms === 7) {
-        response = 'Net 7 Days';
-      }
-      if(terms === 14) {
-        response = 'Net 14 Days';
-      }
-      if(terms === 30) {
-        response = 'Net 30 Days';
-      }
-      return response;
-  }
-  // const selectedDateElement = editInvoiceWrapper.querySelector('#date-picker > .selected-date');
-  // selectedDateElement.dataset.value = new Date(data.paymentDue);
-  // const selectedElement = editInvoiceWrapper.querySelector('#select > .select__selected-item');
-  // selectedElement.dataset.value = data.paymentTerms;
-	// selectedDateElement.innerHTML = `${date.getDate()} ${formatter.format(date)} ${date.getFullYear()}`;
-  // if(data.paymentTerms === 1) {
-  //   selectedElement.innerHTML = 'Net 1 Day';
-  // }
-  // if(data.paymentTerms === 7) {
-  //   selectedElement.innerHTML = 'Net 7 Days';
-  // }
-  // if(data.paymentTerms === 14) {
-  //   selectedElement.innerHTML = 'Net 14 Days';
-  // }
-  // if(data.paymentTerms === 30) {
-  //   selectedElement.innerHTML = 'Net 30 Days';
-  // }
   const formElements = editInvoiceWrapper.querySelectorAll('#edit-invoice-form input')
   formElements.forEach(item => {
     switch (item.name) {
@@ -90,7 +75,6 @@ export const populateUpdateInvoiceFormOnInit = (editInvoiceWrapper, data, date) 
 }
 
 export const renderItems = (items) => {
-  const formatCurrency = (value) => new Intl.NumberFormat('en-IN', { minimumFractionDigits: 2 }).format(value); 
   const itemsHTML = document.querySelector('#edit-invoice-form--item-list > ul');
   itemsHTML.innerHTML = '';
   items.forEach((item, index) => {
@@ -126,7 +110,6 @@ export const renderItems = (items) => {
 }
 
 export const updateItemsInLocalStorage = (entries) => {
-
   let invoiceItems = [];
   entries.forEach(item => {
     console.log(item);
