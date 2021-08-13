@@ -46,7 +46,7 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
 
   const appRootListener =  (event) => {
     event.preventDefault();
-    formElement.removeEventListener('submit', e => e.preventDefault());
+    formElement.removeEventListener('submit', formSubmitListener);
     invoiceItemsWrapper.removeEventListener('click', invoiceItemsWrapperListener)
     addNewItemButton.removeEventListener('click', addNewItemButtonListener)
     submitFormButton.removeEventListener('click', editInvoiceWrapperListener);
@@ -54,7 +54,8 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
     userSelectElement.removeEventListener('click', userSelectElementListener)
     prevMonthElement.removeEventListener('click',  prevMonthElementListener)
     nextMonthElement.removeEventListener('click',  nextMonthElementListener);
-    
+    selectElements.removeEventListener('click', selectElementsListener)
+    daysElement.removeEventListener('click', daysElementListener);
     console.log('page-routing event listener');
   };
 
@@ -103,6 +104,14 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
     }
   }
 
+  const daysElementListener =  (event) => {
+    let selectedDay = Number(event.target.innerHTML);
+    let selectedYear = date.getFullYear();
+
+    selectedDateElement.setAttribute('value', `${selectedDay} ${formatter.format(date)} ${selectedYear}`)
+    selectedDateElement.value =  `${selectedDay} ${formatter.format(date)} ${selectedYear}`;
+    datesElement.classList.toggle('active');
+  }
   
 
   const userSelectElementListener = (event) => {
@@ -113,7 +122,6 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
     const path = event.path || (event.composedPath && event.composedPath());
     if (!checkEventPathForClass(path, 'select-elements')) {
       selectElements.classList.toggle('active');
-      updateSelectedItem(selectElements, selectedElement);
     }
   };
 
@@ -130,24 +138,47 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
     monthElement.setAttribute('value', `${formatter.format(date)} ${date.getFullYear()}`)
     populateDates(daysElement, monthElement, date, false);
   }
+
+  const formSubmitListener = e => e.preventDefault();
+  const selectElementsListener = (event) => {
+    Array.from(selectElements.children).forEach(child => {
+      if(selectedElement.innerHTML === child.innerHTML) {
+        child.classList.add('select__elements--selected');
+      }
+    })
+    event.preventDefault()
+    Array.from(selectElements.children).forEach(child => {
+      if(event.target.innerHTML === child.innerHTML) {
+        child.classList.add('select__elements--selected');
+        selectedElement.setAttribute('value',event.target.innerHTML);
+        selectedElement.value = event.target.innerHTML;
+        if(event.target.innerHTML === 'Net 1 Day') {
+          selectedElement.dataset.value = 1;
+        }
+        if(event.target.innerHTML === 'Net 7 Days') {
+          selectedElement.dataset.value = 7;
+        }
+        if(event.target.innerHTML === 'Net 14 Days') {
+          selectedElement.dataset.value = 14;
+        }
+        if(event.target.innerHTML === 'Net 30 Days') {
+          selectedElement.dataset.value = 30;
+        }
+      } else {
+        child.className = ''
+      }
+    })
+  };
   
-  daysElement.addEventListener('click', function (event) {
-    let selectedDay = Number(event.target.innerHTML);
-    let selectedYear = date.getFullYear();
-
-
-    selectedDateElement.setAttribute('value', `${selectedDay} ${formatter.format(date)} ${selectedYear}`)
-    selectedDateElement.value =  `${selectedDay} ${formatter.format(date)} ${selectedYear}`;
-    datesElement.classList.toggle('active');
-  });
-
+  
+  
   // ----------------------------------------------------------------------------------------------
   populateUpdateInvoiceFormOnInit(editInvoiceWrapper, data, date);
   appRoot.addEventListener('on-page-route-started', appRootListener, {
     capture: false,
     once: true
   })
-  formElement.addEventListener('submit', e => e.preventDefault());
+  formElement.addEventListener('submit', formSubmitListener);
   invoiceItemsWrapper.addEventListener('click', invoiceItemsWrapperListener)
   addNewItemButton.addEventListener('click', addNewItemButtonListener)
   submitFormButton.addEventListener('click', editInvoiceWrapperListener);
@@ -155,5 +186,7 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
   userSelectElement.addEventListener('click', userSelectElementListener)
   prevMonthElement.addEventListener('click',  prevMonthElementListener)
   nextMonthElement.addEventListener('click',  nextMonthElementListener);
+  daysElement.addEventListener('click', daysElementListener);
+  selectElements.addEventListener('click', selectElementsListener)
 }
 
