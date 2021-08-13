@@ -1,23 +1,9 @@
-import { formatCurrency, formatDate  } from '../utils.js'
-const getPaymentTermsInnerHTM = (terms) => {
-  let response = 'Net 1 Day';
-  switch (terms) {
-    case 1:
-      response = 'Net 1 Day';
-      break;
-    case 7:
-      response = 'Net 7 Days';
-      break;
-    case  4:
-      response = 'Net 14 Days';
-      break;
-    case  0:
-      response = 'Net 30 Days';
-      break;
-    default:
-      break;
-  }
-  return response;
+import { formatCurrency, formatDate, formatDateSaveValue, getPaymentTermsInnerHTML, getPaymentTermsValue  } from '../utils.js'
+
+const idGen = () => {
+  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+  );
 }
 
 
@@ -55,12 +41,15 @@ export const populateUpdateInvoiceFormOnInit = (editInvoiceWrapper, data) => {
       case 'bill-to--country':
         item.value = data.clientAddress.country;
         break;
+      case 'bill-to--project':
+        item.value = data.description;
+        break;
       case 'payment-date':
         item.value = formatDate(data.paymentDue)
         item.setAttribute('value', data.paymentDue);
         break;
       case 'payment-terms':
-        item.value = getPaymentTermsInnerHTM(data.paymentTerms)
+        item.value = getPaymentTermsInnerHTML(data.paymentTerms)
         item.setAttribute('value', data.paymentTerms);
         break;
       default:
@@ -105,11 +94,36 @@ export const renderItems = (items) => {
     itemsHTML.append(li)
   });
 }
-
-export const updateItemsInLocalStorage = (entries) => {
+export const createNewDataObject = (newInvoice = false) => {
+  return {
+    id: newInvoice ? idGen() : "",
+    createdAt: newInvoice ? new Date(Date.now()) : "",
+    paymentDue: "",
+    description: "",
+    paymentTerms: 1,
+    clientName: "",
+    clientEmail: "",
+    status: "",
+    senderAddress: {
+      street: "",
+      city: "",
+      postCode: "",
+      country: ""
+    },
+    clientAddress: {
+      street: "",
+      city: "",
+      postCode: "",
+      country: ""
+    },
+    items: [],
+    total: 0
+  };
+}
+export const updateItemsInLocalStorage = (entries, currentItem) => {
   let invoiceItems = [];
+  const newItem = createNewDataObject();
   entries.forEach(item => {
-    console.log(item);
     if(item[0].includes('item-list--')) {
       let key = item[0].split('--')[1];
       let index = item[0][0];
@@ -126,53 +140,57 @@ export const updateItemsInLocalStorage = (entries) => {
     }
     switch (item[0]) {
       case 'bill-from--street_address':
-        console.log(item[0], item[1]);
+        newItem.senderAddress.street = item[1];
         break;
       case 'bill-from--city':
-        console.log(item[0], item[1]);
+        newItem.senderAddress.city = item[1];
         break;
       case 'bill-from--post_code':
-        console.log(item[0], item[1]);
+        newItem.senderAddress.postCode = item[1];
         break;
       case 'bill-from--country':
-        console.log(item[0], item[1]);
+        newItem.senderAddress.country = item[1];
         break;
       case 'bill-to--client-name':
-        console.log(item[0], item[1]);
+        newItem.clientName = item[1];
         break;
       case 'bill-to--client-email':
-        console.log(item[0], item[1]);
+        newItem.clientEmail = item[1];
         break;
       case 'bill-to--street_address':
-        console.log(item[0], item[1]);
+        newItem.clientAddress.street = item[1];
         break;
       case 'bill-to--city':
-        console.log(item[0], item[1]);
+        newItem.clientAddress.city = item[1];
         break;
       case 'bill-to--post_code':
-        console.log(item[0], item[1]);
+        newItem.clientAddress.postCode = item[1];
         break;
       case 'bill-to--country':
-        console.log(item[0], item[1]);
-        break;
-      case 'bill-to--invoice-date':
-        console.log(item[0], item[1]);
-        break;
-      case 'bill-to--terms':
-        console.log(item[0], item[1]);
+        newItem.clientAddress.country = item[1];
         break;
       case 'bill-to--project':
-        console.log(item[0], item[1]);
+        newItem.description = item[1];
         break;
       case 'payment-terms':
-        console.log(item[0], item[1]);
+        newItem.paymentTerms = getPaymentTermsValue(item[1]);
         break;
       case 'payment-date':
-        console.log(item[0], item[1]);
+        newItem.paymentDue = formatDateSaveValue(item[1]);
         break;
       default:
         break;
     }
-  })
-  console.log(invoiceItems);
+  });
+  let total = 0;
+  invoiceItems.forEach(item => total += item.total);
+  newItem.id = currentItem.id;
+  newItem.status = currentItem.status;
+  newItem.createdAt = currentItem.createdAt;
+  newItem.items = invoiceItems;
+  newItem.total = total;
+  const currentData = JSON.parse(localStorage.getItem('data'));
+  const indexToUpdate = currentData.findIndex(item => item.id === newItem.id);
+  currentData[indexToUpdate] = newItem;
+  localStorage.setItem('data', JSON.stringify(currentData));
 };

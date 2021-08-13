@@ -35,10 +35,12 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
     event.preventDefault();
     const path = event.path || (event.composedPath && event.composedPath());
     if (checkEventPathForClass(path, 'delete-button')) {
-      const indexToDelete = event.target.getAttribute('data-key');
+      const indexToDelete = Number(event.target.getAttribute('data-key'))
       const currentData = JSON.parse(localStorage.getItem('data'));
-      currentData.find(item => item.id === data.id).items.splice(indexToDelete, 1);
-      renderItems(currentData.find(item => item.id === data.id).items);
+      const items = currentData.find(item => item.id === data.id).items;
+      items.splice(indexToDelete, 1);
+      renderItems(items);
+      localStorage.setItem('data', JSON.stringify(currentData));
     }
   };
 
@@ -81,6 +83,10 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
       total: 0,
     });
     renderItems(newItems)
+    const currentData = JSON.parse(localStorage.getItem('data'));
+    const currentItem =  currentData.find(item => item.id === data.id);
+    currentItem.items = newItems;
+    localStorage.setItem('data', JSON.stringify(currentData));
   };
 
   const editInvoiceWrapperListener = (event) => {
@@ -88,7 +94,7 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
     const element = document.querySelector('#edit-invoice-form')
     const formData = new FormData(element)
     const form = Array.from(formData.entries());
-    updateItemsInLocalStorage(form);
+    updateItemsInLocalStorage(form, data);
   };
 
   const datePickerElementListener = (event) => {
@@ -151,18 +157,6 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
         child.classList.add('select__elements--selected');
         selectedElement.setAttribute('value',event.target.innerHTML);
         selectedElement.value = event.target.innerHTML;
-        if(event.target.innerHTML === 'Net 1 Day') {
-          selectedElement.dataset.value = 1;
-        }
-        if(event.target.innerHTML === 'Net 7 Days') {
-          selectedElement.dataset.value = 7;
-        }
-        if(event.target.innerHTML === 'Net 14 Days') {
-          selectedElement.dataset.value = 14;
-        }
-        if(event.target.innerHTML === 'Net 30 Days') {
-          selectedElement.dataset.value = 30;
-        }
       } else {
         child.className = ''
       }
