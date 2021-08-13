@@ -13,6 +13,8 @@ const checkEventPathForClass = (path, selector) => {
 }
 const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
 export const updateEditInvoice = (editInvoiceWrapper, data) => {
+  let date = new Date(data.paymentDue);
+
   // ------------------------------ Query Selectors ----------------------------------------------
   const datePickerElement = editInvoiceWrapper.querySelector('#date-picker');
   const selectedDateElement = editInvoiceWrapper.querySelector('#date-picker > .selected-date');
@@ -52,6 +54,7 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
     userSelectElement.removeEventListener('click', userSelectElementListener)
     prevMonthElement.removeEventListener('click',  prevMonthElementListener)
     nextMonthElement.removeEventListener('click',  nextMonthElementListener);
+    
     console.log('page-routing event listener');
   };
 
@@ -95,10 +98,12 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
     }
     if (!checkEventPathForClass(path, 'dates')) {
       event.preventDefault();
-      populateDates(datesElement, daysElement, selectedDateElement , monthElement, date);
+      populateDates(daysElement, monthElement, date);
       datesElement.classList.toggle('active');
     }
   }
+
+  
 
   const userSelectElementListener = (event) => {
     event.preventDefault();
@@ -116,19 +121,27 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
     event.preventDefault();
     date = new Date(date.setMonth(date.getMonth()-1));
     monthElement.setAttribute('value', `${formatter.format(date)} ${date.getFullYear()}`)
-    populateDates(datesElement, daysElement,selectedDateElement , monthElement, date, false);
+    populateDates(daysElement, monthElement, date, false);
   };
 
   const nextMonthElementListener = (event) => {
     event.preventDefault();
     date = new Date(date.setMonth(date.getMonth()+1));
     monthElement.setAttribute('value', `${formatter.format(date)} ${date.getFullYear()}`)
-    populateDates(datesElement, daysElement,selectedDateElement , monthElement, date, false);
+    populateDates(daysElement, monthElement, date, false);
   }
   
+  daysElement.addEventListener('click', function (event) {
+    let selectedDay = Number(event.target.innerHTML);
+    let selectedYear = date.getFullYear();
+
+
+    selectedDateElement.setAttribute('value', `${selectedDay} ${formatter.format(date)} ${selectedYear}`)
+    selectedDateElement.value =  `${selectedDay} ${formatter.format(date)} ${selectedYear}`;
+    datesElement.classList.toggle('active');
+  });
 
   // ----------------------------------------------------------------------------------------------
-  let date = new Date(data.paymentDue);
   populateUpdateInvoiceFormOnInit(editInvoiceWrapper, data, date);
   appRoot.addEventListener('on-page-route-started', appRootListener, {
     capture: false,

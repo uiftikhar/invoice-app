@@ -1,6 +1,6 @@
 
 const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
-const  populateDates = ( daysElement, dayElementListener, monthElement, date, addSelectedClass = true) => {
+const  populateDates = (daysElement, monthElement, date, addSelectedClass = true) => {
   daysElement.innerHTML = '';
   
   let day = date.getDate();
@@ -35,10 +35,6 @@ const  populateDates = ( daysElement, dayElementListener, monthElement, date, ad
         dayElement.classList.add('selected');
       } 
     }
-
-    // Remove this event listener
-		dayElement.addEventListener('click', dayElementListener(date,selectedDay,selectedMonth,selectedYear));
-
 		daysElement.appendChild(dayElement);
 	}
 }
