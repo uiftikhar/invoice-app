@@ -27,6 +27,7 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
   const invoiceItemsWrapper = newInvoiceWrapper.querySelector('#edit-invoice-form--item-list');
   const addNewItemButton = newInvoiceWrapper.querySelector('#add-new-item');
   const submitFormButton = newInvoiceWrapper.querySelector('#submit-form-button');
+  const saveAsDraftButton = newInvoiceWrapper.querySelector('#submit-form-button-draft');
   const appRoot = document.querySelector('#app-root');
   
   // ------------------------------ Listener Functions ----------------------------------------------
@@ -72,10 +73,9 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
     nextMonthElement.removeEventListener('click',  nextMonthElementListener, false);
     selectElements.removeEventListener('click', selectElementsListener, false);
     daysElement.removeEventListener('click', daysElementListener, false);
+    saveAsDraftButton.removeEventListener('click', saveAsDraftButtonListener, false);
     console.log('page-routing event listener');
   };
-
- 
 
   const addNewItemButtonListener = (event) => {
     event.preventDefault();
@@ -96,6 +96,16 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
     const form = Array.from(formData.entries());
     console.log(form);
     createNewInvoice(form);
+    // updateItemsInLocalStorage(form, data);
+  };
+  
+  const saveAsDraftButtonListener = (event) => {
+    event.preventDefault();
+    const element = document.querySelector('#edit-invoice-form')
+    const formData = new FormData(element)
+    const form = Array.from(formData.entries());
+    console.log(form);
+    createNewInvoice(form, true);
     // updateItemsInLocalStorage(form, data);
   };
 
@@ -174,6 +184,7 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
   invoiceItemsWrapper.addEventListener('click', invoiceItemsWrapperListener)
   addNewItemButton.addEventListener('click', addNewItemButtonListener, false);
   submitFormButton.addEventListener('click', newInvoiceWrapperListener, false);
+  saveAsDraftButton.addEventListener('click', saveAsDraftButtonListener, false);
   datePickerElement.addEventListener('click', datePickerElementListener, false);
   userSelectElement.addEventListener('click', userSelectElementListener, false);
   prevMonthElement.addEventListener('click',  prevMonthElementListener, false);

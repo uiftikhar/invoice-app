@@ -5,9 +5,12 @@
   }
   > footer {
     position: relative;
-    > a:first-of-type {
-      margin-left: auto;
-      margin-right: 8px;
+    padding: 21px 20px;
+    > button {
+      font-weight: bold;
+    }
+    @include themed() {
+      background-color: theme($general-background-light);
     }
     &::before {
       content: '';   

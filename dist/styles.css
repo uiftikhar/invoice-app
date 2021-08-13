@@ -544,12 +544,30 @@ button.icon-button__mini > figure {
   transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
+button.draft {
+  background-color: #373B53;
+  padding: 17px;
+}
+
+.theme--light button.draft {
+  color: #888EB0;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark button.draft {
+  color: #DFE3FA;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
 button.warn {
   background-color: #EC5757;
   color: #FFFFFF;
 }
 
 button.success {
+  padding: 17px;
   color: #FFFFFF;
 }
 
@@ -999,6 +1017,18 @@ button.success {
   position: relative;
 }
 
+.theme--light .edit-invoice > footer {
+  background-color: #FFFFFF;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark .edit-invoice > footer {
+  background-color: #1E2139;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
 .edit-invoice > footer > a:first-of-type {
   margin-left: auto;
   margin-right: 8px;
@@ -1088,11 +1118,23 @@ button.success {
 
 .new-invoice > footer {
   position: relative;
+  padding: 21px 20px;
 }
 
-.new-invoice > footer > a:first-of-type {
-  margin-left: auto;
-  margin-right: 8px;
+.new-invoice > footer > button {
+  font-weight: bold;
+}
+
+.theme--light .new-invoice > footer {
+  background-color: #FFFFFF;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark .new-invoice > footer {
+  background-color: #1E2139;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .new-invoice > footer::before {

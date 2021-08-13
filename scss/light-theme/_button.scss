@@ -68,12 +68,21 @@ button {
     }
   }
   
+  &.draft {
+    background-color: $bg-dark;
+    padding: 17px;
+    @include themed() {
+      color:  theme($button-draft-color);
+    }
+  }
+  
   &.warn {
     background-color: $warning;
     color: $white;
   }
   
   &.success {
+    padding: 17px;
     color: $white;
   }
 }

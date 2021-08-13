@@ -3,7 +3,7 @@ import { formatCurrency, formatDate, formatDateSaveValue, getPaymentTermsInnerHT
 const idGen = () => {
   return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
     (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-  );
+  ).substring(0,6);
 }
 
 
@@ -121,11 +121,16 @@ export const createNewDataObject = (newInvoice = false) => {
   };
 }
 
-export const createNewInvoice = (entries, currentItem) => {
+export const createNewInvoice = (entries, isDraft = false) => {
   const newItem = createNewDataObject(true);
   populateInvoice(newItem, entries, []);
-  newItem.status = 'pending';
-  console.log(newItem);
+  newItem.status = 'paid';
+  if(isDraft) {
+    newItem.status = 'pending';
+  }
+  const currentData = JSON.parse(localStorage.getItem('data'));
+  currentData.push(newItem);
+  localStorage.setItem('data', JSON.stringify(currentData));
 }
 
 export const updateItemsInLocalStorage = (entries, currentItem) => {
