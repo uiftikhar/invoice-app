@@ -2,13 +2,23 @@
   position: relative;
   width: 100%;
   display: flex;
+  > input {
+    @include themed() {
+      border: none;
+      text-align: left;
+      background-color: theme($general-background-light);
+      color: theme($input-font-color);
+    }
+  }
   &__elements {
     display: none;
     position: absolute;
     top: 70px;
     left: 0;
     right: 0;
-    background-color: #252945;
+    @include themed() {
+      background-color: theme($select-calendar-background)
+    }
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
     z-index: 1;
@@ -18,7 +28,10 @@
     > p {
       padding: 16px 24px;
       &:not(:last-child) {
-        border-bottom: 1px solid #1E2139;
+        @include themed() {
+          border-bottom: theme($select-item-border);
+
+        }
       }
     }
     &--selected {

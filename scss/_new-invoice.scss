@@ -1,0 +1,25 @@
+.new-invoice {
+  @extend .view-invoice;
+  @include themed() {
+    background-color: theme($view-invoice-background);
+  }
+  > footer {
+    position: relative;
+    padding: 21px 20px;
+    > button {
+      font-weight: bold;
+    }
+    @include themed() {
+      background-color: theme($general-background-light);
+    }
+    &::before {
+      content: '';   
+      position: absolute;
+      width: 375px;
+      height: 64px;
+      left: 0px;
+      top: -61px;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.1) 100%);
+    }
+  }
+}

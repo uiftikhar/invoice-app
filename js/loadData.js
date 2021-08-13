@@ -1,5 +1,7 @@
+import { data } from '../assets/data.js';
 (async function () {
-  const res = await fetch('/assets/data.json');
-  const jsonRes = await res.json();
-  localStorage.setItem('data', JSON.stringify(jsonRes));
+  const _data = localStorage.getItem('data');
+  if(!JSON.parse(_data)) {
+    localStorage.setItem('data', JSON.stringify(data));
+  }
 }())

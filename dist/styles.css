@@ -119,6 +119,36 @@ input, .date-picker, .select {
   transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
+input.disabled, .date-picker.disabled, .select.disabled {
+  border: none;
+  color: #888EB0;
+  background-color: transparent;
+  pointer-events: none;
+}
+
+input:-moz-read-only {
+  border: none;
+  color: #888EB0;
+  background-color: transparent;
+  padding: 0;
+}
+
+input:read-only {
+  border: none;
+  color: #888EB0;
+  background-color: transparent;
+  padding: 0;
+}
+
+ul,
+ul li,
+ul ul li {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
 .mini {
   max-width: 47%;
 }
@@ -238,9 +268,13 @@ input, .date-picker, .select {
   width: 100%;
 }
 
+#app-root {
+  position: relative;
+}
+
 .date-picker {
   position: relative;
-  width: 100%;
+  width: 101%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -254,6 +288,24 @@ input, .date-picker, .select {
           user-select: none;
 }
 
+.theme--light .date-picker > input {
+  border: none;
+  text-align: left;
+  background-color: #FFFFFF;
+  color: #0C0E16;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark .date-picker > input {
+  border: none;
+  text-align: left;
+  background-color: #1E2139;
+  color: #FFFFFF;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
 .date-picker .dates {
   display: none;
   position: absolute;
@@ -262,10 +314,21 @@ input, .date-picker, .select {
   right: 0;
   padding: 25px 19px;
   z-index: 1;
-  background-color: #252945;
   -webkit-box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
+}
+
+.theme--light .date-picker .dates {
+  background-color: #FFFFFF;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark .date-picker .dates {
+  background-color: #252945;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .date-picker .dates.active {
@@ -309,30 +372,6 @@ input, .date-picker, .select {
   padding-bottom: 32px;
 }
 
-.date-picker .dates .month .arrows {
-  width: 35px;
-  height: 35px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: #313131;
-  font-size: 20px;
-}
-
-.date-picker .dates .month .arrows:hover {
-  background-color: #F3F3F3;
-}
-
-.date-picker .dates .month .arrows:active {
-  background-color: #00CA85;
-}
-
 .select {
   position: relative;
   width: 100%;
@@ -341,17 +380,46 @@ input, .date-picker, .select {
   display: flex;
 }
 
+.theme--light .select > input {
+  border: none;
+  text-align: left;
+  background-color: #FFFFFF;
+  color: #0C0E16;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark .select > input {
+  border: none;
+  text-align: left;
+  background-color: #1E2139;
+  color: #FFFFFF;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
 .select__elements {
   display: none;
   position: absolute;
   top: 70px;
   left: 0;
   right: 0;
-  background-color: #252945;
   -webkit-box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   z-index: 1;
+}
+
+.theme--light .select__elements {
+  background-color: #FFFFFF;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark .select__elements {
+  background-color: #252945;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .select__elements.active {
@@ -362,8 +430,16 @@ input, .date-picker, .select {
   padding: 16px 24px;
 }
 
-.select__elements > p:not(:last-child) {
+.theme--light .select__elements > p:not(:last-child) {
+  border-bottom: 1px solid #DFE3FA;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark .select__elements > p:not(:last-child) {
   border-bottom: 1px solid #1E2139;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
 .select__elements--selected {
@@ -375,6 +451,10 @@ button {
   border: none;
   border-radius: 24px;
   background-color: #7C5DFA;
+}
+
+button:disabled {
+  opacity: 0.3;
 }
 
 button.toggle-button {
@@ -414,6 +494,7 @@ button.icon-button > figure {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  pointer-events: none;
 }
 
 button.icon-button > h4 {
@@ -471,12 +552,30 @@ button.icon-button__mini > figure {
   transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
+button.draft {
+  background-color: #373B53;
+  padding: 17px;
+}
+
+.theme--light button.draft {
+  color: #888EB0;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark button.draft {
+  color: #DFE3FA;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
 button.warn {
   background-color: #EC5757;
   color: #FFFFFF;
 }
 
 button.success {
+  padding: 17px;
   color: #FFFFFF;
 }
 
@@ -782,7 +881,7 @@ button.success {
   transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
-.view-invoice > section {
+.view-invoice > section, .new-invoice > section {
   padding-bottom: 56px;
 }
 
@@ -889,17 +988,17 @@ button.success {
   transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
-.view-invoice > footer {
+.view-invoice > footer, .new-invoice > footer {
   padding: 21px 24px;
 }
 
-.theme--light .view-invoice > footer {
+.theme--light .view-invoice > footer, .theme--light .new-invoice > footer {
   background-color: #373B53;
   -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
   transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
-.theme--dark .view-invoice > footer {
+.theme--dark .view-invoice > footer, .theme--dark .new-invoice > footer {
   background-color: #1E2139;
   -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
   transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
@@ -926,7 +1025,19 @@ button.success {
   position: relative;
 }
 
-.edit-invoice > footer > button:first-of-type {
+.theme--light .edit-invoice > footer {
+  background-color: #FFFFFF;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark .edit-invoice > footer {
+  background-color: #1E2139;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.edit-invoice > footer > a:first-of-type {
   margin-left: auto;
   margin-right: 8px;
 }
@@ -957,26 +1068,151 @@ button.success {
   margin-bottom: 24px;
 }
 
-.item-list-form__items {
+.item-list-form__items > li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin-bottom: 48px;
+  width: 100%;
 }
 
 .item-list-form__items--quantity {
-  min-width: 64px;
-  max-width: 19.6%;
   margin-right: 16px;
+  max-width: 20%;
+}
+
+.item-list-form__items--quantity > input {
+  width: 100%;
+  margin-top: 10px;
 }
 
 .item-list-form__items--price {
-  min-width: 100px;
-  max-width: 30.6%;
   margin-right: 16px;
+  max-width: 30%;
+}
+
+.item-list-form__items--price > input {
+  width: 100%;
+  margin-top: 10px;
 }
 
 .item-list-form__items--total {
   min-width: 100px;
-  max-width: 30.6%;
+  max-width: 30%;
+}
+
+.item-list-form__items--total > input {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.item-list-form__items .delete-button {
+  margin-bottom: 20px;
+}
+
+.theme--light .new-invoice {
+  background-color: #FFFFFF;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark .new-invoice {
+  background-color: #141625;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.new-invoice > footer {
+  position: relative;
+  padding: 21px 20px;
+}
+
+.new-invoice > footer > button {
+  font-weight: bold;
+}
+
+.theme--light .new-invoice > footer {
+  background-color: #FFFFFF;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark .new-invoice > footer {
+  background-color: #1E2139;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.new-invoice > footer::before {
+  content: '';
+  position: absolute;
+  width: 375px;
+  height: 64px;
+  left: 0px;
+  top: -61px;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.0001)), to(rgba(0, 0, 0, 0.1)));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+.modal {
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  max-width: 330px;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+  margin: 0 auto;
+  padding: 32px;
+  -webkit-box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+          box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  border-radius: 8px;
+}
+
+.theme--light .modal {
+  background-color: #FFFFFF;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark .modal {
+  background-color: #1E2139;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.modal > h2 {
+  margin-bottom: 8px;
+  line-height: 32px;
+}
+
+.modal > h4 {
+  margin-bottom: 24px;
+  line-height: 22px;
+}
+
+.overlay {
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.is-visible {
+  opacity: 1;
+  pointer-events: auto;
 }

@@ -92,6 +92,26 @@ input, .date-picker, .select {
     font-size: 12px;
     line-height: 15px;
     letter-spacing: -0.25px;
+    &.disabled {
+      border: none;
+      color: $input-read-only-font-color;
+      background-color: transparent;
+      pointer-events: none;
+    }
+}
+input:read-only {
+  border: none;
+  color: $input-read-only-font-color;
+  background-color: transparent;
+  padding: 0;
+}
+ul,
+ul li,
+ul ul li {
+   margin:0;
+   padding: 0;
+   text-indent: 0;
+   list-style-type: none;
 }
 
 .mini {
@@ -180,4 +200,8 @@ input, .date-picker, .select {
 
 .w-100 {
   width: 100%;
+}
+
+#app-root {
+  position: relative;
 }

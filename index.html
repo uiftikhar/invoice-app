@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="./dist/styles.css">  
   <title>Frontend Mentor | Invoice app</title>
 </head>
-<body class="theme--dark">
+<body class="theme--light">
   <header class="header container container__px--right">
     <figure class="header__logo-wrapper">
       <img src="./assets/logo.svg" class="header__logo-wrapper__logo" alt="logo of the company">
@@ -27,11 +27,17 @@
   </header>
   <main id="app-root">
   </main>
-  <script src="js/loadData.js"></script>
+  <script type="module" src="js/loadData.js"></script>
   <script src="js/route.js"></script>
   <script src="js/router.js"></script>
-  <script type="module" src="js/helpers/update-invoice.js"></script>
-  <script type="module" src="js/helpers.js"></script>
+  <script type="module" src="assets/data.js"></script>
+  <script type="module" src="js/utils.js"></script>
+  <script type="module" src="js/helpers/calendar.js"></script>
+  <script type="module" src="js/helpers/populate-edit-invoice-oninit.js"></script>
+  <script type="module" src="js/views/home.js"></script>
+  <script type="module" src="js/views/view-invoice.js"></script>
+  <script type="module" src="js/views/edit-invoice.js"></script>
+  <script type="module" src="js/views/new-invoice.js"></script>
   <script type="module" src="js/script.js"></script>
 </body>
 </html>
