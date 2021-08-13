@@ -29,6 +29,8 @@ Router.prototype = {
         this.hasChanged(this, r);
     },
     hasChanged: function(scope, r){
+        const event = new Event('on-page-route-started');
+        scope.rootElem.dispatchEvent(event);
         if (window.location.hash.length > 0) {
             for (let i = 0, length = r.length; i < length; i++) {
                 let route = r[i];

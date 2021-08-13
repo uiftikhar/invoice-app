@@ -1,6 +1,6 @@
 
 const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
-const  populateDates = (datesElement, daysElement, selectedDateElement, monthElement, date, addSelectedClass = true) => {
+const  populateDates = ( daysElement, dayElementListener, monthElement, date, addSelectedClass = true) => {
   daysElement.innerHTML = '';
   
   let day = date.getDate();
@@ -36,17 +36,8 @@ const  populateDates = (datesElement, daysElement, selectedDateElement, monthEle
       } 
     }
 
-		dayElement.addEventListener('click', function () {
-			date = new Date(year + '-' + (month + 1) + '-' + (i + 1));
-			selectedDay = (i + 1);
-			selectedMonth = month;
-			selectedYear = year;
-
-  
-      selectedDateElement.setAttribute('value', `${selectedDay} ${formatter.format(date)} ${selectedYear}`)
-      selectedDateElement.value =  `${selectedDay} ${formatter.format(date)} ${selectedYear}`;
-      datesElement.classList.toggle('active');
-		});
+    // Remove this event listener
+		dayElement.addEventListener('click', dayElementListener(date,selectedDay,selectedMonth,selectedYear));
 
 		daysElement.appendChild(dayElement);
 	}

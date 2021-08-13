@@ -1,6 +1,12 @@
 
-
 export const updateViewInvoice = (viewInvoiceWrapper, data) => {
+  const appRoot = document.querySelector('#app-root');
+  appRoot.addEventListener('on-page-route-started', () => {
+    console.log('on-page-route-started:view');
+  }, {
+    capture: false,
+    once: true
+  })
   const formatDate = (value) => {
     const date = new Date(value);
     const day = date.toLocaleString('default', { day: '2-digit' });
