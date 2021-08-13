@@ -855,7 +855,7 @@ button.success {
   transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
-.view-invoice > section {
+.view-invoice > section, .new-invoice > section {
   padding-bottom: 56px;
 }
 
@@ -962,17 +962,17 @@ button.success {
   transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
-.view-invoice > footer {
+.view-invoice > footer, .new-invoice > footer {
   padding: 21px 24px;
 }
 
-.theme--light .view-invoice > footer {
+.theme--light .view-invoice > footer, .theme--light .new-invoice > footer {
   background-color: #373B53;
   -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
   transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
-.theme--dark .view-invoice > footer {
+.theme--dark .view-invoice > footer, .theme--dark .new-invoice > footer {
   background-color: #1E2139;
   -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
   transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
@@ -1072,4 +1072,36 @@ button.success {
 
 .item-list-form__items .delete-button {
   margin-bottom: 20px;
+}
+
+.theme--light .new-invoice {
+  background-color: #FFFFFF;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark .new-invoice {
+  background-color: #141625;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.new-invoice > footer {
+  position: relative;
+}
+
+.new-invoice > footer > a:first-of-type {
+  margin-left: auto;
+  margin-right: 8px;
+}
+
+.new-invoice > footer::before {
+  content: '';
+  position: absolute;
+  width: 375px;
+  height: 64px;
+  left: 0px;
+  top: -61px;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.0001)), to(rgba(0, 0, 0, 0.1)));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.1) 100%);
 }

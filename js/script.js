@@ -10,6 +10,9 @@ import {
 import {
   updateViewInvoice,
 } from './views/view-invoice.js';
+import {
+  updateNewInvoice,
+} from './views/new-invoice.js';
 const toggleThemeButton = document.querySelector('#toggle-theme');
 const body = document.querySelector('body');
 const appRoot = document.querySelector('#app-root');
@@ -19,7 +22,8 @@ const appRoot = document.querySelector('#app-root');
       new Router([
           new Route('home', 'home.html', true),            
           new Route('view-invoice', 'view-invoice.html'),
-          new Route('edit-invoice', 'edit-invoice.html')
+          new Route('edit-invoice', 'edit-invoice.html'),
+          new Route('new-invoice', 'new-invoice.html')
       ]);
   }
   init();
@@ -31,6 +35,8 @@ const appRootListener =  () => {
   const InvoiceWrapper = appRoot.querySelector('#home');
   const viewInvoiceWrapper = appRoot.querySelector('#view-invoice');
   const editInvoiceWrapper = appRoot.querySelector('#edit-invoice');
+  const newInvoiceWrapper = appRoot.querySelector('#create-new-invoice');
+  console.log(newInvoiceWrapper);
   if(jsonData && InvoiceWrapper) {
     updateHome(InvoiceWrapper, jsonData)
   };
@@ -43,6 +49,13 @@ const appRootListener =  () => {
     const queryString = window.location.hash.split('?')[1];
     const currentItem = jsonData.find(item => item.id === queryString);
     updateEditInvoice(editInvoiceWrapper, currentItem)
+  }
+  if(jsonData && newInvoiceWrapper) {
+    console.log(0, newInvoiceWrapper);
+    updateNewInvoice(newInvoiceWrapper)
+    // const queryString = window.location.hash.split('?')[1];
+    // const currentItem = jsonData.find(item => item.id === queryString);
+    // updateEditInvoice(newInvoiceWrapper, currentItem)
   }
 }
 

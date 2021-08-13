@@ -1,6 +1,6 @@
-import {formatter} from '../utils.js'
 import { populateDates } from '../helpers/calendar.js';
-import { populateUpdateInvoiceFormOnInit, renderItems, updateItemsInLocalStorage } from '../helpers/populate-edit-invoice-oninit.js';
+import { renderItems, createNewInvoice } from '../helpers/populate-edit-invoice-oninit.js';
+import { formatter } from '../utils.js';
 const checkEventPathForClass = (path, selector) => {
   for (let i = 0; i < path.length; i++) {
     if (path[i].classList && path[i].classList.contains(selector)) {
@@ -9,60 +9,30 @@ const checkEventPathForClass = (path, selector) => {
   }
   return false;
 }
-export const updateEditInvoice = (editInvoiceWrapper, data) => {
-  let date = new Date(data.paymentDue);
+export const updateNewInvoice = (newInvoiceWrapper) => {
+  let date = new Date(Date.now());
 
   // ------------------------------ Query Selectors ----------------------------------------------
-  const datePickerElement = editInvoiceWrapper.querySelector('#date-picker');
-  const selectedDateElement = editInvoiceWrapper.querySelector('#date-picker > .selected-date');
-  const datesElement = editInvoiceWrapper.querySelector('#date-picker > .dates');
-  const monthElement = editInvoiceWrapper.querySelector('#date-picker > .dates > .month > .month-input');
-  const nextMonthElement = editInvoiceWrapper.querySelector('#date-picker > .dates > .month > .next-month');
-  const prevMonthElement = editInvoiceWrapper.querySelector('#date-picker > .dates > .month > .prev-month');
-  const daysElement = editInvoiceWrapper.querySelector('#date-picker .dates .days');
-  const userSelectElement = editInvoiceWrapper.querySelector('#select');
-  const selectElements = editInvoiceWrapper.querySelector('#select > .select__elements');
-  const selectedElement = editInvoiceWrapper.querySelector('#select > .select__selected-item');
-  const formElement = editInvoiceWrapper.querySelector('#edit-invoice-form');
-  const invoiceItemsWrapper = editInvoiceWrapper.querySelector('#edit-invoice-form--item-list');
-  const addNewItemButton = editInvoiceWrapper.querySelector('#add-new-item');
-  const submitFormButton = editInvoiceWrapper.querySelector('#submit-form-button');
+  const datePickerElement = newInvoiceWrapper.querySelector('#date-picker');
+  const selectedDateElement = newInvoiceWrapper.querySelector('#date-picker > .selected-date');
+  const datesElement = newInvoiceWrapper.querySelector('#date-picker > .dates');
+  const monthElement = newInvoiceWrapper.querySelector('#date-picker > .dates > .month > .month-input');
+  const nextMonthElement = newInvoiceWrapper.querySelector('#date-picker > .dates > .month > .next-month');
+  const prevMonthElement = newInvoiceWrapper.querySelector('#date-picker > .dates > .month > .prev-month');
+  const daysElement = newInvoiceWrapper.querySelector('#date-picker .dates .days');
+  const userSelectElement = newInvoiceWrapper.querySelector('#select');
+  const selectElements = newInvoiceWrapper.querySelector('#select > .select__elements');
+  const selectedElement = newInvoiceWrapper.querySelector('#select > .select__selected-item');
+  const formElement = newInvoiceWrapper.querySelector('#edit-invoice-form');
+  const invoiceItemsWrapper = newInvoiceWrapper.querySelector('#edit-invoice-form--item-list');
+  const addNewItemButton = newInvoiceWrapper.querySelector('#add-new-item');
+  const submitFormButton = newInvoiceWrapper.querySelector('#submit-form-button');
   const appRoot = document.querySelector('#app-root');
   
   // ------------------------------ Listener Functions ----------------------------------------------
-  const invoiceItemsWrapperListener = (event) => {
-    event.preventDefault();
-    const path = event.path || (event.composedPath && event.composedPath());
-    if (checkEventPathForClass(path, 'delete-button')) {
-      const indexToDelete = Number(event.target.getAttribute('data-key'))
-      const currentData = JSON.parse(localStorage.getItem('data'));
-      const items = currentData.find(item => item.id === data.id).items;
-      items.splice(indexToDelete, 1);
-      renderItems(items);
-      localStorage.setItem('data', JSON.stringify(currentData));
-    }
-  };
-
-  const appRootListener =  (event) => {
-    event.preventDefault();
-    console.log('removing all listeners');
-    formElement.removeEventListener('submit', formSubmitListener, false);
-    invoiceItemsWrapper.removeEventListener('click', invoiceItemsWrapperListener, false);
-    addNewItemButton.removeEventListener('click', addNewItemButtonListener, false);
-    submitFormButton.removeEventListener('click', editInvoiceWrapperListener, false);
-    datePickerElement.removeEventListener('click', datePickerElementListener, false);
-    userSelectElement.removeEventListener('click', userSelectElementListener, false);
-    prevMonthElement.removeEventListener('click',  prevMonthElementListener, false);
-    nextMonthElement.removeEventListener('click',  nextMonthElementListener, false);
-    selectElements.removeEventListener('click', selectElementsListener, false);
-    daysElement.removeEventListener('click', daysElementListener, false);
-    console.log('page-routing event listener');
-  };
-
-  const addNewItemButtonListener = (event) => {
-    event.preventDefault();
+  const getCurrentInvoiceItems = () => {
     const allItems = invoiceItemsWrapper.querySelectorAll('ul > li')
-    let newItems = [];
+    const newItems = [];
     allItems.forEach((item, index) => {
       const name = item.querySelector(`[name="${index}-item-list--name"]`).value;
       const quantity = Number(item.querySelector(`[name="${index}-item-list--quantity"]`).value.replace(/[^0-9.-]+/g,""));
@@ -75,25 +45,58 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
         total,
       });
     })
-    newItems.push({
+    return newItems;
+  }
+
+  const invoiceItemsWrapperListener = (event) => {
+    event.preventDefault();
+    const path = event.path || (event.composedPath && event.composedPath());
+    if (checkEventPathForClass(path, 'delete-button')) {
+      const indexToDelete = Number(event.target.getAttribute('data-key'))
+      const items = getCurrentInvoiceItems();
+      items.splice(indexToDelete, 1);
+      renderItems(items);
+    }
+  };
+
+  const appRootListener =  (event) => {
+    event.preventDefault();
+    console.log('removing all listeners');
+    formElement.removeEventListener('submit', formSubmitListener, false);
+    invoiceItemsWrapper.removeEventListener('click', invoiceItemsWrapperListener, false);
+    addNewItemButton.removeEventListener('click', addNewItemButtonListener, false);
+    submitFormButton.removeEventListener('click', newInvoiceWrapperListener, false);
+    datePickerElement.removeEventListener('click', datePickerElementListener, false);
+    userSelectElement.removeEventListener('click', userSelectElementListener, false);
+    prevMonthElement.removeEventListener('click',  prevMonthElementListener, false);
+    nextMonthElement.removeEventListener('click',  nextMonthElementListener, false);
+    selectElements.removeEventListener('click', selectElementsListener, false);
+    daysElement.removeEventListener('click', daysElementListener, false);
+    console.log('page-routing event listener');
+  };
+
+ 
+
+  const addNewItemButtonListener = (event) => {
+    event.preventDefault();
+    const allItems = getCurrentInvoiceItems();
+    allItems.push({
       name: '',
       quantity: "",
       price: 0,
       total: 0,
     });
-    renderItems(newItems)
-    const currentData = JSON.parse(localStorage.getItem('data'));
-    const currentItem =  currentData.find(item => item.id === data.id);
-    currentItem.items = newItems;
-    localStorage.setItem('data', JSON.stringify(currentData));
+    renderItems(allItems)
   };
 
-  const editInvoiceWrapperListener = (event) => {
+  const newInvoiceWrapperListener = (event) => {
     event.preventDefault();
     const element = document.querySelector('#edit-invoice-form')
     const formData = new FormData(element)
     const form = Array.from(formData.entries());
-    updateItemsInLocalStorage(form, data);
+    console.log(form);
+    createNewInvoice(form);
+    // updateItemsInLocalStorage(form, data);
   };
 
   const datePickerElementListener = (event) => {
@@ -163,7 +166,6 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
   };
   
   // ----------------------------------------------------------------------------------------------
-  populateUpdateInvoiceFormOnInit(editInvoiceWrapper, data);
   appRoot.addEventListener('on-page-route-started', appRootListener,{
     capture: false,
     once: true
@@ -171,12 +173,13 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
   formElement.addEventListener('submit', formSubmitListener, false);
   invoiceItemsWrapper.addEventListener('click', invoiceItemsWrapperListener)
   addNewItemButton.addEventListener('click', addNewItemButtonListener, false);
-  submitFormButton.addEventListener('click', editInvoiceWrapperListener, false);
+  submitFormButton.addEventListener('click', newInvoiceWrapperListener, false);
   datePickerElement.addEventListener('click', datePickerElementListener, false);
   userSelectElement.addEventListener('click', userSelectElementListener, false);
   prevMonthElement.addEventListener('click',  prevMonthElementListener, false);
   nextMonthElement.addEventListener('click',  nextMonthElementListener, false);
   daysElement.addEventListener('click', daysElementListener, false);
   selectElements.addEventListener('click', selectElementsListener, false);
+
 }
 

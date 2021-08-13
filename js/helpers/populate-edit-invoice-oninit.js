@@ -97,7 +97,7 @@ export const renderItems = (items) => {
 export const createNewDataObject = (newInvoice = false) => {
   return {
     id: newInvoice ? idGen() : "",
-    createdAt: newInvoice ? new Date(Date.now()) : "",
+    createdAt: newInvoice ? formatDateSaveValue(new Date(Date.now())) : "",
     paymentDue: "",
     description: "",
     paymentTerms: 1,
@@ -120,9 +120,33 @@ export const createNewDataObject = (newInvoice = false) => {
     total: 0
   };
 }
+
+export const createNewInvoice = (entries, currentItem) => {
+  const newItem = createNewDataObject(true);
+  populateInvoice(newItem, entries, []);
+  newItem.status = 'pending';
+  console.log(newItem);
+}
+
 export const updateItemsInLocalStorage = (entries, currentItem) => {
   let invoiceItems = [];
   const newItem = createNewDataObject();
+  populateInvoice(newItem, entries, invoiceItems);
+  let total = 0;
+  invoiceItems.forEach(item => total += item.total);
+  newItem.id = currentItem.id;
+  newItem.status = currentItem.status;
+  newItem.createdAt = currentItem.createdAt;
+  newItem.items = invoiceItems;
+  newItem.total = total;
+  const currentData = JSON.parse(localStorage.getItem('data'));
+  const indexToUpdate = currentData.findIndex(item => item.id === newItem.id);
+  currentData[indexToUpdate] = newItem;
+  localStorage.setItem('data', JSON.stringify(currentData));
+};
+
+
+const populateInvoice = (invoiceItem, entries, invoiceItems) => {
   entries.forEach(item => {
     if(item[0].includes('item-list--')) {
       let key = item[0].split('--')[1];
@@ -140,57 +164,46 @@ export const updateItemsInLocalStorage = (entries, currentItem) => {
     }
     switch (item[0]) {
       case 'bill-from--street_address':
-        newItem.senderAddress.street = item[1];
+        invoiceItem.senderAddress.street = item[1];
         break;
       case 'bill-from--city':
-        newItem.senderAddress.city = item[1];
+        invoiceItem.senderAddress.city = item[1];
         break;
       case 'bill-from--post_code':
-        newItem.senderAddress.postCode = item[1];
+        invoiceItem.senderAddress.postCode = item[1];
         break;
       case 'bill-from--country':
-        newItem.senderAddress.country = item[1];
+        invoiceItem.senderAddress.country = item[1];
         break;
       case 'bill-to--client-name':
-        newItem.clientName = item[1];
+        invoiceItem.clientName = item[1];
         break;
       case 'bill-to--client-email':
-        newItem.clientEmail = item[1];
+        invoiceItem.clientEmail = item[1];
         break;
       case 'bill-to--street_address':
-        newItem.clientAddress.street = item[1];
+        invoiceItem.clientAddress.street = item[1];
         break;
       case 'bill-to--city':
-        newItem.clientAddress.city = item[1];
+        invoiceItem.clientAddress.city = item[1];
         break;
       case 'bill-to--post_code':
-        newItem.clientAddress.postCode = item[1];
+        invoiceItem.clientAddress.postCode = item[1];
         break;
       case 'bill-to--country':
-        newItem.clientAddress.country = item[1];
+        invoiceItem.clientAddress.country = item[1];
         break;
       case 'bill-to--project':
-        newItem.description = item[1];
+        invoiceItem.description = item[1];
         break;
       case 'payment-terms':
-        newItem.paymentTerms = getPaymentTermsValue(item[1]);
+        invoiceItem.paymentTerms = getPaymentTermsValue(item[1]);
         break;
       case 'payment-date':
-        newItem.paymentDue = formatDateSaveValue(item[1]);
+        invoiceItem.paymentDue = formatDateSaveValue(item[1]);
         break;
       default:
         break;
     }
   });
-  let total = 0;
-  invoiceItems.forEach(item => total += item.total);
-  newItem.id = currentItem.id;
-  newItem.status = currentItem.status;
-  newItem.createdAt = currentItem.createdAt;
-  newItem.items = invoiceItems;
-  newItem.total = total;
-  const currentData = JSON.parse(localStorage.getItem('data'));
-  const indexToUpdate = currentData.findIndex(item => item.id === newItem.id);
-  currentData[indexToUpdate] = newItem;
-  localStorage.setItem('data', JSON.stringify(currentData));
-};
+}
