@@ -1,18 +1,17 @@
-import { renderItems } from './helpers/populate-edit-invoice-oninit.js';
-
-export const addToLocalStorage = (data, id) => {
-  localStorage.setItem('data', JSON.stringify(data));
-  const currentInvoice = data.find(item => item.id === id);
-  console.log(currentInvoice.items);
-  renderItems(currentInvoice.items);
+const formatDate = (value) => {
+  const date = new Date(value);
+  const day = date.toLocaleString('default', { day: '2-digit' });
+  const month = date.toLocaleString('default', { month: 'short' });
+  const year = date.toLocaleString('default', { year: 'numeric' });
+  return `${day} ${month} ${year}`;
 }
 
-export const getFromLocalStorage = () => {
-  const reference = localStorage.getItem('data');
-  // if reference exists
-  if (reference) {
-    // converts back to array and store it in todos array
-    const items = JSON.parse(reference);
-    renderItems(items);
-  }
+const formatCurrency = (value) => new Intl.NumberFormat('en-IN', { minimumFractionDigits: 2 }).format(value); 
+
+const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
+
+export {
+  formatCurrency,
+  formatDate,
+  formatter
 }

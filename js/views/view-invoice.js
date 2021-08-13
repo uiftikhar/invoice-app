@@ -1,3 +1,4 @@
+import { formatCurrency, formatDate } from '../helpers.js'
 
 export const updateViewInvoice = (viewInvoiceWrapper, data) => {
   const appRoot = document.querySelector('#app-root');
@@ -9,17 +10,6 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
     once: true
   })
 
-
-  const formatDate = (value) => {
-    const date = new Date(value);
-    const day = date.toLocaleString('default', { day: '2-digit' });
-    const month = date.toLocaleString('default', { month: 'short' });
-    const year = date.toLocaleString('default', { year: 'numeric' });
-    return `${day} ${month} ${year}`;
-  }
-
-  const formatCurrency = (value) => new Intl.NumberFormat('en-IN', { minimumFractionDigits: 2 }).format(value); 
-  
   let chip = ''
   if(data.status === 'paid') {
     chip = `
@@ -50,7 +40,6 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
   }
   
   redirectToEdit.addEventListener('click', redirectToEditListener)
-
   statusWrapper.innerHTML = chip;
   detailsHeaders[0].innerHTML = data.id;
   detailsHeaders[1].innerHTML = data.description;

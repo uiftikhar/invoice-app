@@ -170,7 +170,7 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
   };
   
   // ----------------------------------------------------------------------------------------------
-  populateUpdateInvoiceFormOnInit(editInvoiceWrapper, data, date);
+  populateUpdateInvoiceFormOnInit(editInvoiceWrapper, data);
   appRoot.addEventListener('on-page-route-started', appRootListener,{
     capture: false,
     once: true

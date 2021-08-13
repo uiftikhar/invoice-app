@@ -1,5 +1,5 @@
 
-const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
+import { formatter } from '../helpers.js'
 const  populateDates = (daysElement, monthElement, date, addSelectedClass = true) => {
   daysElement.innerHTML = '';
   

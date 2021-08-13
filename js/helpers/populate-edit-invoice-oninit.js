@@ -1,30 +1,27 @@
-const formatDate = (value) => {
-  const date = new Date(value);
-  const day = date.toLocaleString('default', { day: '2-digit' });
-  const month = date.toLocaleString('default', { month: 'short' });
-  const year = date.toLocaleString('default', { year: 'numeric' });
-  return `${day} ${month} ${year}`;
-}
+import { formatCurrency, formatDate  } from '../helpers.js'
 const getPaymentTermsInnerHTM = (terms) => {
-  let response = '';
-  if(terms === 1) {
+  let response = 'Net 1 Day';
+  switch (terms) {
+    case 1:
       response = 'Net 1 Day';
-    }
-    if(terms === 7) {
+      break;
+    case 7:
       response = 'Net 7 Days';
-    }
-    if(terms === 14) {
+      break;
+    case  4:
       response = 'Net 14 Days';
-    }
-    if(terms === 30) {
+      break;
+    case  0:
       response = 'Net 30 Days';
-    }
-    return response;
+      break;
+    default:
+      break;
+  }
+  return response;
 }
-const formatCurrency = (value) => new Intl.NumberFormat('en-IN', { minimumFractionDigits: 2 }).format(value); 
 
 
-export const populateUpdateInvoiceFormOnInit = (editInvoiceWrapper, data, date) => {
+export const populateUpdateInvoiceFormOnInit = (editInvoiceWrapper, data) => {
   const formElements = editInvoiceWrapper.querySelectorAll('#edit-invoice-form input')
   formElements.forEach(item => {
     switch (item.name) {
