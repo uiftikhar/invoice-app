@@ -3,10 +3,13 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
   const appRoot = document.querySelector('#app-root');
   appRoot.addEventListener('on-page-route-started', () => {
     console.log('on-page-route-started:view');
+    redirectToEdit.removeEventListener('click', redirectToEditListener)
   }, {
     capture: false,
     once: true
   })
+
+
   const formatDate = (value) => {
     const date = new Date(value);
     const day = date.toLocaleString('default', { day: '2-digit' });
@@ -38,13 +41,15 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
   const detailsWrapper = viewInvoiceWrapper.querySelector('.view-invoice__details-wrapper');
   const invoiceItemsWrapper = viewInvoiceWrapper.querySelector('#invoice-items');
   const redirectToEdit = viewInvoiceWrapper.querySelector('#redirect-to-edit-invoice');
-  
   const detailsHeaders = detailsWrapper.querySelectorAll('section > h4, section > h2, hgroup > h4');
   const detailsPaymentHeaders = detailsWrapper.querySelectorAll('hgroup > h3');
-  
-  redirectToEdit.addEventListener('click', () => {
+
+  // ------------------------------------------------------------------------------------------------
+  const redirectToEditListener = () => {
     redirectToEdit.setAttribute('href',`#edit-invoice?${data.id}`)
-  })
+  }
+  
+  redirectToEdit.addEventListener('click', redirectToEditListener)
 
   statusWrapper.innerHTML = chip;
   detailsHeaders[0].innerHTML = data.id;

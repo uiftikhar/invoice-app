@@ -25,8 +25,7 @@ const appRoot = document.querySelector('#app-root');
   init();
 }());
 
-
-appRoot.addEventListener('page-loaded', () => {
+const appRootListener =  () => {
   console.log('page-loaded');
   const jsonData = JSON.parse(localStorage.getItem('data'));
 
@@ -46,12 +45,9 @@ appRoot.addEventListener('page-loaded', () => {
     const currentItem = jsonData.find(item => item.id === queryString);
     updateEditInvoice(editInvoiceWrapper, currentItem)
   }
-})
+}
 
-
-
-
-toggleThemeButton.addEventListener('click', () => {
+const toggleThemeButtonListener = () => {
   // This code assumes a Light Mode default
   // if (
   //   /* This condition checks whether the user has set a site preference for dark mode OR a OS-level preference for Dark Mode AND no site preference */
@@ -74,4 +70,8 @@ toggleThemeButton.addEventListener('click', () => {
     body.classList.remove('theme--dark');
     img.setAttribute('src','./assets/icon-moon.svg')
   }
-})
+}
+
+
+appRoot.addEventListener('page-loaded', appRootListener)
+toggleThemeButton.addEventListener('click', toggleThemeButtonListener)

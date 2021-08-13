@@ -1,8 +1,6 @@
 
-import { populateUpdateInvoiceFormOnInit, updateItemsInLocalStorage, renderItems } from '../helpers/populate-edit-invoice-oninit.js';
-import { updateSelectedItem } from '../helpers/select.js';
 import { populateDates } from '../helpers/calendar.js';
-const eventListeners = [];
+import { populateUpdateInvoiceFormOnInit, renderItems, updateItemsInLocalStorage } from '../helpers/populate-edit-invoice-oninit.js';
 const checkEventPathForClass = (path, selector) => {
   for (let i = 0; i < path.length; i++) {
     if (path[i].classList && path[i].classList.contains(selector)) {
@@ -46,16 +44,17 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
 
   const appRootListener =  (event) => {
     event.preventDefault();
-    formElement.removeEventListener('submit', formSubmitListener);
-    invoiceItemsWrapper.removeEventListener('click', invoiceItemsWrapperListener)
-    addNewItemButton.removeEventListener('click', addNewItemButtonListener)
-    submitFormButton.removeEventListener('click', editInvoiceWrapperListener);
-    datePickerElement.removeEventListener('click', datePickerElementListener)
-    userSelectElement.removeEventListener('click', userSelectElementListener)
-    prevMonthElement.removeEventListener('click',  prevMonthElementListener)
-    nextMonthElement.removeEventListener('click',  nextMonthElementListener);
-    selectElements.removeEventListener('click', selectElementsListener)
-    daysElement.removeEventListener('click', daysElementListener);
+    console.log('removing all listeners');
+    formElement.removeEventListener('submit', formSubmitListener, false);
+    invoiceItemsWrapper.removeEventListener('click', invoiceItemsWrapperListener, false);
+    addNewItemButton.removeEventListener('click', addNewItemButtonListener, false);
+    submitFormButton.removeEventListener('click', editInvoiceWrapperListener, false);
+    datePickerElement.removeEventListener('click', datePickerElementListener, false);
+    userSelectElement.removeEventListener('click', userSelectElementListener, false);
+    prevMonthElement.removeEventListener('click',  prevMonthElementListener, false);
+    nextMonthElement.removeEventListener('click',  nextMonthElementListener, false);
+    selectElements.removeEventListener('click', selectElementsListener, false);
+    daysElement.removeEventListener('click', daysElementListener, false);
     console.log('page-routing event listener');
   };
 
@@ -170,23 +169,21 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
     })
   };
   
-  
-  
   // ----------------------------------------------------------------------------------------------
   populateUpdateInvoiceFormOnInit(editInvoiceWrapper, data, date);
-  appRoot.addEventListener('on-page-route-started', appRootListener, {
+  appRoot.addEventListener('on-page-route-started', appRootListener,{
     capture: false,
     once: true
-  })
-  formElement.addEventListener('submit', formSubmitListener);
+   });
+  formElement.addEventListener('submit', formSubmitListener, false);
   invoiceItemsWrapper.addEventListener('click', invoiceItemsWrapperListener)
-  addNewItemButton.addEventListener('click', addNewItemButtonListener)
-  submitFormButton.addEventListener('click', editInvoiceWrapperListener);
-  datePickerElement.addEventListener('click', datePickerElementListener)
-  userSelectElement.addEventListener('click', userSelectElementListener)
-  prevMonthElement.addEventListener('click',  prevMonthElementListener)
-  nextMonthElement.addEventListener('click',  nextMonthElementListener);
-  daysElement.addEventListener('click', daysElementListener);
-  selectElements.addEventListener('click', selectElementsListener)
+  addNewItemButton.addEventListener('click', addNewItemButtonListener, false);
+  submitFormButton.addEventListener('click', editInvoiceWrapperListener, false);
+  datePickerElement.addEventListener('click', datePickerElementListener, false);
+  userSelectElement.addEventListener('click', userSelectElementListener, false);
+  prevMonthElement.addEventListener('click',  prevMonthElementListener, false);
+  nextMonthElement.addEventListener('click',  nextMonthElementListener, false);
+  daysElement.addEventListener('click', daysElementListener, false);
+  selectElements.addEventListener('click', selectElementsListener, false);
 }
 
