@@ -1,46 +1,89 @@
 import { formatCurrency, formatDate } from '../utils.js'
 
-export const updateViewInvoice = (viewInvoiceWrapper, data) => {
-  const appRoot = document.querySelector('#app-root');
-  appRoot.addEventListener('on-page-route-started', () => {
-    console.log('on-page-route-started:view');
-    redirectToEdit.removeEventListener('click', redirectToEditListener)
-  }, {
-    capture: false,
-    once: true
-  })
-
+const getChipInnerHtml = (status) => {
   let chip = ''
-  if(data.status === 'paid') {
+  if(status === 'paid') {
     chip = `
       <h4>Status</h4>
       <h4 class="chip chip__success bold">Paid</h4>
     `;
-  } else if(data.status === 'pending') {
+  } else if(status === 'pending') {
     chip = `
       <h4>Status</h4>
       <h4 class="chip chip__warn bold">Pending</h4>
     `;
-  } else if(data.status === 'draft') {
+  } else if(status === 'draft') {
     chip = `
     <h4>Status</h4>
     <h4 class="chip chip__draft bold">Draft</h4>
     `;
   }
+  return chip;
+}
+export const updateViewInvoice = (viewInvoiceWrapper, data) => {
+  const appRoot = document.querySelector('#app-root');
+  appRoot.addEventListener('on-page-route-started', () => {
+    redirectToEdit.removeEventListener('click', redirectToEditListener);
+    markAsPaidButton.removeEventListener('click', markAsPaidButtonListener, false);
+  }, {
+    capture: false,
+    once: true
+  })
+
+  
   const statusWrapper = viewInvoiceWrapper.querySelector('.view-invoice__status-wrapper > hgroup');
   const detailsWrapper = viewInvoiceWrapper.querySelector('.view-invoice__details-wrapper');
   const invoiceItemsWrapper = viewInvoiceWrapper.querySelector('#invoice-items');
   const redirectToEdit = viewInvoiceWrapper.querySelector('#redirect-to-edit-invoice');
   const detailsHeaders = detailsWrapper.querySelectorAll('section > h4, section > h2, hgroup > h4');
   const detailsPaymentHeaders = detailsWrapper.querySelectorAll('hgroup > h3');
+  const markAsPaidButton = viewInvoiceWrapper.querySelector('#mark-as-paid');
+  const deleteInvoiceButton = viewInvoiceWrapper.querySelector('#delete-invoice');
 
   // ------------------------------------------------------------------------------------------------
   const redirectToEditListener = () => {
     redirectToEdit.setAttribute('href',`#edit-invoice?${data.id}`)
   }
   
+  const markAsPaidButtonListener = () => {
+    data.status = 'paid';
+    statusWrapper.innerHTML = getChipInnerHtml(data.status);
+    markAsPaidButton.disabled = true;
+    const currentData = JSON.parse(localStorage.getItem('data'));
+    currentData.find(item => item.id === data.id).status = 'paid';
+    localStorage.setItem('data', JSON.stringify(currentData));
+  }
+
+
+  deleteInvoiceButton.addEventListener('click', function() {
+    document.querySelector('#overlay').classList.add('is-visible');
+    document.querySelector('#modal').classList.add('is-visible');
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+    document.querySelector('#modal > h4').innerHTML = `Are you sure you want to delete invoice #${data.id}? This action cannot be undone.`;
+  });
+  
+  // document.querySelector('close-btn').addEventListener('click', function() {
+  //   document.querySelector('overlay').classList.remove('is-visible');
+  //   document.querySelector('modal').classList.remove('is-visible');
+  // });
+  // document.querySelector('overlay').addEventListener('click', function() {
+  //   document.querySelector('overlay').classList.remove('is-visible');
+  //   document.querySelector('modal').classList.remove('is-visible');
+  // });
+  
+  // ------------------------------------------------------------------------------------------------
+  markAsPaidButton.addEventListener('click', markAsPaidButtonListener, {
+    capture: false,
+    once: true
+  });
+
+  data.status === 'paid' ? markAsPaidButton.disabled = true : void 0;
   redirectToEdit.addEventListener('click', redirectToEditListener)
-  statusWrapper.innerHTML = chip;
+  statusWrapper.innerHTML = getChipInnerHtml(data.status);
   detailsHeaders[0].innerHTML = data.id;
   detailsHeaders[1].innerHTML = data.description;
   detailsHeaders[2].innerHTML = data.senderAddress.street;

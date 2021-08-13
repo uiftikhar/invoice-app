@@ -23,7 +23,7 @@ const  populateDates = (daysElement, monthElement, date, addSelectedClass = true
     }
   }
 
-  // monthElement.setAttribute('value', `${formatter.format(selectedDate)} ${selectedYear}`)
+  monthElement.setAttribute('value', `${formatter.format(selectedDate)} ${selectedYear}`)
   monthElement.innerHTML = `${formatter.format(selectedDate)} ${selectedYear}`;
 	for (let i = 0; i < amountDays; i++) {
 		const dayElement = document.createElement('div');

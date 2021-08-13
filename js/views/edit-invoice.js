@@ -1,4 +1,4 @@
-import {formatter} from '../utils.js'
+import { formatter, formatDateSaveValue } from '../utils.js'
 import { populateDates } from '../helpers/calendar.js';
 import { populateUpdateInvoiceFormOnInit, renderItems, updateItemsInLocalStorage } from '../helpers/populate-edit-invoice-oninit.js';
 const checkEventPathForClass = (path, selector) => {
@@ -10,7 +10,7 @@ const checkEventPathForClass = (path, selector) => {
   return false;
 }
 export const updateEditInvoice = (editInvoiceWrapper, data) => {
-  let date = new Date(data.paymentDue);
+  let date = data.paymentDue ? new Date(data.paymentDue) : new Date(formatDateSaveValue(Date.now()));
 
   // ------------------------------ Query Selectors ----------------------------------------------
   const datePickerElement = editInvoiceWrapper.querySelector('#date-picker');
@@ -45,7 +45,6 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
 
   const appRootListener =  (event) => {
     event.preventDefault();
-    console.log('removing all listeners');
     formElement.removeEventListener('submit', formSubmitListener, false);
     invoiceItemsWrapper.removeEventListener('click', invoiceItemsWrapperListener, false);
     addNewItemButton.removeEventListener('click', addNewItemButtonListener, false);
@@ -56,7 +55,6 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
     nextMonthElement.removeEventListener('click',  nextMonthElementListener, false);
     selectElements.removeEventListener('click', selectElementsListener, false);
     daysElement.removeEventListener('click', daysElementListener, false);
-    console.log('page-routing event listener');
   };
 
   const addNewItemButtonListener = (event) => {
@@ -94,6 +92,7 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
     const formData = new FormData(element)
     const form = Array.from(formData.entries());
     updateItemsInLocalStorage(form, data);
+    window.history.back()
   };
 
   const datePickerElementListener = (event) => {

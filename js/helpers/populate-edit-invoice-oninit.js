@@ -126,8 +126,9 @@ export const createNewInvoice = (entries, isDraft = false) => {
   populateInvoice(newItem, entries, []);
   newItem.status = 'paid';
   if(isDraft) {
-    newItem.status = 'pending';
+    newItem.status = 'draft';
   }
+  newItem.paymentDue = '';
   const currentData = JSON.parse(localStorage.getItem('data'));
   currentData.push(newItem);
   localStorage.setItem('data', JSON.stringify(currentData));

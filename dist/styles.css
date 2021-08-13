@@ -268,6 +268,10 @@ ul ul li {
   width: 100%;
 }
 
+#app-root {
+  position: relative;
+}
+
 .date-picker {
   position: relative;
   width: 101%;
@@ -447,6 +451,10 @@ button {
   border: none;
   border-radius: 24px;
   background-color: #7C5DFA;
+}
+
+button:disabled {
+  opacity: 0.3;
 }
 
 button.toggle-button {
@@ -1146,4 +1154,65 @@ button.success {
   top: -61px;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.0001)), to(rgba(0, 0, 0, 0.1)));
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+.modal {
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  max-width: 330px;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+  margin: 0 auto;
+  padding: 32px;
+  -webkit-box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+          box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  border-radius: 8px;
+}
+
+.theme--light .modal {
+  background-color: #FFFFFF;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark .modal {
+  background-color: #1E2139;
+  -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.modal > h2 {
+  margin-bottom: 8px;
+  line-height: 32px;
+}
+
+.modal > h4 {
+  margin-bottom: 24px;
+  line-height: 22px;
+}
+
+.overlay {
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.is-visible {
+  opacity: 1;
+  pointer-events: auto;
 }

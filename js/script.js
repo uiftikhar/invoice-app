@@ -36,7 +36,6 @@ const appRootListener =  () => {
   const viewInvoiceWrapper = appRoot.querySelector('#view-invoice');
   const editInvoiceWrapper = appRoot.querySelector('#edit-invoice');
   const newInvoiceWrapper = appRoot.querySelector('#create-new-invoice');
-  console.log(newInvoiceWrapper);
   if(jsonData && InvoiceWrapper) {
     updateHome(InvoiceWrapper, jsonData)
   };
@@ -51,7 +50,6 @@ const appRootListener =  () => {
     updateEditInvoice(editInvoiceWrapper, currentItem)
   }
   if(jsonData && newInvoiceWrapper) {
-    console.log(0, newInvoiceWrapper);
     updateNewInvoice(newInvoiceWrapper)
     // const queryString = window.location.hash.split('?')[1];
     // const currentItem = jsonData.find(item => item.id === queryString);

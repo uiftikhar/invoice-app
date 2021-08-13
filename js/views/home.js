@@ -19,7 +19,7 @@ export const updateHome = (InvoiceWrapper, jsonData) => {
         <a href="#view-invoice?${item.id}">
           <section class="card__invoice">
             <hgroup>
-              <h4 class="card__invoice--id bold">${item.id}</h4>
+              <h4 class="card__invoice--id bold">${item.id.toUpperCase()}</h4>
               <h4 class="card__invoice--name">${item.clientName}</h4>
             </hgroup>
             <article>

@@ -69,7 +69,17 @@
     <a href="" id="redirect-to-edit-invoice" >
       <button class="base">Edit</button>
     </a>
-    <button class="warn">Delete</button>
-    <button class="success">Mark as Paid</button>
+    <button id="delete-invoice" class="warn">Delete</button>
+    <button id="mark-as-paid" class="success">Mark as Paid</button>
   </footer>
 </article>
+
+<div class="overlay" id="overlay"></div>
+<div class="modal" id="modal">
+  <h2>Confirm Deletion</h2>
+  <h4></h4>
+  <div class="flex flex__jc-end">
+    <button class="base mr-1">cancel</button>
+    <button class="warn">Delete</button>
+  </div>
+</div>

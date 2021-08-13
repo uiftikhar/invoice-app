@@ -62,7 +62,6 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
 
   const appRootListener =  (event) => {
     event.preventDefault();
-    console.log('removing all listeners');
     formElement.removeEventListener('submit', formSubmitListener, false);
     invoiceItemsWrapper.removeEventListener('click', invoiceItemsWrapperListener, false);
     addNewItemButton.removeEventListener('click', addNewItemButtonListener, false);
@@ -74,7 +73,6 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
     selectElements.removeEventListener('click', selectElementsListener, false);
     daysElement.removeEventListener('click', daysElementListener, false);
     saveAsDraftButton.removeEventListener('click', saveAsDraftButtonListener, false);
-    console.log('page-routing event listener');
   };
 
   const addNewItemButtonListener = (event) => {
@@ -94,9 +92,8 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
     const element = document.querySelector('#edit-invoice-form')
     const formData = new FormData(element)
     const form = Array.from(formData.entries());
-    console.log(form);
     createNewInvoice(form);
-    // updateItemsInLocalStorage(form, data);
+    window.history.back()
   };
   
   const saveAsDraftButtonListener = (event) => {
@@ -104,9 +101,8 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
     const element = document.querySelector('#edit-invoice-form')
     const formData = new FormData(element)
     const form = Array.from(formData.entries());
-    console.log(form);
     createNewInvoice(form, true);
-    // updateItemsInLocalStorage(form, data);
+    window.history.back()
   };
 
   const datePickerElementListener = (event) => {
