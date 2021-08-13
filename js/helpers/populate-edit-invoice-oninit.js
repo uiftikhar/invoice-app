@@ -1,4 +1,4 @@
-import { formatCurrency, formatDate  } from '../helpers.js'
+import { formatCurrency, formatDate  } from '../utils.js'
 const getPaymentTermsInnerHTM = (terms) => {
   let response = 'Net 1 Day';
   switch (terms) {

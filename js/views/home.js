@@ -1,4 +1,4 @@
-import { formatCurrency, formatDate } from '../helpers.js'
+import { formatCurrency, formatDate } from '../utils.js'
 export const updateHome = (InvoiceWrapper, jsonData) => {
   const totalInvoicesElement = InvoiceWrapper.querySelector('article > hgroup > h4')
   const totalInvoices = jsonData.length;

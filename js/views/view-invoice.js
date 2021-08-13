@@ -1,4 +1,4 @@
-import { formatCurrency, formatDate } from '../helpers.js'
+import { formatCurrency, formatDate } from '../utils.js'
 
 export const updateViewInvoice = (viewInvoiceWrapper, data) => {
   const appRoot = document.querySelector('#app-root');

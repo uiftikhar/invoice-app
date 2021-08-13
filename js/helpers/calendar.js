@@ -1,5 +1,5 @@
 
-import { formatter } from '../helpers.js'
+import { formatter } from '../utils.js'
 const  populateDates = (daysElement, monthElement, date, addSelectedClass = true) => {
   daysElement.innerHTML = '';
   
