@@ -219,6 +219,10 @@ ul ul li {
   margin-right: 1rem;
 }
 
+.mr-half {
+  margin-right: 0.5rem;
+}
+
 .mb-2 {
   margin-bottom: 2rem;
 }
@@ -270,6 +274,23 @@ ul ul li {
 
 #app-root {
   position: relative;
+  height: calc(100vh - 73px);
+}
+
+@media all and (min-width: 641px) {
+  .only-for-mobile {
+    display: none;
+  }
+}
+
+.only-for-tablet {
+  display: none;
+}
+
+@media all and (min-width: 641px) {
+  .only-for-tablet {
+    display: unset;
+  }
 }
 
 .date-picker {
@@ -665,6 +686,12 @@ button.success {
   border-radius: 8px;
 }
 
+@media all and (min-width: 641px) {
+  .card {
+    padding: 16px 24px;
+  }
+}
+
 .theme--light .card {
   background-color: #FFFFFF;
   -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
@@ -694,6 +721,39 @@ button.success {
   transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
+@media all and (min-width: 641px) {
+  .card--invoice-details {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[autofill];
+        grid-template-columns: repeat(autofill, 1fr);
+    -ms-grid-rows: (30px)[auto-fill];
+        grid-template-rows: repeat(auto-fill, 30px);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+  .card--invoice-details .div1 {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1 / 3;
+  }
+  .card--invoice-details .div2 {
+    -ms-grid-column: 4;
+    grid-column: 4 / 4;
+    text-align: right;
+  }
+  .card--invoice-details .div3 {
+    -ms-grid-column: 5;
+    grid-column: 5 / 5;
+    text-align: right;
+  }
+  .card--invoice-details .div4 {
+    -ms-grid-column: 6;
+    grid-column: 6 / 6;
+    text-align: right;
+  }
+}
+
 .card--invoice-details > section:not(:last-child) {
   margin-bottom: 24px;
 }
@@ -717,6 +777,20 @@ button.success {
 
 .card--grand-total > h4, .card--grand-total h2 {
   color: #FFFFFF;
+}
+
+@media all and (min-width: 641px) {
+  .card__invoice {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
 }
 
 .theme--light .card__invoice--id {
@@ -749,6 +823,12 @@ button.success {
 
 .card__invoice--due-date {
   margin-bottom: 8px;
+}
+
+@media all and (min-width: 641px) {
+  .card__invoice--due-date {
+    margin-bottom: 0px;
+  }
 }
 
 .card__invoice--due-date::before {
@@ -881,8 +961,15 @@ button.success {
   transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
+@media all and (min-width: 641px) {
+  .view-invoice, .new-invoice {
+    height: inherit;
+  }
+}
+
 .view-invoice > section, .new-invoice > section {
   padding-bottom: 56px;
+  height: inherit;
 }
 
 .view-invoice__themed-heading {
@@ -905,6 +992,12 @@ button.success {
 .view-invoice__status-wrapper {
   padding: 24px;
   border-radius: 8px;
+}
+
+@media all and (min-width: 641px) {
+  .view-invoice__status-wrapper {
+    padding: 20px 32px;
+  }
 }
 
 .theme--light .view-invoice__status-wrapper {
@@ -1002,6 +1095,25 @@ button.success {
   background-color: #1E2139;
   -webkit-transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
   transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+@media all and (min-width: 641px) {
+  .card {
+    padding: 32px;
+  }
+}
+
+@media all and (min-width: 641px) {
+  .card__content--user-details {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.card__content--user-details > hgroup:nth-of-type(2) {
+  text-align: right;
+  margin-left: auto;
 }
 
 .edit-invoice > section.container__px {

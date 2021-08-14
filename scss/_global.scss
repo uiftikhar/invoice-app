@@ -171,6 +171,10 @@ ul ul li {
   margin-right: 1rem;
 }
 
+.mr-half {
+  margin-right: 0.5rem;
+}
+
 .mb-2 {
   margin-bottom: 2rem;
 }
@@ -204,4 +208,19 @@ ul ul li {
 
 #app-root {
   position: relative;
+  height: calc(100vh - 73px);
+}
+
+.only-for-mobile {
+  @include breakpoints(medium) {
+		// Overrides for 640px and up
+    display: none;
+	}
+}
+
+.only-for-tablet {
+  display: none;
+  @include breakpoints(medium) {
+    display: unset;
+  }
 }

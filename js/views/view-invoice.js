@@ -1,23 +1,34 @@
 import { formatCurrency, formatDate } from '../utils.js'
+const mediaQuery = window.matchMedia( "(min-width: 640px)" );
 
 const getChipInnerHtml = (status) => {
   let chip = ''
   if(status === 'paid') {
     chip = `
-      <h4>Status</h4>
+      <h4 class="mr-1">Status</h4>
       <h4 class="chip chip__success bold">Paid</h4>
     `;
   } else if(status === 'pending') {
     chip = `
-      <h4>Status</h4>
+      <h4 class="mr-1">Status</h4>
       <h4 class="chip chip__warn bold">Pending</h4>
     `;
   } else if(status === 'draft') {
     chip = `
-    <h4>Status</h4>
-    <h4 class="chip chip__draft bold">Draft</h4>
+      <h4 class="mr-1">Status</h4>
+      <h4 class="chip chip__draft bold">Draft</h4>
     `;
   }
+  if(mediaQuery.matches) {
+    chip += `
+    <a href="" id="redirect-to-edit-invoice" class="ml-auto mr-half" >
+      <button class="base">Edit</button>
+    </a>
+    <button id="delete-invoice" class="warn mr-half">Delete</button>
+    <button id="mark-as-paid" class="success">Mark as Paid</button>
+    `
+  }
+
   return chip;
 }
 export const updateViewInvoice = (viewInvoiceWrapper, data) => {
@@ -43,6 +54,7 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
   const deleteInvoiceButton = viewInvoiceWrapper.querySelector('#delete-invoice');
   const closeDeleteModalButton = document.querySelector('#modal > div > button:first-of-type');
   const confirmDeleteModalButton = document.querySelector('#modal > div > button:nth-of-type(2)');
+  console.log(detailsHeaders, detailsPaymentHeaders);
   // ------------------------------------------------------------------------------------------------
   const redirectToEditListener = () => {
     redirectToEdit.setAttribute('href',`#edit-invoice?${data.id}`)
@@ -109,16 +121,33 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
   detailsPaymentHeaders[2].innerHTML = data.clientName;
   detailsPaymentHeaders[3].innerHTML = data.clientEmail;
   let items = '';
-  data.items.forEach(item => {
+  if(!mediaQuery.matches) {
+    data.items.forEach(item => {
+      items += `
+      <section class="flex flex__jc-sb flex__ai-c only-for-mobile" >
+        <hgroup>
+          <h4 class="view-invoice__themed-heading">${item.name}</h4>
+          <h4>${item.quantity} x £ ${formatCurrency(item.price)}</h4>
+        </hgroup>
+        <h4 class="view-invoice__themed-heading">£ ${formatCurrency(item.total)}</h4>
+      </section>
+      `
+    })
+  } else {
     items += `
-    <section class="flex flex__jc-sb flex__ai-c">
-      <hgroup>
-        <h4 class="view-invoice__themed-heading">${item.name}</h4>
-        <h4>${item.quantity} x £ ${formatCurrency(item.price)}</h4>
-      </hgroup>
-      <h4 class="view-invoice__themed-heading">£ ${formatCurrency(item.total)}</h4>
-    </section>
+      <h4 class="mb-1 div1">Item Name</h4>
+      <h4 class="mb-1 div2">Qty</h4>
+      <h4 class="mb-1 div3">Price</h4>
+      <h4 class="mb-1 div4">Total</h4>
     `
-  })
+    data.items.forEach(item => {
+      items += `
+        <h4 class="mb-1 view-invoice__themed-heading div1">${item.name}</h4>
+        <h4 class="mb-1 div2">${item.quantity}</h4>
+        <h4 class="mb-1 div3">£ ${formatCurrency(item.price)}</h4>
+        <h4 class="mb-1 view-invoice__themed-heading div4">£ ${formatCurrency(item.total)}</h4>
+      `
+    })
+  }
   invoiceItemsWrapper.innerHTML = items;
 }
