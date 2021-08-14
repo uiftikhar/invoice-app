@@ -70,8 +70,28 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
   const closeDeleteModalButton = document.querySelector('#modal > div > button:first-of-type');
   const confirmDeleteModalButton = document.querySelector('#modal > div > button:nth-of-type(2)');
   // ------------------------------------------------------------------------------------------------
+  document.querySelector('#close-side').addEventListener('click', () => {
+    const sideDrawer = document.querySelector('#edit-invoice-sidebar');
+    sideDrawer.classList.toggle('side-drawer__is-opened')
+  })
+  // ------------------------------------------------------------------------------------------------
   const redirectToEditListener = () => {
-    viewInvoiceWrapper.querySelector('#redirect-to-edit-invoice').setAttribute('href',`#edit-invoice?${data.id}`)
+    console.log(mediaQuery.matches);
+    if(!mediaQuery.matches) {
+      viewInvoiceWrapper.querySelector('#redirect-to-edit-invoice').setAttribute('href',`#edit-invoice?${data.id}`)
+    } else {
+      const sideDrawer = document.querySelector('#edit-invoice-sidebar');
+      let xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function (res) {
+        if (this.readyState === 4 && this.status === 200) {
+            // console.log(res, this.readyState, this.status);
+            sideDrawer.classList.toggle('side-drawer__is-opened')
+            sideDrawer.innerHTML = this.responseText;
+          }
+      };
+      xhttp.open('GET', '/views/edit-invoice.html', true);
+      xhttp.send();
+    }
   }
   
   const markAsPaidButtonListener = () => {
