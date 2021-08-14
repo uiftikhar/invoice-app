@@ -25,11 +25,13 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
   appRoot.addEventListener('on-page-route-started', () => {
     redirectToEdit.removeEventListener('click', redirectToEditListener);
     markAsPaidButton.removeEventListener('click', markAsPaidButtonListener, false);
+    deleteInvoiceButton.removeEventListener('click', openDateInvoiceModalListener, false);
+    closeDeleteModalButton.removeEventListener('click', closeDateModalListener, false);
+    confirmDeleteModalButton.removeEventListener('click', confirmDeleteModalButtonListener, false);
   }, {
     capture: false,
     once: true
   })
-
   
   const statusWrapper = viewInvoiceWrapper.querySelector('.view-invoice__status-wrapper > hgroup');
   const detailsWrapper = viewInvoiceWrapper.querySelector('.view-invoice__details-wrapper');
@@ -39,7 +41,8 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
   const detailsPaymentHeaders = detailsWrapper.querySelectorAll('hgroup > h3');
   const markAsPaidButton = viewInvoiceWrapper.querySelector('#mark-as-paid');
   const deleteInvoiceButton = viewInvoiceWrapper.querySelector('#delete-invoice');
-
+  const closeDeleteModalButton = document.querySelector('#modal > div > button:first-of-type');
+  const confirmDeleteModalButton = document.querySelector('#modal > div > button:nth-of-type(2)');
   // ------------------------------------------------------------------------------------------------
   const redirectToEditListener = () => {
     redirectToEdit.setAttribute('href',`#edit-invoice?${data.id}`)
@@ -54,8 +57,7 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
     localStorage.setItem('data', JSON.stringify(currentData));
   }
 
-
-  deleteInvoiceButton.addEventListener('click', function() {
+  const openDateInvoiceModalListener = () => {
     document.querySelector('#overlay').classList.add('is-visible');
     document.querySelector('#modal').classList.add('is-visible');
     window.scrollTo({
@@ -64,22 +66,29 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
       behavior: 'smooth'
     });
     document.querySelector('#modal > h4').innerHTML = `Are you sure you want to delete invoice #${data.id}? This action cannot be undone.`;
-  });
-  
-  // document.querySelector('close-btn').addEventListener('click', function() {
-  //   document.querySelector('overlay').classList.remove('is-visible');
-  //   document.querySelector('modal').classList.remove('is-visible');
-  // });
-  // document.querySelector('overlay').addEventListener('click', function() {
-  //   document.querySelector('overlay').classList.remove('is-visible');
-  //   document.querySelector('modal').classList.remove('is-visible');
-  // });
-  
+  }
+
+  const closeDateModalListener =  () => {
+    document.querySelector('#overlay').classList.remove('is-visible');
+    document.querySelector('#modal').classList.remove('is-visible');
+  }
+
+  const confirmDeleteModalButtonListener = () => {
+    const currentData = JSON.parse(localStorage.getItem('data'));
+    const newData = currentData.filter(item => item.id !== data.id);
+    localStorage.setItem('data', JSON.stringify(newData));
+    window.history.back()
+  }
   // ------------------------------------------------------------------------------------------------
+  deleteInvoiceButton.addEventListener('click', openDateInvoiceModalListener, false);
+  closeDeleteModalButton.addEventListener('click', closeDateModalListener, false);
+  confirmDeleteModalButton.addEventListener('click', confirmDeleteModalButtonListener, false);
+  
   markAsPaidButton.addEventListener('click', markAsPaidButtonListener, {
     capture: false,
     once: true
   });
+  // ------------------------------------------------------------------------------------------------
 
   data.status === 'paid' ? markAsPaidButton.disabled = true : void 0;
   redirectToEdit.addEventListener('click', redirectToEditListener)
