@@ -82,6 +82,7 @@ button {
   &.warn {
     background-color: $warning;
     color: $white;
+    pointer-events: visible;
   }
   
   &.success {

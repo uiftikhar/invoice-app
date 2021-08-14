@@ -593,6 +593,7 @@ button.draft {
 button.warn {
   background-color: #EC5757;
   color: #FFFFFF;
+  pointer-events: visible;
 }
 
 button.success {

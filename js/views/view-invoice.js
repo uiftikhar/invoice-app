@@ -1,31 +1,48 @@
 import { formatCurrency, formatDate } from '../utils.js'
 const mediaQuery = window.matchMedia( "(min-width: 640px)" );
 
+const getChip = (status) => {
+  let chip = ''
+  if(status === 'paid') {
+    chip = `
+      <h4 class="chip chip__success bold">Paid</h4>
+    `;
+  } else if(status === 'pending') {
+    chip = `
+      <h4 class="chip chip__warn bold">Pending</h4>
+    `;
+  } else if(status === 'draft') {
+    chip = `
+      <h4 class="chip chip__draft bold">Draft</h4>
+    `;
+  }
+  return chip;
+}
 const getChipInnerHtml = (status) => {
   let chip = ''
   if(status === 'paid') {
     chip = `
       <h4 class="mr-1">Status</h4>
-      <h4 class="chip chip__success bold">Paid</h4>
+      ${getChip(status)}
     `;
   } else if(status === 'pending') {
     chip = `
       <h4 class="mr-1">Status</h4>
-      <h4 class="chip chip__warn bold">Pending</h4>
+      ${getChip(status)}
     `;
   } else if(status === 'draft') {
     chip = `
       <h4 class="mr-1">Status</h4>
-      <h4 class="chip chip__draft bold">Draft</h4>
+      ${getChip(status)}
     `;
   }
   if(mediaQuery.matches) {
     chip += `
-    <a href="" id="redirect-to-edit-invoice" class="ml-auto mr-half" >
-      <button class="base">Edit</button>
-    </a>
-    <button id="delete-invoice" class="warn mr-half">Delete</button>
-    <button id="mark-as-paid" class="success">Mark as Paid</button>
+      <a id="redirect-to-edit-invoice" class="ml-auto mr-half" >
+        <button class="base">Edit</button>
+      </a>
+      <button id="delete-invoice" class="warn mr-half">Delete</button>
+      <button id="mark-as-paid" class="success">Mark as Paid</button>
     `
   }
 
@@ -34,8 +51,8 @@ const getChipInnerHtml = (status) => {
 export const updateViewInvoice = (viewInvoiceWrapper, data) => {
   const appRoot = document.querySelector('#app-root');
   appRoot.addEventListener('on-page-route-started', () => {
-    redirectToEdit.removeEventListener('click', redirectToEditListener);
-    markAsPaidButton.removeEventListener('click', markAsPaidButtonListener, false);
+    viewInvoiceWrapper.querySelector('#redirect-to-edit-invoice').removeEventListener('click', redirectToEditListener);
+    viewInvoiceWrapper.querySelector('#mark-as-paid').removeEventListener('click', markAsPaidButtonListener, false);
     deleteInvoiceButton.removeEventListener('click', openDateInvoiceModalListener, false);
     closeDeleteModalButton.removeEventListener('click', closeDateModalListener, false);
     confirmDeleteModalButton.removeEventListener('click', confirmDeleteModalButtonListener, false);
@@ -47,23 +64,23 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
   const statusWrapper = viewInvoiceWrapper.querySelector('.view-invoice__status-wrapper > hgroup');
   const detailsWrapper = viewInvoiceWrapper.querySelector('.view-invoice__details-wrapper');
   const invoiceItemsWrapper = viewInvoiceWrapper.querySelector('#invoice-items');
-  const redirectToEdit = viewInvoiceWrapper.querySelector('#redirect-to-edit-invoice');
   const detailsHeaders = detailsWrapper.querySelectorAll('section > h4, section > h2, hgroup > h4');
   const detailsPaymentHeaders = detailsWrapper.querySelectorAll('hgroup > h3');
-  const markAsPaidButton = viewInvoiceWrapper.querySelector('#mark-as-paid');
   const deleteInvoiceButton = viewInvoiceWrapper.querySelector('#delete-invoice');
   const closeDeleteModalButton = document.querySelector('#modal > div > button:first-of-type');
   const confirmDeleteModalButton = document.querySelector('#modal > div > button:nth-of-type(2)');
-  console.log(detailsHeaders, detailsPaymentHeaders);
   // ------------------------------------------------------------------------------------------------
   const redirectToEditListener = () => {
-    redirectToEdit.setAttribute('href',`#edit-invoice?${data.id}`)
+    viewInvoiceWrapper.querySelector('#redirect-to-edit-invoice').setAttribute('href',`#edit-invoice?${data.id}`)
   }
   
   const markAsPaidButtonListener = () => {
     data.status = 'paid';
-    statusWrapper.innerHTML = getChipInnerHtml(data.status);
-    markAsPaidButton.disabled = true;
+    const prevChip = statusWrapper.querySelector('h4.chip');
+    const status = statusWrapper.querySelector('h4:first-of-type')
+    prevChip.parentElement.removeChild(prevChip);
+    status.insertAdjacentHTML('afterend', getChip('paid'));
+    viewInvoiceWrapper.querySelector('#mark-as-paid').disabled = true;
     const currentData = JSON.parse(localStorage.getItem('data'));
     currentData.find(item => item.id === data.id).status = 'paid';
     localStorage.setItem('data', JSON.stringify(currentData));
@@ -92,18 +109,20 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
     window.history.back()
   }
   // ------------------------------------------------------------------------------------------------
-  deleteInvoiceButton.addEventListener('click', openDateInvoiceModalListener, false);
   closeDeleteModalButton.addEventListener('click', closeDateModalListener, false);
   confirmDeleteModalButton.addEventListener('click', confirmDeleteModalButtonListener, false);
-  
-  markAsPaidButton.addEventListener('click', markAsPaidButtonListener, {
-    capture: false,
-    once: true
-  });
+  // Need to attach listeners after dom content loaded
+  setTimeout(() => {
+    viewInvoiceWrapper.querySelector('#mark-as-paid').addEventListener('click', markAsPaidButtonListener, {
+      capture: false,
+      once: true
+    });
+    viewInvoiceWrapper.querySelector('#delete-invoice').addEventListener('click', openDateInvoiceModalListener, false);
+    data.status === 'paid' ? viewInvoiceWrapper.querySelector('#mark-as-paid').disabled = true : void 0;
+    viewInvoiceWrapper.querySelector('#redirect-to-edit-invoice').addEventListener('click', redirectToEditListener)
+  })
   // ------------------------------------------------------------------------------------------------
 
-  data.status === 'paid' ? markAsPaidButton.disabled = true : void 0;
-  redirectToEdit.addEventListener('click', redirectToEditListener)
   statusWrapper.innerHTML = getChipInnerHtml(data.status);
   detailsHeaders[0].innerHTML = data.id;
   detailsHeaders[1].innerHTML = data.description;

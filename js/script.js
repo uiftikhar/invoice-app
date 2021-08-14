@@ -29,6 +29,8 @@ const appRoot = document.querySelector('#app-root');
   init();
 }());
 
+
+
 const appRootListener =  () => {
   const jsonData = JSON.parse(localStorage.getItem('data'));
 
@@ -81,7 +83,5 @@ const toggleThemeButtonListener = () => {
     img.setAttribute('src','./assets/icon-moon.svg')
   }
 }
-
-
 appRoot.addEventListener('page-loaded', appRootListener)
 toggleThemeButton.addEventListener('click', toggleThemeButtonListener)
