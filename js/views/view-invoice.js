@@ -93,7 +93,7 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
             appRoot.dispatchEvent(event);
           }
       };
-      xhttp.open('GET', '/views/edit-invoice.html', true);
+      xhttp.open('GET', 'views/edit-invoice.html', true);
       xhttp.send();
     }
   }
@@ -158,7 +158,7 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
     for(const mutation of mutationsList) {
         if (mutation.type === 'childList') {
 
-          if(mutation.addedNodes[0]?.getAttribute('id') === 'edit-invoice') {
+          if(mutation.addedNodes[0]?.classList && mutation.addedNodes[0]?.classList[0] ==='edit-invoice') {
             document.querySelector('#close-side')?.addEventListener('click', () => {
               const sideDrawer = document.querySelector('#edit-invoice-sidebar');
               sideDrawer.classList.toggle('side-drawer__is-opened');
