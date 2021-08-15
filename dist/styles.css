@@ -300,7 +300,6 @@ ul ul li {
 
 .date-picker {
   position: relative;
-  width: 101%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1210,13 +1209,19 @@ button.success {
   margin-bottom: 40px;
 }
 
-.bill-from-form > div > div:last-of-type {
+.bill-from-form__address-wrapper > div:last-of-type {
   width: 100%;
 }
 
 @media all and (min-width: 641px) {
-  .bill-from-form > div > div:last-of-type {
-    width: unset;
+  .bill-from-form__address-wrapper > div:last-of-type {
+    width: 33%;
+  }
+}
+
+@media all and (min-width: 641px) {
+  .bill-from-form__address-wrapper > div {
+    width: 33%;
   }
 }
 
@@ -1224,13 +1229,19 @@ button.success {
   margin-bottom: 66px;
 }
 
-.bill-to-form > div > div:last-of-type {
+.bill-to-form__address-wrapper > div:last-of-type {
   width: 100%;
 }
 
 @media all and (min-width: 641px) {
-  .bill-to-form > div > div:last-of-type {
-    width: unset;
+  .bill-to-form__address-wrapper > div:last-of-type {
+    width: 33%;
+  }
+}
+
+@media all and (min-width: 641px) {
+  .bill-to-form__address-wrapper > div {
+    width: 33%;
   }
 }
 
