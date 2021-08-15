@@ -3,6 +3,9 @@
 	width: 101%;
   display: flex;
   align-items: center;
+  > figure {
+    height: 16px;
+  }
   
 	cursor: pointer;
 	user-select: none;

@@ -6,8 +6,8 @@
   width: 80%;
   transform: translateX(-100%);
   overflow: scroll;
-  padding: 2.75rem 1.5rem;
-  
+  // padding: 2.75rem 1.5rem;
+  border-radius: 0px 20px 20px 0px;
   &__is-opened {
     transform: translateX(0);
   }

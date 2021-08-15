@@ -185,6 +185,10 @@ ul ul li {
 
 .flex {
   display: flex;
+
+  &__row-wrap {
+    flex-wrap: wrap;
+  }
   &__col {
     flex-direction: column;
   }

@@ -67,7 +67,7 @@ export const renderItems = (items) => {
     const li = document.createElement('li');
     li.setAttribute('data-key', index);
     li.innerHTML = `
-    <div class="flex flex__col pb-1 w-100">
+    <div class="flex flex__col pb-1 w-100 item-list-form__items--name">
       <label>Item Name</label>
       <input type="text" name="${index}-item-list--name" value="${item.name}">
     </div>
@@ -83,7 +83,7 @@ export const renderItems = (items) => {
       <label>Total</label>
       <input class="disabled" type="text" name="${index}-item-list--total" value="${formatCurrency(item.total)}">
     </div>
-    <div class="flex flex__col flex__jc-end ml-auto">
+    <div class="flex flex__col ml-auto">
       <button data-key=${index} class="icon-button icon-button__mini delete-button" >
         <figure>
           <img src="./assets/icon-delete.svg" alt="filters" />

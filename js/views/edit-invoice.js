@@ -10,7 +10,7 @@ const checkEventPathForClass = (path, selector) => {
   return false;
 }
 
-
+const mediaQuery = window.matchMedia( "(min-width: 640px)" );
 export const updateEditInvoice = (editInvoiceWrapper, data) => {
   let date = data.paymentDue ? new Date(data.paymentDue) : new Date(formatDateSaveValue(Date.now()));
 
@@ -29,8 +29,13 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
   const invoiceItemsWrapper = editInvoiceWrapper.querySelector('#edit-invoice-form--item-list');
   const addNewItemButton = editInvoiceWrapper.querySelector('#add-new-item');
   const submitFormButton = editInvoiceWrapper.querySelector('#submit-form-button');
+  const goBackButton = editInvoiceWrapper.querySelector('#close-side > a');
   const appRoot = document.querySelector('#app-root');
-  
+  if(mediaQuery.matches) {
+    submitFormButton.innerHTML = 'Save Changes';
+  } else {
+    goBackButton.setAttribute('href',"javascript:history.go(-1)");
+  }
   // ------------------------------ Listener Functions ----------------------------------------------
   const invoiceItemsWrapperListener = (event) => {
     event.preventDefault();

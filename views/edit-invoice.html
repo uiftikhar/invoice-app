@@ -1,8 +1,7 @@
 <article id="edit-invoice" class="edit-invoice">
-  <button class="only-for-tablet" id="close-side">close</button>
   <section class="container__px container__py--top ">
-    <button class="icon-button icon-button__mini icon-button__back mb-2" >
-      <a href="javascript:history.go(-1)" class="flex flex__ai-c">
+    <button class="icon-button icon-button__mini icon-button__back mb-2" id="close-side">
+      <a class="flex flex__ai-c">
         <figure class="mr-1">
           <img src="./assets/icon-arrow-left.svg" alt="filters" />
         </figure>  
@@ -18,7 +17,7 @@
             <label>Street Address</label>
             <input type="text" name="bill-from--street_address">
           </div>
-          <div class="flex flex__jc-sb">
+          <div class="flex flex__jc-sb flex__row-wrap">
             <div class="flex flex__col pb-1 mini">
               <label>City</label>
               <input type="text" name="bill-from--city">
@@ -27,10 +26,10 @@
               <label>Post Code</label>
               <input type="text" name="bill-from--post_code">
             </div>
-          </div>
-          <div class="flex flex__col ">
-            <label>Country</label>
-            <input type="text" name="bill-from--country">
+            <div class="flex flex__col">
+              <label>Country</label>
+              <input type="text" name="bill-from--country">
+            </div>
           </div>
         </section>
         <section class="bill-to-form">
@@ -47,7 +46,7 @@
             <label>Street Address</label>
             <input type="text" name="bill-to--street_address">
           </div>
-          <div class="flex flex__jc-sb">
+          <div class="flex flex__jc-sb flex__row-wrap pb-1">
             <div class="flex flex__col pb-1 mini">
               <label>City</label>
               <input type="text" name="bill-to--city">
@@ -56,56 +55,57 @@
               <label>Post Code</label>
               <input type="text" name="bill-to--post_code">
             </div>
-          </div>
-          <div class="flex flex__col pb-1">
-            <label>Country</label>
-            <input type="text" name="bill-to--country">
+            <div class="flex flex__col">
+              <label>Country</label>
+              <input type="text" name="bill-to--country">
+            </div>
           </div>
           <!-- change padding tp 40px // date picker-->
-          <div class="flex flex__col pb-1">
-            <label>Invoice Date</label>
-            <!-- <input id="calendar" type="text" > -->
-            <div id="date-picker" class="date-picker">
-              <input readonly name="payment-date" class="selected-date" >
-              <figure class="ml-auto">
-                <img src="./assets/icon-calendar.svg" height="16" width="16" />
-              </figure>
-              <div class="dates">
-                <div class="month">
-                  <button class="icon-button icon-button__mini prev-month" >
-                    <figure>
-                      <img src="./assets/icon-arrow-left.svg" />
-                    </figure>
-                  </button>
-                  <!-- <div class="month-input">Aug 2021</div> -->
-                  <div class="month-input"></div>
-                  <button class="icon-button icon-button__mini next-month" >
-                    <figure>
-                      <img src="./assets/icon-arrow-right.svg" />
-                    </figure>
-                  </button>
+          <div class="user-select-wrapper">
+            <div class="flex flex__col pb-1">
+              <label>Invoice Date</label>
+              <!-- <input id="calendar" type="text" > -->
+              <div id="date-picker" class="date-picker">
+                <input readonly name="payment-date" class="selected-date" >
+                <figure class="ml-auto">
+                  <img src="./assets/icon-calendar.svg" height="16" width="16" />
+                </figure>
+                <div class="dates">
+                  <div class="month">
+                    <button class="icon-button icon-button__mini prev-month" >
+                      <figure>
+                        <img src="./assets/icon-arrow-left.svg" />
+                      </figure>
+                    </button>
+                    <!-- <div class="month-input">Aug 2021</div> -->
+                    <div class="month-input"></div>
+                    <button class="icon-button icon-button__mini next-month" >
+                      <figure>
+                        <img src="./assets/icon-arrow-right.svg" />
+                      </figure>
+                    </button>
+                  </div>
+                  <div class="days"></div>              
                 </div>
-                <div class="days"></div>              
               </div>
             </div>
-          
-          </div>
-          <div class="flex flex__col pb-1">
-            <label>Payment Terms</label>
-            <div id="select" class="select">
-              <input readonly name="payment-terms" class="select__selected-item" >
-              <figure class="ml-auto">
-                <img src="./assets/icon-arrow-down.svg" />
-              </figure>
-              <div class="select__elements">
-                <p>Net 1 Day</p>
-                <p>Net 7 Days</p>
-                <p>Net 14 Days</p>
-                <p>Net 30 Days</p>
+            <div class="flex flex__col pb-1">
+              <label>Payment Terms</label>
+              <div id="select" class="select">
+                <input readonly name="payment-terms" class="select__selected-item" >
+                <figure class="ml-auto">
+                  <img src="./assets/icon-arrow-down.svg" />
+                </figure>
+                <div class="select__elements">
+                  <p>Net 1 Day</p>
+                  <p>Net 7 Days</p>
+                  <p>Net 14 Days</p>
+                  <p>Net 30 Days</p>
+                </div>
               </div>
+              <!-- <select name="bill-to--terms" id="bill-to--terms">
+            </select> -->
             </div>
-            <!-- <select name="bill-to--terms" id="bill-to--terms">
-          </select> -->
           </div>
           <div class="flex flex__col pb-1">
             <label>Project / Description</label>

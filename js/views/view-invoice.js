@@ -158,7 +158,6 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
     for(const mutation of mutationsList) {
         if (mutation.type === 'childList') {
 
-          console.log(mutation)
           if(mutation.addedNodes[0]?.getAttribute('id') === 'edit-invoice') {
             document.querySelector('#close-side')?.addEventListener('click', () => {
               const sideDrawer = document.querySelector('#edit-invoice-sidebar');
