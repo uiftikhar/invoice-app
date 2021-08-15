@@ -1,4 +1,5 @@
-import { formatCurrency, formatDate } from '../utils.js'
+import { formatCurrency, formatDate } from '../utils.js';
+
 const mediaQuery = window.matchMedia( "(min-width: 640px)" );
 
 const getChip = (status) => {
@@ -52,7 +53,6 @@ const getChipInnerHtml = (status) => {
 export const updateViewInvoice = (viewInvoiceWrapper, data) => {
   const appRoot = document.querySelector('#app-root');
   let listenersAttached = false;
-  let closeSideBarAttached = false;
   appRoot.addEventListener('on-page-route-started', () => {
     viewInvoiceWrapper.querySelector('#redirect-to-edit-invoice').removeEventListener('click', redirectToEditListener);
     viewInvoiceWrapper.querySelector('#mark-as-paid').removeEventListener('click', markAsPaidButtonListener, false);
@@ -74,49 +74,8 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
   const deleteInvoiceButton = viewInvoiceWrapper.querySelector('#delete-invoice');
   const closeDeleteModalButton = document.querySelector('#modal > div > button:first-of-type');
   const confirmDeleteModalButton = document.querySelector('#modal > div > button:nth-of-type(2)');
-  const closeSideBar = document.querySelector('#close-side');
-  const _sideDrawer = document.querySelector('#edit-invoice-sidebar');
-  // ------------------------------------------------------------------------------------------------
-  const config =  { attributes: true, childList: true,characterData:true, subtree:true };
-  const statusWrapperButtonsMutationObserverListener = function(mutationsList, observer) {
-    // Use traditional 'for loops' for IE 11
-    for(const mutation of mutationsList) {
-      if(!listenersAttached) {
-        if (mutation.type === 'childList') {
-            viewInvoiceWrapper.querySelector('#mark-as-paid').addEventListener('click', markAsPaidButtonListener, {
-              capture: false,
-              once: true
-            });
-            viewInvoiceWrapper.querySelector('#delete-invoice').addEventListener('click', openDateInvoiceModalListener, false);
-            data.status === 'paid' ? viewInvoiceWrapper.querySelector('#mark-as-paid').disabled = true : void 0;
-            viewInvoiceWrapper.querySelector('#redirect-to-edit-invoice').addEventListener('click', redirectToEditListener)
-        }
-        else if (mutation.type === 'attributes') {
-        }
-        listenersAttached = true;
-      }
-    }
-  };
+  const sideDrawerContainer = document.querySelector('#edit-invoice-sidebar');
   
-  const closeButtonMutationObserverListener = function(mutationsList, observer) {
-    // Use traditional 'for loops' for IE 11
-    for(const mutation of mutationsList) {
-        if (mutation.type === 'childList') {
-          console.log(mutation)
-          document.querySelector('#close-side').addEventListener('click', () => {
-            const sideDrawer = document.querySelector('#edit-invoice-sidebar');
-            sideDrawer.classList.toggle('side-drawer__is-opened');
-          })
-        }
-        else if (mutation.type === 'attributes') {
-        }
-    }
-  };
-  const observer = new MutationObserver(statusWrapperButtonsMutationObserverListener);
-  observer.observe(statusWrapper, config);
-  const _closeSideBar = new MutationObserver(closeButtonMutationObserverListener);
-  _closeSideBar.observe(_sideDrawer, { attributes: true, childList: true,characterData:true, subtree:true });
-
   // ------------------------------------------------------------------------------------------------
   const redirectToEditListener = () => {
     if(!mediaQuery.matches) {
@@ -124,10 +83,13 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
     } else {
       const sideDrawer = document.querySelector('#edit-invoice-sidebar');
       let xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function (res) {
+      xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             sideDrawer.classList.toggle('side-drawer__is-opened')
             sideDrawer.innerHTML = this.responseText;
+            document.querySelector('#overlay').classList.toggle('is-visible');
+            const event = new Event('page-loaded');
+            appRoot.dispatchEvent(event);
           }
       };
       xhttp.open('GET', '/views/edit-invoice.html', true);
@@ -170,8 +132,57 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
     window.history.back()
   }
   // ------------------------------------------------------------------------------------------------
+  const config =  { attributes: true, childList: true,characterData:true, subtree:true };
+  const statusWrapperButtonsMutationObserverListener = function(mutationsList, observer) {
+    // Use traditional 'for loops' for IE 11
+    for(const mutation of mutationsList) {
+      if(!listenersAttached) {
+        if (mutation.type === 'childList') {
+            viewInvoiceWrapper.querySelector('#mark-as-paid').addEventListener('click', markAsPaidButtonListener, {
+              capture: false,
+              once: true
+            });
+            viewInvoiceWrapper.querySelector('#delete-invoice').addEventListener('click', openDateInvoiceModalListener, false);
+            data.status === 'paid' ? viewInvoiceWrapper.querySelector('#mark-as-paid').disabled = true : void 0;
+            viewInvoiceWrapper.querySelector('#redirect-to-edit-invoice').addEventListener('click', redirectToEditListener)
+        }
+        listenersAttached = true;
+      }
+    }
+  };
+  
+  const closeButtonMutationObserverListener = function(mutationsList, observer) {
+    // Use traditional 'for loops' for IE 11
+    for(const mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+
+          console.log(mutation)
+          if(mutation.addedNodes[0]?.getAttribute('id') === 'edit-invoice') {
+            document.querySelector('#close-side')?.addEventListener('click', () => {
+              const sideDrawer = document.querySelector('#edit-invoice-sidebar');
+              sideDrawer.classList.toggle('side-drawer__is-opened');
+              document.querySelector('#overlay').classList.toggle('is-visible');
+              sideDrawer.textContent = '';
+            })
+          } else {
+            if(mutation.removedNodes[0]?.classList && mutation.removedNodes[0]?.classList[0] ==='edit-invoice'){
+              const sideDrawer = document.querySelector('#edit-invoice-sidebar');
+              sideDrawer.classList.toggle('side-drawer__is-opened');
+              document.querySelector('#overlay').classList.toggle('is-visible');
+              sideDrawer.textContent = '';
+            }
+          }
+        }
+    }
+  };
+  const observer = new MutationObserver(statusWrapperButtonsMutationObserverListener);
+  const closeSideBar = new MutationObserver(closeButtonMutationObserverListener);
+  
+  // ------------------------------------------------------------------------------------------------
   closeDeleteModalButton.addEventListener('click', closeDateModalListener, false);
   confirmDeleteModalButton.addEventListener('click', confirmDeleteModalButtonListener, false);
+  observer.observe(statusWrapper, config);
+  closeSideBar.observe(sideDrawerContainer, { attributes: true, childList: true,characterData:true, subtree:true });
   // ------------------------------------------------------------------------------------------------
 
   statusWrapper.innerHTML = getChipInnerHtml(data.status);

@@ -52,7 +52,8 @@ const appRootListener =  () => {
     updateEditInvoice(editInvoiceWrapper, currentItem)
   }
   if(jsonData && newInvoiceWrapper) {
-    updateNewInvoice(newInvoiceWrapper)
+    updateNewInvoice(newInvoiceWrapper);
+    
     // const queryString = window.location.hash.split('?')[1];
     // const currentItem = jsonData.find(item => item.id === queryString);
     // updateEditInvoice(newInvoiceWrapper, currentItem)

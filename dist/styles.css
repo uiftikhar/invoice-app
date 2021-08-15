@@ -680,16 +680,12 @@ button.success {
 
 .side-drawer {
   position: fixed;
-  top: 4.375rem;
+  top: 73px;
   left: 0;
   bottom: 0;
   width: 80%;
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
-  -webkit-transition: -webkit-transform 140ms ease-in-out !important;
-  transition: -webkit-transform 140ms ease-in-out !important;
-  transition: transform 140ms ease-in-out !important;
-  transition: transform 140ms ease-in-out, -webkit-transform 140ms ease-in-out !important;
   overflow: scroll;
   padding: 2.75rem 1.5rem;
 }
