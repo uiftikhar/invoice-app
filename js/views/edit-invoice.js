@@ -9,6 +9,8 @@ const checkEventPathForClass = (path, selector) => {
   }
   return false;
 }
+
+
 export const updateEditInvoice = (editInvoiceWrapper, data) => {
   let date = data.paymentDue ? new Date(data.paymentDue) : new Date(formatDateSaveValue(Date.now()));
 
