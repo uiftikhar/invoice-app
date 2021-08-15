@@ -60,6 +60,7 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
     closeDeleteModalButton.removeEventListener('click', closeDateModalListener, false);
     confirmDeleteModalButton.removeEventListener('click', confirmDeleteModalButtonListener, false);
     observer.disconnect();
+    closeSideBarObserver.disconnect();
   }, {
     capture: false,
     once: true
@@ -104,6 +105,7 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
     prevChip.parentElement.removeChild(prevChip);
     status.insertAdjacentHTML('afterend', getChip('paid'));
     viewInvoiceWrapper.querySelector('#mark-as-paid').disabled = true;
+    // Update current data
     const currentData = JSON.parse(localStorage.getItem('data'));
     currentData.find(item => item.id === data.id).status = 'paid';
     localStorage.setItem('data', JSON.stringify(currentData));
@@ -176,13 +178,13 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
     }
   };
   const observer = new MutationObserver(statusWrapperButtonsMutationObserverListener);
-  const closeSideBar = new MutationObserver(closeButtonMutationObserverListener);
+  const closeSideBarObserver = new MutationObserver(closeButtonMutationObserverListener);
   
   // ------------------------------------------------------------------------------------------------
   closeDeleteModalButton.addEventListener('click', closeDateModalListener, false);
   confirmDeleteModalButton.addEventListener('click', confirmDeleteModalButtonListener, false);
   observer.observe(statusWrapper, config);
-  closeSideBar.observe(sideDrawerContainer, { attributes: true, childList: true,characterData:true, subtree:true });
+  closeSideBarObserver.observe(sideDrawerContainer, { attributes: true, childList: true,characterData:true, subtree:true });
   // ------------------------------------------------------------------------------------------------
 
   statusWrapper.innerHTML = getChipInnerHtml(data.status);
