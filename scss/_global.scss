@@ -156,6 +156,9 @@ ul ul li {
   }
   &__p-all {
     padding: 32px 24px;
+    @include breakpoints(medium) {
+      padding-bottom: 150px;
+     }
   }
 }
 
