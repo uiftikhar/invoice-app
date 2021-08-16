@@ -4,8 +4,16 @@ button {
   border-radius: 24px;
   background-color: $purple-dark;
   cursor: pointer;
+  transition: background-color 500ms ease-in-out;
+  &:hover {
+    background-color: $purple-light;
+  }
   &:disabled {
     opacity: 0.3;
+    position: none;
+    &:hover {
+      background-color: $purple-dark;
+    };
   }
   &.toggle-button {
     // todo: change this -- never good padding 0
@@ -16,13 +24,13 @@ button {
     }
   }
   
-  // &:hover {
-  //   background-color: $purple-light;
-  // }
   &.icon-button {
     padding: 8px;
     display: flex;
     align-items: center;
+    &:hover {
+      background-color: $purple-light;
+    }
     > figure {
       width: 32px;
       height: 32px;
@@ -55,6 +63,9 @@ button {
     }
     
     &__back {
+      &:hover:enabled {
+        background-color: transparent;
+      }
       > a > h4 {
         @include themed() {
           color: theme($card-total);
@@ -70,6 +81,12 @@ button {
       background-color:  theme($card-invoice-details);
       color:  theme($primary-color-light);
     }
+    &:hover {
+      @include themed() {
+        background-color:  theme($btn-base-hover);
+        color:  $purple-medium;
+      }
+    }
   }
   
   &.draft {
@@ -78,12 +95,21 @@ button {
     @include themed() {
       color:  theme($button-draft-color);
     }
+    &:hover {
+      @include themed() {
+        background-color:  theme($btn-draft-hover);
+      }
+    }
   }
   
   &.warn {
     background-color: $warning;
     color: $white;
     pointer-events: visible;
+    &:hover {
+      background-color: $warning-medium;
+      
+    }
   }
   
   &.success {

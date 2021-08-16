@@ -135,6 +135,7 @@ input:-moz-read-only {
   color: #888EB0;
   background-color: transparent;
   padding: 0;
+  cursor: pointer;
 }
 
 input:read-only {
@@ -142,6 +143,7 @@ input:read-only {
   color: #888EB0;
   background-color: transparent;
   padding: 0;
+  cursor: pointer;
 }
 
 ul,
@@ -420,6 +422,7 @@ ul ul li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  cursor: pointer;
 }
 
 .theme--light .select > input {
@@ -494,10 +497,21 @@ button {
   border-radius: 24px;
   background-color: #7C5DFA;
   cursor: pointer;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+}
+
+button:hover {
+  background-color: #9277FF;
 }
 
 button:disabled {
   opacity: 0.3;
+  position: none;
+}
+
+button:disabled:hover {
+  background-color: #7C5DFA;
 }
 
 button.toggle-button {
@@ -517,6 +531,10 @@ button.icon-button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+button.icon-button:hover {
+  background-color: #9277FF;
 }
 
 button.icon-button > figure {
@@ -565,6 +583,10 @@ button.icon-button__mini > figure {
   transition: all 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
+button.icon-button__back:hover:enabled {
+  background-color: transparent;
+}
+
 .theme--light button.icon-button__back > a > h4 {
   color: #0C0E16;
   -webkit-transition: all 500ms ease-in-out, border-color 500ms ease-in-out;
@@ -591,6 +613,20 @@ button.icon-button__mini > figure {
   transition: all 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
+.theme--light button.base:hover {
+  background-color: #DFE3FA;
+  color: #7E88C3;
+  -webkit-transition: all 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: all 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark button.base:hover {
+  background-color: #FFFFFF;
+  color: #7E88C3;
+  -webkit-transition: all 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: all 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
 button.draft {
   background-color: #373B53;
   padding: 17px;
@@ -608,10 +644,26 @@ button.draft {
   transition: all 500ms ease-in-out, border-color 500ms ease-in-out;
 }
 
+.theme--light button.draft:hover {
+  background-color: #0C0E16;
+  -webkit-transition: all 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: all 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.theme--dark button.draft:hover {
+  background-color: #1E2139;
+  -webkit-transition: all 500ms ease-in-out, border-color 500ms ease-in-out;
+  transition: all 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
 button.warn {
   background-color: #EC5757;
   color: #FFFFFF;
   pointer-events: visible;
+}
+
+button.warn:hover {
+  background-color: #FF9797;
 }
 
 button.success {
@@ -1351,6 +1403,10 @@ button.success {
   margin-bottom: 20px;
   -ms-grid-column-align: center;
       justify-self: center;
+}
+
+.item-list-form__items .delete-button:hover {
+  background-color: transparent;
 }
 
 @media all and (min-width: 641px) {

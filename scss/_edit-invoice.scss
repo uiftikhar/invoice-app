@@ -134,6 +134,9 @@
       }
     }
     .delete-button {
+      &:hover {
+        background-color: transparent;
+      }
       margin-bottom: 20px;
       justify-self: center;
       @include breakpoints(medium) {

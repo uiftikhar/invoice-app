@@ -12,6 +12,8 @@ $icon-btn-base: "icon-btn-base";
 $icon-btn-base-light: "icon-btn-base-light";
 $header-background: "header-background";
 $font-btn-base: "font-btn-base";
+$btn-base-hover: "btn-base-hover";
+$btn-draft-hover: "btn-draft-hover";
 $card-client-name: "card-client-name";
 $card-total: "card-total";
 $chip-base: "chip-base";
@@ -52,7 +54,9 @@ $themes: (
       $select-item-border: 1px solid #DFE3FA,
       $select-calendar-background: #FFFFFF,
       $button-draft-color: #888EB0,
-      $side-drawer-transition: transform 140ms ease-in-out
+      $side-drawer-transition: transform 140ms ease-in-out,
+      $btn-base-hover:  #DFE3FA,
+      $btn-draft-hover:  #0C0E16
     ),
     $dark: (
       $primary-color: #FFFFFF,
@@ -76,7 +80,9 @@ $themes: (
       $select-item-border: 1px solid #1E2139,
       $select-calendar-background: #252945,
       $button-draft-color: #DFE3FA,
-      $side-drawer-transition: transform 140ms ease-in-out
+      $side-drawer-transition: transform 140ms ease-in-out,
+      $btn-base-hover:  #FFFFFF,
+      $btn-draft-hover:  #1E2139
     )
 );
 
