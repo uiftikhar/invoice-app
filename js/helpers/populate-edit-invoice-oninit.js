@@ -73,15 +73,15 @@ export const renderItems = (items) => {
     </div>
     <div class="item-list-form__items--quantity">
       <label>Qty</label>
-      <input type="text" name="${index}-item-list--quantity" value="${item.quantity}">
+      <input type="number" name="${index}-item-list--quantity" value="${item.quantity}">
     </div>
     <div class="item-list-form__items--price">
       <label>Price</label>
-      <input type="text" name="${index}-item-list--price" value="${formatCurrency(item.price)}">
+      <input type="number" name="${index}-item-list--price" value="${formatCurrency(item.price)}">
     </div>
     <div class="item-list-form__items--total">
       <label>Total</label>
-      <input class="disabled" type="text" name="${index}-item-list--total" value="${formatCurrency(item.total)}">
+      <input class="disabled" type="number" name="${index}-item-list--total" value="${formatCurrency(item.total)}">
     </div>
     <div class="flex flex__col ml-auto">
       <button data-key=${index} class="icon-button icon-button__mini delete-button" >

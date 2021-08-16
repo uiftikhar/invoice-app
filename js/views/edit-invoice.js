@@ -10,8 +10,8 @@ const checkEventPathForClass = (path, selector) => {
   return false;
 }
 
-const mediaQuery = window.matchMedia( "(min-width: 640px)" );
 export const updateEditInvoice = (editInvoiceWrapper, data) => {
+  const mediaQuery = window.matchMedia( "(min-width: 640px)" );
   let date = data.paymentDue ? new Date(data.paymentDue) : new Date(formatDateSaveValue(Date.now()));
 
   // ------------------------------ Query Selectors ----------------------------------------------
@@ -29,12 +29,15 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
   const invoiceItemsWrapper = editInvoiceWrapper.querySelector('#edit-invoice-form--item-list');
   const addNewItemButton = editInvoiceWrapper.querySelector('#add-new-item');
   const submitFormButton = editInvoiceWrapper.querySelector('#submit-form-button');
-  const goBackButton = editInvoiceWrapper.querySelector('#close-side > a');
+  const discardButton = editInvoiceWrapper.querySelector('#discard');
+  const goBackButton = document.querySelector('#edit-invoice > section.container__px > button.icon-button > a');
+  
   const appRoot = document.querySelector('#app-root');
   if(mediaQuery.matches) {
     submitFormButton.innerHTML = 'Save Changes';
   } else {
-    goBackButton.setAttribute('href',"javascript:history.go(-1)");
+      discardButton.parentElement.setAttribute('href',"javascript:history.go(-1)");
+      goBackButton.setAttribute('href',"javascript:history.go(-1)");
   }
   // ------------------------------ Listener Functions ----------------------------------------------
   const invoiceItemsWrapperListener = (event) => {
@@ -62,6 +65,7 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
     nextMonthElement.removeEventListener('click',  nextMonthElementListener, false);
     selectElements.removeEventListener('click', selectElementsListener, false);
     daysElement.removeEventListener('click', daysElementListener, false);
+    discardButton.removeEventListener('click', discardButtonListener, false)
   };
 
   const addNewItemButtonListener = (event) => {
@@ -99,8 +103,35 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
     const formData = new FormData(element)
     const form = Array.from(formData.entries());
     updateItemsInLocalStorage(form, data);
-    window.history.back()
+    if(!mediaQuery.matches) {
+      window.history.back()
+    } else {
+      const sideDrawer = document.querySelector('#edit-invoice-sidebar');
+      const overlay = document.querySelector('#overlay');
+      if(sideDrawer.classList.contains('side-drawer__is-opened')) {
+        sideDrawer.classList.remove('side-drawer__is-opened')
+        sideDrawer.textContent = '';
+      }
+      if(overlay.classList.contains('is-visible')) {
+        overlay.classList.remove('is-visible')
+      }
+    }
   };
+
+  const discardButtonListener = (event) => {
+    event.preventDefault();
+    if(mediaQuery.matches) {
+      const sideDrawer = document.querySelector('#edit-invoice-sidebar');
+      const overlay = document.querySelector('#overlay');
+      if(sideDrawer.classList.contains('side-drawer__is-opened')) {
+        sideDrawer.classList.remove('side-drawer__is-opened')
+        sideDrawer.textContent = '';
+      }
+      if(overlay.classList.contains('is-visible')) {
+        overlay.classList.remove('is-visible')
+      }
+    }
+  }
 
   const datePickerElementListener = (event) => {
     const path = event.path || (event.composedPath && event.composedPath());
@@ -184,5 +215,6 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
   nextMonthElement.addEventListener('click',  nextMonthElementListener, false);
   daysElement.addEventListener('click', daysElementListener, false);
   selectElements.addEventListener('click', selectElementsListener, false);
+  discardButton.addEventListener('click', discardButtonListener, false)
 }
 

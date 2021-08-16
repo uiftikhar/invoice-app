@@ -1,56 +1,8 @@
-import { formatCurrency, formatDate } from '../utils.js';
+import { formatCurrency, formatDate, getChip, getChipInnerHtml } from '../utils.js';
 
-const mediaQuery = window.matchMedia( "(min-width: 640px)" );
-
-const getChip = (status) => {
-  let chip = ''
-  if(status === 'paid') {
-    chip = `
-      <h4 class="chip chip__success bold">Paid</h4>
-    `;
-  } else if(status === 'pending') {
-    chip = `
-      <h4 class="chip chip__warn bold">Pending</h4>
-    `;
-  } else if(status === 'draft') {
-    chip = `
-      <h4 class="chip chip__draft bold">Draft</h4>
-    `;
-  }
-  return chip;
-}
-const getChipInnerHtml = (status) => {
-  let chip = ''
-  if(status === 'paid') {
-    chip = `
-      <h4 class="mr-1">Status</h4>
-      ${getChip(status)}
-    `;
-  } else if(status === 'pending') {
-    chip = `
-      <h4 class="mr-1">Status</h4>
-      ${getChip(status)}
-    `;
-  } else if(status === 'draft') {
-    chip = `
-      <h4 class="mr-1">Status</h4>
-      ${getChip(status)}
-    `;
-  }
-  if(mediaQuery.matches) {
-    chip += `
-      <a id="redirect-to-edit-invoice" class="ml-auto mr-half" >
-        <button class="base">Edit</button>
-      </a>
-      <button id="delete-invoice" class="warn mr-half">Delete</button>
-      <button id="mark-as-paid" class="success">Mark as Paid</button>
-    `
-  }
-
-  return chip;
-}
 
 export const updateViewInvoice = (viewInvoiceWrapper, data) => {
+  const mediaQuery = window.matchMedia( "(min-width: 640px)" );
   const appRoot = document.querySelector('#app-root');
   let listenersAttached = false;
   appRoot.addEventListener('on-page-route-started', () => {
@@ -60,12 +12,10 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
     closeDeleteModalButton.removeEventListener('click', closeDateModalListener, false);
     confirmDeleteModalButton.removeEventListener('click', confirmDeleteModalButtonListener, false);
     observer.disconnect();
-    closeSideBarObserver.disconnect();
   }, {
     capture: false,
     once: true
   })
-  
   
   const statusWrapper = viewInvoiceWrapper.querySelector('.view-invoice__status-wrapper > hgroup');
   const detailsWrapper = viewInvoiceWrapper.querySelector('.view-invoice__details-wrapper');
@@ -75,22 +25,22 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
   const deleteInvoiceButton = viewInvoiceWrapper.querySelector('#delete-invoice');
   const closeDeleteModalButton = document.querySelector('#modal > div > button:first-of-type');
   const confirmDeleteModalButton = document.querySelector('#modal > div > button:nth-of-type(2)');
-  const sideDrawerContainer = document.querySelector('#edit-invoice-sidebar');
-  
+  const sideDrawer = document.querySelector('#edit-invoice-sidebar');
+  const overlay = document.querySelector('#overlay');
   // ------------------------------------------------------------------------------------------------
   const redirectToEditListener = () => {
     if(!mediaQuery.matches) {
       viewInvoiceWrapper.querySelector('#redirect-to-edit-invoice').setAttribute('href',`#edit-invoice?${data.id}`)
     } else {
-      const sideDrawer = document.querySelector('#edit-invoice-sidebar');
+  
       let xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            sideDrawer.classList.toggle('side-drawer__is-opened')
             sideDrawer.innerHTML = this.responseText;
-            document.querySelector('#overlay').classList.toggle('is-visible');
             const event = new Event('page-loaded');
             appRoot.dispatchEvent(event);
+            sideDrawer.classList.add('side-drawer__is-opened');
+            overlay.classList.add('is-visible');
           }
       };
       xhttp.open('GET', 'views/edit-invoice.html', true);
@@ -105,6 +55,7 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
     prevChip.parentElement.removeChild(prevChip);
     status.insertAdjacentHTML('afterend', getChip('paid'));
     viewInvoiceWrapper.querySelector('#mark-as-paid').disabled = true;
+    
     // Update current data
     const currentData = JSON.parse(localStorage.getItem('data'));
     currentData.find(item => item.id === data.id).status = 'paid';
@@ -112,7 +63,7 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
   }
 
   const openDateInvoiceModalListener = () => {
-    document.querySelector('#overlay').classList.add('is-visible');
+    overlay.classList.add('is-visible');
     document.querySelector('#modal').classList.add('is-visible');
     window.scrollTo({
       top: 0,
@@ -123,7 +74,7 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
   }
 
   const closeDateModalListener =  () => {
-    document.querySelector('#overlay').classList.remove('is-visible');
+    overlay.classList.remove('is-visible');
     document.querySelector('#modal').classList.remove('is-visible');
   }
 
@@ -135,9 +86,9 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
   }
   // ------------------------------------------------------------------------------------------------
   const config =  { attributes: true, childList: true,characterData:true, subtree:true };
-  const statusWrapperButtonsMutationObserverListener = function(mutationsList, observer) {
-    // Use traditional 'for loops' for IE 11
+  const statusWrapperButtonsMutationObserverListener = function(mutationsList) {
     for(const mutation of mutationsList) {
+      // TODO Remove this
       if(!listenersAttached) {
         if (mutation.type === 'childList') {
             viewInvoiceWrapper.querySelector('#mark-as-paid').addEventListener('click', markAsPaidButtonListener, {
@@ -153,40 +104,14 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
     }
   };
   
-  const closeButtonMutationObserverListener = function(mutationsList, observer) {
-    // Use traditional 'for loops' for IE 11
-    for(const mutation of mutationsList) {
-        if (mutation.type === 'childList') {
-
-          if(mutation.addedNodes[0]?.classList && mutation.addedNodes[0]?.classList[0] ==='edit-invoice') {
-            document.querySelector('#close-side')?.addEventListener('click', () => {
-              const sideDrawer = document.querySelector('#edit-invoice-sidebar');
-              sideDrawer.classList.toggle('side-drawer__is-opened');
-              document.querySelector('#overlay').classList.toggle('is-visible');
-              sideDrawer.textContent = '';
-            })
-          } else {
-            if(mutation.removedNodes[0]?.classList && mutation.removedNodes[0]?.classList[0] ==='edit-invoice'){
-              const sideDrawer = document.querySelector('#edit-invoice-sidebar');
-              sideDrawer.classList.toggle('side-drawer__is-opened');
-              document.querySelector('#overlay').classList.toggle('is-visible');
-              sideDrawer.textContent = '';
-            }
-          }
-        }
-    }
-  };
-  const observer = new MutationObserver(statusWrapperButtonsMutationObserverListener);
-  const closeSideBarObserver = new MutationObserver(closeButtonMutationObserverListener);
-  
   // ------------------------------------------------------------------------------------------------
+  const observer = new MutationObserver(statusWrapperButtonsMutationObserverListener);
   closeDeleteModalButton.addEventListener('click', closeDateModalListener, false);
   confirmDeleteModalButton.addEventListener('click', confirmDeleteModalButtonListener, false);
   observer.observe(statusWrapper, config);
-  closeSideBarObserver.observe(sideDrawerContainer, { attributes: true, childList: true,characterData:true, subtree:true });
   // ------------------------------------------------------------------------------------------------
 
-  statusWrapper.innerHTML = getChipInnerHtml(data.status);
+  statusWrapper.innerHTML = getChipInnerHtml(data.status, mediaQuery);
   detailsHeaders[0].innerHTML = data.id;
   detailsHeaders[1].innerHTML = data.description;
   detailsHeaders[2].innerHTML = data.senderAddress.street;

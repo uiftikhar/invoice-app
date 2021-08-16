@@ -1,6 +1,11 @@
 .edit-invoice, .side-drawer {
   > section.container__px {
     padding-bottom: 68px;
+    > button {
+      @include breakpoints(medium) {
+        display: none;
+      }
+    }
   }
   @include themed() {
     background-color: theme($view-invoice-background);

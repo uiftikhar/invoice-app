@@ -1,6 +1,6 @@
 <article id="edit-invoice" class="edit-invoice">
   <section class="container__px container__py--top ">
-    <button class="icon-button icon-button__mini icon-button__back mb-2" id="close-side">
+    <button class="icon-button icon-button__mini icon-button__back mb-2" >
       <a class="flex flex__ai-c">
         <figure class="mr-1">
           <img src="./assets/icon-arrow-left.svg" alt="filters" />
@@ -127,8 +127,9 @@
     </section>
   </section>
   <footer class="flex flex__jc-sb">
-    <a href="javascript:history.go(-1)">
-      <button class="base">Cancel</button>
+    <!-- <a href="javascript:history.go(-1)"> -->
+    <a>
+      <button class="base" id="discard">Cancel</button>
     </a>
     <button id="submit-form-button" class="success">Save</button>
   </footer>

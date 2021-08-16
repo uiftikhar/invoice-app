@@ -1144,6 +1144,12 @@ button.success {
   padding-bottom: 68px;
 }
 
+@media all and (min-width: 641px) {
+  .edit-invoice > section.container__px > button, .side-drawer > section.container__px > button {
+    display: none;
+  }
+}
+
 .theme--light .edit-invoice, .theme--light .side-drawer {
   background-color: #FFFFFF;
   -webkit-transition: all 500ms ease-in-out, border-color 500ms ease-in-out;
@@ -1434,7 +1440,7 @@ button.success {
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
   position: fixed;
-  top: 0;
+  top: 73px;
   left: 0;
   right: 0;
   bottom: 0;
