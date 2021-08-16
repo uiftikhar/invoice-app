@@ -298,6 +298,10 @@ ul ul li {
   }
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .date-picker {
   position: relative;
   display: -webkit-box;

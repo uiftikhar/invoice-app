@@ -41,6 +41,7 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
             appRoot.dispatchEvent(event);
             sideDrawer.classList.add('side-drawer__is-opened');
             overlay.classList.add('is-visible');
+            document.querySelector('#app-root').classList.add('no-scroll');
           }
       };
       xhttp.open('GET', 'views/edit-invoice.html', true);
@@ -71,11 +72,13 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
       behavior: 'smooth'
     });
     document.querySelector('#modal > h4').innerHTML = `Are you sure you want to delete invoice #${data.id}? This action cannot be undone.`;
+    document.querySelector('#app-root').classList.add('no-scroll');
   }
 
   const closeDateModalListener =  () => {
     overlay.classList.remove('is-visible');
     document.querySelector('#modal').classList.remove('is-visible');
+    document.querySelector('#app-root').classList.remove('no-scroll');
   }
 
   const confirmDeleteModalButtonListener = () => {
