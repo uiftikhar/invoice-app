@@ -59,7 +59,6 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
     if(mediaQuery.matches) {
       const sideDrawer = document.querySelector('#new-invoice-sidebar');
       const overlay = document.querySelector('#overlay');
-      document.querySelector('#app-root').classList.remove('no-scroll');
       if(sideDrawer.classList.contains('side-drawer__is-opened')) {
         sideDrawer.classList.remove('side-drawer__is-opened')
         sideDrawer.textContent = '';
@@ -67,6 +66,9 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
       if(overlay.classList.contains('is-visible')) {
         overlay.classList.remove('is-visible')
       }
+      document.querySelector('#app-root').classList.remove('no-scroll');
+      const event = new Event('page-loaded');
+      appRoot.dispatchEvent(event);
     }
   }
   const invoiceItemsWrapperListener = (event) => {
@@ -119,7 +121,6 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
     } else {
       const sideDrawer = document.querySelector('#new-invoice-sidebar');
       const overlay = document.querySelector('#overlay');
-      document.querySelector('#app-root').classList.remove('no-scroll');
       if(sideDrawer.classList.contains('side-drawer__is-opened')) {
         sideDrawer.classList.remove('side-drawer__is-opened')
         sideDrawer.textContent = '';
@@ -127,6 +128,9 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
       if(overlay.classList.contains('is-visible')) {
         overlay.classList.remove('is-visible')
       }
+      document.querySelector('#app-root').classList.remove('no-scroll');
+      const event = new Event('page-loaded');
+      appRoot.dispatchEvent(event);
     }
   };
   
@@ -141,7 +145,6 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
     } else {
       const sideDrawer = document.querySelector('#new-invoice-sidebar');
       const overlay = document.querySelector('#overlay');
-      document.querySelector('#app-root').classList.remove('no-scroll');
       if(sideDrawer.classList.contains('side-drawer__is-opened')) {
         sideDrawer.classList.remove('side-drawer__is-opened')
         sideDrawer.textContent = '';
@@ -149,6 +152,9 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
       if(overlay.classList.contains('is-visible')) {
         overlay.classList.remove('is-visible')
       }
+      document.querySelector('#app-root').classList.remove('no-scroll');
+      const event = new Event('page-loaded');
+      appRoot.dispatchEvent(event);
     }
   };
 
