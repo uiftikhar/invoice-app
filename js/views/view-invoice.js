@@ -32,7 +32,6 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
     if(!mediaQuery.matches) {
       viewInvoiceWrapper.querySelector('#redirect-to-edit-invoice').setAttribute('href',`#edit-invoice?${data.id}`)
     } else {
-  
       let xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {

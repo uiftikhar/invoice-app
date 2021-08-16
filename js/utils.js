@@ -100,7 +100,7 @@ const getChipInnerHtml = (status, mediaQuery) => {
       ${getChip(status)}
     `;
   }
-  if(mediaQuery) {
+  if(mediaQuery.matches) {
     chip += `
       <a id="redirect-to-edit-invoice" class="ml-auto mr-half" >
         <button class="base">Edit</button>
@@ -113,7 +113,7 @@ const getChipInnerHtml = (status, mediaQuery) => {
   return chip;
 }
 
-const formatCurrency = (value) => new Intl.NumberFormat('en-IN', { minimumFractionDigits: 2 }).format(value); 
+const formatCurrency = (value) => new Intl.NumberFormat('en-DE', { minimumFractionDigits: 2 }).format(value); 
 
 const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
 
