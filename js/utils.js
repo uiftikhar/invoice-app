@@ -63,15 +63,67 @@ const getPaymentTermsValue = (terms) => {
   }
 }
 
-const formatCurrency = (value) => new Intl.NumberFormat('en-IN', { minimumFractionDigits: 2 }).format(value); 
+
+const getChip = (status) => {
+  let chip = ''
+  if(status === 'paid') {
+    chip = `
+      <h4 class="chip chip__success bold">Paid</h4>
+    `;
+  } else if(status === 'pending') {
+    chip = `
+      <h4 class="chip chip__warn bold">Pending</h4>
+    `;
+  } else if(status === 'draft') {
+    chip = `
+      <h4 class="chip chip__draft bold">Draft</h4>
+    `;
+  }
+  return chip;
+}
+
+const getChipInnerHtml = (status, mediaQuery) => {
+  let chip = ''
+  if(status === 'paid') {
+    chip = `
+      <h4 class="mr-1">Status</h4>
+      ${getChip(status)}
+    `;
+  } else if(status === 'pending') {
+    chip = `
+      <h4 class="mr-1">Status</h4>
+      ${getChip(status)}
+    `;
+  } else if(status === 'draft') {
+    chip = `
+      <h4 class="mr-1">Status</h4>
+      ${getChip(status)}
+    `;
+  }
+  if(mediaQuery.matches) {
+    chip += `
+      <a id="redirect-to-edit-invoice" class="ml-auto mr-half" >
+        <button class="base">Edit</button>
+      </a>
+      <button id="delete-invoice" class="warn mr-half">Delete</button>
+      <button id="mark-as-paid" class="success">Mark as Paid</button>
+    `
+  }
+
+  return chip;
+}
+
+const formatCurrency = (value) => new Intl.NumberFormat('en-DE', { minimumFractionDigits: 2 }).format(value); 
 
 const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
 
 export {
+  getChip,
+  getChipInnerHtml,
   formatCurrency,
   formatDate,
   formatter,
   formatDateSaveValue,
   getPaymentTermsInnerHTML,
-  getPaymentTermsValue
+  getPaymentTermsValue,
 }

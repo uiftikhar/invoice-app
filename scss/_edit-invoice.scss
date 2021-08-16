@@ -1,6 +1,11 @@
-.edit-invoice {
+.edit-invoice, .side-drawer {
   > section.container__px {
     padding-bottom: 68px;
+    > button {
+      @include breakpoints(medium) {
+        display: none;
+      }
+    }
   }
   @include themed() {
     background-color: theme($view-invoice-background);
@@ -24,15 +29,48 @@
       left: 0px;
       top: -61px;
       background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.1) 100%);
+      @include breakpoints(medium) {
+        content: unset;
+      }
     }
+  }
+}
+
+.user-select-wrapper {
+  @include breakpoints(medium) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 24px;
   }
 }
 
 .bill-from-form {
   margin-bottom: 40px;
+  &__address-wrapper > div {
+    &:last-of-type {
+      width: 100%;
+      @include breakpoints(medium) {
+        width: 27%;
+      }
+    }
+    @include breakpoints(medium) {
+      width: 27%;
+    }
+  }
 }
 .bill-to-form {
   margin-bottom: 66px;
+  &__address-wrapper > div {
+    &:last-of-type {
+      width: 100%;
+      @include breakpoints(medium) {
+        width: 27%;
+      }
+    }
+    @include breakpoints(medium) {
+      width: 27%;
+    }
+  }
 }
 
 .item-list-form {
@@ -49,6 +87,18 @@
       flex-wrap: wrap;
       margin-bottom: 48px;
       width: 100%;
+      > div:last-of-type {
+        justify-content: flex-end;
+        @include breakpoints(medium) {
+          justify-content: center;
+        }
+      }
+    }
+    &--name {
+      @include breakpoints(medium) {
+        width: 37%;
+        margin-right: 16px;
+      }
     }
     &--quantity {
       > input {
@@ -57,6 +107,9 @@
       }
       margin-right: 16px;
       max-width: 20%;
+      @include breakpoints(medium) {
+        max-width: 10%;
+      }
     }
     &--price {
       > input {
@@ -65,6 +118,9 @@
       }
       margin-right: 16px;
       max-width: 30%;
+      @include breakpoints(medium) {
+        max-width: 20%;
+      }
     }
     &--total {
       > input {
@@ -73,10 +129,19 @@
       }
       min-width: 100px;
       max-width: 30%;
+      @include breakpoints(medium) {
+        max-width: 20%;
+      }
     }
     .delete-button {
+      &:hover {
+        background-color: transparent;
+      }
       margin-bottom: 20px;
+      justify-self: center;
+      @include breakpoints(medium) {
+        margin-bottom: 0px;
+      }
     }
   }
 }
-

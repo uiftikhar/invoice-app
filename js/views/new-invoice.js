@@ -11,6 +11,7 @@ const checkEventPathForClass = (path, selector) => {
 }
 export const updateNewInvoice = (newInvoiceWrapper) => {
   let date = new Date(Date.now());
+  const mediaQuery = window.matchMedia( "(min-width: 640px)" );
 
   // ------------------------------ Query Selectors ----------------------------------------------
   const datePickerElement = newInvoiceWrapper.querySelector('#date-picker');
@@ -28,8 +29,12 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
   const addNewItemButton = newInvoiceWrapper.querySelector('#add-new-item');
   const submitFormButton = newInvoiceWrapper.querySelector('#submit-form-button');
   const saveAsDraftButton = newInvoiceWrapper.querySelector('#submit-form-button-draft');
+  const discardButton = newInvoiceWrapper.querySelector('#discard-new-invoice');
   const appRoot = document.querySelector('#app-root');
   
+  if(!mediaQuery.matches) {
+    discardButton.parentElement.setAttribute('href',"javascript:history.go(-1)");
+  }
   // ------------------------------ Listener Functions ----------------------------------------------
   const getCurrentInvoiceItems = () => {
     const allItems = invoiceItemsWrapper.querySelectorAll('ul > li')
@@ -49,6 +54,23 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
     return newItems;
   }
 
+  const discardButtonListener = (event) => {
+    event.preventDefault();
+    if(mediaQuery.matches) {
+      const sideDrawer = document.querySelector('#new-invoice-sidebar');
+      const overlay = document.querySelector('#overlay');
+      if(sideDrawer.classList.contains('side-drawer__is-opened')) {
+        sideDrawer.classList.remove('side-drawer__is-opened')
+        sideDrawer.textContent = '';
+      }
+      if(overlay.classList.contains('is-visible')) {
+        overlay.classList.remove('is-visible')
+      }
+      document.querySelector('#app-root').classList.remove('no-scroll');
+      const event = new Event('page-loaded');
+      appRoot.dispatchEvent(event);
+    }
+  }
   const invoiceItemsWrapperListener = (event) => {
     event.preventDefault();
     const path = event.path || (event.composedPath && event.composedPath());
@@ -73,6 +95,7 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
     selectElements.removeEventListener('click', selectElementsListener, false);
     daysElement.removeEventListener('click', daysElementListener, false);
     saveAsDraftButton.removeEventListener('click', saveAsDraftButtonListener, false);
+    discardButton.removeEventListener('click', discardButtonListener, false)
   };
 
   const addNewItemButtonListener = (event) => {
@@ -93,7 +116,22 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
     const formData = new FormData(element)
     const form = Array.from(formData.entries());
     createNewInvoice(form);
-    window.history.back()
+    if(!mediaQuery.matches) { 
+      window.history.back()
+    } else {
+      const sideDrawer = document.querySelector('#new-invoice-sidebar');
+      const overlay = document.querySelector('#overlay');
+      if(sideDrawer.classList.contains('side-drawer__is-opened')) {
+        sideDrawer.classList.remove('side-drawer__is-opened')
+        sideDrawer.textContent = '';
+      }
+      if(overlay.classList.contains('is-visible')) {
+        overlay.classList.remove('is-visible')
+      }
+      document.querySelector('#app-root').classList.remove('no-scroll');
+      const event = new Event('page-loaded');
+      appRoot.dispatchEvent(event);
+    }
   };
   
   const saveAsDraftButtonListener = (event) => {
@@ -102,7 +140,22 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
     const formData = new FormData(element)
     const form = Array.from(formData.entries());
     createNewInvoice(form, true);
-    window.history.back()
+    if(!mediaQuery.matches) { 
+      window.history.back()
+    } else {
+      const sideDrawer = document.querySelector('#new-invoice-sidebar');
+      const overlay = document.querySelector('#overlay');
+      if(sideDrawer.classList.contains('side-drawer__is-opened')) {
+        sideDrawer.classList.remove('side-drawer__is-opened')
+        sideDrawer.textContent = '';
+      }
+      if(overlay.classList.contains('is-visible')) {
+        overlay.classList.remove('is-visible')
+      }
+      document.querySelector('#app-root').classList.remove('no-scroll');
+      const event = new Event('page-loaded');
+      appRoot.dispatchEvent(event);
+    }
   };
 
   const datePickerElementListener = (event) => {
@@ -187,6 +240,6 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
   nextMonthElement.addEventListener('click',  nextMonthElementListener, false);
   daysElement.addEventListener('click', daysElementListener, false);
   selectElements.addEventListener('click', selectElementsListener, false);
-
+  discardButton.addEventListener('click', discardButtonListener, false)
 }
 

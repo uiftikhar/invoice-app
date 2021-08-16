@@ -1,6 +1,10 @@
 .view-invoice {
+  @include breakpoints(medium) {
+    height: inherit;
+  }
   > section {
     padding-bottom: 56px;
+    height: inherit;
   }
   &__themed-heading {
     @include themed() {
@@ -12,6 +16,10 @@
 
   &__status-wrapper {
     padding: 24px;
+    @include breakpoints(medium) {
+      // Overrides for 640px and up
+      padding: 20px 32px;
+    }
     border-radius: 8px;
   
     @include themed() {
@@ -74,3 +82,21 @@
   }
 }
 
+.card {
+  @include breakpoints(medium) {
+    // Overrides for 640px and up
+   padding: 32px;
+  }
+  &__content {
+    &--user-details {
+      display: flex;
+      @include breakpoints(medium) {
+        // Overrides for 640px and up
+      }
+      > hgroup:nth-of-type(2) {
+        text-align: right;
+        margin-left: auto;
+      }
+    }
+  }
+}

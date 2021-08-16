@@ -29,6 +29,8 @@ const appRoot = document.querySelector('#app-root');
   init();
 }());
 
+
+
 const appRootListener =  () => {
   const jsonData = JSON.parse(localStorage.getItem('data'));
 
@@ -50,7 +52,8 @@ const appRootListener =  () => {
     updateEditInvoice(editInvoiceWrapper, currentItem)
   }
   if(jsonData && newInvoiceWrapper) {
-    updateNewInvoice(newInvoiceWrapper)
+    updateNewInvoice(newInvoiceWrapper);
+    
     // const queryString = window.location.hash.split('?')[1];
     // const currentItem = jsonData.find(item => item.id === queryString);
     // updateEditInvoice(newInvoiceWrapper, currentItem)
@@ -81,7 +84,5 @@ const toggleThemeButtonListener = () => {
     img.setAttribute('src','./assets/icon-moon.svg')
   }
 }
-
-
 appRoot.addEventListener('page-loaded', appRootListener)
 toggleThemeButton.addEventListener('click', toggleThemeButtonListener)

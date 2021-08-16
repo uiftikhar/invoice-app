@@ -16,32 +16,46 @@
     </section>
     <article class="view-invoice__details-wrapper">
       <section class="card">
-        <h4 class="card__invoice--id bold">RT3080</h4>
-        <h4 class="mb-2">Graphic Design</h4>
-        <h4>19 Union Terrace</h4>
-        <h4>London</h4>
-        <h4>E1 3EZ</h4>
-        <h4 class="mb-2">United Kingdom</h4>
-        <article class="flex flex__jc-sb mb-2">
-          <hgroup class="view-invoice__details-wrapper--date-details">
-            <h4>Invoice Date</h4>
-            <h3>21 Aug 2021</h3>
-            <h4>Payment Due</h4>
-            <h3>20 Sep 2021</h3>
-          </hgroup>
-          <hgroup class="view-invoice__details-wrapper--address-details">
-            <h4>Bill To</h4>
-            <h3>Alex Grim</h3>
-            <h4>84 Church Way</h4>
-            <h4>Bradford</h4>
-            <h4>BD1 9PB</h4>
-            <h4>United Kingdom</h4>
-          </hgroup>
+        <article class="card__content">
+          <article class="card__content--user-details">
+            <hgroup>
+              <h4 class="card__invoice--id bold">RT3080</h4>
+              <h4 class="mb-2">Graphic Design</h4>
+            </hgroup>
+            <hgroup>
+              <h4>19 Union Terrace</h4>
+              <h4>London</h4>
+              <h4>E1 3EZ</h4>
+              <h4 class="mb-2">United Kingdom</h4>
+            </hgroup>
+          </article>
+          <article>
+            <article class="flex flex__jc-sb mb-2">
+              <hgroup class="view-invoice__details-wrapper--date-details">
+                <h4>Invoice Date</h4>
+                <h3>21 Aug 2021</h3>
+                <h4>Payment Due</h4>
+                <h3>20 Sep 2021</h3>
+              </hgroup>
+              <hgroup class="view-invoice__details-wrapper--address-details">
+                <h4>Bill To</h4>
+                <h3>Alex Grim</h3>
+                <h4>84 Church Way</h4>
+                <h4>Bradford</h4>
+                <h4>BD1 9PB</h4>
+                <h4>United Kingdom</h4>
+              </hgroup>
+              <hgroup class="view-invoice__details-wrapper--sent-to-details mb-2 only-for-tablet">
+                <h4>Sent to</h4>
+                <h3>alexgrim@mail.com</h3>
+              </hgroup>
+            </article>
+            <hgroup class="view-invoice__details-wrapper--sent-to-details mb-2 only-for-mobile">
+              <h4>Sent to</h4>
+              <h3>alexgrim@mail.com</h3>
+            </hgroup>
+          </article>
         </article>
-        <hgroup class="view-invoice__details-wrapper--sent-to-details mb-2">
-          <h4>Sent to</h4>
-          <h3>alexgrim@mail.com</h3>
-        </hgroup>
         <article id="invoice-items" class="card card--invoice-details">
           <section class="flex flex__jc-sb flex__ai-c">
             <hgroup>
@@ -65,7 +79,7 @@
       </section>
     </article>
   </section>
-  <footer class="flex flex__jc-sb">
+  <footer class="flex flex__jc-sb only-for-mobile">
     <a href="" id="redirect-to-edit-invoice" >
       <button class="base">Edit</button>
     </a>
@@ -74,7 +88,11 @@
   </footer>
 </article>
 
+
 <div class="overlay" id="overlay"></div>
+<div id="edit-invoice-sidebar" class="side-drawer transform">
+</div>
+
 <div class="modal" id="modal">
   <h2>Confirm Deletion</h2>
   <h4></h4>

@@ -1,9 +1,34 @@
 import { formatCurrency, formatDate } from '../utils.js'
 export const updateHome = (InvoiceWrapper, jsonData) => {
+  const mediaQuery = window.matchMedia( "(min-width: 640px)" );
   const totalInvoicesElement = InvoiceWrapper.querySelector('article > hgroup > h4')
   const totalInvoices = jsonData.length;
   const cardsWrapperElement = InvoiceWrapper.querySelector('.cards')
+  const newInvoiceButton = InvoiceWrapper.querySelector('#new-invoice')
+  const sideDrawer = document.querySelector('#new-invoice-sidebar')
+  const overlay = document.querySelector('#overlay')
+  const appRoot = document.querySelector('#app-root')
   totalInvoicesElement.innerHTML = `${totalInvoices} invoices`;
+  if(mediaQuery.matches) {
+    totalInvoicesElement.innerHTML = `There are ${totalInvoices} total invoices`;
+    newInvoiceButton.addEventListener('click', () => {
+      let xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            sideDrawer.innerHTML = this.responseText;
+            const event = new Event('page-loaded');
+            appRoot.dispatchEvent(event);
+            sideDrawer.classList.add('side-drawer__is-opened');
+            overlay.classList.add('is-visible');
+            document.querySelector('#app-root').classList.add('no-scroll');
+          }
+      };
+      xhttp.open('GET', 'views/new-invoice.html', true);
+      xhttp.send();
+    })
+  } else {
+    newInvoiceButton.parentElement.setAttribute('href',`#new-invoice`)
+  }
   let innerHtml = ''
   jsonData.forEach(item => {
     let chip = '';
@@ -14,25 +39,41 @@ export const updateHome = (InvoiceWrapper, jsonData) => {
     } else if(item.status === 'draft') {
       chip = '<h4 class="chip chip__draft bold">Draft</h4>';
     }
-    innerHtml += `
-      <article class="card">
-        <a href="#view-invoice?${item.id}">
-          <section class="card__invoice">
-            <hgroup>
-              <h4 class="card__invoice--id bold">${item.id.toUpperCase()}</h4>
-              <h4 class="card__invoice--name">${item.clientName}</h4>
-            </hgroup>
-            <article>
+    if(!mediaQuery.matches) {
+      innerHtml += `
+        <article class="card">
+          <a href="#view-invoice?${item.id}">
+            <section class="card__invoice">
               <hgroup>
+                <h4 class="card__invoice--id bold">${item.id.toUpperCase()}</h4>
+                <h4 class="card__invoice--name">${item.clientName}</h4>
+              </hgroup>
+              <article>
+                <hgroup>
+                  <h4 class="card__invoice--due-date">${formatDate(item.paymentDue)}</h4>
+                  <h3 class="card__invoice--total">${formatCurrency(item.total)}</h3>
+                </hgroup>
+                ${chip}
+              </article>
+            </section>
+          </a>
+        </article>
+      `
+    } else {
+      innerHtml += `
+        <article class="card">
+          <a href="#view-invoice?${item.id}">
+            <section class="card__invoice">
+                <h4 class="card__invoice--id bold">${item.id.toUpperCase()}</h4>
+                <h4 class="card__invoice--name">${item.clientName}</h4>
                 <h4 class="card__invoice--due-date">${formatDate(item.paymentDue)}</h4>
                 <h3 class="card__invoice--total">${formatCurrency(item.total)}</h3>
-              </hgroup>
-              ${chip}
-            </article>
-          </section>
-        </a>
-      </article>
-    `
+                ${chip}
+            </section>
+          </a>
+        </article>
+        `
+    }
   })
   cardsWrapperElement.innerHTML = innerHtml;
 }

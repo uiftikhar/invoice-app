@@ -12,6 +12,8 @@ $icon-btn-base: "icon-btn-base";
 $icon-btn-base-light: "icon-btn-base-light";
 $header-background: "header-background";
 $font-btn-base: "font-btn-base";
+$btn-base-hover: "btn-base-hover";
+$btn-draft-hover: "btn-draft-hover";
 $card-client-name: "card-client-name";
 $card-total: "card-total";
 $chip-base: "chip-base";
@@ -24,6 +26,7 @@ $view-invoice-background: "view-invoice-background";
 $select-calendar-background: "select-calendar-background";
 $button-draft-background: "button-draft-background";
 $button-draft-color: "button-draft-color";
+$side-drawer-transition: "side-drawer-transition";
 
 
 // TODO use scss variables for these colors
@@ -50,7 +53,10 @@ $themes: (
       $input-border: 1px solid #DFE3FA,
       $select-item-border: 1px solid #DFE3FA,
       $select-calendar-background: #FFFFFF,
-      $button-draft-color: #888EB0
+      $button-draft-color: #888EB0,
+      $side-drawer-transition: transform 140ms ease-in-out,
+      $btn-base-hover:  #DFE3FA,
+      $btn-draft-hover:  #0C0E16
     ),
     $dark: (
       $primary-color: #FFFFFF,
@@ -73,7 +79,10 @@ $themes: (
       $input-border: 1px solid #252945,
       $select-item-border: 1px solid #1E2139,
       $select-calendar-background: #252945,
-      $button-draft-color: #DFE3FA
+      $button-draft-color: #DFE3FA,
+      $side-drawer-transition: transform 140ms ease-in-out,
+      $btn-base-hover:  #FFFFFF,
+      $btn-draft-hover:  #1E2139
     )
 );
 
@@ -88,7 +97,7 @@ $themes: (
       }
       @content;
       $theme-map: null !global;
-      transition: background-color 500ms ease-in-out, border-color 500ms ease-in-out;
+      transition: all 500ms ease-in-out, border-color 500ms ease-in-out;
     }
   }
 }
