@@ -22,6 +22,11 @@ button {
     &:hover {
       background-color: transparent;
     }
+
+    @include breakpoints(large) {
+      margin-top: auto;
+      margin-left: 0px;
+    }
   }
   
   &.icon-button {

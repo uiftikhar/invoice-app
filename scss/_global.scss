@@ -81,7 +81,7 @@ figure {
 }
 
 input, .date-picker, .select {
-  padding: 17px 20px;
+  padding: 15px 15px;
   border-radius: 4px;
   @include themed() {
     background-color: theme($general-background-light);
@@ -109,6 +109,11 @@ input:read-only {
   padding: 0;
   cursor: pointer;
 }
+
+input {
+  padding-right: 0;
+}
+
 ul,
 ul li,
 ul ul li {
