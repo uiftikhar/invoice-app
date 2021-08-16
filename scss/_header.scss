@@ -30,6 +30,17 @@
        top: -25px;
        right: -24px;
      }
+     @include breakpoints(large) {
+      &::after {
+        content: '';
+        position: absolute;
+        width: 103px;
+        height: 1px;
+        background-color: #494E6E;
+        top: 50px;
+        left: -42px;
+      }
+    }
   }
   &__logo-wrapper {
     width: 72px;
@@ -77,6 +88,13 @@
         width: 32px;
         border-radius: 50%;
         margin-left: 48px;
+        @include breakpoints(large) {
+          width: 40px;
+          height: 40px;
+          margin-left: 0;
+          margin-top: 60px;
+          margin-bottom: 24px;
+        }
       }
     }
   }
