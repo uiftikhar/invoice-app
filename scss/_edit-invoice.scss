@@ -50,11 +50,11 @@
     &:last-of-type {
       width: 100%;
       @include breakpoints(medium) {
-        width: 33%;
+        width: 27%;
       }
     }
     @include breakpoints(medium) {
-      width: 33%;
+      width: 27%;
     }
   }
 }
@@ -64,11 +64,11 @@
     &:last-of-type {
       width: 100%;
       @include breakpoints(medium) {
-        width: 33%;
+        width: 27%;
       }
     }
     @include breakpoints(medium) {
-      width: 33%;
+      width: 27%;
     }
   }
 }

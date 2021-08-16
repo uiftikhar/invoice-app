@@ -1,13 +1,30 @@
 .new-invoice {
   @extend .view-invoice;
+  > section.container__px {
+    > button {
+      @include breakpoints(medium) {
+        display: none;
+      }
+    }
+  }
   @include themed() {
     background-color: theme($view-invoice-background);
   }
   > footer {
     position: relative;
     padding: 21px 20px;
+    justify-content: space-between;
+    @include breakpoints(medium) {
+      content: unset;
+    }
     > button {
       font-weight: bold;
+      @include breakpoints(medium) {
+        &:nth-of-type(1) {
+          margin-left: auto;
+          margin-right: 8px;
+        }
+      }
     }
     @include themed() {
       background-color: theme($general-background-light);
@@ -20,6 +37,9 @@
       left: 0px;
       top: -61px;
       background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.1) 100%);
+      @include breakpoints(medium) {
+        content: unset;
+      }
     }
   }
 }

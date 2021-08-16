@@ -24,6 +24,10 @@ a {
   text-decoration: none;
 }
 
+a > button {
+  cursor: pointer;
+}
+
 h1, .h1 {
   font-weight: bold;
   font-size: 32px;
@@ -302,6 +306,11 @@ ul ul li {
   overflow: hidden;
 }
 
+#home {
+  height: inherit;
+  overflow-y: scroll;
+}
+
 .date-picker {
   position: relative;
   display: -webkit-box;
@@ -484,6 +493,7 @@ button {
   border: none;
   border-radius: 24px;
   background-color: #7C5DFA;
+  cursor: pointer;
 }
 
 button:disabled {
@@ -497,10 +507,6 @@ button.toggle-button {
 
 button.toggle-button:hover {
   background-color: transparent;
-}
-
-button:hover {
-  background-color: #9277FF;
 }
 
 button.icon-button {
@@ -1225,13 +1231,13 @@ button.success {
 
 @media all and (min-width: 641px) {
   .bill-from-form__address-wrapper > div:last-of-type {
-    width: 33%;
+    width: 27%;
   }
 }
 
 @media all and (min-width: 641px) {
   .bill-from-form__address-wrapper > div {
-    width: 33%;
+    width: 27%;
   }
 }
 
@@ -1245,13 +1251,13 @@ button.success {
 
 @media all and (min-width: 641px) {
   .bill-to-form__address-wrapper > div:last-of-type {
-    width: 33%;
+    width: 27%;
   }
 }
 
 @media all and (min-width: 641px) {
   .bill-to-form__address-wrapper > div {
-    width: 33%;
+    width: 27%;
   }
 }
 
@@ -1353,6 +1359,12 @@ button.success {
   }
 }
 
+@media all and (min-width: 641px) {
+  .new-invoice > section.container__px > button {
+    display: none;
+  }
+}
+
 .theme--light .new-invoice {
   background-color: #FFFFFF;
   -webkit-transition: all 500ms ease-in-out, border-color 500ms ease-in-out;
@@ -1368,10 +1380,26 @@ button.success {
 .new-invoice > footer {
   position: relative;
   padding: 21px 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media all and (min-width: 641px) {
+  .new-invoice > footer {
+    content: unset;
+  }
 }
 
 .new-invoice > footer > button {
   font-weight: bold;
+}
+
+@media all and (min-width: 641px) {
+  .new-invoice > footer > button:nth-of-type(1) {
+    margin-left: auto;
+    margin-right: 8px;
+  }
 }
 
 .theme--light .new-invoice > footer {
@@ -1395,6 +1423,12 @@ button.success {
   top: -61px;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.0001)), to(rgba(0, 0, 0, 0.1)));
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+@media all and (min-width: 641px) {
+  .new-invoice > footer::before {
+    content: unset;
+  }
 }
 
 .modal {

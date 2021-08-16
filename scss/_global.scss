@@ -19,6 +19,9 @@ p {
 
 a {
   text-decoration:none;
+  > button {
+    cursor: pointer;
+  }
 }
 h1, .h1 {
   font-weight: bold;
@@ -231,4 +234,9 @@ ul ul li {
 
 .no-scroll {
   overflow: hidden;
+}
+
+#home {
+  height: inherit;
+  overflow-y: scroll;
 }

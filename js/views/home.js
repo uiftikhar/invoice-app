@@ -4,9 +4,30 @@ export const updateHome = (InvoiceWrapper, jsonData) => {
   const totalInvoicesElement = InvoiceWrapper.querySelector('article > hgroup > h4')
   const totalInvoices = jsonData.length;
   const cardsWrapperElement = InvoiceWrapper.querySelector('.cards')
+  const newInvoiceButton = InvoiceWrapper.querySelector('#new-invoice')
+  const sideDrawer = document.querySelector('#new-invoice-sidebar')
+  const overlay = document.querySelector('#overlay')
+  const appRoot = document.querySelector('#app-root')
   totalInvoicesElement.innerHTML = `${totalInvoices} invoices`;
   if(mediaQuery.matches) {
     totalInvoicesElement.innerHTML = `There are ${totalInvoices} total invoices`;
+    newInvoiceButton.addEventListener('click', () => {
+      let xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            sideDrawer.innerHTML = this.responseText;
+            const event = new Event('page-loaded');
+            appRoot.dispatchEvent(event);
+            sideDrawer.classList.add('side-drawer__is-opened');
+            overlay.classList.add('is-visible');
+            document.querySelector('#app-root').classList.add('no-scroll');
+          }
+      };
+      xhttp.open('GET', 'views/new-invoice.html', true);
+      xhttp.send();
+    })
+  } else {
+    newInvoiceButton.parentElement.setAttribute('href',`#new-invoice`)
   }
   let innerHtml = ''
   jsonData.forEach(item => {
