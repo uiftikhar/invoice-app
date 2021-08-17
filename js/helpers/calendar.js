@@ -2,7 +2,6 @@
 import { formatter } from '../utils.js'
 const  populateDates = (daysElement, monthElement, date, addSelectedClass = true) => {
   daysElement.innerHTML = '';
-  console.log(date);
   console.trace()
   let day = date.getDate();
   let month = date.getMonth();

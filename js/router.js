@@ -1,6 +1,6 @@
 'use strict';
 
-function Router(routes) {
+export function Router(routes) {
     try {
         if (!routes) {
             throw 'error: routes param is mandatory';

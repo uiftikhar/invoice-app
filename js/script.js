@@ -1,6 +1,5 @@
 // DATA BINDING
-// https://dev.to/phoinixi/one-way-data-binding-in-vanilla-js-poc-4dj7
-
+import '../styles/styles.css'
 import {
   updateEditInvoice,
 } from './views/edit-invoice.js'
@@ -13,9 +12,16 @@ import {
 import {
   updateNewInvoice,
 } from './views/new-invoice.js';
+import { Router } from './router.js';
+import { Route } from './route.js';
+import { loadData } from './loadData.js';
 const toggleThemeButton = document.querySelector('#toggle-theme');
 const body = document.querySelector('body');
 const appRoot = document.querySelector('#app-root');
+
+(function () {
+  loadData();
+}());
 
 (function () {
   function init() {
@@ -33,7 +39,6 @@ const appRoot = document.querySelector('#app-root');
 
 const appRootListener =  () => {
   const jsonData = JSON.parse(localStorage.getItem('data'));
-
   const InvoiceWrapper = appRoot.querySelector('#home');
   const viewInvoiceWrapper = appRoot.querySelector('#view-invoice');
   const editInvoiceWrapper = appRoot.querySelector('#edit-invoice');
