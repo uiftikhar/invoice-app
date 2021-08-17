@@ -28,6 +28,10 @@
   }
   
   &__details-wrapper {
+    > .card:hover {
+      border-color: transparent;
+
+    }
     > .card > h4 {
       &:not(:first-child) {
         @include themed() {

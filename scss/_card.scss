@@ -2,7 +2,7 @@
 .card {
   padding: 24px;
   margin-bottom: 1rem;
-  border: 1px solid $white;
+  border: 1px solid transparent;
 
   &:hover {
     border-color: $purple-dark;

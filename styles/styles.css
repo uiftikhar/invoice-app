@@ -990,7 +990,7 @@ button.success {
 .card {
   padding: 24px;
   margin-bottom: 1rem;
-  border: 1px solid #FFFFFF;
+  border: 1px solid transparent;
   border-radius: 8px;
 }
 
@@ -1366,6 +1366,10 @@ button.success {
   transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
   transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
   transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+}
+
+.view-invoice__details-wrapper > .card:hover {
+  border-color: transparent;
 }
 
 .theme--light .view-invoice__details-wrapper > .card > h4:not(:first-child) {
