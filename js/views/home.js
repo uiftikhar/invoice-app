@@ -42,8 +42,8 @@ export const updateHome = (InvoiceWrapper, jsonData) => {
 
     if(!mediaQuery.matches) {
       innerHtml += `
+      <a href="#view-invoice?${item.id}">
         <article class="card">
-          <a href="#view-invoice?${item.id}">
             <section class="card__invoice">
               <hgroup>
                 <h4 class="card__invoice--id bold">${item.id.toUpperCase()}</h4>
@@ -57,13 +57,13 @@ export const updateHome = (InvoiceWrapper, jsonData) => {
                 ${chip}
               </article>
             </section>
-          </a>
-        </article>
+            </article>
+        </a>
       `
     } else {
       innerHtml += `
+      <a href="#view-invoice?${item.id}">
         <article class="card">
-          <a href="#view-invoice?${item.id}">
             <section class="card__invoice">
                 <h4 class="card__invoice--id bold">${item.id.toUpperCase()}</h4>
                 <h4 class="card__invoice--name">${item.clientName}</h4>
@@ -71,8 +71,8 @@ export const updateHome = (InvoiceWrapper, jsonData) => {
                 <h3 class="card__invoice--total">${formatCurrency(item.total)}</h3>
                 ${chip}
             </section>
-          </a>
-        </article>
+            </article>
+            </a>
         `
     }
   })

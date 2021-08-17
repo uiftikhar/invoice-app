@@ -1,13 +1,14 @@
-.cards {
-  > .card {
-    &:not(:last-child) {
-      margin-bottom: 1rem;
-    }
-  }
-}
 
 .card {
   padding: 24px;
+  margin-bottom: 1rem;
+  border: 1px solid $white;
+
+  &:hover {
+    border-color: $purple-dark;
+    
+  }
+  
   @include breakpoints(medium) {
     padding: 16px 24px;
 	}

@@ -987,13 +987,15 @@ button.success {
   }
 }
 
-.cards > .card:not(:last-child) {
-  margin-bottom: 1rem;
-}
-
 .card {
   padding: 24px;
+  margin-bottom: 1rem;
+  border: 1px solid #FFFFFF;
   border-radius: 8px;
+}
+
+.card:hover {
+  border-color: #7C5DFA;
 }
 
 @media all and (min-width: 641px) {
