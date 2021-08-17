@@ -1,5 +1,6 @@
-'use stict';
-function Route(name, htmlName, defaultRoute) {
+'use strict';
+
+export function Route(name, htmlName, defaultRoute) {
     try {
         if(!name || !htmlName) {
             throw 'error: name and htmlName params are mandatories';

@@ -1,0 +1,22 @@
+{
+  "name": "Invoice-app",
+  "version": "1",
+  "description": "invoice application written in pure javascript and HTML",
+  "main": "index.js",
+  "repository": "git@github.com:uiftikhar/invoice-app.git",
+  "author": "umer <“umer229@gmail.com”>",
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^6.2.0",
+    "sass": "^1.38.0",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.50.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "scripts": {
+    "build": "webpack",
+    "dev-server": "webpack serve --config webpack.config.js --progress"
+  }
+}

@@ -12,7 +12,7 @@ const checkEventPathForClass = (path, selector) => {
 
 export const updateEditInvoice = (editInvoiceWrapper, data) => {
   const mediaQuery = window.matchMedia( "(min-width: 640px)" );
-  let date = data.paymentDue ? new Date(data.paymentDue) : new Date(formatDateSaveValue(Date.now()));
+  let date = (data.paymentDue && !data.paymentDue.includes('NaN') ) ? new Date(data.paymentDue) : new Date(formatDateSaveValue(Date.now()));
 
   // ------------------------------ Query Selectors ----------------------------------------------
   const datePickerElement = editInvoiceWrapper.querySelector('#date-picker');

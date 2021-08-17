@@ -7,6 +7,18 @@
   @include themed() {
     background-color: theme($header-background);
   }
+  @include breakpoints(large) {
+    position: fixed;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    z-index: 1;
+    max-width: 103px;
+    padding: 0;
+    align-items: center;
+    border-radius: 0px 20px 20px 0px;
+  }
+
   &__toggle-theme {
     position: relative;
      &::after {
@@ -18,10 +30,26 @@
        top: -25px;
        right: -24px;
      }
+     @include breakpoints(large) {
+      &::after {
+        content: '';
+        position: absolute;
+        width: 103px;
+        height: 1px;
+        background-color: #494E6E;
+        top: 50px;
+        left: -42px;
+      }
+    }
   }
   &__logo-wrapper {
     width: 72px;
     height: 73px;
+    @include breakpoints(large) {
+      width: 103px;
+      height: 103px;
+    }
+   
     background-color: $purple-dark;
     position: relative;
     border-top-right-radius: 20px;
@@ -35,6 +63,11 @@
       background-color: $purple-light;
       width: 72px;
       height: 36px;
+      @include breakpoints(large) {
+        width: 103px;
+        height: 52px;
+        top: 52px;
+      }
       top: 37px;
       left: 0;
       border-top-left-radius: 20px;
@@ -43,6 +76,10 @@
     &__logo {
       width: 28px;
       height: 28px;
+      @include breakpoints(large) {
+        width: 40px;
+        height: 38px;
+      }
       z-index: 1;
     }
   
@@ -51,6 +88,13 @@
         width: 32px;
         border-radius: 50%;
         margin-left: 48px;
+        @include breakpoints(large) {
+          width: 40px;
+          height: 40px;
+          margin-left: 0;
+          margin-top: 60px;
+          margin-bottom: 24px;
+        }
       }
     }
   }

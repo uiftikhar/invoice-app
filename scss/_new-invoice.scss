@@ -14,6 +14,20 @@
     position: relative;
     padding: 21px 20px;
     justify-content: space-between;
+    // @include breakpoints(small, medium) {
+    //   @include themed() {
+    //     // background-color: theme($general-background-light);
+    //   }
+    // }
+    @include breakpoints(small, medium) {
+      @include themed() {
+        background-color: theme($header-background);
+      }
+    }
+    @include breakpoints(large) {
+      padding-left: 60px;
+      padding-right: 60px;
+     }
     @include breakpoints(medium) {
       content: unset;
     }
@@ -26,9 +40,7 @@
         }
       }
     }
-    @include themed() {
-      background-color: theme($general-background-light);
-    }
+    
     &::before {
       content: '';   
       position: absolute;

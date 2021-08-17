@@ -70,7 +70,7 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
       left: 0,
       behavior: 'smooth'
     });
-    document.querySelector('#modal > h4').innerHTML = `Are you sure you want to delete invoice #${data.id}? This action cannot be undone.`;
+    document.querySelector('#modal > h4').innerHTML = `Are you sure you want to delete invoice #${data.id.toUpperCase()}? This action cannot be undone.`;
     document.querySelector('#app-root').classList.add('no-scroll');
   }
 
@@ -114,7 +114,7 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
   // ------------------------------------------------------------------------------------------------
 
   statusWrapper.innerHTML = getChipInnerHtml(data.status, mediaQuery);
-  detailsHeaders[0].innerHTML = data.id;
+  detailsHeaders[0].innerHTML = data.id.toUpperCase();
   detailsHeaders[1].innerHTML = data.description;
   detailsHeaders[2].innerHTML = data.senderAddress.street;
   detailsHeaders[3].innerHTML = data.senderAddress.city;

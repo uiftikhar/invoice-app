@@ -1,5 +1,5 @@
 const formatDate = (value) => {
-  if(value) {
+  if(!value.includes('NaN') && value) {
     const date = new Date(value);
     const day = date.toLocaleString('default', { day: '2-digit' });
     const month = date.toLocaleString('default', { month: 'short' });
@@ -19,7 +19,6 @@ const formatDateSaveValue = (value) => {
         month = '0' + month;
     if (day.length < 2) 
         day = '0' + day;
-
     return [year, month, day].join('-');
 }
 

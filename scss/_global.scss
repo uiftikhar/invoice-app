@@ -81,7 +81,7 @@ figure {
 }
 
 input, .date-picker, .select {
-  padding: 17px 20px;
+  padding: 15px 15px;
   border-radius: 4px;
   @include themed() {
     background-color: theme($general-background-light);
@@ -109,6 +109,11 @@ input:read-only {
   padding: 0;
   cursor: pointer;
 }
+
+input {
+  padding-right: 0;
+}
+
 ul,
 ul li,
 ul ul li {
@@ -133,25 +138,49 @@ ul ul li {
   &__px {
     padding-right: 24px;
     padding-left: 24px;
+    @include breakpoints(large) {
+     padding-left: 60px;
+     padding-right: 60px;
+    }
     &--right {
       padding-right: 24px;
       padding-left: 0px;
+      @include breakpoints(large) {
+        padding-left: 0px;
+        padding-right: 60px;
+       }
     }
     &--left {
       padding-left: 24px;
       padding-right: 0px;
+      @include breakpoints(large) {
+        padding-left: 60px;
+        padding-right: 0px;
+       }
     }
   }
   &__py {
     padding-top: 32px;
     padding-bottom: 32px;
+    @include breakpoints(large) {
+      padding-top: 60px;
+      padding-bottom: 60px;
+     }
     &--top {
       padding-top: 32px;
       padding-bottom: 0px;
+      @include breakpoints(large) {
+        padding-top: 60px;
+        padding-bottom: 0px;
+       }
     }
     &--bottom {
       padding-bottom: 32px;
       padding-top: 0px;
+      @include breakpoints(large) {
+        padding-top: 0px;
+        padding-bottom: 60px;
+       }
     }
   }
   &__p-all {
@@ -159,6 +188,7 @@ ul ul li {
     @include breakpoints(medium) {
       padding-bottom: 150px;
      }
+     
   }
 }
 
@@ -220,11 +250,17 @@ ul ul li {
 #app-root {
   position: relative;
   height: calc(100vh - 73px);
+  @include breakpoints(large) {
+    height: 100vh;
+    margin-left: 85px;
+    > section:first-of-type {
+      padding: 72px 355px 72px 335px;
+    }
+  }
 }
 
 .only-for-mobile {
   @include breakpoints(medium) {
-		// Overrides for 640px and up
     display: none;
 	}
 }

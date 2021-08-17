@@ -14,9 +14,20 @@
   > footer {
     padding: 21px 24px;
     position: relative;
-    @include themed() {
-      background-color: theme($general-background-light);
+    @include breakpoints(small, medium) {
+      @include themed() {
+        background-color: theme($header-background);
+      }
     }
+    @include breakpoints(small, medium) {
+      @include themed() {
+        background-color: theme($general-background-light);
+      }
+    }
+    @include breakpoints(large) {
+      padding-left: 60px;
+      padding-right: 60px;
+     }
     > a:first-of-type {
       margin-left: auto;
       margin-right: 8px;
@@ -94,6 +105,7 @@
         }
       }
     }
+
     &--name {
       @include breakpoints(medium) {
         width: 37%;
