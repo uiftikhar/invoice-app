@@ -95,10 +95,11 @@ export const renderItems = (items) => {
   });
 }
 export const createNewDataObject = (newInvoice = false) => {
+  const getNewDate = d => new Date(d.getFullYear() + 1, d.getMonth(), d.getDate());
   return {
     id: newInvoice ? idGen() : "",
     createdAt: newInvoice ? formatDateSaveValue(new Date(Date.now())) : "",
-    paymentDue: "",
+    paymentDue: newInvoice ? getNewDate(new Date) : '',
     description: "",
     paymentTerms: 1,
     clientName: "",
@@ -123,12 +124,30 @@ export const createNewDataObject = (newInvoice = false) => {
 
 export const createNewInvoice = (entries, isDraft = false) => {
   const newItem = createNewDataObject(true);
-  populateInvoice(newItem, entries, []);
+  let invoiceItems = [];
+  let total = 0;
+  entries.forEach(item => {
+    if(item[0].includes('item-list--')) {
+      let key = item[0].split('--')[1];
+      let index = item[0][0];
+      let value = key === 'name' ? item[1] : Number(item[1].replace(/[^0-9.-]+/g,""));
+      let currentObj = invoiceItems[index];
+      if(key === 'total') {
+        value = invoiceItems[index]["quantity"] * invoiceItems[index]["price"] 
+      }
+      const obj = {
+        [key]: value,
+        ...currentObj
+      }
+      invoiceItems[index] = obj;
+  }})
+  newItem.items = invoiceItems;
+  invoiceItems.forEach(item => total += item.total);
+  newItem.total = total;
   newItem.status = 'paid';
   if(isDraft) {
     newItem.status = 'draft';
   }
-  newItem.paymentDue = '';
   const currentData = JSON.parse(localStorage.getItem('data'));
   currentData.push(newItem);
   localStorage.setItem('data', JSON.stringify(currentData));
@@ -150,7 +169,6 @@ export const updateItemsInLocalStorage = (entries, currentItem) => {
   currentData[indexToUpdate] = newItem;
   localStorage.setItem('data', JSON.stringify(currentData));
 };
-
 
 const populateInvoice = (invoiceItem, entries, invoiceItems) => {
   entries.forEach(item => {

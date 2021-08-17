@@ -39,6 +39,7 @@ export const updateHome = (InvoiceWrapper, jsonData) => {
     } else if(item.status === 'draft') {
       chip = '<h4 class="chip chip__draft bold">Draft</h4>';
     }
+
     if(!mediaQuery.matches) {
       innerHtml += `
         <article class="card">

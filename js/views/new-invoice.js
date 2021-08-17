@@ -115,6 +115,7 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
     const element = document.querySelector('#edit-invoice-form')
     const formData = new FormData(element)
     const form = Array.from(formData.entries());
+    console.log(formData);
     createNewInvoice(form);
     if(!mediaQuery.matches) { 
       window.history.back()

@@ -273,12 +273,6 @@ ul ul li {
   }
 }
 
-@media all and (min-width: 1025px) {
-  .container__p-all {
-    padding: 60px;
-  }
-}
-
 .pb-1 {
   padding-bottom: 24px;
 }

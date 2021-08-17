@@ -188,9 +188,7 @@ ul ul li {
     @include breakpoints(medium) {
       padding-bottom: 150px;
      }
-     @include breakpoints(large) {
-      padding: 60px;
-     }
+     
   }
 }
 
