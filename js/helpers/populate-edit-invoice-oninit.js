@@ -69,15 +69,15 @@ export const renderItems = (items) => {
     li.innerHTML = `
     <div class="flex flex__col pb-1 w-100 item-list-form__items--name">
       <label>Item Name</label>
-      <input type="text" name="${index}-item-list--name" value="${item.name}">
+      <input type="text" name="${index}-item-list--name" value="${item.name}" required>
     </div>
     <div class="item-list-form__items--quantity">
       <label>Qty</label>
-      <input type="number" name="${index}-item-list--quantity" value="${item.quantity}">
+      <input type="number" name="${index}-item-list--quantity" value="${item.quantity}" required>
     </div>
     <div class="item-list-form__items--price">
       <label>Price</label>
-      <input type="number" name="${index}-item-list--price" value="${item.price}">
+      <input type="number" name="${index}-item-list--price" value="${item.price}" required>
     </div>
     <div class="item-list-form__items--total">
       <label>Total</label>

@@ -100,12 +100,13 @@ const getChipInnerHtml = (status, mediaQuery) => {
     `;
   }
   if(mediaQuery.matches) {
+    const disabled = status === 'draft' || status === 'paid';
     chip += `
       <a id="redirect-to-edit-invoice" class="ml-auto mr-half" >
         <button class="base">Edit</button>
       </a>
       <button id="delete-invoice" class="warn mr-half">Delete</button>
-      <button id="mark-as-paid" class="success">Mark as Paid</button>
+      ${disabled ? `<button disabled id="mark-as-paid" class="success">Mark as Paid</button>` : `<button id="mark-as-paid" class="success">Mark as Paid</button>`}
     `
   }
 

@@ -100,24 +100,42 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
   const editInvoiceWrapperListener = (event) => {
     event.preventDefault();
     const element = document.querySelector('#edit-invoice-form')
-    const formData = new FormData(element)
-    const form = Array.from(formData.entries());
-    updateItemsInLocalStorage(form, data);
-    if(!mediaQuery.matches) {
-      window.history.back()
+    const requiredFields = [...element.querySelectorAll("[required]")];
+
+    const isFormInvalid = requiredFields.some(field => field.validity.valid === false);
+    if(!isFormInvalid) {
+      const formData = new FormData(element)
+      const form = Array.from(formData.entries());
+      data.status = 'pending';
+      updateItemsInLocalStorage(form, data);
+      if(!mediaQuery.matches) {
+        window.history.back()
+      } else {
+        const sideDrawer = document.querySelector('#edit-invoice-sidebar');
+        const overlay = document.querySelector('#overlay');
+        if(sideDrawer.classList.contains('side-drawer__is-opened')) {
+          sideDrawer.classList.remove('side-drawer__is-opened')
+          sideDrawer.textContent = '';
+        }
+        if(overlay.classList.contains('is-visible')) {
+          overlay.classList.remove('is-visible')
+        }
+        document.querySelector('#app-root').classList.remove('no-scroll');
+        const event = new Event('page-loaded');
+        appRoot.dispatchEvent(event);
+      }
     } else {
-      const sideDrawer = document.querySelector('#edit-invoice-sidebar');
-      const overlay = document.querySelector('#overlay');
-      if(sideDrawer.classList.contains('side-drawer__is-opened')) {
-        sideDrawer.classList.remove('side-drawer__is-opened')
-        sideDrawer.textContent = '';
-      }
-      if(overlay.classList.contains('is-visible')) {
-        overlay.classList.remove('is-visible')
-      }
-      document.querySelector('#app-root').classList.remove('no-scroll');
-      const event = new Event('page-loaded');
-      appRoot.dispatchEvent(event);
+      console.log(requiredFields);
+      requiredFields.forEach(field => {
+        if(!field.validity.valid) {
+          if(field.classList.contains('selected-date') || field.classList.contains('select__selected-item')) {
+            field.parentElement.parentElement.classList.add('error')
+          } else {
+            field.parentElement.classList.add('error')
+          }
+        }
+      });
+      requiredFields[0].parentElement.scrollIntoView({behavior: "smooth", block: "nearest"});
     }
   };
 

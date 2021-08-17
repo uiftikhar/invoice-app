@@ -44,18 +44,18 @@ h2, .h2 {
 
 .theme--light h2, .theme--light .h2 {
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark h2, .theme--dark .h2 {
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 h3, .h3 {
@@ -115,20 +115,20 @@ input, .date-picker, .select {
   background-color: #FFFFFF;
   border: 1px solid #DFE3FA;
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark input, .theme--dark .date-picker, .theme--dark .select {
   background-color: #1E2139;
   border: 1px solid #252945;
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 input.disabled, .date-picker.disabled, .select.disabled {
@@ -158,6 +158,19 @@ input {
   padding-right: 0;
 }
 
+.error {
+  position: relative;
+}
+
+.error > input, .error .date-picker, .error .select {
+  border: 1px solid red;
+}
+
+.error > label {
+  color: red;
+  text-decoration: underline;
+}
+
 ul,
 ul li,
 ul ul li {
@@ -177,18 +190,18 @@ ul ul li {
 
 .theme--light .container {
   background-color: #F8F8FB;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .container {
   background-color: #141625;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .container__px {
@@ -411,10 +424,10 @@ ul ul li {
   text-align: left;
   background-color: #FFFFFF;
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .date-picker > input {
@@ -422,10 +435,10 @@ ul ul li {
   text-align: left;
   background-color: #1E2139;
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .date-picker .dates {
@@ -443,18 +456,18 @@ ul ul li {
 
 .theme--light .date-picker .dates {
   background-color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .date-picker .dates {
   background-color: #252945;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .date-picker .dates.active {
@@ -512,10 +525,10 @@ ul ul li {
   text-align: left;
   background-color: #FFFFFF;
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .select > input {
@@ -523,10 +536,10 @@ ul ul li {
   text-align: left;
   background-color: #1E2139;
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .select__elements {
@@ -543,18 +556,18 @@ ul ul li {
 
 .theme--light .select__elements {
   background-color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .select__elements {
   background-color: #252945;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .select__elements.active {
@@ -567,18 +580,18 @@ ul ul li {
 
 .theme--light .select__elements > p:not(:last-child) {
   border-bottom: 1px solid #DFE3FA;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .select__elements > p:not(:last-child) {
   border-bottom: 1px solid #1E2139;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .select__elements--selected {
@@ -674,18 +687,18 @@ button.icon-button__mini > figure {
 
 .theme--light button.icon-button__mini > h4 {
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark button.icon-button__mini > h4 {
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 button.icon-button__back:hover:enabled {
@@ -694,54 +707,54 @@ button.icon-button__back:hover:enabled {
 
 .theme--light button.icon-button__back > a > h4 {
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark button.icon-button__back > a > h4 {
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--light button.base {
   background-color: #F9FAFE;
   color: #7E88C3;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark button.base {
   background-color: #252945;
   color: #DFE3FA;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--light button.base:hover {
   background-color: #DFE3FA;
   color: #7E88C3;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark button.base:hover {
   background-color: #FFFFFF;
   color: #7E88C3;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 button.draft {
@@ -751,34 +764,34 @@ button.draft {
 
 .theme--light button.draft {
   color: #888EB0;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark button.draft {
   color: #DFE3FA;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--light button.draft:hover {
   background-color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark button.draft:hover {
   background-color: #1E2139;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 button.warn {
@@ -807,18 +820,18 @@ button.success {
 
 .theme--light .header {
   background-color: #373B53;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .header {
   background-color: #1E2139;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 @media all and (min-width: 1025px) {
@@ -991,18 +1004,18 @@ button.success {
 
 .theme--light .card {
   background-color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .card {
   background-color: #1E2139;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .card--invoice-details {
@@ -1012,18 +1025,18 @@ button.success {
 
 .theme--light .card--invoice-details {
   background-color: #F9FAFE;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .card--invoice-details {
   background-color: #252945;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 @media all and (min-width: 641px) {
@@ -1070,18 +1083,18 @@ button.success {
 
 .theme--light .card--grand-total {
   background-color: #373B53;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .card--grand-total {
   background-color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .card--grand-total > h4, .card--grand-total h2 {
@@ -1104,18 +1117,18 @@ button.success {
 
 .theme--light .card__invoice--id {
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .card__invoice--id {
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .card__invoice--id::before {
@@ -1124,18 +1137,18 @@ button.success {
 
 .theme--light .card__invoice--id::before {
   color: #7E88C3;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .card__invoice--id::before {
   color: #7E88C3;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .card__invoice--due-date {
@@ -1158,34 +1171,34 @@ button.success {
 
 .theme--light .card__invoice--total {
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .card__invoice--total {
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--light .card__invoice--name {
   color: #858BB2;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .card__invoice--name {
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .card__invoice > hgroup {
@@ -1254,19 +1267,19 @@ button.success {
 .theme--light .chip__draft {
   color: #0C0E16;
   background-color: rgba(55, 59, 83, 0.06);
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .chip__draft {
   color: #FFFFFF;
   background-color: rgba(223, 227, 250, 0.06);
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .chip__draft::before {
@@ -1280,18 +1293,18 @@ button.success {
 
 .theme--light .chip__draft::before {
   background-color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .chip__draft::before {
   background-color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 @media all and (min-width: 641px) {
@@ -1312,18 +1325,18 @@ button.success {
 
 .theme--light .view-invoice__themed-heading {
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .view-invoice__themed-heading {
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .view-invoice__status-wrapper {
@@ -1339,34 +1352,34 @@ button.success {
 
 .theme--light .view-invoice__status-wrapper {
   background-color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .view-invoice__status-wrapper {
   background-color: #1E2139;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--light .view-invoice__details-wrapper > .card > h4:not(:first-child) {
   color: #7E88C3;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .view-invoice__details-wrapper > .card > h4:not(:first-child) {
   color: #DFE3FA;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .view-invoice__details-wrapper--date-details > h4 {
@@ -1380,18 +1393,18 @@ button.success {
 
 .theme--light .view-invoice__details-wrapper--date-details > h3 {
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .view-invoice__details-wrapper--date-details > h3 {
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .view-invoice__details-wrapper--address-details > h4 {
@@ -1408,34 +1421,34 @@ button.success {
 
 .theme--light .view-invoice__details-wrapper--address-details > h3 {
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .view-invoice__details-wrapper--address-details > h3 {
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--light .view-invoice__details-wrapper--sent-to-details > h3 {
   color: #0C0E16;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .view-invoice__details-wrapper--sent-to-details > h3 {
   color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .view-invoice > footer.view-invoice-footer, .new-invoice > footer.view-invoice-footer {
@@ -1444,18 +1457,18 @@ button.success {
 
 .theme--light .view-invoice > footer.view-invoice-footer, .theme--light .new-invoice > footer.view-invoice-footer {
   background-color: #373B53;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .view-invoice > footer.view-invoice-footer, .theme--dark .new-invoice > footer.view-invoice-footer {
   background-color: #1E2139;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 @media all and (min-width: 641px) {
@@ -1487,18 +1500,18 @@ button.success {
 
 .theme--light .edit-invoice, .theme--light .side-drawer {
   background-color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .edit-invoice, .theme--dark .side-drawer {
   background-color: #141625;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .edit-invoice > footer, .side-drawer > footer {
@@ -1509,34 +1522,34 @@ button.success {
 @media all and (min-width: 321px) and (max-width: 640px) {
   .theme--light .edit-invoice > footer, .theme--light .side-drawer > footer {
     background-color: #373B53;
-    -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+    -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
   }
   .theme--dark .edit-invoice > footer, .theme--dark .side-drawer > footer {
     background-color: #1E2139;
-    -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+    -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
   }
 }
 
 @media all and (min-width: 321px) and (max-width: 640px) {
   .theme--light .edit-invoice > footer, .theme--light .side-drawer > footer {
     background-color: #FFFFFF;
-    -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+    -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
   }
   .theme--dark .edit-invoice > footer, .theme--dark .side-drawer > footer {
     background-color: #1E2139;
-    -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+    -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
   }
 }
 
@@ -1729,18 +1742,18 @@ button.success {
 
 .theme--light .new-invoice {
   background-color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .new-invoice {
   background-color: #141625;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .new-invoice > footer {
@@ -1754,17 +1767,17 @@ button.success {
 @media all and (min-width: 321px) and (max-width: 640px) {
   .theme--light .new-invoice > footer {
     background-color: #373B53;
-    -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+    -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
   }
   .theme--dark .new-invoice > footer {
     background-color: #1E2139;
-    -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+    -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+    transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
   }
 }
 
@@ -1830,18 +1843,18 @@ button.success {
 
 .theme--light .modal {
   background-color: #FFFFFF;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .theme--dark .modal {
   background-color: #1E2139;
-  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out;
-  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 500ms ease-in-out, transform 250ms ease-in-out,  -webkit-transform 250ms ease-in-out;
+  -webkit-transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  color 250ms ease-in-out, -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color 500ms ease-in-out,  border-color 500ms ease-in-out,  text-decoration 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out,  -webkit-text-decoration 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
 }
 
 .modal > h2 {

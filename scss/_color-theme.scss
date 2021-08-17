@@ -97,7 +97,8 @@ $themes: (
       transition: 
         background-color 500ms ease-in-out, 
         border-color 500ms ease-in-out, 
-        color 500ms ease-in-out,
+        text-decoration 250ms ease-in-out,
+        color 250ms ease-in-out,
         transform 250ms ease-in-out;
     }
   }

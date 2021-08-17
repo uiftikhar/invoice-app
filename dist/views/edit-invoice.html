@@ -15,20 +15,20 @@
           <h4 class="pb-1">Bill Form</h4>
           <div class="flex flex__col pb-1">
             <label>Street Address</label>
-            <input type="text" name="bill-from--street_address">
+            <input type="text" name="bill-from--street_address" required>
           </div>
           <div class="flex flex__jc-sb flex__row-wrap bill-from-form__address-wrapper">
             <div class="flex flex__col pb-1 mini">
               <label>City</label>
-              <input type="text" name="bill-from--city">
+              <input type="text" name="bill-from--city" required>
             </div>
             <div class="flex flex__col pb-1 mini">
               <label>Post Code</label>
-              <input type="text" name="bill-from--post_code">
+              <input type="text" name="bill-from--post_code" required>
             </div>
             <div class="flex flex__col">
               <label>Country</label>
-              <input type="text" name="bill-from--country">
+              <input type="text" name="bill-from--country" required>
             </div>
           </div>
         </section>
@@ -36,28 +36,28 @@
           <h4 class="pb-1">Bill To</h4>
           <div class="flex flex__col pb-1">
             <label>Client’s Name</label>
-            <input type="text" name="bill-to--client-name">
+            <input type="text" name="bill-to--client-name" required>
           </div>
           <div class="flex flex__col pb-1">
             <label>Client’s Email</label>
-            <input type="text" name="bill-to--client-email">
+            <input type="text" name="bill-to--client-email" required>
           </div>
           <div class="flex flex__col pb-1">
             <label>Street Address</label>
-            <input type="text" name="bill-to--street_address">
+            <input type="text" name="bill-to--street_address" required>
           </div>
           <div class="flex flex__jc-sb flex__row-wrap pb-1 bill-to-form__address-wrapper">
             <div class="flex flex__col pb-1 mini">
               <label>City</label>
-              <input type="text" name="bill-to--city">
+              <input type="text" name="bill-to--city" required>
             </div>
             <div class="flex flex__col pb-1 mini">
               <label>Post Code</label>
-              <input type="text" name="bill-to--post_code">
+              <input type="text" name="bill-to--post_code" required>
             </div>
             <div class="flex flex__col">
               <label>Country</label>
-              <input type="text" name="bill-to--country">
+              <input type="text" name="bill-to--country" required>
             </div>
           </div>
           <!-- change padding tp 40px // date picker-->
@@ -66,7 +66,7 @@
               <label>Invoice Date</label>
               <!-- <input id="calendar" type="text" > -->
               <div id="date-picker" class="date-picker">
-                <input readonly name="payment-date" class="selected-date" >
+                <input readonly name="payment-date" class="selected-date" required >
                 <figure class="ml-auto">
                   <img src="./assets/icon-calendar.svg" height="16" width="16" />
                 </figure>
@@ -92,7 +92,7 @@
             <div class="flex flex__col pb-1">
               <label>Payment Terms</label>
               <div id="select" class="select">
-                <input readonly name="payment-terms" class="select__selected-item" >
+                <input readonly name="payment-terms" class="select__selected-item" required>
                 <figure class="ml-auto">
                   <img src="./assets/icon-arrow-down.svg" />
                 </figure>
@@ -109,7 +109,7 @@
           </div>
           <div class="flex flex__col pb-1">
             <label>Project / Description</label>
-            <input type="text" name="bill-to--project">
+            <input type="text" name="bill-to--project" required>
           </div>
         </section>
         <section class="item-list-form" id="edit-invoice-form--item-list" >

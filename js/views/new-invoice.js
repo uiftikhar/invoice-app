@@ -24,7 +24,7 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
   const userSelectElement = newInvoiceWrapper.querySelector('#select');
   const selectElements = newInvoiceWrapper.querySelector('#select > .select__elements');
   const selectedElement = newInvoiceWrapper.querySelector('#select > .select__selected-item');
-  const formElement = newInvoiceWrapper.querySelector('#edit-invoice-form');
+  const formElement = newInvoiceWrapper.querySelector('#new-invoice-form');
   const invoiceItemsWrapper = newInvoiceWrapper.querySelector('#edit-invoice-form--item-list');
   const addNewItemButton = newInvoiceWrapper.querySelector('#add-new-item');
   const submitFormButton = newInvoiceWrapper.querySelector('#submit-form-button');
@@ -112,32 +112,50 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
 
   const newInvoiceWrapperListener = (event) => {
     event.preventDefault();
-    const element = document.querySelector('#edit-invoice-form')
-    const formData = new FormData(element)
-    const form = Array.from(formData.entries());
-    console.log(formData);
-    createNewInvoice(form);
-    if(!mediaQuery.matches) { 
-      window.history.back()
+    const element = document.querySelector('#new-invoice-form')
+    const requiredFields = [...element.querySelectorAll("[required]")];
+    
+    const isFormInvalid = requiredFields.some(field => field.validity.valid === false);
+    console.log(isFormInvalid);
+    if(!isFormInvalid) {
+      const formData = new FormData(element)
+      const form = Array.from(formData.entries());
+      console.log(formData);
+      createNewInvoice(form);
+      if(!mediaQuery.matches) { 
+        window.history.back()
+      } else {
+        const sideDrawer = document.querySelector('#new-invoice-sidebar');
+        const overlay = document.querySelector('#overlay');
+        if(sideDrawer.classList.contains('side-drawer__is-opened')) {
+          sideDrawer.classList.remove('side-drawer__is-opened')
+          sideDrawer.textContent = '';
+        }
+        if(overlay.classList.contains('is-visible')) {
+          overlay.classList.remove('is-visible')
+        }
+        document.querySelector('#app-root').classList.remove('no-scroll');
+        const event = new Event('page-loaded');
+        appRoot.dispatchEvent(event);
+      }
     } else {
-      const sideDrawer = document.querySelector('#new-invoice-sidebar');
-      const overlay = document.querySelector('#overlay');
-      if(sideDrawer.classList.contains('side-drawer__is-opened')) {
-        sideDrawer.classList.remove('side-drawer__is-opened')
-        sideDrawer.textContent = '';
-      }
-      if(overlay.classList.contains('is-visible')) {
-        overlay.classList.remove('is-visible')
-      }
-      document.querySelector('#app-root').classList.remove('no-scroll');
-      const event = new Event('page-loaded');
-      appRoot.dispatchEvent(event);
+      console.log(requiredFields);
+      requiredFields.forEach(field => {
+        if(!field.validity.valid) {
+          if(field.classList.contains('selected-date') || field.classList.contains('select__selected-item')) {
+            field.parentElement.parentElement.classList.add('error')
+          } else {
+            field.parentElement.classList.add('error')
+          }
+        }
+      });
+      requiredFields[0].parentElement.scrollIntoView({behavior: "smooth", block: "nearest"});
     }
   };
   
   const saveAsDraftButtonListener = (event) => {
     event.preventDefault();
-    const element = document.querySelector('#edit-invoice-form')
+    const element = document.querySelector('#new-invoice-form')
     const formData = new FormData(element)
     const form = Array.from(formData.entries());
     createNewInvoice(form, true);

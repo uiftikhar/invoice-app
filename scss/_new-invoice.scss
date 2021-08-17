@@ -14,11 +14,7 @@
     position: relative;
     padding: 21px 20px;
     justify-content: space-between;
-    // @include breakpoints(small, medium) {
-    //   @include themed() {
-    //     // background-color: theme($general-background-light);
-    //   }
-    // }
+    
     @include breakpoints(small, medium) {
       @include themed() {
         background-color: theme($header-background);

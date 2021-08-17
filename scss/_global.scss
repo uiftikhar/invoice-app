@@ -114,6 +114,17 @@ input {
   padding-right: 0;
 }
 
+.error {
+  position: relative;
+  > input, .date-picker, .select {
+    border: 1px solid red;
+  }
+  > label {
+    color: red;
+    text-decoration: underline;
+  }
+}
+
 ul,
 ul li,
 ul ul li {
