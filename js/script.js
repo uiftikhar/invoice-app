@@ -15,6 +15,10 @@ import {
 import { Router } from './router.js';
 import { Route } from './route.js';
 import { loadData } from './loadData.js';
+import { Observable } from './state/observable';
+import { pipe, tap } from './state/operators';
+import { Map } from './state/operators/map';
+import { Rx } from './state/operators/namespace';
 const toggleThemeButton = document.querySelector('#toggle-theme');
 const body = document.querySelector('body');
 const appRoot = document.querySelector('#app-root');
@@ -35,6 +39,19 @@ const appRoot = document.querySelector('#app-root');
   init();
 }());
 
+
+const obs = new Observable();
+const mult2 = x => x * 100;
+const filter = x => x > 0;
+const toStr = x => `the number is ${x}`;
+setTimeout(() => {
+  console.log('time out done!');
+  
+}, 1000)
+const _InvoiceWrapper = appRoot.querySelector('.theme--light');
+console.log(_InvoiceWrapper);
+const abc = obs.pipe(Rx.fromEvent(_InvoiceWrapper, 'click'));
+abc.subscribe(console.log);
 
 
 const appRootListener =  () => {

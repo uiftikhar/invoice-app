@@ -29,8 +29,7 @@
   
   &__details-wrapper {
     > .card:hover {
-      border-color: transparent;
-
+      border-color: $white;
     }
     > .card > h4 {
       &:not(:first-child) {

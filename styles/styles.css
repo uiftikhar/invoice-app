@@ -1369,7 +1369,7 @@ button.success {
 }
 
 .view-invoice__details-wrapper > .card:hover {
-  border-color: transparent;
+  border-color: #FFFFFF;
 }
 
 .theme--light .view-invoice__details-wrapper > .card > h4:not(:first-child) {
