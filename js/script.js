@@ -1,17 +1,9 @@
 // DATA BINDING
-import '../styles/styles.css'
-import {
-  updateEditInvoice,
-} from './views/edit-invoice.js'
-import {
-  updateHome
-} from './views/home.js';
-import {
-  updateViewInvoice,
-} from './views/view-invoice.js';
-import {
-  updateNewInvoice,
-} from './views/new-invoice.js';
+import '../styles/styles.css';
+import { updateEditInvoice } from './views/edit-invoice.js';
+import { updateHome } from './views/home.js';
+import { updateViewInvoice } from './views/view-invoice.js';
+import { updateNewInvoice } from './views/new-invoice.js';
 import { Router } from './router.js';
 import { Route } from './route.js';
 import { loadData } from './loadData.js';
@@ -25,23 +17,21 @@ const appRoot = document.querySelector('#app-root');
 
 (function () {
   loadData();
-}());
+})();
 
 (function () {
   function init() {
-      new Router([
-          new Route('home', 'home.html', true),            
-          new Route('view-invoice', 'view-invoice.html'),
-          new Route('edit-invoice', 'edit-invoice.html'),
-          new Route('new-invoice', 'new-invoice.html')
-      ]);
+    new Router([
+      new Route('home', 'home.html', true),
+      new Route('view-invoice', 'view-invoice.html'),
+      new Route('edit-invoice', 'edit-invoice.html'),
+      new Route('new-invoice', 'new-invoice.html'),
+    ]);
   }
   init();
-}());
-
+})();
 
 const obs = new Observable();
-
 
 const getData = () => JSON.parse(localStorage.getItem('data'));
 const getWrappers = () => {
@@ -50,13 +40,13 @@ const getWrappers = () => {
   const editInvoiceWrapper = appRoot.querySelector('#edit-invoice');
   const newInvoiceWrapper = appRoot.querySelector('#create-new-invoice');
   return [
-    InvoiceWrapper ,
-viewInvoiceWrapper ,
-editInvoiceWrapper ,
-newInvoiceWrapper
-  ]
-}
-const appRootListener =  () => {
+    InvoiceWrapper,
+    viewInvoiceWrapper,
+    editInvoiceWrapper,
+    newInvoiceWrapper,
+  ];
+};
+const appRootListener = () => {
   const jsonData = getData();
   const InvoiceWrapper = appRoot.querySelector('#home');
   const viewInvoiceWrapper = appRoot.querySelector('#view-invoice');
@@ -77,29 +67,27 @@ const appRootListener =  () => {
   //   abc.unsubscribe();
   // }, 1000)
 
-
-
-  if(jsonData && InvoiceWrapper) {
-    updateHome(InvoiceWrapper, jsonData)
-  };
-  if(jsonData && viewInvoiceWrapper) {
+  if (jsonData && InvoiceWrapper) {
+    updateHome(InvoiceWrapper, jsonData);
+  }
+  if (jsonData && viewInvoiceWrapper) {
     const queryString = window.location.hash.split('?')[1];
-    const currentItem = jsonData.find(item => item.id === queryString);
+    const currentItem = jsonData.find((item) => item.id === queryString);
     updateViewInvoice(viewInvoiceWrapper, currentItem);
   }
-  if(jsonData && editInvoiceWrapper) {
+  if (jsonData && editInvoiceWrapper) {
     const queryString = window.location.hash.split('?')[1];
-    const currentItem = jsonData.find(item => item.id === queryString);
-    updateEditInvoice(editInvoiceWrapper, currentItem)
+    const currentItem = jsonData.find((item) => item.id === queryString);
+    updateEditInvoice(editInvoiceWrapper, currentItem);
   }
-  if(jsonData && newInvoiceWrapper) {
+  if (jsonData && newInvoiceWrapper) {
     updateNewInvoice(newInvoiceWrapper);
-    
+
     // const queryString = window.location.hash.split('?')[1];
     // const currentItem = jsonData.find(item => item.id === queryString);
     // updateEditInvoice(newInvoiceWrapper, currentItem)
   }
-}
+};
 
 const toggleThemeButtonListener = () => {
   // This code assumes a Light Mode default
@@ -115,19 +103,19 @@ const toggleThemeButtonListener = () => {
 
   const isLightTheme = body.classList.contains('theme--light');
   const img = toggleThemeButton.querySelector('figure > img');
-  if(isLightTheme) {
+  if (isLightTheme) {
     body.classList.remove('theme--light');
     body.classList.add('theme--dark');
-    img.setAttribute('src','./assets/icon-sun.svg')
+    img.setAttribute('src', './assets/icon-sun.svg');
   } else {
     body.classList.add('theme--light');
     body.classList.remove('theme--dark');
-    img.setAttribute('src','./assets/icon-moon.svg')
+    img.setAttribute('src', './assets/icon-moon.svg');
   }
-}
+};
 
 const appRoot$ = Rx.fromEvent(appRoot, 'page-loaded');
 appRoot$.subscribe(appRootListener);
-toggleThemeButton.addEventListener('click', toggleThemeButtonListener)
+toggleThemeButton.addEventListener('click', toggleThemeButtonListener);
 window.onunload = () => appRoot$.unsubscribe();
 appRoot$.emit();

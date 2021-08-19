@@ -1,20 +1,19 @@
-import { tap, pipe, thrush } from "./operators";
+import { tap, pipe, thrush } from './operators';
 
 export function Observable() {
   const cbs = [];
   return {
-    subscribe: function(cb) {
+    subscribe: function (cb) {
       cbs.push(cb);
     },
-    emit: function(x) {
+    emit: function (x) {
       cbs.map(thrush(x));
     },
-    pipe: function(...obs) {
+    pipe: function (...obs) {
       return obs.reduce((acc, currObs) => {
-        // console.log(this);
-        acc.subscribe(x => currObs.emit(x));
+        acc.subscribe((x) => currObs.emit(x));
         return currObs;
-      }, this)
-    }
-  }
+      }, this);
+    },
+  };
 }
