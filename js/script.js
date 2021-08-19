@@ -41,25 +41,44 @@ const appRoot = document.querySelector('#app-root');
 
 
 const obs = new Observable();
-const mult2 = x => x * 100;
-const filter = x => x > 0;
-const toStr = x => `the number is ${x}`;
-setTimeout(() => {
-  console.log('time out done!');
-  
-}, 1000)
-const _InvoiceWrapper = appRoot.querySelector('.theme--light');
-console.log(_InvoiceWrapper);
-const abc = obs.pipe(Rx.fromEvent(_InvoiceWrapper, 'click'));
-abc.subscribe(console.log);
 
 
-const appRootListener =  () => {
-  const jsonData = JSON.parse(localStorage.getItem('data'));
+const getData = () => JSON.parse(localStorage.getItem('data'));
+const getWrappers = () => {
   const InvoiceWrapper = appRoot.querySelector('#home');
   const viewInvoiceWrapper = appRoot.querySelector('#view-invoice');
   const editInvoiceWrapper = appRoot.querySelector('#edit-invoice');
   const newInvoiceWrapper = appRoot.querySelector('#create-new-invoice');
+  return [
+    InvoiceWrapper ,
+viewInvoiceWrapper ,
+editInvoiceWrapper ,
+newInvoiceWrapper
+  ]
+}
+const appRootListener =  () => {
+  const jsonData = getData();
+  const InvoiceWrapper = appRoot.querySelector('#home');
+  const viewInvoiceWrapper = appRoot.querySelector('#view-invoice');
+  const editInvoiceWrapper = appRoot.querySelector('#edit-invoice');
+  const newInvoiceWrapper = appRoot.querySelector('#create-new-invoice');
+  // const body = document.querySelector('body');
+  // console.log(body);
+  // const abc = Rx.fromEvent(body, 'click');
+  // abc.subscribe(() => {
+  //   const abcd = 1;
+  //   const def = 2;
+  //   console.log(abcd + def + " sdjifdsngsd");
+  // });
+  // abc.emit()
+
+  // setTimeout(() => {
+  //   console.log('unsubscribing');
+  //   abc.unsubscribe();
+  // }, 1000)
+
+
+
   if(jsonData && InvoiceWrapper) {
     updateHome(InvoiceWrapper, jsonData)
   };
@@ -106,5 +125,9 @@ const toggleThemeButtonListener = () => {
     img.setAttribute('src','./assets/icon-moon.svg')
   }
 }
-appRoot.addEventListener('page-loaded', appRootListener)
+
+const appRoot$ = Rx.fromEvent(appRoot, 'page-loaded');
+appRoot$.subscribe(appRootListener);
 toggleThemeButton.addEventListener('click', toggleThemeButtonListener)
+window.onunload = () => appRoot$.unsubscribe();
+appRoot$.emit();

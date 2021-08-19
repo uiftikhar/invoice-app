@@ -5,14 +5,15 @@ export function FromEvent(node, eventType) {
   let listener;
   return {
     subscribe: function(cb) {
+      listener = cb;
       observable.subscribe(cb)
     },
     emit: function() {
-      listener = node.addEventListener(eventType, observable.emit.bind(observable), true);
+      node.addEventListener(eventType, listener, true);
       return observable;
     },
-    unsubscribe: function(cb) {
-      node.removeEventListener(eventType, cb, true)
+    unsubscribe: function() {
+      node.removeEventListener(eventType, listener, true)
     }
   }
 }
