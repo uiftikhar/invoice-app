@@ -1,6 +1,6 @@
 import { Observable } from '../observable';
 
-export function Map(f) {
+export function Tap(f) {
   const observable = new Observable();
   const func = f;
   return {
@@ -8,8 +8,8 @@ export function Map(f) {
       observable.subscribe(cb);
     },
     emit: function (x) {
-      const val = func(x);
-      observable.emit(val);
+      func();
+      observable.emit(x);
     },
   };
 }

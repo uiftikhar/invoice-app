@@ -15,5 +15,11 @@ export function FromEvent(node, eventType) {
     unsubscribe: function () {
       node.removeEventListener(eventType, listener, true);
     },
+    pipe: function (...obs) {
+      return obs.reduce((acc, currObs) => {
+        acc.subscribe((x) => currObs.emit(x));
+        return currObs;
+      }, this);
+    },
   };
 }

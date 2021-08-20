@@ -15,23 +15,15 @@ const toggleThemeButton = document.querySelector('#toggle-theme');
 const body = document.querySelector('body');
 const appRoot = document.querySelector('#app-root');
 
-(function () {
-  loadData();
-})();
-
-(function () {
-  function init() {
-    new Router([
-      new Route('home', 'home.html', true),
-      new Route('view-invoice', 'view-invoice.html'),
-      new Route('edit-invoice', 'edit-invoice.html'),
-      new Route('new-invoice', 'new-invoice.html'),
-    ]);
-  }
-  init();
-})();
-
-const obs = new Observable();
+function init() {
+  console.log('INIT');
+  new Router([
+    new Route('home', 'home.html', true),
+    new Route('view-invoice', 'view-invoice.html'),
+    new Route('edit-invoice', 'edit-invoice.html'),
+    new Route('new-invoice', 'new-invoice.html'),
+  ]);
+}
 
 const getData = () => JSON.parse(localStorage.getItem('data'));
 const getWrappers = () => {
@@ -46,30 +38,20 @@ const getWrappers = () => {
     newInvoiceWrapper,
   ];
 };
-const appRootListener = () => {
+const appRootListener = (temp) => {
   const jsonData = getData();
-  const InvoiceWrapper = appRoot.querySelector('#home');
-  const viewInvoiceWrapper = appRoot.querySelector('#view-invoice');
-  const editInvoiceWrapper = appRoot.querySelector('#edit-invoice');
-  const newInvoiceWrapper = appRoot.querySelector('#create-new-invoice');
-  // const body = document.querySelector('body');
-  // console.log(body);
-  // const abc = Rx.fromEvent(body, 'click');
-  // abc.subscribe(() => {
-  //   const abcd = 1;
-  //   const def = 2;
-  //   console.log(abcd + def + " sdjifdsngsd");
-  // });
-  // abc.emit()
 
-  // setTimeout(() => {
-  //   console.log('unsubscribing');
-  //   abc.unsubscribe();
-  // }, 1000)
+  const [
+    InvoiceWrapper,
+    viewInvoiceWrapper,
+    editInvoiceWrapper,
+    newInvoiceWrapper,
+  ] = getWrappers();
 
   if (jsonData && InvoiceWrapper) {
     updateHome(InvoiceWrapper, jsonData);
   }
+
   if (jsonData && viewInvoiceWrapper) {
     const queryString = window.location.hash.split('?')[1];
     const currentItem = jsonData.find((item) => item.id === queryString);
@@ -82,10 +64,6 @@ const appRootListener = () => {
   }
   if (jsonData && newInvoiceWrapper) {
     updateNewInvoice(newInvoiceWrapper);
-
-    // const queryString = window.location.hash.split('?')[1];
-    // const currentItem = jsonData.find(item => item.id === queryString);
-    // updateEditInvoice(newInvoiceWrapper, currentItem)
   }
 };
 
@@ -114,8 +92,59 @@ const toggleThemeButtonListener = () => {
   }
 };
 
-const appRoot$ = Rx.fromEvent(appRoot, 'page-loaded');
-appRoot$.subscribe(appRootListener);
+// const onInit$ = Rx.fromEvent(window, 'load');
+// const onInit$ = new Observable();
+
+// const abc = new Observable();
+// abc
+//   .pipe(
+//     Rx.filter((x) => x > -5),
+//     Rx.map((x) => Math.abs(x)),
+//   )
+//   .subscribe(console.log);
+
+// console.log(abc);
+// abc.emit(-10);
+// abc.emit(10);
+// abc.emit(-5);
+// abc.emit(-2);
+const appRoot$ = Rx.fromEvent(appRoot, 'page-loaded').pipe(
+  // Rx.tap(init),
+  // Rx.tap(async () => {
+  //   await loadData();
+  // }),
+  Rx.filter((x) => x > -5),
+  Rx.map((x) => Math.abs(x)),
+);
+
+appRoot$.subscribe((res) => console.log('RES RES RES ', res));
+appRoot$.emit(-10);
+appRoot$.emit(10);
+appRoot$.emit(-5);
+appRoot$.emit(-2);
+// onInit$.pipe(Rx.filter((data) => data > 5)).subscribe(console.log);
+
+// appRoot$.subscribe(appRootListener);
 toggleThemeButton.addEventListener('click', toggleThemeButtonListener);
-window.onunload = () => appRoot$.unsubscribe();
-appRoot$.emit();
+// window.onunload = () => {
+//   onInit$.unsubscribe();
+//   appRoot$.unsubscribe();
+// };
+
+// ------------------------------------------------------------------------------
+
+// const obs = new Observable();
+// const mult2 = (x) => x * 100;
+// const filter = (x) => x > 0;
+// const toStr = (x) => `the number is ${x}`;
+// setTimeout(() => {
+//   const abc = obs.pipe(new );
+//   abc.subscribe(tap(mult2));
+//   abc.emit(10);
+// }, 500);
+
+// ------------------------------------------------------------------------------
+
+// onInit$.emit(10);
+// _onInit$.emit(10);
+// appRoot$.emit(100);

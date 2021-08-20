@@ -203,7 +203,6 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
         appRoot.dispatchEvent(event);
       }
     } else {
-      console.log(requiredFields);
       requiredFields.forEach((field) => {
         if (!field.validity.valid) {
           if (

@@ -7,6 +7,7 @@ export function Observable() {
       cbs.push(cb);
     },
     emit: function (x) {
+      console.log('***********', x);
       cbs.map(thrush(x));
     },
     pipe: function (...obs) {
