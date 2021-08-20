@@ -1,15 +1,11 @@
 import { Observable } from '../observable';
 
-export function Map(f) {
-  const observable = new Observable();
-  const func = f;
-  return {
-    subscribe: function (cb) {
-      observable.subscribe(cb);
-    },
-    emit: function (x) {
-      const val = func(x);
-      observable.emit(val);
-    },
-  };
+export function Map(projFn, subscribe) {
+  return new Observable((observer) => {
+    return subscribe(
+      (val) => observer.onNext(projFn(val)),
+      (e) => observer.onError(e),
+      () => observer.onCompleted(),
+    );
+  });
 }

@@ -1,22 +1,20 @@
 // DATA BINDING
 import '../styles/styles.css';
+
+import { Route } from './route.js';
+import { Router } from './router.js';
+import { Observable } from './state/observable';
 import { updateEditInvoice } from './views/edit-invoice.js';
 import { updateHome } from './views/home.js';
-import { updateViewInvoice } from './views/view-invoice.js';
 import { updateNewInvoice } from './views/new-invoice.js';
-import { Router } from './router.js';
-import { Route } from './route.js';
-import { loadData } from './loadData.js';
-import { Observable } from './state/observable';
-import { pipe, tap } from './state/operators';
-import { Map } from './state/operators/map';
+import { updateViewInvoice } from './views/view-invoice.js';
 import { Rx } from './state/operators/namespace';
+import { loadData } from './loadData';
 const toggleThemeButton = document.querySelector('#toggle-theme');
 const body = document.querySelector('body');
 const appRoot = document.querySelector('#app-root');
 
 function init() {
-  console.log('INIT');
   new Router([
     new Route('home', 'home.html', true),
     new Route('view-invoice', 'view-invoice.html'),
@@ -92,36 +90,6 @@ const toggleThemeButtonListener = () => {
   }
 };
 
-// const onInit$ = Rx.fromEvent(window, 'load');
-// const onInit$ = new Observable();
-
-// const abc = new Observable();
-// abc
-//   .pipe(
-//     Rx.filter((x) => x > -5),
-//     Rx.map((x) => Math.abs(x)),
-//   )
-//   .subscribe(console.log);
-
-// console.log(abc);
-// abc.emit(-10);
-// abc.emit(10);
-// abc.emit(-5);
-// abc.emit(-2);
-const appRoot$ = Rx.fromEvent(appRoot, 'page-loaded').pipe(
-  // Rx.tap(init),
-  // Rx.tap(async () => {
-  //   await loadData();
-  // }),
-  Rx.filter((x) => x > -5),
-  Rx.map((x) => Math.abs(x)),
-);
-
-appRoot$.subscribe((res) => console.log('RES RES RES ', res));
-appRoot$.emit(-10);
-appRoot$.emit(10);
-appRoot$.emit(-5);
-appRoot$.emit(-2);
 // onInit$.pipe(Rx.filter((data) => data > 5)).subscribe(console.log);
 
 // appRoot$.subscribe(appRootListener);
@@ -132,19 +100,34 @@ toggleThemeButton.addEventListener('click', toggleThemeButtonListener);
 // };
 
 // ------------------------------------------------------------------------------
-
-// const obs = new Observable();
-// const mult2 = (x) => x * 100;
-// const filter = (x) => x > 0;
-// const toStr = (x) => `the number is ${x}`;
-// setTimeout(() => {
-//   const abc = obs.pipe(new );
-//   abc.subscribe(tap(mult2));
-//   abc.emit(10);
-// }, 500);
-
+Rx.of(1, 2, 3)
+  .map((item) => item * 2)
+  .tap(() => {
+    console.log('Tapping');
+  })
+  .filter((item) => item > 5)
+  .mergeMap((val) => {
+    console.log(123);
+    const newVal = val + 1;
+    return Rx.of(newVal);
+  })
+  .subscribe((res) => {
+    console.log(res);
+  });
+// ------------------------------------------------------------------------------
+const onInit$ = Rx.fromEvent(window, 'load').subscribe(
+  async () => {
+    init();
+    await loadData();
+  },
+  () => {},
+);
 // ------------------------------------------------------------------------------
 
+setTimeout(() => {
+  onInit$.unsubscribe();
+}, 1500);
+window.onunload = () => {};
 // onInit$.emit(10);
 // _onInit$.emit(10);
 // appRoot$.emit(100);

@@ -1,20 +1,33 @@
-import { tap, pipe, thrush } from './operators';
+import { Filter } from './operators/filter';
+import { Map } from './operators/map';
+import { MergeMap } from './operators/mergeMap';
+import { Tap } from './operators/tap';
 
-export function Observable() {
-  const cbs = [];
+export function Observable(subscribe) {
+  const _subscribe = subscribe;
   return {
-    subscribe: function (cb) {
-      cbs.push(cb);
+    subscribe: function (onNext, onError, onCompleted) {
+      if (typeof onNext === 'function') {
+        return _subscribe({
+          onNext: onNext,
+          onError: onError || (() => {}),
+          onCompleted: onCompleted || (() => {}),
+        });
+      } else {
+        return _subscribe(onNext);
+      }
     },
-    emit: function (x) {
-      console.log('***********', x);
-      cbs.map(thrush(x));
+    map: function (projFn) {
+      return new Map(projFn, this.subscribe);
     },
-    pipe: function (...obs) {
-      return obs.reduce((acc, currObs) => {
-        acc.subscribe((x) => currObs.emit(x));
-        return currObs;
-      }, this);
+    tap: function (func) {
+      return new Tap(func, this.subscribe);
+    },
+    filter: function (predicateFn) {
+      return new Filter(predicateFn, this.subscribe);
+    },
+    mergeMap: function (otherObservable) {
+      return new MergeMap(otherObservable, this.subscribe);
     },
   };
 }

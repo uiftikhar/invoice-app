@@ -1,15 +1,18 @@
 import { Observable } from '../observable';
 
-export function Tap(f) {
-  const observable = new Observable();
-  const func = f;
-  return {
-    subscribe: function (cb) {
-      observable.subscribe(cb);
-    },
-    emit: function (x) {
-      func();
-      observable.emit(x);
-    },
-  };
+export function Tap(func, subscribe) {
+  return new Observable((observer) => {
+    let executed = false;
+    return subscribe(
+      (val) => {
+        if (!executed) {
+          func();
+          executed = true;
+        }
+        observer.onNext(val);
+      },
+      (e) => observer.onError(e),
+      () => observer.onCompleted(),
+    );
+  });
 }

@@ -1,11 +1,9 @@
-import { Filter } from './filter';
+import { From } from './from';
 import { FromEvent } from './fromEvent';
-import { Map } from './map';
-import { Tap } from './tap';
+import { Of } from './of';
 
 export const Rx = {
-  map: (f) => new Map(f),
-  filter: (f) => new Filter(f),
-  fromEvent: (node, eventType) => new FromEvent(node, eventType),
-  tap: (f) => new Tap(f),
+  of: (...args) => new Of(...args),
+  from: (iterable) => new From(iterable),
+  fromEvent: (source, event) => new FromEvent(source, event),
 };
