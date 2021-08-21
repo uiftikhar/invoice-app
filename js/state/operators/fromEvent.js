@@ -8,7 +8,7 @@ export function FromEvent(source, event) {
 
     return {
       unsubscribe: () => {
-        console.log('unsubscribing');
+        console.log(source, observer, observer.onNext);
         return source.removeEventListener(event, listener);
       },
     };

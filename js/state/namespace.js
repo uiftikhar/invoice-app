@@ -1,6 +1,4 @@
-import { From } from './from';
-import { FromEvent } from './fromEvent';
-import { Of } from './of';
+import { From, FromEvent, Of } from './operators';
 
 export const Rx = {
   of: (...args) => new Of(...args),

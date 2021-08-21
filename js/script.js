@@ -1,20 +1,22 @@
 // DATA BINDING
 import '../styles/styles.css';
+// needed polyfill for async await use
+import regeneratorRuntime from 'regenerator-runtime';
 
+import { loadData } from './loadData';
 import { Route } from './route.js';
 import { Router } from './router.js';
-import { Observable } from './state/observable';
+import { Rx } from './state/namespace';
 import { updateEditInvoice } from './views/edit-invoice.js';
 import { updateHome } from './views/home.js';
 import { updateNewInvoice } from './views/new-invoice.js';
 import { updateViewInvoice } from './views/view-invoice.js';
-import { Rx } from './state/operators/namespace';
-import { loadData } from './loadData';
+
 const toggleThemeButton = document.querySelector('#toggle-theme');
 const body = document.querySelector('body');
 const appRoot = document.querySelector('#app-root');
 
-function init() {
+function initRouter() {
   new Router([
     new Route('home', 'home.html', true),
     new Route('view-invoice', 'view-invoice.html'),
@@ -23,45 +25,34 @@ function init() {
   ]);
 }
 
-const getData = () => JSON.parse(localStorage.getItem('data'));
-const getWrappers = () => {
-  const InvoiceWrapper = appRoot.querySelector('#home');
-  const viewInvoiceWrapper = appRoot.querySelector('#view-invoice');
-  const editInvoiceWrapper = appRoot.querySelector('#edit-invoice');
-  const newInvoiceWrapper = appRoot.querySelector('#create-new-invoice');
-  return [
-    InvoiceWrapper,
-    viewInvoiceWrapper,
-    editInvoiceWrapper,
-    newInvoiceWrapper,
-  ];
-};
-const appRootListener = (temp) => {
-  const jsonData = getData();
+const activeContainer = () =>
+  appRoot.querySelector('article').getAttribute('id');
 
-  const [
-    InvoiceWrapper,
-    viewInvoiceWrapper,
-    editInvoiceWrapper,
-    newInvoiceWrapper,
-  ] = getWrappers();
+const isSideDrawerOpen = () =>
+  appRoot
+    .querySelector('.side-drawer')
+    .classList.contains('side-drawer__is-opened');
 
-  if (jsonData && InvoiceWrapper) {
-    updateHome(InvoiceWrapper, jsonData);
-  }
+const getActiveWrapper = () => appRoot.querySelector(`#${activeContainer()}`);
 
-  if (jsonData && viewInvoiceWrapper) {
-    const queryString = window.location.hash.split('?')[1];
-    const currentItem = jsonData.find((item) => item.id === queryString);
-    updateViewInvoice(viewInvoiceWrapper, currentItem);
-  }
-  if (jsonData && editInvoiceWrapper) {
-    const queryString = window.location.hash.split('?')[1];
-    const currentItem = jsonData.find((item) => item.id === queryString);
-    updateEditInvoice(editInvoiceWrapper, currentItem);
-  }
-  if (jsonData && newInvoiceWrapper) {
-    updateNewInvoice(newInvoiceWrapper);
+const queryString = () => window.location.hash.split('?')[1];
+
+const currentItem = () => jsonData.find((item) => item.id === queryString());
+
+const updateAppRoot = (activeWrapper, isSideDrawerOpen) => {
+  const container = getActiveWrapper();
+  if (isSideDrawerOpen) {
+    if (activeWrapper === 'edit-invoice') {
+      updateEditInvoice(container, currentItem());
+    } else if (activeWrapper === 'new-invoice') {
+      updateNewInvoice(container);
+    }
+  } else {
+    if (activeWrapper === 'home') {
+      updateHome(container, jsonData);
+    } else if (activeWrapper === 'view-invoice') {
+      updateViewInvoice(container, currentItem());
+    }
   }
 };
 
@@ -90,44 +81,33 @@ const toggleThemeButtonListener = () => {
   }
 };
 
-// onInit$.pipe(Rx.filter((data) => data > 5)).subscribe(console.log);
-
-// appRoot$.subscribe(appRootListener);
 toggleThemeButton.addEventListener('click', toggleThemeButtonListener);
-// window.onunload = () => {
-//   onInit$.unsubscribe();
-//   appRoot$.unsubscribe();
-// };
 
-// ------------------------------------------------------------------------------
-Rx.of(1, 2, 3)
-  .map((item) => item * 2)
-  .tap(() => {
-    console.log('Tapping');
+let jsonData;
+const onInit$ = Rx.fromEvent(window, 'load')
+  .tap(async () => {
+    initRouter();
+    jsonData = JSON.parse(await loadData());
   })
-  .filter((item) => item > 5)
-  .mergeMap((val) => {
-    console.log(123);
-    const newVal = val + 1;
-    return Rx.of(newVal);
-  })
-  .subscribe((res) => {
-    console.log(res);
-  });
+  .mergeMap(() => Rx.fromEvent(appRoot, 'page-loaded'))
+  // .tap(() => {
+  //   updateAppRoot(activeContainer(), isSideDrawerOpen());
+  // })
+  .mergeMap(() => Rx.fromEvent(appRoot, 'click'))
+  // .tap((event) => console.log(event))
+  .subscribe(
+    (event) => console.log(event),
+    () => {},
+  );
 // ------------------------------------------------------------------------------
-const onInit$ = Rx.fromEvent(window, 'load').subscribe(
-  async () => {
-    init();
-    await loadData();
-  },
-  () => {},
-);
-// ------------------------------------------------------------------------------
-
 setTimeout(() => {
-  onInit$.unsubscribe();
+  console.log('timeout');
+  const abc = onInit$.unsubscribe();
+  console.log(abc);
 }, 1500);
-window.onunload = () => {};
+window.onunload = () => {
+  // onInit$.unsubscribe();
+};
 // onInit$.emit(10);
 // _onInit$.emit(10);
 // appRoot$.emit(100);

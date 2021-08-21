@@ -2,13 +2,9 @@ import { Observable } from '../observable';
 
 export function Tap(func, subscribe) {
   return new Observable((observer) => {
-    let executed = false;
     return subscribe(
       (val) => {
-        if (!executed) {
-          func();
-          executed = true;
-        }
+        func(val);
         observer.onNext(val);
       },
       (e) => observer.onError(e),

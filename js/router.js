@@ -59,7 +59,6 @@ Router.prototype = {
       xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
           scope.rootElem.innerHTML = this.responseText;
-          console.log('trerree');
           const event = new Event('page-loaded');
           scope.rootElem.dispatchEvent(event);
         }

@@ -2,9 +2,10 @@ import { Observable } from '../observable';
 
 export function MergeMap(otherObservable, subscribe) {
   return new Observable((observer) => {
+    console.log(observer);
     return subscribe(
       (val) => {
-        otherObservable(val).subscribe(
+        return otherObservable(val).subscribe(
           (val) => {
             observer.onNext(val);
           },
