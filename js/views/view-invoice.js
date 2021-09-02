@@ -75,10 +75,10 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
         if (this.readyState === 4 && this.status === 200) {
           sideDrawer.innerHTML = this.responseText;
           const event = new Event('page-loaded');
-          appRoot.dispatchEvent(event);
           sideDrawer.classList.add('side-drawer__is-opened');
           overlay.classList.add('is-visible');
           document.querySelector('#app-root').classList.add('no-scroll');
+          appRoot.dispatchEvent(event);
         }
       };
       xhttp.open('GET', 'views/edit-invoice.html', true);

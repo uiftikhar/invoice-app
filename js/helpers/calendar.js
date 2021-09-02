@@ -1,8 +1,11 @@
-
-import { formatter } from '../utils.js'
-const  populateDates = (daysElement, monthElement, date, addSelectedClass = true) => {
+import { formatter } from '../utils.js';
+const populateDates = (
+  daysElement,
+  monthElement,
+  date,
+  addSelectedClass = true,
+) => {
   daysElement.innerHTML = '';
-  console.trace()
   let day = date.getDate();
   let month = date.getMonth();
   let year = date.getFullYear();
@@ -11,9 +14,9 @@ const  populateDates = (daysElement, monthElement, date, addSelectedClass = true
   let selectedDay = day;
   let selectedMonth = month;
   let selectedYear = year;
-	let amountDays = 31;
+  let amountDays = 31;
 
-  if(month % 2 !== 0) {
+  if (month % 2 !== 0) {
     amountDays = 30;
     if (month == 1) {
       amountDays = 28;
@@ -23,22 +26,27 @@ const  populateDates = (daysElement, monthElement, date, addSelectedClass = true
     }
   }
 
-  monthElement.setAttribute('value', `${formatter.format(selectedDate)} ${selectedYear}`)
+  monthElement.setAttribute(
+    'value',
+    `${formatter.format(selectedDate)} ${selectedYear}`,
+  );
   monthElement.innerHTML = `${formatter.format(selectedDate)} ${selectedYear}`;
-	for (let i = 0; i < amountDays; i++) {
-		const dayElement = document.createElement('div');
-		dayElement.classList.add('day');
-		dayElement.textContent = i + 1;
+  for (let i = 0; i < amountDays; i++) {
+    const dayElement = document.createElement('div');
+    dayElement.classList.add('day');
+    dayElement.textContent = i + 1;
 
-    if(addSelectedClass) {
-      if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month) {
+    if (addSelectedClass) {
+      if (
+        selectedDay == i + 1 &&
+        selectedYear == year &&
+        selectedMonth == month
+      ) {
         dayElement.classList.add('selected');
-      } 
+      }
     }
-		daysElement.appendChild(dayElement);
-	}
-}
+    daysElement.appendChild(dayElement);
+  }
+};
 
-export {
-  populateDates
-}
+export { populateDates };

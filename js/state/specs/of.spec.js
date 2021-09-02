@@ -1,4 +1,5 @@
 import { Rx } from '../namespace';
+
 describe('Observable of', () => {
   it('should emit each input separately and complete', (done) => {
     const x = { foo: 'bar' };

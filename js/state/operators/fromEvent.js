@@ -4,12 +4,12 @@ export function FromEvent(source, event) {
   return new Observable((observer) => {
     const listener = (e) => observer.onNext(e);
 
-    source.addEventListener(event, listener);
+    source.addEventListener(event, listener, false);
 
     return {
       unsubscribe: () => {
-        console.log(source, observer, observer.onNext);
-        return source.removeEventListener(event, listener);
+        source.removeEventListener(event, listener, false);
+        return observer.onCompleted();
       },
     };
   });
