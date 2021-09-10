@@ -25,8 +25,8 @@ const toggleTheme$ = Rx.fromEvent(toggleThemeButton, 'click')
   .subscribe(() => void 0);
 
 window.onload = async () => {
-  initRouter();
   await setJsonData();
+  initRouter();
   onInit$ = onInit$.subscribe(() => void 0);
 };
 

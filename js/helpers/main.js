@@ -22,7 +22,7 @@ const queryString = () => window.location.hash.split('?')[1];
 const currentItem = () => jsonData.find((item) => item.id === queryString());
 let jsonData;
 const setJsonData = async () => {
-  jsonData = JSON.parse(await loadData());
+  jsonData = await loadData();
 };
 
 const updateAppRoot = (activeWrapper) => {
