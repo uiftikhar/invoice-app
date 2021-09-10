@@ -29,18 +29,22 @@ const updateAppRoot = (activeWrapper) => {
   const container = getActiveWrapper();
   const isSideNavOpen = isSideDrawerOpen();
   if (isSideNavOpen) {
-    let _activeWrapper = document.querySelector('.side-drawer > article');
-    const activeWrapperId = _activeWrapper.getAttribute('id');
+    const _container = document.querySelector('.side-drawer > article');
+    const activeWrapperId = _container.getAttribute('id');
     if (activeWrapperId === 'edit-invoice') {
-      updateEditInvoice(_activeWrapper, currentItem());
+      updateEditInvoice(_container, currentItem());
     } else if (activeWrapperId === 'create-new-invoice') {
-      updateNewInvoice(_activeWrapper);
+      updateNewInvoice(_container);
     }
   } else {
     if (activeWrapper === 'home') {
       updateHome(container, jsonData);
     } else if (activeWrapper === 'view-invoice') {
       updateViewInvoice(container, currentItem());
+    } else if (activeWrapper === 'create-new-invoice') {
+      updateNewInvoice(container);
+    } else if (activeWrapper === 'edit-invoice') {
+      updateEditInvoice(container, currentItem());
     }
   }
 };

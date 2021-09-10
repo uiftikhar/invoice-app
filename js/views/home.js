@@ -1,4 +1,5 @@
 import { toggleSideDrawer } from '../helpers/side-drawer.helpers.js';
+import { Rx } from '../rx/namespace.js';
 import { formatCurrency, formatDate } from '../utils.js';
 export const updateHome = (InvoiceWrapper, jsonData) => {
   const mediaQuery = window.matchMedia('(min-width: 640px)');
@@ -15,22 +16,28 @@ export const updateHome = (InvoiceWrapper, jsonData) => {
 
   if (mediaQuery.matches) {
     totalInvoicesElement.textContent = `There are ${totalInvoices} total invoices`;
-    newInvoiceButton.addEventListener('click', () => {
+  }
+
+  const newInvoiceButton$ = Rx.fromEvent(newInvoiceButton, 'click')
+    .tap((event) => {
       let xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-          sideDrawer.innerHTML = this.responseText;
           const event = new Event('page-loaded');
-          toggleSideDrawer(true);
+          if (mediaQuery.matches) {
+            sideDrawer.innerHTML = this.responseText;
+            toggleSideDrawer(true);
+          } else {
+            window.location.href = '#new-invoice';
+          }
           appRoot.dispatchEvent(event);
         }
       };
       xhttp.open('GET', 'views/new-invoice.html', true);
       xhttp.send();
-    });
-  } else {
-    newInvoiceButton.parentElement.setAttribute('href', `#new-invoice`);
-  }
+    })
+    .subscribe(() => void 0);
+
   let innerHtml = '';
   jsonData.forEach((item) => {
     let chip = '';

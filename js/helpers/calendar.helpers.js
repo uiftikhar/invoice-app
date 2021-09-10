@@ -1,4 +1,5 @@
 import { formatter } from '../utils.js';
+import { checkEventPathForClass } from '../views/new-invoice.helpers.js';
 const populateDates = (
   daysElement,
   monthElement,

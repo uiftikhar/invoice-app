@@ -1,3 +1,5 @@
+import { checkEventPathForClass } from '../views/new-invoice.helpers';
+
 export const userSelectElementListener = (
   event,
   datesElement,

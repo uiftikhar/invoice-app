@@ -110,6 +110,9 @@ export const discardButtonListener = (event, mediaQuery) => {
   event.preventDefault();
   if (mediaQuery.matches) {
     toggleSideDrawer(true);
+  } else {
+    console.log(12121);
+    window.history.back();
   }
 };
 

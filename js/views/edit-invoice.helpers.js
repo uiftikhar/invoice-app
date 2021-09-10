@@ -74,6 +74,8 @@ export const discardButtonListener = (event, mediaQuery) => {
   event.preventDefault();
   if (mediaQuery.matches) {
     toggleSideDrawer();
+  } else {
+    window.history.back();
   }
 };
 
