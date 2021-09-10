@@ -4,7 +4,7 @@ import regeneratorRuntime from 'regenerator-runtime';
 
 import { Rx } from './rx/namespace';
 
-import { initRouter } from './helpers/utils/routes';
+import { initRouter } from './router/routes';
 import {
   activeContainer,
   setJsonData,
