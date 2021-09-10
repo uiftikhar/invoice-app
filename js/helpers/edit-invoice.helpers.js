@@ -6,6 +6,7 @@ import {
   renderItems,
   updateItemsInLocalStorage,
 } from './populate-edit-invoice-oninit';
+import { toggleSideDrawer } from './side-drawer.helpers';
 
 export const editInvoiceSelectors = (editInvoiceWrapper) => {
   const datePickerElement = editInvoiceWrapper.querySelector('#date-picker');
@@ -120,19 +121,7 @@ export const editInvoiceWrapperListener = (event, mediaQuery, data) => {
     if (!mediaQuery.matches) {
       window.history.back();
     } else {
-      const sideDrawer = document.querySelector('#edit-invoice-sidebar');
-      const overlay = document.querySelector('#overlay');
-      if (sideDrawer.classList.contains('side-drawer__is-opened')) {
-        sideDrawer.classList.remove('side-drawer__is-opened');
-        // TODO: This is the slow way to remove HTML nodes. Use while loop instead
-        sideDrawer.textContent = '';
-      }
-      if (overlay.classList.contains('is-visible')) {
-        overlay.classList.remove('is-visible');
-      }
-      document.querySelector('#app-root').classList.remove('no-scroll');
-      // const event = new Event('page-loaded');
-      // appRoot.dispatchEvent(event);
+      toggleSideDrawer();
     }
   } else {
     // TODO: create a helper function?

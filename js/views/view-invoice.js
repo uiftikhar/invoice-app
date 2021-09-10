@@ -1,3 +1,4 @@
+import { toggleSideDrawer } from '../helpers/side-drawer.helpers.js';
 import {
   formatCurrency,
   formatDate,
@@ -75,9 +76,7 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
         if (this.readyState === 4 && this.status === 200) {
           sideDrawer.innerHTML = this.responseText;
           const event = new Event('page-loaded');
-          sideDrawer.classList.add('side-drawer__is-opened');
-          overlay.classList.add('is-visible');
-          document.querySelector('#app-root').classList.add('no-scroll');
+          toggleSideDrawer();
           appRoot.dispatchEvent(event);
         }
       };
@@ -110,7 +109,7 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
     });
     document.querySelector(
       '#modal > h4',
-    ).innerHTML = `Are you sure you want to delete invoice #${data.id.toUpperCase()}? This action cannot be undone.`;
+    ).textContent = `Are you sure you want to delete invoice #${data.id.toUpperCase()}? This action cannot be undone.`;
     document.querySelector('#app-root').classList.add('no-scroll');
   };
 
@@ -181,23 +180,23 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
   // ------------------------------------------------------------------------------------------------
 
   statusWrapper.innerHTML = getChipInnerHtml(data.status, mediaQuery);
-  detailsHeaders[0].innerHTML = data.id.toUpperCase();
-  detailsHeaders[1].innerHTML = data.description;
-  detailsHeaders[2].innerHTML = data.senderAddress.street;
-  detailsHeaders[3].innerHTML = data.senderAddress.city;
-  detailsHeaders[4].innerHTML = data.senderAddress.postCode;
-  detailsHeaders[5].innerHTML = data.senderAddress.country;
-  detailsHeaders[9].innerHTML = data.clientAddress.street;
-  detailsHeaders[10].innerHTML = data.clientAddress.city;
-  detailsHeaders[11].innerHTML = data.clientAddress.postCode;
-  detailsHeaders[12].innerHTML = data.clientAddress.country;
-  detailsHeaders[detailsHeaders.length - 1].innerHTML = `£ ${formatCurrency(
+  detailsHeaders[0].textContent = data.id.toUpperCase();
+  detailsHeaders[1].textContent = data.description;
+  detailsHeaders[2].textContent = data.senderAddress.street;
+  detailsHeaders[3].textContent = data.senderAddress.city;
+  detailsHeaders[4].textContent = data.senderAddress.postCode;
+  detailsHeaders[5].textContent = data.senderAddress.country;
+  detailsHeaders[9].textContent = data.clientAddress.street;
+  detailsHeaders[10].textContent = data.clientAddress.city;
+  detailsHeaders[11].textContent = data.clientAddress.postCode;
+  detailsHeaders[12].textContent = data.clientAddress.country;
+  detailsHeaders[detailsHeaders.length - 1].textContent = `£ ${formatCurrency(
     data.total,
   )}`;
-  detailsPaymentHeaders[0].innerHTML = formatDate(data.createdAt);
-  detailsPaymentHeaders[1].innerHTML = formatDate(data.paymentDue);
-  detailsPaymentHeaders[2].innerHTML = data.clientName;
-  detailsPaymentHeaders[3].innerHTML = data.clientEmail;
+  detailsPaymentHeaders[0].textContent = formatDate(data.createdAt);
+  detailsPaymentHeaders[1].textContent = formatDate(data.paymentDue);
+  detailsPaymentHeaders[2].textContent = data.clientName;
+  detailsPaymentHeaders[3].textContent = data.clientEmail;
   let items = '';
   if (!mediaQuery.matches) {
     data.items.forEach((item) => {

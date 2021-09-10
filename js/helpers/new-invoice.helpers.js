@@ -1,6 +1,7 @@
 import { formatter } from '../utils';
 import { populateDates } from './calendar';
 import { createNewInvoice, renderItems } from './populate-edit-invoice-oninit';
+import { toggleSideDrawer } from './side-drawer.helpers';
 
 export const newInvoiceSelectors = (newInvoiceWrapper) => {
   const datePickerElement = newInvoiceWrapper.querySelector('#date-picker');
@@ -111,19 +112,20 @@ export const discardButtonListener = (
 ) => {
   event.preventDefault();
   if (mediaQuery.matches) {
-    const sideDrawer = isEditInvoice
-      ? document.querySelector('#edit-invoice-sidebar')
-      : document.querySelector('#new-invoice-sidebar');
-    const overlay = document.querySelector('#overlay');
-    if (sideDrawer.classList.contains('side-drawer__is-opened')) {
-      sideDrawer.classList.remove('side-drawer__is-opened');
-      // TODO: This is the slow way to remove HTML nodes. Use while loop instead
-      sideDrawer.textContent = '';
-    }
-    if (overlay.classList.contains('is-visible')) {
-      overlay.classList.remove('is-visible');
-    }
-    document.querySelector('#app-root').classList.remove('no-scroll');
+    toggleSideDrawer();
+    // const sideDrawer = isEditInvoice
+    //   ? document.querySelector('#edit-invoice-sidebar')
+    //   : document.querySelector('#new-invoice-sidebar');
+    // const overlay = document.querySelector('#overlay');
+    // if (sideDrawer.classList.contains('side-drawer__is-opened')) {
+    //   sideDrawer.classList.remove('side-drawer__is-opened');
+    //   // TODO: This is the slow way to remove HTML nodes. Use while loop instead
+    //   sideDrawer.textContent = '';
+    // }
+    // if (overlay.classList.contains('is-visible')) {
+    //   overlay.classList.remove('is-visible');
+    // }
+    // document.querySelector('#app-root').classList.remove('no-scroll');
   }
 };
 

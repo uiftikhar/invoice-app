@@ -53,7 +53,9 @@ Router.prototype = {
     }
   },
   goToRoute: function (htmlName) {
+    console.log(0, this);
     (function (scope) {
+      console.log(1, scope, this);
       let url = 'views/' + htmlName;
       let xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {

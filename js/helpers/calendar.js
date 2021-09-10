@@ -5,7 +5,10 @@ const populateDates = (
   date,
   addSelectedClass = true,
 ) => {
-  daysElement.innerHTML = '';
+  while (daysElement.hasChildNodes()) {
+    daysElement.removeChild(daysElement.lastChild);
+  }
+
   let day = date.getDate();
   let month = date.getMonth();
   let year = date.getFullYear();
@@ -30,7 +33,9 @@ const populateDates = (
     'value',
     `${formatter.format(selectedDate)} ${selectedYear}`,
   );
-  monthElement.innerHTML = `${formatter.format(selectedDate)} ${selectedYear}`;
+  monthElement.textContent = `${formatter.format(
+    selectedDate,
+  )} ${selectedYear}`;
   for (let i = 0; i < amountDays; i++) {
     const dayElement = document.createElement('div');
     dayElement.classList.add('day');

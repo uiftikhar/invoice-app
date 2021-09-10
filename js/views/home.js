@@ -10,10 +10,10 @@ export const updateHome = (InvoiceWrapper, jsonData) => {
   const sideDrawer = document.querySelector('#new-invoice-sidebar');
   const overlay = document.querySelector('#overlay');
   const appRoot = document.querySelector('#app-root');
-  totalInvoicesElement.innerHTML = `${totalInvoices} invoices`;
+  totalInvoicesElement.textContent = `${totalInvoices} invoices`;
 
   if (mediaQuery.matches) {
-    totalInvoicesElement.innerHTML = `There are ${totalInvoices} total invoices`;
+    totalInvoicesElement.textContent = `There are ${totalInvoices} total invoices`;
     newInvoiceButton.addEventListener('click', () => {
       let xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {

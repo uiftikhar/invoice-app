@@ -70,6 +70,7 @@ export const updateEditInvoice = (editInvoiceWrapper, data) => {
   });
 
   formElement.addEventListener('submit', formSubmitListener, false);
+
   const unsubscribe = [];
   const invoiceItems$ = Rx.fromEvent(invoiceItemsWrapper, 'click')
     .tap((event) => {

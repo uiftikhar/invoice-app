@@ -76,7 +76,11 @@ export const renderItems = (items) => {
   const itemsHTML = document.querySelector(
     '#edit-invoice-form--item-list > ul',
   );
-  itemsHTML.innerHTML = '';
+
+  while (itemsHTML.hasChildNodes()) {
+    itemsHTML.removeChild(itemsHTML.lastChild);
+  }
+
   items.forEach((item, index) => {
     const li = document.createElement('li');
     li.setAttribute('data-key', index);
