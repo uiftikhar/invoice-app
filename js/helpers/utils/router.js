@@ -20,13 +20,16 @@ Router.prototype = {
     this.rootElem = document.querySelector('#app-root');
   },
   init: function () {
-    let r = this.routes;
-    (function (scope, r) {
+    let routes = this.routes;
+    function listenToChanges() {
+      const scope = this;
       window.addEventListener('hashchange', function (e) {
-        scope.hasChanged(scope, r);
+        scope.hasChanged(scope, routes);
       });
-    })(this, r);
-    this.hasChanged(this, r);
+    }
+
+    listenToChanges.call(this);
+    this.hasChanged(this, routes);
   },
   hasChanged: function (scope, r) {
     const event = new Event('on-page-route-started');
@@ -53,7 +56,8 @@ Router.prototype = {
     }
   },
   goToRoute: function (htmlName) {
-    (function (scope) {
+    function route() {
+      const scope = this;
       let url = 'views/' + htmlName;
       let xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
@@ -65,6 +69,8 @@ Router.prototype = {
       };
       xhttp.open('GET', url, true);
       xhttp.send();
-    })(this);
+    }
+
+    route.call(this);
   },
 };

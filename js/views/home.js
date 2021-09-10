@@ -10,7 +10,6 @@ export const updateHome = (InvoiceWrapper, jsonData) => {
   const cardsWrapperElement = InvoiceWrapper.querySelector('.cards');
   const newInvoiceButton = InvoiceWrapper.querySelector('#new-invoice');
   const sideDrawer = document.querySelector('#new-invoice-sidebar');
-  const overlay = document.querySelector('#overlay');
   const appRoot = document.querySelector('#app-root');
   totalInvoicesElement.textContent = `${totalInvoices} invoices`;
 
@@ -18,8 +17,18 @@ export const updateHome = (InvoiceWrapper, jsonData) => {
     totalInvoicesElement.textContent = `There are ${totalInvoices} total invoices`;
   }
 
+  const appRootListener = (event) => {
+    event.preventDefault();
+    newInvoiceButton$.unsubscribe();
+  };
+
+  appRoot.addEventListener('on-page-route-started', appRootListener, {
+    capture: false,
+    once: true,
+  });
+
   const newInvoiceButton$ = Rx.fromEvent(newInvoiceButton, 'click')
-    .tap((event) => {
+    .tap(() => {
       let xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {

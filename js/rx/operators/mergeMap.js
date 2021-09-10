@@ -11,6 +11,7 @@ export function MergeMap(otherObservable, subscribe) {
           },
           (e) => observer.onError(e),
           () => {
+            // innerSubscription?.unsubscribe();
             return observer.onCompleted();
           },
         );
