@@ -1,11 +1,10 @@
-// DATA BINDING
 import '../styles/styles.css';
 // needed polyfill for async await use
 import regeneratorRuntime from 'regenerator-runtime';
 
-import { Rx } from './state/namespace';
+import { Rx } from './rx/namespace';
 
-import { initRouter } from './helpers/routes';
+import { initRouter } from './helpers/utils/routes';
 import {
   activeContainer,
   setJsonData,

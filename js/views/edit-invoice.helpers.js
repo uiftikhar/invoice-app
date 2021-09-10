@@ -5,8 +5,8 @@ import {
 import {
   renderItems,
   updateItemsInLocalStorage,
-} from './populate-edit-invoice-oninit';
-import { toggleSideDrawer } from './side-drawer.helpers';
+} from '../helpers/populate-edit-invoice-oninit';
+import { toggleSideDrawer } from '../helpers/side-drawer.helpers';
 
 export const editInvoiceSelectors = (editInvoiceWrapper) => {
   const datePickerElement = editInvoiceWrapper.querySelector('#date-picker');
@@ -70,6 +70,13 @@ export const editInvoiceSelectors = (editInvoiceWrapper) => {
   };
 };
 
+export const discardButtonListener = (event, mediaQuery) => {
+  event.preventDefault();
+  if (mediaQuery.matches) {
+    toggleSideDrawer();
+  }
+};
+
 export const editInvoiceItemsWrapperListener = (event, data) => {
   event.preventDefault();
   const path = event.path || (event.composedPath && event.composedPath());
@@ -115,7 +122,6 @@ export const editInvoiceWrapperListener = (event, mediaQuery, data) => {
     const formData = new FormData(element);
     const form = Array.from(formData.entries());
     const allItems = getCurrentInvoiceItems(element);
-    console.log(form, allItems);
     data.status = 'pending';
     updateItemsInLocalStorage(form, data, allItems);
     if (!mediaQuery.matches) {

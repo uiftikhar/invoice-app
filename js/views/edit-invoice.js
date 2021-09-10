@@ -2,19 +2,24 @@ import {
   addNewItemButtonEditInvoiceListener,
   editInvoiceItemsWrapperListener,
   editInvoiceSelectors,
+  discardButtonListener,
   editInvoiceWrapperListener,
-} from '../helpers/edit-invoice.helpers.js';
+} from './edit-invoice.helpers.js';
+
 import {
   datePickerElementListener,
   daysElementListener,
-  discardButtonListener,
   nextMonthElementListener,
   prevMonthElementListener,
+} from '../helpers/calendar.helpers';
+
+import {
   selectElementsListener,
   userSelectElementListener,
-} from '../helpers/new-invoice.helpers.js';
+} from '../helpers/dropdown-select.helpers';
+
 import { populateUpdateInvoiceFormOnInit } from '../helpers/populate-edit-invoice-oninit.js';
-import { Rx } from '../state/namespace.js';
+import { Rx } from '../rx/namespace.js';
 import { formatDateSaveValue } from '../utils.js';
 
 export const updateEditInvoice = (editInvoiceWrapper, data) => {

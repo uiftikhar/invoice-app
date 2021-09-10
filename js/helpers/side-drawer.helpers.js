@@ -1,5 +1,7 @@
-export const toggleSideDrawer = () => {
-  const sideDrawer = document.querySelector('#edit-invoice-sidebar');
+export const toggleSideDrawer = (isNewInvoice = false) => {
+  const sideDrawer = isNewInvoice
+    ? document.querySelector('#new-invoice-sidebar')
+    : document.querySelector('#edit-invoice-sidebar');
   const overlay = document.querySelector('#overlay');
 
   if (sideDrawer.classList.contains('side-drawer__is-opened')) {

@@ -2,7 +2,7 @@ import { updateEditInvoice } from '../views/edit-invoice.js';
 import { updateHome } from '../views/home.js';
 import { updateNewInvoice } from '../views/new-invoice.js';
 import { updateViewInvoice } from '../views/view-invoice.js';
-import { loadData } from './loadData.js';
+import { loadData } from './utils/loadData.js';
 
 const appRoot = document.querySelector('#app-root');
 

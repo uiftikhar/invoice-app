@@ -1,3 +1,4 @@
+import { toggleSideDrawer } from '../helpers/side-drawer.helpers.js';
 import { formatCurrency, formatDate } from '../utils.js';
 export const updateHome = (InvoiceWrapper, jsonData) => {
   const mediaQuery = window.matchMedia('(min-width: 640px)');
@@ -20,10 +21,8 @@ export const updateHome = (InvoiceWrapper, jsonData) => {
         if (this.readyState === 4 && this.status === 200) {
           sideDrawer.innerHTML = this.responseText;
           const event = new Event('page-loaded');
-          sideDrawer.classList.add('side-drawer__is-opened');
+          toggleSideDrawer(true);
           appRoot.dispatchEvent(event);
-          overlay.classList.add('is-visible');
-          document.querySelector('#app-root').classList.add('no-scroll');
         }
       };
       xhttp.open('GET', 'views/new-invoice.html', true);

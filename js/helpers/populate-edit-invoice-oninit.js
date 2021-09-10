@@ -222,7 +222,6 @@ export const createNewInvoice = (entries, isDraft = false) => {
   if (isDraft) {
     newItem.status = 'draft';
   }
-  console.log(newItem);
   const currentData = JSON.parse(localStorage.getItem('data'));
   currentData.push(newItem);
   localStorage.setItem('data', JSON.stringify(currentData));

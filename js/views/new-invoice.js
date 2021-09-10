@@ -1,18 +1,25 @@
 import {
   addNewItemButtonListener,
-  datePickerElementListener,
-  daysElementListener,
   discardButtonListener,
   invoiceItemsWrapperListener,
   newInvoiceSelectors,
   newInvoiceWrapperListener,
+  saveAsDraftButtonListener,
+} from './new-invoice.helpers.js';
+
+import {
+  datePickerElementListener,
+  daysElementListener,
   nextMonthElementListener,
   prevMonthElementListener,
-  saveAsDraftButtonListener,
+} from '../helpers/calendar.helpers';
+
+import {
   selectElementsListener,
   userSelectElementListener,
-} from '../helpers/new-invoice.helpers.js';
-import { Rx } from '../state/namespace.js';
+} from '../helpers/dropdown-select.helpers';
+
+import { Rx } from '../rx/namespace.js';
 
 export const updateNewInvoice = (newInvoiceWrapper) => {
   const mediaQuery = window.matchMedia('(min-width: 640px)');
@@ -78,7 +85,6 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
       newInvoiceWrapperListener(event, mediaQuery);
       if (!mediaQuery.matches) {
         unsubscribe.forEach((subscription$) => {
-          console.log(subscription$, 'test');
           subscription$.unsubscribe();
         });
       }
@@ -90,7 +96,6 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
       saveAsDraftButtonListener(event, mediaQuery);
       if (!mediaQuery.matches) {
         unsubscribe.forEach((subscription$) => {
-          console.log(subscription$, 'test');
           subscription$.unsubscribe();
         });
       }
@@ -144,7 +149,6 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
     .tap((event) => {
       discardButtonListener(event, mediaQuery);
       unsubscribe.forEach((subscription$) => {
-        console.log(subscription$, 'test');
         subscription$.unsubscribe();
       });
     })

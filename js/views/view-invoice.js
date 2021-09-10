@@ -136,7 +136,6 @@ export const updateViewInvoice = (viewInvoiceWrapper, data) => {
     mutationsList,
   ) {
     for (const mutation of mutationsList) {
-      // TODO Remove this
       if (!listenersAttached) {
         if (mutation.type === 'childList') {
           viewInvoiceWrapper

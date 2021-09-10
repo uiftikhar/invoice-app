@@ -1,7 +1,8 @@
-import { formatter } from '../utils';
-import { populateDates } from './calendar';
-import { createNewInvoice, renderItems } from './populate-edit-invoice-oninit';
-import { toggleSideDrawer } from './side-drawer.helpers';
+import {
+  createNewInvoice,
+  renderItems,
+} from '../helpers/populate-edit-invoice-oninit';
+import { toggleSideDrawer } from '../helpers/side-drawer.helpers';
 
 export const newInvoiceSelectors = (newInvoiceWrapper) => {
   const datePickerElement = newInvoiceWrapper.querySelector('#date-picker');
@@ -105,27 +106,10 @@ export const getCurrentInvoiceItems = (invoiceItemsWrapper) => {
   return newItems;
 };
 
-export const discardButtonListener = (
-  event,
-  mediaQuery,
-  isEditInvoice = false,
-) => {
+export const discardButtonListener = (event, mediaQuery) => {
   event.preventDefault();
   if (mediaQuery.matches) {
-    toggleSideDrawer();
-    // const sideDrawer = isEditInvoice
-    //   ? document.querySelector('#edit-invoice-sidebar')
-    //   : document.querySelector('#new-invoice-sidebar');
-    // const overlay = document.querySelector('#overlay');
-    // if (sideDrawer.classList.contains('side-drawer__is-opened')) {
-    //   sideDrawer.classList.remove('side-drawer__is-opened');
-    //   // TODO: This is the slow way to remove HTML nodes. Use while loop instead
-    //   sideDrawer.textContent = '';
-    // }
-    // if (overlay.classList.contains('is-visible')) {
-    //   overlay.classList.remove('is-visible');
-    // }
-    // document.querySelector('#app-root').classList.remove('no-scroll');
+    toggleSideDrawer(true);
   }
 };
 
@@ -208,123 +192,8 @@ export const saveAsDraftButtonListener = (event, mediaQuery) => {
   if (!mediaQuery.matches) {
     window.history.back();
   } else {
-    const sideDrawer = document.querySelector('#new-invoice-sidebar');
-    const overlay = document.querySelector('#overlay');
-    if (sideDrawer.classList.contains('side-drawer__is-opened')) {
-      sideDrawer.classList.remove('side-drawer__is-opened');
-      // TODO: This is the slow way to remove HTML nodes. Use while loop instead
-      sideDrawer.textContent = '';
-    }
-    if (overlay.classList.contains('is-visible')) {
-      overlay.classList.remove('is-visible');
-    }
-    document.querySelector('#app-root').classList.remove('no-scroll');
+    toggleSideDrawer(true);
   }
-};
-
-export const datePickerElementListener = (
-  event,
-  selectElements,
-  datesElement,
-  daysElement,
-  monthElement,
-  date,
-) => {
-  const path = event.path || (event.composedPath && event.composedPath());
-  if (selectElements.classList.contains('active')) {
-    selectElements.classList.remove('active');
-  }
-  if (!checkEventPathForClass(path, 'dates')) {
-    event.preventDefault();
-    populateDates(daysElement, monthElement, date);
-    datesElement.classList.toggle('active');
-  }
-};
-
-export const daysElementListener = (
-  event,
-  date,
-  selectedDateElement,
-  datesElement,
-) => {
-  let selectedDay = Number(event.target.innerHTML);
-  let selectedYear = date.getFullYear();
-
-  selectedDateElement.setAttribute(
-    'value',
-    `${selectedDay} ${formatter.format(date)} ${selectedYear}`,
-  );
-  selectedDateElement.value = `${selectedDay} ${formatter.format(
-    date,
-  )} ${selectedYear}`;
-  datesElement.classList.toggle('active');
-};
-
-export const userSelectElementListener = (
-  event,
-  datesElement,
-  selectElements,
-) => {
-  event.preventDefault();
-  if (datesElement.classList.contains('active')) {
-    datesElement.classList.remove('active');
-  }
-  const path = event.path || (event.composedPath && event.composedPath());
-  if (!checkEventPathForClass(path, 'select-elements')) {
-    selectElements.classList.toggle('active');
-  }
-};
-
-export const prevMonthElementListener = (
-  event,
-  date,
-  monthElement,
-  daysElement,
-) => {
-  event.preventDefault();
-  date = new Date(date.setMonth(date.getMonth() - 1));
-  monthElement.setAttribute(
-    'value',
-    `${formatter.format(date)} ${date.getFullYear()}`,
-  );
-  populateDates(daysElement, monthElement, date, false);
-};
-
-export const nextMonthElementListener = (
-  event,
-  date,
-  monthElement,
-  daysElement,
-) => {
-  event.preventDefault();
-  date = new Date(date.setMonth(date.getMonth() + 1));
-  monthElement.setAttribute(
-    'value',
-    `${formatter.format(date)} ${date.getFullYear()}`,
-  );
-  populateDates(daysElement, monthElement, date, false);
-};
-
-export const selectElementsListener = (
-  event,
-  selectElements,
-  selectedElement,
-) => {
-  Array.from(selectElements.children).forEach((child) => {
-    if (selectedElement.innerHTML === child.innerHTML) {
-      child.classList.add('select__elements--selected');
-    }
-  });
-  event.preventDefault();
-  Array.from(selectElements.children).forEach((child) => {
-    if (event.target.innerHTML === child.innerHTML) {
-      child.classList.add('select__elements--selected');
-      selectedElement.setAttribute('value', event.target.innerHTML);
-      selectedElement.value = event.target.innerHTML;
-    } else {
-      child.className = '';
-    }
-  });
 };
 
 // ----------------------------------------------------------------------------------------------
