@@ -72,7 +72,7 @@ export const checkEventPathForClass = (path, selector) => {
 };
 
 // ------------------------------ Listener Functions ----------------------------------------------
-const getCurrentInvoiceItems = (invoiceItemsWrapper) => {
+export const getCurrentInvoiceItems = (invoiceItemsWrapper) => {
   const allItems = invoiceItemsWrapper.querySelectorAll('ul > li');
   const newItems = [];
   allItems.forEach((item, index) => {
@@ -104,13 +104,20 @@ const getCurrentInvoiceItems = (invoiceItemsWrapper) => {
   return newItems;
 };
 
-export const discardButtonListener = (event, mediaQuery) => {
+export const discardButtonListener = (
+  event,
+  mediaQuery,
+  isEditInvoice = false,
+) => {
   event.preventDefault();
   if (mediaQuery.matches) {
-    const sideDrawer = document.querySelector('#new-invoice-sidebar');
+    const sideDrawer = isEditInvoice
+      ? document.querySelector('#edit-invoice-sidebar')
+      : document.querySelector('#new-invoice-sidebar');
     const overlay = document.querySelector('#overlay');
     if (sideDrawer.classList.contains('side-drawer__is-opened')) {
       sideDrawer.classList.remove('side-drawer__is-opened');
+      // TODO: This is the slow way to remove HTML nodes. Use while loop instead
       sideDrawer.textContent = '';
     }
     if (overlay.classList.contains('is-visible')) {
@@ -162,6 +169,7 @@ export const newInvoiceWrapperListener = (event, mediaQuery) => {
       const overlay = document.querySelector('#overlay');
       if (sideDrawer.classList.contains('side-drawer__is-opened')) {
         sideDrawer.classList.remove('side-drawer__is-opened');
+        // TODO: This is the slow way to remove HTML nodes. Use while loop instead
         sideDrawer.textContent = '';
       }
       if (overlay.classList.contains('is-visible')) {
@@ -202,6 +210,7 @@ export const saveAsDraftButtonListener = (event, mediaQuery) => {
     const overlay = document.querySelector('#overlay');
     if (sideDrawer.classList.contains('side-drawer__is-opened')) {
       sideDrawer.classList.remove('side-drawer__is-opened');
+      // TODO: This is the slow way to remove HTML nodes. Use while loop instead
       sideDrawer.textContent = '';
     }
     if (overlay.classList.contains('is-visible')) {

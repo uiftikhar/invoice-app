@@ -224,10 +224,13 @@ export const createNewInvoice = (entries, isDraft = false) => {
   localStorage.setItem('data', JSON.stringify(currentData));
 };
 
-export const updateItemsInLocalStorage = (entries, currentItem) => {
-  let invoiceItems = [];
+export const updateItemsInLocalStorage = (
+  entries,
+  currentItem,
+  invoiceItems,
+) => {
   const newItem = createNewDataObject(entries);
-  populateInvoice(newItem, entries, invoiceItems);
+  populateInvoiceItemForSave(newItem, entries, invoiceItems);
   let total = 0;
   invoiceItems.forEach((item) => (total += item.total));
   newItem.id = currentItem.id;
@@ -241,7 +244,7 @@ export const updateItemsInLocalStorage = (entries, currentItem) => {
   localStorage.setItem('data', JSON.stringify(currentData));
 };
 
-const populateInvoice = (invoiceItem, entries, invoiceItems) => {
+const populateInvoiceItemForSave = (invoiceItem, entries, invoiceItems) => {
   entries.forEach((item) => {
     if (item[0].includes('item-list--')) {
       let key = item[0].split('--')[1];
