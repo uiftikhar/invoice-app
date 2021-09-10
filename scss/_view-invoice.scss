@@ -21,16 +21,15 @@
       padding: 20px 32px;
     }
     border-radius: 8px;
-  
+
     @include themed() {
       background-color: theme($general-background-light);
     }
   }
-  
+
   &__details-wrapper {
     > .card:hover {
-      border-color: transparent;
-
+      border-color: rgba($color: $white, $alpha: 0);
     }
     > .card > h4 {
       &:not(:first-child) {
@@ -89,7 +88,7 @@
 .card {
   @include breakpoints(medium) {
     // Overrides for 640px and up
-   padding: 32px;
+    padding: 32px;
   }
   &__content {
     &--user-details {

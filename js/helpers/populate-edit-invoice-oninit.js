@@ -1,15 +1,27 @@
-import { formatCurrency, formatDate, formatDateSaveValue, getPaymentTermsInnerHTML, getPaymentTermsValue  } from '../utils.js'
+import {
+  formatCurrency,
+  formatDate,
+  formatDateSaveValue,
+  getPaymentTermsInnerHTML,
+  getPaymentTermsValue,
+} from '../utils.js';
 
 const idGen = () => {
-  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
-    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-  ).substring(0,6);
-}
-
+  return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11)
+    .replace(/[018]/g, (c) =>
+      (
+        c ^
+        (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
+      ).toString(16),
+    )
+    .substring(0, 6);
+};
 
 export const populateUpdateInvoiceFormOnInit = (editInvoiceWrapper, data) => {
-  const formElements = editInvoiceWrapper.querySelectorAll('#edit-invoice-form input')
-  formElements.forEach(item => {
+  const formElements = editInvoiceWrapper.querySelectorAll(
+    '#edit-invoice-form input',
+  );
+  formElements.forEach((item) => {
     switch (item.name) {
       case 'bill-from--street_address':
         item.value = data.senderAddress.street;
@@ -45,43 +57,57 @@ export const populateUpdateInvoiceFormOnInit = (editInvoiceWrapper, data) => {
         item.value = data.description;
         break;
       case 'payment-date':
-        item.value = formatDate(data.paymentDue)
+        item.value = formatDate(data.paymentDue);
         item.setAttribute('value', data.paymentDue);
         break;
       case 'payment-terms':
-        item.value = getPaymentTermsInnerHTML(data.paymentTerms)
+        item.value = getPaymentTermsInnerHTML(data.paymentTerms);
         item.setAttribute('value', data.paymentTerms);
         break;
       default:
         break;
     }
-  })
+  });
 
   renderItems(data.items);
-}
+};
 
 export const renderItems = (items) => {
-  const itemsHTML = document.querySelector('#edit-invoice-form--item-list > ul');
-  itemsHTML.innerHTML = '';
+  const itemsHTML = document.querySelector(
+    '#edit-invoice-form--item-list > ul',
+  );
+
+  while (itemsHTML.hasChildNodes()) {
+    itemsHTML.removeChild(itemsHTML.lastChild);
+  }
+
   items.forEach((item, index) => {
     const li = document.createElement('li');
     li.setAttribute('data-key', index);
     li.innerHTML = `
     <div class="flex flex__col pb-1 w-100 item-list-form__items--name">
       <label>Item Name</label>
-      <input type="text" name="${index}-item-list--name" value="${item.name}" required>
+      <input type="text" name="${index}-item-list--name" value="${
+      item.name
+    }" required>
     </div>
     <div class="item-list-form__items--quantity">
       <label>Qty</label>
-      <input type="number" name="${index}-item-list--quantity" value="${item.quantity}" required>
+      <input type="number" name="${index}-item-list--quantity" value="${
+      item.quantity
+    }" required>
     </div>
     <div class="item-list-form__items--price">
       <label>Price</label>
-      <input type="number" name="${index}-item-list--price" value="${item.price}" required>
+      <input type="number" name="${index}-item-list--price" value="${
+      item.price
+    }" required>
     </div>
     <div class="item-list-form__items--total">
       <label>Total</label>
-      <input class="disabled" type="string" name="${index}-item-list--total" value="£ ${formatCurrency(item.total)}">
+      <input class="disabled" type="string" name="${index}-item-list--total" value="£ ${formatCurrency(
+      item.total,
+    )}">
     </div>
     <div class="flex flex__col ml-auto">
       <button data-key=${index} class="icon-button icon-button__mini delete-button" >
@@ -90,100 +116,152 @@ export const renderItems = (items) => {
         </figure>
       </button>
     </div>
-    `
-    itemsHTML.append(li)
+    `;
+    itemsHTML.append(li);
   });
-}
-export const createNewDataObject = (newInvoice = false) => {
-  const getNewDate = d => new Date(d.getFullYear() + 1, d.getMonth(), d.getDate());
+};
+export const createNewDataObject = (entries, newInvoice = false) => {
+  const getNewDate = (d) =>
+    new Date(d.getFullYear() + 1, d.getMonth(), d.getDate());
+
   return {
-    id: newInvoice ? idGen() : "",
-    createdAt: newInvoice ? formatDateSaveValue(new Date(Date.now())) : "",
-    paymentDue: newInvoice ? getNewDate(new Date) : '',
-    description: "",
+    id: newInvoice ? idGen() : '',
+    createdAt: newInvoice ? formatDateSaveValue(new Date(Date.now())) : '',
+    paymentDue: newInvoice ? getNewDate(new Date()) : '',
+    description: '',
     paymentTerms: 1,
-    clientName: "",
-    clientEmail: "",
-    status: "",
+    clientName: '',
+    clientEmail: '',
+    status: '',
     senderAddress: {
-      street: "",
-      city: "",
-      postCode: "",
-      country: ""
+      street: '',
+      city: '',
+      postCode: '',
+      country: '',
     },
     clientAddress: {
-      street: "",
-      city: "",
-      postCode: "",
-      country: ""
+      street: '',
+      city: '',
+      postCode: '',
+      country: '',
     },
     items: [],
-    total: 0
+    total: 0,
   };
-}
+};
 
 export const createNewInvoice = (entries, isDraft = false) => {
-  const newItem = createNewDataObject(true);
+  const newItem = createNewDataObject(entries, true);
   let invoiceItems = [];
   let total = 0;
-  entries.forEach(item => {
-    if(item[0].includes('item-list--')) {
+  entries.forEach((item) => {
+    switch (item[0]) {
+      case 'bill-from--street_address':
+        newItem.senderAddress.street = item[1];
+        break;
+      case 'bill-from--city':
+        newItem.senderAddress.city = item[1];
+        break;
+      case 'bill-from--post_code':
+        newItem.senderAddress.postCode = item[1];
+        break;
+      case 'bill-from--country':
+        newItem.senderAddress.country = item[1];
+        break;
+      case 'bill-to--client-name':
+        newItem.clientName = item[1];
+        break;
+      case 'bill-to--client-email':
+        newItem.clientEmail = item[1];
+        break;
+      case 'bill-to--street_address':
+        newItem.clientAddress.street = item[1];
+        break;
+      case 'bill-to--city':
+        newItem.clientAddress.city = item[1];
+        break;
+      case 'bill-to--post_code':
+        newItem.clientAddress.postCode = item[1];
+        break;
+      case 'bill-to--country':
+        newItem.clientAddress.country = item[1];
+        break;
+      case 'bill-to--project':
+        newItem.description = item[1];
+        break;
+      case 'payment-terms':
+        newItem.paymentTerms = getPaymentTermsValue(item[1]);
+        break;
+      case 'payment-date':
+        newItem.paymentDue = formatDateSaveValue(item[1]);
+        break;
+      default:
+        break;
+    }
+
+    if (item[0].includes('item-list--')) {
       let key = item[0].split('--')[1];
       let index = item[0][0];
-      let value = key === 'name' ? item[1] : Number(item[1].replace(/[^0-9.-]+/g,""));
+      let value =
+        key === 'name' ? item[1] : Number(item[1].replace(/[^0-9.-]+/g, ''));
       let currentObj = invoiceItems[index];
-      if(key === 'total') {
-        value = invoiceItems[index]["quantity"] * invoiceItems[index]["price"] 
+      if (key === 'total') {
+        value = invoiceItems[index]['quantity'] * invoiceItems[index]['price'];
       }
       const obj = {
         [key]: value,
-        ...currentObj
-      }
+        ...currentObj,
+      };
       invoiceItems[index] = obj;
-  }})
+    }
+  });
   newItem.items = invoiceItems;
-  invoiceItems.forEach(item => total += item.total);
+  invoiceItems.forEach((item) => (total += item.total));
   newItem.total = total;
   newItem.status = 'paid';
-  if(isDraft) {
+  if (isDraft) {
     newItem.status = 'draft';
   }
   const currentData = JSON.parse(localStorage.getItem('data'));
   currentData.push(newItem);
   localStorage.setItem('data', JSON.stringify(currentData));
-}
+};
 
-export const updateItemsInLocalStorage = (entries, currentItem) => {
-  let invoiceItems = [];
-  const newItem = createNewDataObject();
-  populateInvoice(newItem, entries, invoiceItems);
+export const updateItemsInLocalStorage = (
+  entries,
+  currentItem,
+  invoiceItems,
+) => {
+  const newItem = createNewDataObject(entries);
+  populateInvoiceItemForSave(newItem, entries, invoiceItems);
   let total = 0;
-  invoiceItems.forEach(item => total += item.total);
+  invoiceItems.forEach((item) => (total += item.total));
   newItem.id = currentItem.id;
   newItem.status = currentItem.status;
   newItem.createdAt = currentItem.createdAt;
   newItem.items = invoiceItems;
   newItem.total = total;
   const currentData = JSON.parse(localStorage.getItem('data'));
-  const indexToUpdate = currentData.findIndex(item => item.id === newItem.id);
+  const indexToUpdate = currentData.findIndex((item) => item.id === newItem.id);
   currentData[indexToUpdate] = newItem;
   localStorage.setItem('data', JSON.stringify(currentData));
 };
 
-const populateInvoice = (invoiceItem, entries, invoiceItems) => {
-  entries.forEach(item => {
-    if(item[0].includes('item-list--')) {
+const populateInvoiceItemForSave = (invoiceItem, entries, invoiceItems) => {
+  entries.forEach((item) => {
+    if (item[0].includes('item-list--')) {
       let key = item[0].split('--')[1];
       let index = item[0][0];
-      let value = key === 'name' ? item[1] : Number(item[1].replace(/[^0-9.-]+/g,""));
+      let value =
+        key === 'name' ? item[1] : Number(item[1].replace(/[^0-9.-]+/g, ''));
       let currentObj = invoiceItems[index];
-      if(key === 'total') {
-        value = invoiceItems[index]["quantity"] * invoiceItems[index]["price"] 
+      if (key === 'total') {
+        value = invoiceItems[index]['quantity'] * invoiceItems[index]['price'];
       }
       const obj = {
         [key]: value,
-        ...currentObj
-      }
+        ...currentObj,
+      };
       invoiceItems[index] = obj;
     }
     switch (item[0]) {
@@ -230,4 +308,4 @@ const populateInvoice = (invoiceItem, entries, invoiceItems) => {
         break;
     }
   });
-}
+};
