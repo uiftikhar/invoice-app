@@ -22,7 +22,6 @@ import {
 import { Rx } from '../rx/namespace.js';
 
 export const updateNewInvoice = (newInvoiceWrapper) => {
-  console.log(0);
   const mediaQuery = window.matchMedia('(min-width: 640px)');
 
   // ------------------------------ Query Selectors ----------------------------------------------
@@ -46,7 +45,6 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
     monthElement,
   } = newInvoiceSelectors(newInvoiceWrapper);
 
-  console.log(0, discardButton);
   if (!mediaQuery.matches) {
     discardButton.parentElement.setAttribute(
       'href',
@@ -149,7 +147,6 @@ export const updateNewInvoice = (newInvoiceWrapper) => {
 
   const discardButton$ = Rx.fromEvent(discardButton, 'click')
     .tap((event) => {
-      console.log(121212);
       discardButtonListener(event, mediaQuery);
       unsubscribe.forEach((subscription$) => {
         subscription$.unsubscribe();
